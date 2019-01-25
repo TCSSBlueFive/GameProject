@@ -59,9 +59,9 @@ Background.prototype.update = function () {
 
 function MushroomDude(game, spritesheet) {
     this.animation = new Animation(spritesheet, 189, 230, 5, 0.10, 14, true, 1);
-    this.x = 0;
-    this.y = 0;
-    this.speed = 100;
+    this.x = 200;
+    this.y = 300;
+    this.speed = 0;
     this.game = game;
     this.ctx = game.ctx;
 }
@@ -73,16 +73,18 @@ MushroomDude.prototype.draw = function () {
 MushroomDude.prototype.update = function () {
     if (this.animation.elapsedTime < this.animation.totalTime * 8 / 14)
         this.x += this.game.clockTick * this.speed;
-    if (this.x > 800) this.x = -230;
+    if (this.x > 1400) this.x = -230;
 }
 
 
 // inheritance 
 function Cheetah(game, spritesheet) {
     this.animation = new Animation(spritesheet, 512, 256, 2, 0.05, 8, true, 0.5);
-    this.speed = 350;
+    this.x = 200;
+    this.y = 300;
+    this.speed = 0;
     this.ctx = game.ctx;
-    Entity.call(this, game, 0, 250);
+    Entity.call(this, game, 1000, 400);
 }
 
 Cheetah.prototype = new Entity();
@@ -90,33 +92,11 @@ Cheetah.prototype.constructor = Cheetah;
 
 Cheetah.prototype.update = function () {
     this.x += this.game.clockTick * this.speed;
-    if (this.x > 800) this.x = -230;
+    if (this.x > 1400) this.x = -230;
     Entity.prototype.update.call(this);
 }
 
 Cheetah.prototype.draw = function () {
-    this.animation.drawFrame(this.game.clockTick, this.ctx, this.x, this.y);
-    Entity.prototype.draw.call(this);
-}
-
-// inheritance 
-function Guy(game, spritesheet) {
-    this.animation = new Animation(spritesheet, 154, 215, 4, 0.15, 8, true, 0.5);
-    this.speed = 100;
-    this.ctx = game.ctx;
-    Entity.call(this, game, 0, 450);
-}
-
-Guy.prototype = new Entity();
-Guy.prototype.constructor = Guy;
-
-Guy.prototype.update = function () {
-    this.x += this.game.clockTick * this.speed;
-    if (this.x > 800) this.x = -230;
-    Entity.prototype.update.call(this);
-}
-
-Guy.prototype.draw = function () {
     this.animation.drawFrame(this.game.clockTick, this.ctx, this.x, this.y);
     Entity.prototype.draw.call(this);
 }
@@ -139,7 +119,7 @@ AM.downloadAll(function () {
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
     gameEngine.addEntity(new MushroomDude(gameEngine, AM.getAsset("./img/mushroomdude.png")));
     gameEngine.addEntity(new Cheetah(gameEngine, AM.getAsset("./img/runningcat.png")));
-    gameEngine.addEntity(new Guy(gameEngine, AM.getAsset("./img/guy.jpg")));
+
 
     console.log("All Done!");
 });
