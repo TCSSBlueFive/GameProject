@@ -57,20 +57,22 @@ Background.prototype.draw = function () {
 Background.prototype.update = function () {
 };
 
-function MushroomDude(game, spritesheet) {
+function PlayerCharacter(game, spritesheet) {
     this.animation = new Animation(spritesheet, 189, 230, 5, 0.10, 14, true, 1);
     this.x = 200;
     this.y = 300;
+    this.health = 100;
+    
     this.speed = 0;
     this.game = game;
     this.ctx = game.ctx;
 }
 
-MushroomDude.prototype.draw = function () {
+PlayerCharacter.prototype.draw = function () {
     this.animation.drawFrame(this.game.clockTick, this.ctx, this.x, this.y);
 }
 
-MushroomDude.prototype.update = function () {
+PlayerCharacter.prototype.update = function () {
     if (this.animation.elapsedTime < this.animation.totalTime * 8 / 14)
         this.x += this.game.clockTick * this.speed;
     if (this.x > 1400) this.x = -230;
@@ -78,7 +80,7 @@ MushroomDude.prototype.update = function () {
 
 
 // inheritance 
-function Cheetah(game, spritesheet) {
+function Enemy(game, spritesheet) {
     this.animation = new Animation(spritesheet, 512, 256, 2, 0.05, 8, true, 0.5);
     this.x = 200;
     this.y = 300;
@@ -87,16 +89,16 @@ function Cheetah(game, spritesheet) {
     Entity.call(this, game, 1000, 400);
 }
 
-Cheetah.prototype = new Entity();
-Cheetah.prototype.constructor = Cheetah;
+Enemy.prototype = new Entity();
+Enemy.prototype.constructor = Enemy;
 
-Cheetah.prototype.update = function () {
+Enemy.prototype.update = function () {
     this.x += this.game.clockTick * this.speed;
     if (this.x > 1400) this.x = -230;
     Entity.prototype.update.call(this);
 }
 
-Cheetah.prototype.draw = function () {
+Enemy.prototype.draw = function () {
     this.animation.drawFrame(this.game.clockTick, this.ctx, this.x, this.y);
     Entity.prototype.draw.call(this);
 }
@@ -117,8 +119,8 @@ AM.downloadAll(function () {
     gameEngine.start();
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
-    gameEngine.addEntity(new MushroomDude(gameEngine, AM.getAsset("./img/mushroomdude.png")));
-    gameEngine.addEntity(new Cheetah(gameEngine, AM.getAsset("./img/runningcat.png")));
+    gameEngine.addEntity(new PlayerCharacter(gameEngine, AM.getAsset("./img/mushroomdude.png")));
+    gameEngine.addEntity(new Enemy(gameEngine, AM.getAsset("./img/runningcat.png")));
 
 
     console.log("All Done!");
