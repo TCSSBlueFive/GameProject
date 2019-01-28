@@ -24,9 +24,19 @@ GameEngine.prototype.init = function (ctx) {
     console.log('game initialized');
 }
 
+
 GameEngine.prototype.start = function () {
     console.log("starting game");
     var that = this;
+    var getXandY = function (e) {
+        var x = e.clientX - that.ctx.canvas.getBoundingClientRect().left;
+        var y = e.clientY - that.ctx.canvas.getBoundingClientRect().top;
+        return { x: x, y: y };
+    }
+    this.ctx.canvas.addEventListener("click", function(e) {
+        that.click = getXandY(e);
+        console.log("Left Click Event - X, Y " + e.clientX +"," + e.clientY);
+    }, false);
     (function gameLoop() {
         that.loop();
         requestAnimFrame(gameLoop, that.ctx.canvas);

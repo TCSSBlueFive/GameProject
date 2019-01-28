@@ -1,24 +1,29 @@
 /* button prototype */
 
-function Button(x, y, width, height, imgurl, fn) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.img = new Image();
-    this.img.src = imgurl;
-    this.fn = fn; //pass the button's click function
+function Button(game, img) {
+    this.x = 200;
+    this.y = 600;
+    this.spritesheet = img;
+    this.game = game;
+    this.ctx = game.ctx;
+   // this.fn = fn; //pass the button's click function
 };
 
-
+Button.prototype.draw = function () {
+    this.ctx.drawImage(this.spritesheet,
+                   this.x, this.y);
+};
 
 Button.prototype.mouse_down = function(mouseX, mouseY) {
     var hit; //check for hit on mouse click here, either true or false
     if (hit == true) 
-        fn(); //run the button's function
+      console.log("well");
     return hit;
 };
 
+Button.prototype.update = function () {
+
+};
 
 
 
