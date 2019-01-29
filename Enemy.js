@@ -1,15 +1,16 @@
 //frameWidth, frameHeight, sheetWidth, frameDuration, frames, loop, scale) {
 // inheritance 
-function Enemy(game, spritesheet) {
-    this.animation = new Animation(spritesheet, 256, 256, 1, .075, 18, true, 0.5);
+function Enemy(game, EnemyFromDatabase) {
+    this.animation = EnemyFromDatabase.animation;
     this.x = 1000;
     this.y = 400;
-    this.health = 100;
-    this.attack = 20;
+    this.health = EnemyFromDatabase.health;
+    this.attack = EnemyFromDatabase.attack;
     this.speed = 0;
+    console.log(this.attack);
+    console.log(EnemyFromDatabase)
     this.game = game;
     this.ctx = game.ctx;
-   // Entity.call(this, game, 1000, 400);
 }
 
 
