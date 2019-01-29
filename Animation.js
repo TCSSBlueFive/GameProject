@@ -41,7 +41,7 @@ Animation.prototype.drawFrameLeftToRight = function (tick, ctx, x, y, yindex) {
     var xindex = 0;
     xindex = Math.floor(frame / this.sheetWidth);
     ctx.drawImage(this.spriteSheet,
-                 xindex * this.frameHeight, yindex * this.frameWidth,  // source from sheet
+                 xindex * this.frameWidth, yindex * this.frameHeight,  // source from sheet
                  this.frameWidth, this.frameHeight,
                  x, y,
                  this.frameWidth * this.scale,
