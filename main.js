@@ -6,6 +6,7 @@ AM.queueDownload("./img/slime_sprite.png");
 AM.queueDownload("./img/background2.jpg");
 AM.queueDownload("./img/cards.png")
 AM.queueDownload("./img/idle blink.png");
+AM.queueDownload("./img/16_omnimagesheet.png")
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameWorld");
     var ctx = canvas.getContext("2d");
@@ -18,7 +19,7 @@ AM.downloadAll(function () {
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
     gameEngine.addEntity(new Enemy(gameEngine, myEnemyDataBase.monsters[0]));
-    gameEngine.addEntity(new PlayerCharacter(gameEngine, AM.getAsset("./img/idle blink.png"), Enemy, myCardDataBase));
+    gameEngine.addEntity(new PlayerCharacter(gameEngine, AM.getAsset("./img/16_omnimagesheet.png"), Enemy, myCardDataBase));
     
     //let Battle = new Battle(gameEngine, PlayerCharacter, Enemy);
     //gameEngine.battle = Battle;

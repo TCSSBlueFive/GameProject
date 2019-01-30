@@ -1,11 +1,12 @@
-//frameWidth, frameHeight, sheetWidth, frameDuration, frames, loop, scale) {
-
 
  
 function PlayerCharacter(game, spritesheet, enemy, cardDataBase) {
-    this.animation = new Animation(spritesheet, 200, 300, 1, .1, 14, true, 1);
-    this.x = 200;
-    this.y = 250;
+    //this.animation = new Animation(spritesheet, 200, 300, 1, .1, 14, true, 1);
+    this.IdleAnimation = new Animation(spritesheet, 110, 230, 1, 1, 1, true, 1 );
+    //this.AttackAnimation = to be added
+    this.idle = true;
+    this.x = 250;
+    this.y = 300;
     const AttCard = new Card(game,cardDataBase.cards[0], this);
 
     this.DeckList = [AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard];
@@ -23,11 +24,10 @@ PlayerCharacter.prototype.attackCard = function() {
 }
 
 PlayerCharacter.prototype.update = function () {
-    if (this.animation.elapsedTime < this.animation.totalTime * 8 / 14)
-        this.x += this.game.clockTick * this.speed;
-    if (this.x > 1400) this.x = -230;
+    //needs to be added
 }
 PlayerCharacter.prototype.draw = function () {
-    this.animation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 0);
-   // this.ctx.drawImage(this.spritesheet,this.x, this.y);
+    if (this.idle) {
+        this.IdleAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 0);
+    }
 }
