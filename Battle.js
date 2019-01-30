@@ -1,44 +1,46 @@
 //WORK IN PROGRESS
 
-function Battle(game, PlayerCharacter) {
+function Battle(game, Enemies, PlayerCharacter) {
     this.game = game;
     this.PlayerCharacter = PlayerCharacter;
-}
-
-
-
-Battle.prototype.GenerateEnemyAttack = function() {
-    return this.Enemy.attack;
+    this.Enemies = Enemies.constructor === Array ? [...Enemies] : [Enemies];
+    this.PlayerTurn = false
+    this.isBattleOver = false
 }
 
 Battle.prototype.playerMove = function() {
-    if (this.PlayerTurn === true) {
-        const selectedMove = this.PlayerCharacter.selectedMove;
-        selectedMove();
+    if (this.PlayerTurn && !this.isBattleOver) {
+        var selectedMove = this.PlayerCharacter.playCard();
+        debugger
+        if (selectedMove.type === 'damage') {
+            this.Enemies[0].takeDamage(selectedMove.value);
+            if (!this.Enemies[0].isAlive()) {
+                this.isBattleOver = true;
+            }
+        }
         this.PlayerTurn === false;
     }
+    console.log("Enemy Health: " + this.Enemies[0].health, "Player Health: " + this.PlayerCharacter.health);
 }
 
-Battle.prototype.enemyMove = function() {
-    if (this.EnemyTurn === true) {
-        const selectedMove = GenerateEnemyAttack();
-        selectedMove();
+Battle.prototype.enemyMoves = function() {
+    if (!this.playerMove && !this.isBattleOver) {
+        for (enemy in this.Enemies) {
+            if (enemy.isAlive())
+            var attack = enemy.attack()
+            if (attack.type === 'damage') {
+                this.PlayerCharacter.takeDamage(attack.value);
+                if (!this.PlayerCharacter.isAlive()) {
+                    this.battle.isBattleOver = true;
+                    this.game.gameOver()
+                }
+            }
+            // deal with buffs for enemies or blocks here
+        }
     }
-}
 
-Battle.prototype.isOverWin = function() {
-    if (this.Enemy.health <= 0 ) {
-        this.isBattleOver = true;
-        this.game.travel = true;
-        this.game.battle = false;
-    }
-}
-
-Battle.prototype.isOverLoss = function() {
-    if (this.PlayerCharacter.health <= 0) {
-        this.isBattleOver = true;
-        this.isGameOver = true;
-    }
+    this.PlayerTurn = true;
+    console.log("Enemy Health: " + this.Enemies[0].health, "Player Health: " + this.PlayerCharacter.health);
 }
 
 

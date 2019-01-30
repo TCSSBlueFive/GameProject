@@ -7,9 +7,9 @@ function PlayerCharacter(game, spritesheet, enemy, cardDataBase) {
     this.idle = true;
     this.x = 250;
     this.y = 300;
-    const AttCard = new Card(game,cardDataBase.cards[0], this);
+    //this.AttCard = new Card(game,cardDataBase.cards[0], this);
 
-    this.DeckList = [AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard];
+    //this.DeckList = [AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard];
     this.health = 100;
     this.attack = 30;
 
@@ -19,8 +19,9 @@ function PlayerCharacter(game, spritesheet, enemy, cardDataBase) {
     this.ctx = game.ctx;
 }
 
-PlayerCharacter.prototype.attackCard = function() {
-    this.battle.enemy.health -= 10;
+PlayerCharacter.prototype.playCard = function() {
+    //return this.AttCard;
+    return {type: 'damage', value: 20 }
 }
 
 PlayerCharacter.prototype.update = function () {
@@ -30,4 +31,13 @@ PlayerCharacter.prototype.draw = function () {
     if (this.idle) {
         this.IdleAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 0);
     }
+}
+
+PlayerCharacter.prototype.takeDamage = function (attackDamage) {
+    // call player damage animation
+    this.health -= attackDamage;
+}
+
+PlayerCharacter.prototype.isAlive = function () {
+    return this.health > 0;
 }

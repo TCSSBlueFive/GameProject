@@ -15,6 +15,7 @@ function GameEngine() {
     this.ctx = null;
     this.surfaceWidth = null;
     this.surfaceHeight = null;
+    this.currentDungeon = null;
 }
 
 GameEngine.prototype.init = function (ctx) {
@@ -48,6 +49,10 @@ GameEngine.prototype.start = function () {
         that.loop();
         requestAnimFrame(gameLoop, that.ctx.canvas);
     })();
+}
+
+GameEngine.prototype.GameOver = function () {
+    console.log("Game Over");
 }
 
 GameEngine.prototype.addEntity = function (entity) {
