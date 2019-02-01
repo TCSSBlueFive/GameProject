@@ -2,7 +2,7 @@
  
 function PlayerCharacter(game, spritesheet, enemy, cardDataBase) {
     //this.animation = new Animation(spritesheet, 200, 300, 1, .1, 14, true, 1);
-    this.IdleAnimation = new Animation(spritesheet, 110, 230, 1, 1, 1, true, 1 );
+    this.IdleAnimation = new Animation(spritesheet, 110, 230, 1, 1, 1, true, 1, 0);
     //this.AttackAnimation = to be added
     this.idle = true;
     this.x = 250;

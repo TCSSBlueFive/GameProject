@@ -1,7 +1,9 @@
 
 function Enemy(game, EnemyFromDatabase) {
     this.IdleAnimation = EnemyFromDatabase.animation;
-    //this.AnimationAttack = [EnemyFromDatabase.AttackAnimation] This attack animation needs to be added to the database
+    this.AttackAnimation = EnemyFromDatabase.attackAnimation;
+    this.yIndexIdle = EnemyFromDatabase.animation.yIndex;
+    this.yIndexAttack = EnemyFromDatabase.attackAnimation.yIndex;
     this.x = 1000;
     this.y = 400;
     this.health = EnemyFromDatabase.health;
@@ -36,7 +38,8 @@ Enemy.prototype.isAlive = function () {
 
 Enemy.prototype.draw = function () {
     if (this.idle) {
-        this.IdleAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, this.yIndex);
+        //this.IdleAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, this.yIndexIdle);
+        this.AttackAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, this.yIndexAttack); // testing; will have its own if-statement
     } 
     
 }
