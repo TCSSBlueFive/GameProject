@@ -20,7 +20,7 @@ AM.downloadAll(function () {
     var gameEngine = new GameEngine();
     gameEngine.init(ctx);
     gameEngine.start();
-    var myEnemyDataBase = new EnemyDatabase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
+    var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     var myCardDataBase = new CardDataBase(gameEngine, AM.getAsset("./img/cards.png"));
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], myCardDataBase)
