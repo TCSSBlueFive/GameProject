@@ -11,7 +11,6 @@ function Battle(game, Enemies, PlayerCharacter) {
 Battle.prototype.playerMove = function() {
     if (this.PlayerTurn && !this.isBattleOver) {
         var selectedMove = this.PlayerCharacter.playCard();
-        debugger
         if (selectedMove.type === 'damage') {
             this.Enemies[0].takeDamage(selectedMove.value);
             if (!this.Enemies[0].isAlive()) {
