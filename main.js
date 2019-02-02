@@ -16,14 +16,20 @@ AM.downloadAll(function () {
     gameEngine.start();
     var myEnemyDataBase = new EnemyDatabase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     var myCardDataBase = new CardDataBase(gameEngine, AM.getAsset("./img/cards.png"));
-    var player = new PlayerCharacter(gameEngine, AM.getAsset("./img/16_omnimagesheet.png"), Enemy, myCardDataBase)
+
+
+    var player = new PlayerCharacter(gameEngine, AM.getAsset("./img/idle blink.png"), Enemy, myCardDataBase, CardHand)
     var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0]);
-    var dungeon = new Dungeon(gameEngine, null, player, enemy)
+    var dungeon = new Dungeon(gameEngine, null, player, enemy);
+    
+    var cardHand = new CardHand(gameEngine, AM.getAsset("./img/cards.png"), player);
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
-    gameEngine.addEntity(dungeon)
+    gameEngine.addEntity(dungeon);
+    gameEngine.addEntity(cardHand);
+
     dungeon.loadDungeon();
 
 

@@ -1,6 +1,6 @@
 //Level 1 Slime
 function EnemyDatabase(game, spritesheet) {
-    this.monsters = [{health: 100, name: 'slime', attacks: 10, animation: new Animation(spritesheet, 256, 256, 1, .075, 18, true, 0.5),
+    this.monsters = [{health: 100, name: 'slime', attacks: 10, animation: new Animation(spritesheet, 256, 256, 1, .075, 18, true, 0.5, 1),
         yIndex: 1},
                      
     {health: 120, name: 'ghoul', attack: function () {

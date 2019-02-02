@@ -1,15 +1,17 @@
 
  
 function PlayerCharacter(game, spritesheet, enemy, cardDataBase) {
-    //this.animation = new Animation(spritesheet, 200, 300, 1, .1, 14, true, 1);
-    this.IdleAnimation = new Animation(spritesheet, 110, 230, 1, 1, 1, true, 1 );
+    this.IdleAnimation = new Animation(spritesheet, 200, 300, 1, .1, 14, true, .9);
+    //this.IdleAnimation = new Animation(spritesheet, 110, 230, 1, 1, 1, true, 1 );
     //this.AttackAnimation = to be added
     this.idle = true;
     this.x = 250;
-    this.y = 300;
-    //this.AttCard = new Card(game,cardDataBase.cards[0], this);
-
-    //this.DeckList = [AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard];
+    this.y = 250;
+    this.selectedMove = {type: 'damage', value: 20 };
+    this.DeckList = [{type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }
+                    ,{type: 'damage', value: 20 },{type: 'damage', value: 20 },{type: 'damage', value: 20 }];
+    
+                    
     this.health = 100;
     this.attack = 30;
 
@@ -21,7 +23,7 @@ function PlayerCharacter(game, spritesheet, enemy, cardDataBase) {
 
 PlayerCharacter.prototype.playCard = function() {
     //return this.AttCard;
-    return {type: 'damage', value: 20 }
+    return this.selectedMove;
 }
 
 PlayerCharacter.prototype.update = function () {
