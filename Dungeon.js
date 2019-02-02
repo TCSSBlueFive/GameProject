@@ -43,13 +43,13 @@ Dungeon.prototype.update = function () {
       && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
           this.playCount++;
           
-          console.log(this.PlayerCharacter.selectedMove);
+          //console.log(this.PlayerCharacter.selectedMove);
           this.battle.playerMove();        
       }
     }
     if(this.playCount === 3) {
       console.log("Enemies Turn");
-      //this.battle.enemyMoves();
+      this.battle.enemyMoves();
       this.playCount = 0;
     }
   }

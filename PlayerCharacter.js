@@ -4,7 +4,7 @@ function PlayerCharacter(game, spritesheet, cardDataBase) {
 
     this.idleAnimation = new Animation(spritesheet[0], 37, 80, 1, .5, 2, true, 2);
     this.walkingRightAnimation = new Animation(spritesheet[2], 38, 79, 1, .5, 2, true, 2);
-    this.walkingLeftAnimation = new Animation(spritesheet[3], 38, 79, 1, .5, 2, true, 2);
+    this.walkingLeftAnimation = new Animation(spritesheet[3], 38, 79, 1, .5, 2, false, 2);
     this.attackingAnimation = new Animation(spritesheet[1], 50, 103, 1, .5, 3, false, 2);
     this.deathAnimation = new Animation(spritesheet[4], 83, 40, 1, .5, 2, true, 2);
     this.dodgeAnimation = new Animation(spritesheet[5], 42, 100, 1, .5, 4, true, 2);
@@ -53,6 +53,10 @@ PlayerCharacter.prototype.draw = function () {
         this.walkingRightAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .55);
     } else if (this.action === 'walking-left') {
         this.walkingLeftAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 1.3);
+        if ((this.walkingLeftAnimation.isDone())) {
+            this.action = 'walking-right';
+            this.walkingLeftAnimation.elapsedTime = 0;
+        }
     } else if (this.action === 'death') {
         this.deathAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .25);
     } else if (this.action === 'dodge') {
@@ -63,7 +67,7 @@ PlayerCharacter.prototype.draw = function () {
 }
 
 PlayerCharacter.prototype.takeDamage = function (attackDamage) {
-    // call player damage animation
+    this.action = 'walking-left';
     this.health -= attackDamage;
 }
 
