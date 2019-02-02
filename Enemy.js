@@ -8,6 +8,8 @@ function Enemy(game, EnemyFromDatabase) {
     this.y = 400;
     this.health = EnemyFromDatabase.health;
     this.attack = EnemyFromDatabase.attacks; // needs to return an array so that we can randomly select an attack
+    this.healthBarX = 1000;
+    this.healthBarY = 400;
     this.speed = 0;
     console.log(this.attack);
     console.log(EnemyFromDatabase)

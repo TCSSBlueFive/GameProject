@@ -29,13 +29,15 @@ AM.downloadAll(function () {
     var dungeon = new Dungeon(gameEngine, null, player, enemy)
     var cards = new CardHand(gameEngine, AM.getAsset("./img/cards.png"), player);
     var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13, player);
+    var HPBarEnemy = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13, enemy);
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
     gameEngine.addEntity(dungeon);
     gameEngine.addEntity(cards);
-    gameEngine.addEntity(HPBar)
+    gameEngine.addEntity(HPBar);
+    gameEngine.addEntity(HPBarEnemy);
     dungeon.loadDungeon();
 
 
