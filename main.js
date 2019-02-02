@@ -1,7 +1,8 @@
 var AM = new AssetManager();
 
 
-
+AM.queueDownload("./img/RedHealthBar.png");
+AM.queueDownload("./img/GreenHealthBar.png");
 AM.queueDownload("./img/slime_sprite.png");
 AM.queueDownload("./img/background2.jpg");
 AM.queueDownload("./img/cards.png");
@@ -27,12 +28,14 @@ AM.downloadAll(function () {
     var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0]);
     var dungeon = new Dungeon(gameEngine, null, player, enemy)
     var cards = new CardHand(gameEngine, AM.getAsset("./img/cards.png"), player);
+    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13, player);
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
     gameEngine.addEntity(dungeon);
     gameEngine.addEntity(cards);
+    gameEngine.addEntity(HPBar)
     dungeon.loadDungeon();
 
 

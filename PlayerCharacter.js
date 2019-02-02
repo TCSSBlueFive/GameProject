@@ -14,7 +14,8 @@ function PlayerCharacter(game, spritesheet, cardDataBase) {
     this.DeckList = [{type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }
                     ,{type: 'damage', value: 20 },{type: 'damage', value: 20 },{type: 'damage', value: 20 }];
     
-
+    this.healthBarX = 230;
+    this.healthBarY = 280;
     this.x = 250;
     this.y = 300;
     //this.AttCard = new Card(game,cardDataBase.cards[0], this);
