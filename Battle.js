@@ -4,8 +4,8 @@ function Battle(game, Enemies, PlayerCharacter) {
     this.game = game;
     this.PlayerCharacter = PlayerCharacter;
     this.Enemies = Enemies.constructor === Array ? [...Enemies] : [Enemies];
-    this.PlayerTurn = false
-    this.isBattleOver = false
+    this.PlayerTurn = true;
+    this.isBattleOver = false;
 }
 
 Battle.prototype.playerMove = function() {
@@ -22,9 +22,14 @@ Battle.prototype.playerMove = function() {
     console.log("Enemy Health: " + this.Enemies[0].health, "Player Health: " + this.PlayerCharacter.health);
 }
 
+
 Battle.prototype.enemyMoves = function() {
+    console.log("shet");
+
     if (!this.playerMove && !this.isBattleOver) {
+
         for (enemy in this.Enemies) {
+
             if (enemy.isAlive())
             var attack = enemy.attack()
             if (attack.type === 'damage') {

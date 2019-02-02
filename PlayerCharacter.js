@@ -5,11 +5,16 @@ function PlayerCharacter(game, spritesheet, cardDataBase) {
     this.idleAnimation = new Animation(spritesheet[0], 37, 80, 1, .5, 2, true, 2);
     this.walkingRightAnimation = new Animation(spritesheet[2], 38, 79, 1, .5, 2, true, 2);
     this.walkingLeftAnimation = new Animation(spritesheet[3], 38, 79, 1, .5, 2, true, 2);
-    this.attackingAnimation = new Animation(spritesheet[1], 50, 103, 1, .5, 3, true, 2);
+    this.attackingAnimation = new Animation(spritesheet[1], 50, 103, 1, .5, 3, false, 2);
     this.deathAnimation = new Animation(spritesheet[4], 83, 40, 1, .5, 2, true, 2);
     this.dodgeAnimation = new Animation(spritesheet[5], 42, 100, 1, .5, 4, true, 2);
     //this.AttackAnimation = to be added
-    this.action = 'idle';
+    this.action = 'walking-right';
+      this.selectedMove = {type: 'damage', value: 20 };
+    this.DeckList = [{type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }
+                    ,{type: 'damage', value: 20 },{type: 'damage', value: 20 },{type: 'damage', value: 20 }];
+    
+
     this.x = 250;
     this.y = 300;
     //this.AttCard = new Card(game,cardDataBase.cards[0], this);
@@ -25,18 +30,24 @@ function PlayerCharacter(game, spritesheet, cardDataBase) {
 }
 
 PlayerCharacter.prototype.playCard = function() {
-    this.action = 'attack';
-    return {type: 'damage', value: 20 }
+   // this.action = 'attack';
+   this.action = 'attack';
+    return this.selectedMove;
 }
 
 PlayerCharacter.prototype.update = function () {
-    //needs to be added
+            
+
 }
 
 PlayerCharacter.prototype.draw = function () {
-    debugger
+    //debugger
     if (this.action === 'attack') {
         this.attackingAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .1);
+        if ((this.attackingAnimation.isDone())) {
+            this.action = 'walking-right';
+            this.attackingAnimation.elapsedTime = 0;
+        }
     } else if (this.action === 'walking-right') {
         this.walkingRightAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .55);
     } else if (this.action === 'walking-left') {

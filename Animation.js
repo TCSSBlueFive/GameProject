@@ -57,3 +57,8 @@ Animation.prototype.currentFrame = function () {
 Animation.prototype.isDone = function () {
     return (this.elapsedTime >= this.totalTime);
 }
+
+Animation.prototype.reset = function() {
+    this.elapsedTime = 0;
+    this.totalTime = 0;
+}

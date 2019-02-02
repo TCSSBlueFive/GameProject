@@ -26,11 +26,13 @@ AM.downloadAll(function () {
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], myCardDataBase)
     var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0]);
     var dungeon = new Dungeon(gameEngine, null, player, enemy)
+    var cards = new CardHand(gameEngine, AM.getAsset("./img/cards.png"), player);
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
-    gameEngine.addEntity(dungeon)
+    gameEngine.addEntity(dungeon);
+    gameEngine.addEntity(cards);
     dungeon.loadDungeon();
 
 
