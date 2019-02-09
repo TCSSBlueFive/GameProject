@@ -12,6 +12,7 @@ AM.queueDownload("./img/player/death.png");
 AM.queueDownload("./img/player/dodge.png");
 AM.queueDownload("./img/player/walking-right.png");
 AM.queueDownload("./img/player/walking-left.png");
+AM.queueDownload("./img/succubus_basic")
 
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameWorld");
