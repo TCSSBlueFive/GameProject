@@ -64,6 +64,8 @@ GameEngine.prototype.draw = function () {
     this.ctx.clearRect(0, 0, this.surfaceWidth, this.surfaceHeight);
     this.ctx.save();
     for (var i = 0; i < this.entities.length; i++) {
+        var opacity = this.entities[i].opacity;
+        this.ctx.globalAlpha = opacity;
         this.entities[i].draw(this.ctx);
     }
     this.ctx.restore();

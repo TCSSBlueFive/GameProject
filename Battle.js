@@ -18,6 +18,7 @@ Battle.prototype.playerMove = function() {
             //this.Enemies[0].takeDamage(selectedMove.value);
            // if (!this.Enemies[0].isAlive()) {
                 this.isBattleOver = true;
+                console.log("wae");
             }
         }
         this.PlayerTurn === false;

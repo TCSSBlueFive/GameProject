@@ -33,5 +33,4 @@ CardHand.prototype.update = function () {
             this.PlayerCharacter.selectedMove = this.currentHand[Math.floor((this.game.click['x'] - this.x) / 75)];
         }
     }
-    this.game.click = false;
 };
