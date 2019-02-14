@@ -14,7 +14,9 @@ AM.queueDownload("./img/player/dodge.png");
 AM.queueDownload("./img/player/walking-right.png");
 AM.queueDownload("./img/player/walking-left.png");
 AM.queueDownload("./img/reward/rewards_background.png");
-
+AM.queueDownload("./img/reward/gold.png");
+AM.queueDownload("./img/travel/travelBackground.png");
+AM.queueDownload("./img/travel/top banner.png");
 
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameWorld");
@@ -23,17 +25,20 @@ AM.downloadAll(function () {
     var gameEngine = new GameEngine();
     gameEngine.init(ctx);
     gameEngine.start();
+    var myBanner = new TopBanner(gameEngine, AM.getAsset("./img/travel/top banner.png"), 1);
+
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     var myCardDataBase = new CardDataBase(gameEngine, AM.getAsset("./img/cards.png"));
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], myCardDataBase)
     var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0]);
-    var dungeon = new Dungeon(gameEngine, player, enemy)
+    var dungeon = new Dungeon(gameEngine, player, enemy, myBanner)
     var cards = new CardHand(gameEngine, AM.getAsset("./img/cards.png"), player);
     var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13, player);
     var HPBarEnemy = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13, enemy);
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
+    gameEngine.addEntity(myBanner);
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
     

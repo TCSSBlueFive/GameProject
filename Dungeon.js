@@ -1,6 +1,6 @@
 var AM = new AssetManager();
 
-function Dungeon(game, PlayerCharacter, Enemies) {
+function Dungeon(game, PlayerCharacter, Enemies, myBanner) {
   this.game = game;
   this.PlayerCharacter = PlayerCharacter;
   this.Enemies = Enemies;
@@ -12,17 +12,30 @@ function Dungeon(game, PlayerCharacter, Enemies) {
   this.height = 25;
   this.y = 600;
   this.playCount = 0;
+  this.banner = myBanner;
+  this.rewardScene = false;
+  this.travelScene = false;
 }
 
 
 Dungeon.prototype.loadDungeon = function () {
-  var battle = new Battle(this.game, this.Enemies, this.PlayerCharacter);
+  var battle = new Battle(this.game, this.Enemies, this, this.PlayerCharacter);
   this.battle = battle;
   
 }
 
+Dungeon.prototype.transitionToTravelScene = function () {
+  this.removeAllEntities();
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/background2.jpg"), .5 ));
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground.png"), 1))
+  this.banner.opacity = 1;
+  this.game.addEntity(this.banner);
+  this.game.addEntity(this);
+}
+
 Dungeon.prototype.removeAllEntities = function() {
   this.game.entities = [];
+  
 
   }
 
@@ -36,8 +49,11 @@ Dungeon.prototype.addNewEntitiesTravel = function() {
 }
 
 Dungeon.prototype.addNewEntitiesReward = function() {
-  this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1));
-
+  this.game.entities.pop();
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
+  
+  this.game.addEntity(new MonsterRewards(this.game, AM.getAsset("./img/reward/gold.png"), this, 1))
+  this.game.addEntity(this);
 
 }
 
@@ -49,10 +65,10 @@ Dungeon.prototype.update = function () {
           this.playCount++;
           
           console.log(this.PlayerCharacter.selectedMove);
-          this.battle.playerMove();        
+          this.battle.playerMove();    
+          this.game.click = false;    
       }
     }
-    this.game.click = false;
 
     if(this.playCount === 3) {
       console.log("Enemies Turn");
@@ -60,8 +76,7 @@ Dungeon.prototype.update = function () {
       this.playCount = 0;
     }
   }
-  if (this.battle.isBattleOver) {
-    //this.removeAllEntities();
+  if (!this.BattleOngoing && this.rewardScene) {
     opacity = .4;
     var entitiesCount = this.game.entities.length;
     console.log(entitiesCount);
@@ -69,10 +84,17 @@ Dungeon.prototype.update = function () {
         var entity = this.game.entities[i];
         entity.opacity = opacity;
     }
-    this.battle.isBattleOver = false;
+    this.BattleOngoing = false;
     this.battle.PlayerTurn = false;
+    this.rewardScene = false;
     this.addNewEntitiesReward();
   } 
+  if (!this.rewardScene && !this.BattleOngoing && this.travelScene) {
+    this.transitionToTravelScene();
+    console.log("omegalul")
+    this.travelScene = false;
+  }
+
 }
 
 Dungeon.prototype.draw = function () {

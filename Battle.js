@@ -1,11 +1,12 @@
 //WORK IN PROGRESS
 
-function Battle(game, Enemies, PlayerCharacter) {
+function Battle(game, Enemies, dungeon, PlayerCharacter) {
     this.game = game;
     this.PlayerCharacter = PlayerCharacter;
     //this.Enemies = Enemies.constructor === Array ? [...Enemies] : [Enemies];
     this.Enemy = Enemies;
     this.PlayerTurn = true;
+    this.dungeon = dungeon;
     this.isBattleOver = false;
 }
 
@@ -18,6 +19,8 @@ Battle.prototype.playerMove = function() {
             //this.Enemies[0].takeDamage(selectedMove.value);
            // if (!this.Enemies[0].isAlive()) {
                 this.isBattleOver = true;
+                this.dungeon.BattleOngoing = false;
+                this.dungeon.rewardScene = true;
                 console.log("wae");
             }
         }
