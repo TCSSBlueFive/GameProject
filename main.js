@@ -18,6 +18,10 @@ AM.queueDownload("./img/reward/gold.png");
 AM.queueDownload("./img/travel/travelBackground.png");
 AM.queueDownload("./img/travel/top banner.png");
 
+AM.queueDownload("./img/travel/enemy_node.png");
+AM.queueDownload("./img/travel/shop_node.png");
+
+
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameWorld");
     var ctx = canvas.getContext("2d");

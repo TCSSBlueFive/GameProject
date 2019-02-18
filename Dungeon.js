@@ -20,6 +20,8 @@ function Dungeon(game, PlayerCharacter, Enemies, myBanner) {
 
 Dungeon.prototype.loadDungeon = function () {
   var battle = new Battle(this.game, this.Enemies, this, this.PlayerCharacter);
+  this.myTravelScene = new TravelScene(this.game, this, 1);
+  this.myTravelScene.generateBars();
   this.battle = battle;
   
 }
@@ -30,6 +32,7 @@ Dungeon.prototype.transitionToTravelScene = function () {
   this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground.png"), 1))
   this.banner.opacity = 1;
   this.game.addEntity(this.banner);
+  this.game.addEntity(this.myTravelScene);
   this.game.addEntity(this);
 }
 
