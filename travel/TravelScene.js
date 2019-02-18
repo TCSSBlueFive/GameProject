@@ -23,17 +23,17 @@ TravelScene.prototype.generateBars = function () {
 
      }
      //need center
-     let BigBar = new BigBar(this.game, 459, this.bigBarY, 1);
+    // let BigBar = new BigBar(this.game, 459, this.bigBarY, 1);
 
      //does right 5 bars
-     for (let j = 6; j < 11; j++) {
-        let newBar2 = new TravelBar(this.game, 630 + (this.travelBarWidth * (j - 6)), this.y, j, 1);
+     for (let j = 5; j < 10; j++) {
+        let newBar2 = new TravelBar(this.game, 630 + (this.travelBarWidth * (j - 5)), this.y, j, 1);
         newBar2.generateNodes();
         this.travelbars[j] = newBar2;
 
      }
 
-     let BigBar = new BigBar(this.game, 1081, this.bigBarY, 1);
+    // let BigBar = new BigBar(this.game, 1081, this.bigBarY, 1);
 
     //does boss
 }
