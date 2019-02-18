@@ -22,20 +22,22 @@ TravelScene.prototype.generateBars = function () {
         this.travelbars[i] = newBar;
 
      }
-     //need center
-    // let BigBar = new BigBar(this.game, 459, this.bigBarY, 1);
+     
+     let newBigBar = new BigBar(this.game, AM.getAsset("./img/travel/treasure_node.png"), 459, this.bigBarY, 1);
 
+     this.travelbars[5] = newBigBar;
      //does right 5 bars
-     for (let j = 5; j < 10; j++) {
-        let newBar2 = new TravelBar(this.game, 630 + (this.travelBarWidth * (j - 5)), this.y, j, 1);
+     for (let j = 6; j < 11; j++) {
+        let newBar2 = new TravelBar(this.game, 630 + (this.travelBarWidth * (j - 6)), this.y, j, 1);
         newBar2.generateNodes();
         this.travelbars[j] = newBar2;
-
      }
+     let newBigBar2 = new BigBar(this.game, AM.getAsset("./img/travel/treasure_node.png"), 1081, this.bigBarY, 1);
+     this.travelbars[11] = newBigBar2;
+
 
     // let BigBar = new BigBar(this.game, 1081, this.bigBarY, 1);
 
-    //does boss
 }
 
 TravelScene.prototype.draw = function () {
