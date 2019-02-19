@@ -1,6 +1,6 @@
 
  
-function PlayerCharacter(game, spritesheet, cardDataBase, opacity) {
+function PlayerCharacter(game, spritesheet, HPBar, opacity) {
 
     this.idleAnimation = new Animation(spritesheet[0], 37, 80, 1, .5, 2, true, 2);
     this.walkingRightAnimation = new Animation(spritesheet[2], 38, 79, 1, .5, 2, true, 2);
@@ -9,19 +9,20 @@ function PlayerCharacter(game, spritesheet, cardDataBase, opacity) {
     this.deathAnimation = new Animation(spritesheet[4], 83, 40, 1, .5, 2, true, 2);
     this.dodgeAnimation = new Animation(spritesheet[5], 42, 100, 1, .5, 4, true, 2);
     this.opacity = opacity;
-    //this.AttackAnimation = to be added
     this.action = 'walking-right';
-      this.selectedMove = {type: 'damage', value: 20 };
-    this.DeckList = [{type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }
-                    ,{type: 'damage', value: 20 },{type: 'damage', value: 20 },{type: 'damage', value: 20 }];
-    
-    this.healthBarX = 230;
-    this.healthBarY = 280;
+    this.selectedMove = {type: 'damage', value: 20 };
+    this.CardBase = new CardDataBase(this.game);
+    this.DeckList = [this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],
+                     this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0]];
+   // this.DeckList = [{type: 'damage', value: 20, spritesheet:  }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }
+     //               ,{type: 'damage', value: 20 },{type: 'damage', value: 20 },{type: 'damage', value: 20 }];
+
+    this.HPBar = HPBar;
+    this.HPBar.x = 230;
+    this.HPBar.y = 280;
     this.x = 250;
     this.y = 300;
-    //this.AttCard = new Card(game,cardDataBase.cards[0], this);
 
-    //this.DeckList = [AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard, AttCard];
     this.health = 100;
     this.attack = 30;
 
@@ -43,7 +44,7 @@ PlayerCharacter.prototype.update = function () {
 }
 
 PlayerCharacter.prototype.draw = function () {
-    //debugger
+    this.HPBar.draw();
     if (this.action === 'attack') {
         this.attackingAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .1);
         if ((this.attackingAnimation.isDone())) {
@@ -70,6 +71,7 @@ PlayerCharacter.prototype.draw = function () {
 PlayerCharacter.prototype.takeDamage = function (attackDamage) {
     this.action = 'walking-left';
     this.health -= attackDamage;
+    this.HPBar.health -= attackDamage;
 }
 
 PlayerCharacter.prototype.isAlive = function () {

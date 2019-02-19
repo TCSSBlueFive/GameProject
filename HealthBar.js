@@ -1,15 +1,12 @@
-function HealthBar(game, spritesheet, spritesheet2, width, height, creature, x, y) {
-    
-    this.x = creature.healthBarX;
-    this.y = creature.healthBarY;
+function HealthBar(game, spritesheet, spritesheet2, width, height) {
+
     this.spritesheet = spritesheet;
     this.spritesheet2 = spritesheet2;
     this.game = game;
     this.width = width;
     this.height = height;
-    this.creature = creature;
-    this.health = creature.health;
     this.ctx = game.ctx;
+    this.health = 100;
 };
 
 HealthBar.prototype.draw = function () {
@@ -20,5 +17,4 @@ HealthBar.prototype.draw = function () {
 };
 
 HealthBar.prototype.update = function () {
-    this.health = this.creature.health;
 };

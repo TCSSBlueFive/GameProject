@@ -15,6 +15,8 @@ function Dungeon(game, PlayerCharacter, Enemies, myBanner) {
   this.banner = myBanner;
   this.rewardScene = false;
   this.travelScene = false;
+  this.roomSelected = false;
+  this.nextRoom = 'temp';
 }
 
 
@@ -44,6 +46,14 @@ Dungeon.prototype.removeAllEntities = function() {
 
 //once a battle starts, add all new entities
 Dungeon.prototype.addNewEntitiesBattle = function() {
+  this.removeAllEntities();
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/background2.jpg"), 1));
+  this.PlayerCharacter.opacity = 1;
+  this.game.addEntity(this.PlayerCharacter);
+  this.game.addEntity(this.banner);
+  this.game.addEntity(this);
+  //add hp bars
+
 
 }
 //once a travel starts, add travel entities
@@ -94,8 +104,21 @@ Dungeon.prototype.update = function () {
   } 
   if (!this.rewardScene && !this.BattleOngoing && this.travelScene) {
     this.transitionToTravelScene();
-    console.log("omegalul")
     this.travelScene = false;
+  }
+  if (this.roomSelected) {
+    console.log(this.nextRoom);
+    console.log(this.rewardScene);
+    console.log(this.BattleOngoing);
+    console.log(this.travelScene);
+    if (this.nextRoom === "setDungeonToEnemy") {
+      this.addNewEntitiesBattle();
+      console.log("init new enemy");
+
+    } else if (this.nextRoom === "setDungeonToShop") {
+      console.log("init new shop");
+    }
+    this.roomSelected = false;
   }
 
 }

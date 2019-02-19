@@ -11,13 +11,14 @@ function TravelScene(game, dungeon, opacity){
     this.travelBarWidth = 90;
     this.travelBarHeight = 118;
     this.bigBarY = 312;
+    this.currentRoom = 0;
 };
 
 
 TravelScene.prototype.generateBars = function () {
     //does 5 bars
      for (let i = 0; i < 5; i++) {
-        let newBar = new TravelBar(this.game, 9 + (this.travelBarWidth * i), this.y, i, 1);
+        let newBar = new TravelBar(this.game, this, this.dungeon, i, 9 + (this.travelBarWidth * i), this.y, i, 1);
         newBar.generateNodes();
         this.travelbars[i] = newBar;
 
@@ -28,7 +29,7 @@ TravelScene.prototype.generateBars = function () {
      this.travelbars[5] = newBigBar;
      //does right 5 bars
      for (let j = 6; j < 11; j++) {
-        let newBar2 = new TravelBar(this.game, 630 + (this.travelBarWidth * (j - 6)), this.y, j, 1);
+        let newBar2 = new TravelBar(this.game, this, this.dungeon,j, 630 + (this.travelBarWidth * (j - 6)), this.y, j, 1);
         newBar2.generateNodes();
         this.travelbars[j] = newBar2;
      }
@@ -47,5 +48,7 @@ TravelScene.prototype.draw = function () {
 };
 
 TravelScene.prototype.update = function () {     
-
+    for (let i = 0; i < this.travelbars.length; i++) {
+        this.travelbars[i].update();    
+    }
 };

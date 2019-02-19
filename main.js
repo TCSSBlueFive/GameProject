@@ -34,13 +34,14 @@ AM.downloadAll(function () {
 
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     var myCardDataBase = new CardDataBase(gameEngine, AM.getAsset("./img/cards.png"));
+    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13);
+    var HPBarEnemy = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13);
     var player = new PlayerCharacter(gameEngine, 
-        [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], myCardDataBase)
-    var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0]);
+        [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, 1)
+    var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0], HPBarEnemy, 1);
     var dungeon = new Dungeon(gameEngine, player, enemy, myBanner)
-    var cards = new CardHand(gameEngine, AM.getAsset("./img/cards.png"), player);
-    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13, player);
-    var HPBarEnemy = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13, enemy);
+    var cards = new CardHand(gameEngine, AM.getAsset("./img/cards.png"), player, 1);
+    cards.generateInitialHand();
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
     gameEngine.addEntity(myBanner);

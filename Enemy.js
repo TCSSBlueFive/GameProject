@@ -1,5 +1,6 @@
 
-function Enemy(game, EnemyFromDatabase) {
+function Enemy(game, EnemyFromDatabase, HPBar, opacity) {
+    this.HPBar = HPBar,
     this.IdleAnimation = EnemyFromDatabase.animation;
     this.attackingAnimation = EnemyFromDatabase.attackAnimation;
     this.DeathAnimation = EnemyFromDatabase.deathAnimation;
@@ -8,14 +9,15 @@ function Enemy(game, EnemyFromDatabase) {
     this.yDeathIndex = EnemyFromDatabase.deathAnimation.yIndex;
     this.damagedAnimation = EnemyFromDatabase.damagedAnimation;
     this.yDamagedIndex = EnemyFromDatabase.damagedAnimation.yIndex;
+    this.opacity = opacity;
 
+    this.HPBar = HPBar;
+    this.HPBar.x = 1000;
+    this.HPBar.y = 400;
     this.x = 1000;
     this.y = 400;
     this.health = EnemyFromDatabase.health;
     this.attack = EnemyFromDatabase.attacks; // needs to return an array so that we can randomly select an attack
-    this.healthBarX = 1000;
-    this.healthBarY = 400;
-
 
     this.speed = 0;
     this.action = 'idle';
@@ -35,6 +37,7 @@ Enemy.prototype.attackPlayer = function () {
 Enemy.prototype.takeDamage = function (attackDamage) {
     this.action = 'taking-damage'
     this.health -= attackDamage;
+    this.HPBar.health -= attackDamage;
 }
 
 Enemy.prototype.update = function () {
@@ -49,6 +52,7 @@ Enemy.prototype.isAlive = function () {
 }
 
 Enemy.prototype.draw = function () {
+    this.HPBar.draw();
     if (this.action === 'attack') {
         this.attackingAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, this.yIndexAttack);
         if ((this.attackingAnimation.isDone())) {
