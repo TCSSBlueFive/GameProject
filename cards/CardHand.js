@@ -1,7 +1,8 @@
-function CardHand(game, spritesheet, PlayerCharacter, opacity){
+function CardHand(game, dungeon, spritesheet, PlayerCharacter, opacity){
     this.x = 500;// each card will be 75 units wide for now
     this.y = 600;
     this.width = 75; //card width
+    this.dungeon = dungeon;
     this.height = 25; //card height
     this.opacity = opacity;
     this.currentCardDraw = 5;
@@ -29,12 +30,9 @@ CardHand.prototype.generateInitialHand = function () {
     this.DeckListCardsRemaining = this.PlayerCharacter.DeckList;
     for(let i = 0; i < this.currentCardDraw; i++) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
-        console.log(myNum);
-        console.log(this.DeckListCardsRemaining.length);
         var cardChosen = this.DeckListCardsRemaining[myNum];
-        console.log(cardChosen);
 
-        var newCard = new Card(this.game, this, cardChosen.spritesheet, this.x + (this.width * i), this.y, this.width, this.height, cardChosen, this.opacity)
+        var newCard = new Card(this.game, this.dungeon, this, cardChosen.spritesheet, this.x + (this.width * i), this.y, this.width, this.height, cardChosen, this.opacity)
 
         var index = this.DeckListCardsRemaining.indexOf(cardChosen);
         if (index > -1) {

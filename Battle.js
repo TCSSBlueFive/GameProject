@@ -10,14 +10,13 @@ function Battle(game, Enemies, dungeon, PlayerCharacter) {
     this.isBattleOver = false;
 }
 
-Battle.prototype.playerMove = function() {
+Battle.prototype.playerMove = function(card) {
+    console.log(card.fn);
     if (this.PlayerTurn && !this.isBattleOver) {
-        var selectedMove = this.PlayerCharacter.playCard();
-        if (selectedMove.type === 'damage') {
-            this.Enemy.takeDamage(selectedMove.value);
+        //var selectedMove = this.PlayerCharacter.playCard();
+        if (card.fn.type === 'damage') {
+            this.Enemy.takeDamage(card.fn.value);
             if(!this.Enemy.isAlive()) {
-            //this.Enemies[0].takeDamage(selectedMove.value);
-           // if (!this.Enemies[0].isAlive()) {
                 this.isBattleOver = true;
                 this.dungeon.BattleOngoing = false;
                 this.dungeon.rewardScene = true;

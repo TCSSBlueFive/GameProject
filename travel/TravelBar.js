@@ -24,7 +24,6 @@ TravelBar.prototype.generateNodes = function () {
 
      //so there is always atleast 1 enemy path
      this.travelnodes[0] = new travel_node(this.game, this.travelScene, this,this.dungeon, this.position, AM.getAsset("./img/travel/enemy_node.png"), 'setDungeonToEnemy',this.x, this.y, 1);
-     console.log(this.travelnodes[0]);
 
      for (let i = 1; i <= myNum; i++) {
          var randomNum = getRandomInt(2);

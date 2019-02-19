@@ -71,24 +71,7 @@ Dungeon.prototype.addNewEntitiesReward = function() {
 }
 
 Dungeon.prototype.update = function () {
-  if (this.BattleOngoing) {
-    if (this.game.click) {
-      if ((this.game.click['x'] > this.x && this.game.click['x'] < this.x + (this.width * this.currentCardCount))
-      && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
-          this.playCount++;
-          
-          console.log(this.PlayerCharacter.selectedMove);
-          this.battle.playerMove();    
-          this.game.click = false;    
-      }
-    }
-
-    if(this.playCount === 3) {
-      console.log("Enemies Turn");
-      this.battle.enemyMoves();
-      this.playCount = 0;
-    }
-  }
+  
   if (!this.BattleOngoing && this.rewardScene) {
     opacity = .4;
     var entitiesCount = this.game.entities.length;
