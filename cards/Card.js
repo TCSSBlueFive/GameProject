@@ -42,6 +42,9 @@ Card.prototype.update = function () {
                 this.dungeon.playCount = 0;
                 this.cardHand.generateNewHand();
             }
+            if (!this.dungeon.BattleOngoing) {
+                this.cardHand.reshuffle();
+            }
 
         }
     }

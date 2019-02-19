@@ -62,6 +62,7 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   console.log("ok2?")
 
   this.game.addEntity(newCardHand);
+  
   var HPBarEnemy = new HealthBar(this.game,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13);
   console.log(this.myEnemies);
   var enemy = new Enemy(this.game, this.myEnemies.monsters[0], HPBarEnemy, 1);

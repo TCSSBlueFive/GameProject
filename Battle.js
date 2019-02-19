@@ -20,7 +20,6 @@ Battle.prototype.playerMove = function(card) {
                 this.isBattleOver = true;
                 this.dungeon.BattleOngoing = false;
                 this.dungeon.rewardScene = true;
-                this.PlayerCharacter.CardHand.reshuffle();
                 console.log("wae");
             }
         }
