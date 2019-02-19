@@ -14,6 +14,7 @@ function PlayerCharacter(game, spritesheet, HPBar, opacity) {
     this.CardBase = new CardDataBase(this.game);
     this.DeckList = [this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[1],
                      this.CardBase.cards[1],this.CardBase.cards[1],this.CardBase.cards[1],this.CardBase.cards[1]];
+
    // this.DeckList = [{type: 'damage', value: 20, spritesheet:  }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }
      //               ,{type: 'damage', value: 20 },{type: 'damage', value: 20 },{type: 'damage', value: 20 }];
 
@@ -33,13 +34,10 @@ function PlayerCharacter(game, spritesheet, HPBar, opacity) {
 }
 
 PlayerCharacter.prototype.playCard = function() {
-   // this.action = 'attack';
    this.action = 'attack';
-    return this.selectedMove;
 }
 
 PlayerCharacter.prototype.update = function () {
-            
 
 }
 

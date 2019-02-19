@@ -1,27 +1,25 @@
 // no inheritance
-function Card(game, dungeon, cardHand, spritesheet, x, y, width, height, fn, opacity) {
+function Card(game, dungeon, cardHand, card, x, y, width, height, opacity) {
     this.game = game;
     this.dungeon = dungeon;
-    this.fn = fn;
     this.x = x;
     this.cardHand = cardHand;
     this.y = y;
+    this.fn = card;
+
     this.width = width;
-    this.spritesheet = spritesheet;
+    this.spritesheet = card.spritesheet;
     this.height = height;
     this.ctx = game.ctx;
 };
 
 Card.prototype.draw = function () {
-
     this.ctx.drawImage(this.spritesheet,
                    this.x, this.y);
 
 };
 
 Card.prototype.update = function () {
-    
-    
 
     if (this.game.click) {
         if((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width  )
@@ -31,7 +29,7 @@ Card.prototype.update = function () {
                 //this.cardHand.DeckListCardsUsed.push(this);
                 this.cardHand.cardsInHand.splice(index, 1);
             }        
-
+            console.log(this.dungeon.BattleOngoing);
             if (this.dungeon.BattleOngoing) {
                 this.dungeon.playCount++;
                 this.dungeon.battle.playerMove(this);    

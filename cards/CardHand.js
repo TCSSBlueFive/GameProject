@@ -1,4 +1,4 @@
-function CardHand(game, dungeon, spritesheet, PlayerCharacter, opacity){
+function CardHand(game, dungeon, PlayerCharacter, opacity){
     this.x = 500;// each card will be 75 units wide for now
     this.y = 600;
     this.width = 75; //card width
@@ -12,7 +12,6 @@ function CardHand(game, dungeon, spritesheet, PlayerCharacter, opacity){
     this.DeckListCardsRemaining = this.PlayerCharacter.DeckList;
     this.DeckListCardsUsed = [];
 
-    this.spritesheet = spritesheet;
     
     this.game = game;
     this.ctx = game.ctx;
@@ -32,16 +31,12 @@ CardHand.prototype.reshuffle = function () {
 }
 
 CardHand.prototype.generateInitialHand = function () {
-    console.log(this.DeckListCardsUsed);
-    console.log(this.PlayerCharacter.DeckList);
-
     this.reshuffle();
     
     for(let i = 0; i < this.currentCardDraw; i++) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var cardChosen = this.DeckListCardsRemaining[myNum];
-
-        var newCard = new Card(this.game, this.dungeon, this, cardChosen.spritesheet, this.x + (this.width * i), this.y, this.width, this.height, cardChosen, this.opacity)
+        var newCard = new Card(this.game, this.dungeon, this, cardChosen, this.x + (this.width * i), this.y, this.width, this.height, this.opacity)
 
         var index = this.DeckListCardsRemaining.indexOf(cardChosen);
         if (index > -1) {
@@ -65,7 +60,7 @@ CardHand.prototype.generateNewHand = function () {
         }
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var cardChosen = this.DeckListCardsRemaining[myNum];
-        var newCard = new Card(this.game, this.dungeon, this, cardChosen.spritesheet, this.x + (this.width * i), this.y, this.width, this.height, cardChosen, this.opacity)
+        var newCard = new Card(this.game, this.dungeon, this, cardChosen, this.x + (this.width * i), this.y, this.width, this.height,  this.opacity)
 
         var index = this.DeckListCardsRemaining.indexOf(cardChosen);
         if (index > -1) {

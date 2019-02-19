@@ -11,7 +11,7 @@ function CardDataBase(gamet) {
     {
         name: 'fireball',
         type: 'damage',
-        value: 10,
+        value: 100,
         ability: function () {
         game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/fireball.png")}]

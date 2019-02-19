@@ -13,13 +13,14 @@ function Battle(game, Enemies, dungeon, PlayerCharacter) {
 Battle.prototype.playerMove = function(card) {
     console.log(card.fn);
     if (this.PlayerTurn && !this.isBattleOver) {
-        //var selectedMove = this.PlayerCharacter.playCard();
+        this.PlayerCharacter.playCard();
         if (card.fn.type === 'damage') {
             this.Enemy.takeDamage(card.fn.value);
             if(!this.Enemy.isAlive()) {
                 this.isBattleOver = true;
                 this.dungeon.BattleOngoing = false;
                 this.dungeon.rewardScene = true;
+                this.PlayerCharacter.CardHand.reshuffle();
                 console.log("wae");
             }
         }

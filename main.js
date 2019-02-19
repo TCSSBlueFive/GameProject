@@ -41,8 +41,9 @@ AM.downloadAll(function () {
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, 1)
     var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0], HPBarEnemy, 1);
-    var dungeon = new Dungeon(gameEngine, player, enemy, myBanner)
-    var cards = new CardHand(gameEngine, dungeon, AM.getAsset("./img/cards.png"), player, 1);
+    var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)
+
+    var cards = new CardHand(gameEngine, dungeon, player, 1);
     cards.generateInitialHand();
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));

@@ -1,6 +1,6 @@
 var AM = new AssetManager();
 
-function Dungeon(game, PlayerCharacter, Enemies, myBanner) {
+function Dungeon(game, PlayerCharacter, Enemies, myEnemyDataBase, myBanner) {
   this.game = game;
   this.PlayerCharacter = PlayerCharacter;
   this.Enemies = Enemies;
@@ -9,6 +9,7 @@ function Dungeon(game, PlayerCharacter, Enemies, myBanner) {
   this.width = 75;
   this.x = 500;
   this.currentCardCount = 5;
+  this.myEnemies = myEnemyDataBase;
   this.height = 25;
   this.y = 600;
   this.playCount = 0;
@@ -47,11 +48,29 @@ Dungeon.prototype.removeAllEntities = function() {
 //once a battle starts, add all new entities
 Dungeon.prototype.addNewEntitiesBattle = function() {
   this.removeAllEntities();
+  this.BattleOngoing = true;
   this.game.addEntity(new Background(this.game, AM.getAsset("./img/background2.jpg"), 1));
   this.PlayerCharacter.opacity = 1;
   this.game.addEntity(this.PlayerCharacter);
   this.game.addEntity(this.banner);
+  console.log("ok?")
+  var newCardHand = new CardHand(this.game, this, this.PlayerCharacter, 1);
+  this.playCount = 0;
+  console.log("ok1?")
+  console.log(newCardHand);
+  newCardHand.generateInitialHand();
+  console.log("ok2?")
+
+  this.game.addEntity(newCardHand);
+  var HPBarEnemy = new HealthBar(this.game,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13);
+  console.log(this.myEnemies);
+  var enemy = new Enemy(this.game, this.myEnemies.monsters[0], HPBarEnemy, 1);
+  var battle = new Battle(this.game, enemy, this, this.PlayerCharacter);
+  this.battle = battle;
+  this.game.addEntity(enemy);
+
   this.game.addEntity(this);
+ 
   //add hp bars
 
 
@@ -73,9 +92,9 @@ Dungeon.prototype.addNewEntitiesReward = function() {
 Dungeon.prototype.update = function () {
   
   if (!this.BattleOngoing && this.rewardScene) {
+    console.log("transitioning to rewards")
     opacity = .4;
     var entitiesCount = this.game.entities.length;
-    console.log(entitiesCount);
     for (var i = 0; i < entitiesCount; i++) {
         var entity = this.game.entities[i];
         entity.opacity = opacity;
@@ -86,6 +105,8 @@ Dungeon.prototype.update = function () {
     this.addNewEntitiesReward();
   } 
   if (!this.rewardScene && !this.BattleOngoing && this.travelScene) {
+    console.log("transitioning to travel")
+
     this.transitionToTravelScene();
     this.travelScene = false;
   }
