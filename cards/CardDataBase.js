@@ -5,12 +5,14 @@ function CardDataBase(gamet) {
     {
         name: 'Attack',
         type: 'damage',
-        value: 20,
+        value: 3,
         spritesheet: AM.getAsset("./img/cards.png")
     },
     {
         name: 'fireball',
+        type: 'damage',
+        value: 10,
         ability: function () {
         game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards.png")}]
+        spritesheet: AM.getAsset("./img/fireball.png")}]
 }

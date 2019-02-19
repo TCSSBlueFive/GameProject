@@ -6,6 +6,8 @@ AM.queueDownload("./img/GreenHealthBar.png");
 AM.queueDownload("./img/slime_sprite.png");
 AM.queueDownload("./img/background2.jpg");
 AM.queueDownload("./img/cards.png");
+AM.queueDownload("./img/fireball.png");
+
 AM.queueDownload("./img/idle blink.png");
 AM.queueDownload("./img/player/16_omnimagesheet.png");
 AM.queueDownload("./img/player/attack.png");

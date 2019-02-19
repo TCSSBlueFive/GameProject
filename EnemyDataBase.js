@@ -9,7 +9,7 @@ function EnemyDataBase(game, spritesheet) {
         name: 'slime',
         attacks: {
             type: 'damage',
-            value: 60
+            value: 5
         },
         animation: new Animation(spritesheet, 256, 256, 1, .075, 18, true, 0.5, 1),
         

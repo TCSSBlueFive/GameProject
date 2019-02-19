@@ -12,8 +12,8 @@ function PlayerCharacter(game, spritesheet, HPBar, opacity) {
     this.action = 'walking-right';
     this.selectedMove = {type: 'damage', value: 20 };
     this.CardBase = new CardDataBase(this.game);
-    this.DeckList = [this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],
-                     this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0]];
+    this.DeckList = [this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[0],this.CardBase.cards[1],
+                     this.CardBase.cards[1],this.CardBase.cards[1],this.CardBase.cards[1],this.CardBase.cards[1]];
    // this.DeckList = [{type: 'damage', value: 20, spritesheet:  }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }
      //               ,{type: 'damage', value: 20 },{type: 'damage', value: 20 },{type: 'damage', value: 20 }];
 

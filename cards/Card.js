@@ -28,6 +28,7 @@ Card.prototype.update = function () {
         && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
             var index = this.cardHand.cardsInHand.indexOf(this);
             if (index > -1) {
+                //this.cardHand.DeckListCardsUsed.push(this);
                 this.cardHand.cardsInHand.splice(index, 1);
             }        
 
@@ -41,6 +42,7 @@ Card.prototype.update = function () {
                 console.log("Enemies Turn");
                 this.dungeon.battle.enemyMoves();
                 this.dungeon.playCount = 0;
+                this.cardHand.generateNewHand();
             }
 
         }

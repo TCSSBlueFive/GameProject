@@ -10,9 +10,9 @@ function CardHand(game, dungeon, spritesheet, PlayerCharacter, opacity){
     this.PlayerCharacter = PlayerCharacter;
     this.DeckList = this.PlayerCharacter.DeckList;
     this.DeckListCardsRemaining = this.PlayerCharacter.DeckList;
+    this.DeckListCardsUsed = [];
+
     this.spritesheet = spritesheet;
-    
-    this.currentHand = this.DeckList.slice(0, 5);
     
     this.game = game;
     this.ctx = game.ctx;
@@ -25,9 +25,18 @@ function getRandomInt(max) {
   }
 
 
+CardHand.prototype.reshuffle = function () {
+    for (let i = 0; i < this.DeckListCardsUsed.length; i++) {
+        this.DeckListCardsRemaining.push(this.DeckListCardsUsed[i].fn);
+    }
+}
 
 CardHand.prototype.generateInitialHand = function () {
-    this.DeckListCardsRemaining = this.PlayerCharacter.DeckList;
+    console.log(this.DeckListCardsUsed);
+    console.log(this.PlayerCharacter.DeckList);
+
+    this.reshuffle();
+    
     for(let i = 0; i < this.currentCardDraw; i++) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var cardChosen = this.DeckListCardsRemaining[myNum];
@@ -37,6 +46,8 @@ CardHand.prototype.generateInitialHand = function () {
         var index = this.DeckListCardsRemaining.indexOf(cardChosen);
         if (index > -1) {
             this.DeckListCardsRemaining.splice(index, 1);
+            this.DeckListCardsUsed.push(newCard);
+
         }
 
         this.cardsInHand[i] = newCard;
@@ -44,19 +55,24 @@ CardHand.prototype.generateInitialHand = function () {
 }
 
 CardHand.prototype.generateNewHand = function () {
-    for(let i = 0; i < currentCardDraw; i++) {
+
+    this.cardsInHand = [];
+    for(let i = 0; i < this.currentCardDraw; i++) {
+
         if (this.DeckListCardsRemaining.length === 0) {
-            this.DeckListCardsRemaining = this.PlayerCharacter.DeckList;
+            this.reshuffle();
+
         }
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
-        var cardChosen = this.DeckListCardsremaining[myNum];
-        var newCard = new Card(this.game, this, cardChosen.spritesheet, this.x + (this.width * i), this.y, this.width, this.height, cardChosen, opacity)
-
+        var cardChosen = this.DeckListCardsRemaining[myNum];
+        var newCard = new Card(this.game, this.dungeon, this, cardChosen.spritesheet, this.x + (this.width * i), this.y, this.width, this.height, cardChosen, this.opacity)
 
         var index = this.DeckListCardsRemaining.indexOf(cardChosen);
         if (index > -1) {
             this.DeckListCardsRemaining.splice(index, 1);
+            this.DeckListCardsUsed.push(newCard);
         }
+
         this.cardsInHand[i] = newCard;
     }
 }
