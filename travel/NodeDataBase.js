@@ -15,4 +15,12 @@ function NodeDataBase() {
         spritesheet: AM.getAsset("./img/travel/shop_node.png"),
         fn: 'setDungeonToShop'
     }]
+    this.bigNodes =
+    [{
+        name: 'trasure_node',
+        opacity: 1,
+        spritesheet: AM.getAsset("./img/travel/treasure_node.png"),
+        fn: 'setDungeonToTreasure'
+
+    }]
 };

@@ -91,19 +91,19 @@ Dungeon.prototype.addNewEntitiesReward = function() {
 }
 
 Dungeon.prototype.update = function () {
-  
+
   if (!this.BattleOngoing && this.rewardScene) {
     console.log("transitioning to rewards")
     opacity = .4;
     var entitiesCount = this.game.entities.length;
     for (var i = 0; i < entitiesCount; i++) {
-        var entity = this.game.entities[i];
-        entity.opacity = opacity;
+      var entity = this.game.entities[i];
+      entity.opacity = opacity;
     }
-    this.BattleOngoing = false;
-    this.battle.PlayerTurn = false;
-    this.rewardScene = false;
-    this.addNewEntitiesReward();
+  this.BattleOngoing = false;
+  this.battle.PlayerTurn = false;
+  this.rewardScene = false;
+  this.addNewEntitiesReward();
   } 
   if (!this.rewardScene && !this.BattleOngoing && this.travelScene) {
     console.log("transitioning to travel")
@@ -116,16 +116,20 @@ Dungeon.prototype.update = function () {
     console.log(this.rewardScene);
     console.log(this.BattleOngoing);
     console.log(this.travelScene);
-    if (this.nextRoom === "setDungeonToEnemy") {
-      this.addNewEntitiesBattle();
-      console.log("init new enemy");
+  if (this.nextRoom === "setDungeonToEnemy") {
+    this.addNewEntitiesBattle();
+    console.log("init new enemy");
 
-    } else if (this.nextRoom === "setDungeonToShop") {
-      console.log("init new shop");
-    }
-    this.roomSelected = false;
+  } else if (this.nextRoom === "setDungeonToShop") {
+    console.log("init new shop");
+  } else if (this.nextRoom === "setDungeonToTreasure") {
+    console.log("init new treasure");
+  } else if (this.nextRoom === "setDungeonToBoss") {
+    console.log("Init new boss");
   }
 
+  this.roomSelected = false;
+  }
 }
 
 Dungeon.prototype.draw = function () {

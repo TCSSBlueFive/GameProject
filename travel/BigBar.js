@@ -1,13 +1,14 @@
 var AM = new AssetManager();
 
 
-function BigBar(game, spritesheet, x, y, opacity){
+function BigBar(game, node, x, y, opacity){
     this.x = x;
     this.y = y;
     this.opacity = opacity;
     this.game = game;
     this.ctx = game.ctx;
-    this.spritesheet = spritesheet;
+    this.spritesheet = node.spritesheet;
+    this.fn = node.fn;
 
     this.NodeDataBase = new NodeDataBase();
 };

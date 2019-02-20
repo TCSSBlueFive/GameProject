@@ -12,6 +12,8 @@ function TravelScene(game, dungeon, opacity){
     this.travelBarHeight = 118;
     this.bigBarY = 312;
     this.currentRoom = 0;
+    this.nodeDataBase = new NodeDataBase();
+
 };
 
 
@@ -23,18 +25,22 @@ TravelScene.prototype.generateBars = function () {
         this.travelbars[i] = newBar;
 
      }
-     
-     let newBigBar = new BigBar(this.game, AM.getAsset("./img/travel/treasure_node.png"), 459, this.bigBarY, 1);
 
-     this.travelbars[5] = newBigBar;
+
+     let newBigNode = new BigNode(this.game, this, this.dungeon, 5, this.nodeDataBase.bigNodes[0].spritesheet, 
+        this.nodeDataBase.bigNodes[0].fn, 459, this.bigBarY, 1);
+    
+    console.log(newBigNode);
+     this.travelbars[5] = newBigNode;
      //does right 5 bars
      for (let j = 6; j < 11; j++) {
         let newBar2 = new TravelBar(this.game, this, this.dungeon,j, 630 + (this.travelBarWidth * (j - 6)), this.y, j, 1);
         newBar2.generateNodes();
         this.travelbars[j] = newBar2;
      }
-     let newBigBar2 = new BigBar(this.game, AM.getAsset("./img/travel/treasure_node.png"), 1081, this.bigBarY, 1);
-     this.travelbars[11] = newBigBar2;
+                                //game,      sprite,                                       x,   y
+     //let newBigBar2 = new BigBar(this.game, this.noteDataBase.bigNodes[0], 1081, this.bigBarY, 1);
+     //this.travelbars[11] = newBigBar2;
 
 
     // let BigBar = new BigBar(this.game, 1081, this.bigBarY, 1);
