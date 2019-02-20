@@ -1,4 +1,4 @@
-function Animation(spriteSheet, frameWidth, frameHeight, sheetWidth, frameDuration, frames, loop, scale, yIndex) {
+function Animation(spriteSheet, frameWidth, frameHeight, sheetWidth, frameDuration, frames, loop, scale, yIndex, xIndexOffset) {
     this.spriteSheet = spriteSheet;
     this.frameWidth = frameWidth;
     this.frameDuration = frameDuration;
@@ -10,6 +10,7 @@ function Animation(spriteSheet, frameWidth, frameHeight, sheetWidth, frameDurati
     this.loop = loop;
     this.scale = scale;
     this.yIndex = yIndex;
+    this.xIndexOffset = xIndexOffset;
 }
 
 Animation.prototype.drawFrame = function (tick, ctx, x, y) {
@@ -43,7 +44,7 @@ Animation.prototype.drawFrameLeftToRight = function (tick, ctx, x, y, yindex) {
     // yindex = this.yIndex;
     xindex = Math.floor(frame / this.sheetWidth);
     ctx.drawImage(this.spriteSheet,
-                 xindex * this.frameWidth, yindex * this.frameHeight,  // source from sheet
+                 (xindex + this.xIndexOffset) * this.frameWidth, yindex * this.frameHeight,  // source from sheet
                  this.frameWidth, this.frameHeight,
                  x, y,
                  this.frameWidth * this.scale,

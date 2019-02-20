@@ -24,6 +24,7 @@ AM.queueDownload("./img/travel/top banner.png");
 AM.queueDownload("./img/travel/enemy_node.png");
 AM.queueDownload("./img/travel/shop_node.png");
 AM.queueDownload("./img/travel/treasure_node.png");
+AM.queueDownload("./img/succubus_basic.png");
 
 
 AM.downloadAll(function () {

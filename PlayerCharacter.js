@@ -2,12 +2,12 @@
  
 function PlayerCharacter(game, spritesheet, HPBar, opacity) {
 
-    this.idleAnimation = new Animation(spritesheet[0], 37, 80, 1, .5, 2, true, 2);
-    this.walkingRightAnimation = new Animation(spritesheet[2], 38, 79, 1, .5, 2, true, 2);
-    this.walkingLeftAnimation = new Animation(spritesheet[3], 38, 79, 1, .5, 2, false, 2);
-    this.attackingAnimation = new Animation(spritesheet[1], 50, 103, 1, .5, 3, false, 2);
-    this.deathAnimation = new Animation(spritesheet[4], 83, 40, 1, .5, 2, true, 2);
-    this.dodgeAnimation = new Animation(spritesheet[5], 42, 100, 1, .5, 4, true, 2);
+    this.idleAnimation = new Animation(spritesheet[0], 37, 80, 1, .5, 2, true, 2,0,0);
+    this.walkingRightAnimation = new Animation(spritesheet[2], 38, 79, 1, .5, 2, true, 2,0,0);
+    this.walkingLeftAnimation = new Animation(spritesheet[3], 38, 79, 1, .5, 2, false, 2,0,0);
+    this.attackingAnimation = new Animation(spritesheet[1], 50, 103, 1, .5, 3, false, 2,0,0);
+    this.deathAnimation = new Animation(spritesheet[4], 83, 40, 1, .5, 2, true, 2,0,0);
+    this.dodgeAnimation = new Animation(spritesheet[5], 42, 100, 1, .5, 4, true, 2,0,0);
     this.opacity = opacity;
     this.action = 'walking-right';
     this.selectedMove = {type: 'damage', value: 20 };
