@@ -18,11 +18,14 @@ function EnemyDataBase(game, spritesheet) {
     },                 
     {
         health: 120,
-        name: 'ghoul',
+        name: 'succubus',
         attacks: {
             type: 'damage',
             value: 90
         },
-        animation: new Animation(spritesheet, 256, 256, 1, .075, 18, true, 0.5, 3)
+        flyAnimation: new Animation(spriteSheet, 100, 141, 7, 0.10, 7, true, 1, 1),
+        attackAnimation: new Animation(spriteSheet, 200, 150, 6, 0.15, 6, true, 1, 2),
+        damagedAnimation: new Animation(spriteSheet, 100, 140, 4, 0.15, 4, true, 1, 0),
+        deathAnimation: new Animation(spriteSheet, 100, 140, 7, 0.15, 7, true, 1, 0)
     }]
 };
