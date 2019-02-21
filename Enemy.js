@@ -12,9 +12,11 @@ function Enemy(game, EnemyFromDatabase, opacity) {
     this.yDamagedIndex = EnemyFromDatabase.damagedAnimation.yIndex;
     this.opacity = opacity;
 
+
     this.HPBar = EnemyFromDatabase.HPBar;
     this.HPBar.health = EnemyFromDatabase.health;
-
+    this.HPBar.x = EnemyFromDatabase.hpx;
+    this.HPBar.y = EnemyFromDatabase.hpy;
     this.x = EnemyFromDatabase.x;
     this.y = EnemyFromDatabase.y;
     this.health = EnemyFromDatabase.health;
