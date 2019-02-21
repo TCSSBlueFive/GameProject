@@ -1,6 +1,6 @@
 var AM = new AssetManager();
 
-function Dungeon(game, PlayerCharacter, Enemies, myEnemyDataBase, myBanner, turnButton) {
+function Dungeon(game, PlayerCharacter, Enemies, myEnemyDataBase, myBanner) {
   this.game = game;
   this.PlayerCharacter = PlayerCharacter;
   this.Enemies = Enemies;
@@ -14,11 +14,14 @@ function Dungeon(game, PlayerCharacter, Enemies, myEnemyDataBase, myBanner, turn
   this.y = 600;
   this.playCount = 0;
   this.banner = myBanner;
-  this.endTurnButton = turnButton;
   this.rewardScene = false;
   this.travelScene = false;
   this.roomSelected = false;
   this.nextRoom = 'temp';
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
 
@@ -54,24 +57,24 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   this.PlayerCharacter.opacity = 1;
   this.game.addEntity(this.PlayerCharacter);
   this.game.addEntity(this.banner);
-  this.game.addEntity(this.endTurnButton);
-
-  console.log("ok?")
   var newCardHand = new CardHand(this.game, this, this.PlayerCharacter, 1);
   this.playCount = 0;
-  console.log("ok1?")
   console.log(newCardHand);
   newCardHand.generateInitialHand();
-  console.log("ok2?")
+  console.log(newCardHand);
+
 
   this.game.addEntity(newCardHand);
   
-  var HPBarEnemy = new HealthBar(this.game,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13);
   console.log(this.myEnemies);
-  var enemy = new Enemy(this.game, this.myEnemies.monsters[2], HPBarEnemy, 1);
+  var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
+  console.log(enemy);
   var battle = new Battle(this.game, enemy, this, this.PlayerCharacter);
   this.battle = battle;
   this.game.addEntity(enemy);
+  this.turnButton.opacity = 1;
+  this.game.addEntity(this.turnButton);
+  this.turnButton.cardHand = newCardHand;
 
   this.game.addEntity(this);
  
@@ -79,7 +82,6 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
 
 
 }
-
 //once a travel starts, add travel entities
 Dungeon.prototype.addNewEntitiesTravel = function() {
 
@@ -100,43 +102,39 @@ Dungeon.prototype.update = function () {
     console.log("transitioning to rewards")
     opacity = .4;
     var entitiesCount = this.game.entities.length;
-
     for (var i = 0; i < entitiesCount; i++) {
       var entity = this.game.entities[i];
       entity.opacity = opacity;
     }
-
-    this.BattleOngoing = false;
-    this.battle.PlayerTurn = false;
-    this.rewardScene = false;
-    this.addNewEntitiesReward();
+  this.BattleOngoing = false;
+  this.battle.PlayerTurn = false;
+  this.rewardScene = false;
+  this.addNewEntitiesReward();
   } 
-
   if (!this.rewardScene && !this.BattleOngoing && this.travelScene) {
     console.log("transitioning to travel")
 
     this.transitionToTravelScene();
     this.travelScene = false;
   }
-
   if (this.roomSelected) {
     console.log(this.nextRoom);
     console.log(this.rewardScene);
     console.log(this.BattleOngoing);
     console.log(this.travelScene);
+  if (this.nextRoom === "setDungeonToEnemy") {
+    this.addNewEntitiesBattle();
+    console.log("init new enemy");
 
-    if (this.nextRoom === "setDungeonToEnemy") {
-      this.addNewEntitiesBattle();
-      console.log("init new enemy");
-    } else if (this.nextRoom === "setDungeonToShop") {
-      console.log("init new shop");
-    } else if (this.nextRoom === "setDungeonToTreasure") {
-      console.log("init new treasure");
-    } else if (this.nextRoom === "setDungeonToBoss") {
-      console.log("Init new boss");
-    }
+  } else if (this.nextRoom === "setDungeonToShop") {
+    console.log("init new shop");
+  } else if (this.nextRoom === "setDungeonToTreasure") {
+    console.log("init new treasure");
+  } else if (this.nextRoom === "setDungeonToBoss") {
+    console.log("Init new boss");
+  }
 
-    this.roomSelected = false;
+  this.roomSelected = false;
   }
 }
 

@@ -25,7 +25,7 @@ function EnemyDataBase(game, spritesheet) {
         name: 'succubus',
         attacks: {
             type: 'damage',
-            value: 70
+            value: 20
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 120, 130, 13),

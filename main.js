@@ -62,7 +62,7 @@ AM.downloadAll(function () {
     cards.generateInitialHand();
 
     var turnButton = new TurnButton(gameEngine, cards, AM.getAsset("./img/end-turn-button.png"), 1);
-
+    dungeon.turnButton = turnButton;
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
     gameEngine.addEntity(myBanner);
