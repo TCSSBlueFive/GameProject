@@ -132,6 +132,10 @@ Dungeon.prototype.update = function () {
   }
 }
 
+Dungeon.prototype.GameOver = function () {
+  this.PlayerCharacter.died();
+}
+
 Dungeon.prototype.draw = function () {
   //scene manager does not need to be drawn
 }

@@ -1,6 +1,5 @@
 
-function Enemy(game, EnemyFromDatabase, HPBar, opacity) {
-    this.HPBar = HPBar,
+function Enemy(game, EnemyFromDatabase, opacity) {
     this.IdleAnimation = EnemyFromDatabase.animation;
     this.attackingAnimation = EnemyFromDatabase.attackAnimation;
     this.DeathAnimation = EnemyFromDatabase.deathAnimation;
@@ -11,7 +10,8 @@ function Enemy(game, EnemyFromDatabase, HPBar, opacity) {
     this.yDamagedIndex = EnemyFromDatabase.damagedAnimation.yIndex;
     this.opacity = opacity;
 
-    this.HPBar = HPBar;
+    this.HPBar = EnemyFromDatabase.HPBar;
+    this.HPBar.health = EnemyFromDatabase.health;
     this.HPBar.x = 1000;
     this.HPBar.y = 400;
     this.x = 1000;
@@ -38,9 +38,13 @@ Enemy.prototype.takeDamage = function (attackDamage) {
     this.action = 'taking-damage'
     this.health -= attackDamage;
     this.HPBar.health -= attackDamage;
+    if (this.HPBar.health <0) {
+        this.HPBar.health = 0;
+    }
 }
 
 Enemy.prototype.update = function () {
+    this.HPBar.update(this.health);
     //needs to be added
 }
 

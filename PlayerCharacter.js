@@ -18,11 +18,14 @@ function PlayerCharacter(game, spritesheet, HPBar, opacity) {
    // this.DeckList = [{type: 'damage', value: 20, spritesheet:  }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }, {type: 'damage', value: 20 }
      //               ,{type: 'damage', value: 20 },{type: 'damage', value: 20 },{type: 'damage', value: 20 }];
 
+
     this.HPBar = HPBar;
-    this.HPBar.x = 230;
-    this.HPBar.y = 280;
+    
     this.x = 250;
-    this.y = 300;
+    this.y = 360;
+
+    this.HPBar.x = this.x - 20;
+    this.HPBar.y = this.y - 20;
 
     this.health = 100;
     this.attack = 30;
@@ -70,6 +73,15 @@ PlayerCharacter.prototype.takeDamage = function (attackDamage) {
     this.action = 'walking-left';
     this.health -= attackDamage;
     this.HPBar.health -= attackDamage;
+    if (this.HPBar.health <0) {
+        this.HPBar.health = 0;
+    }
+}
+PlayerCharacter.prototype.died = function() {
+    this.action = 'death';
+    this.y = 470;
+    this.x = 220;
+    
 }
 
 PlayerCharacter.prototype.isAlive = function () {

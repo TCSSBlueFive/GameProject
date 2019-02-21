@@ -39,8 +39,8 @@ Battle.prototype.enemyMoves = function() {
 
                 this.PlayerCharacter.takeDamage(attack.value);
                 if (!this.PlayerCharacter.isAlive()) {
-                    this.battle.isBattleOver = true;
-                    this.game.gameOver()
+                    this.isBattleOver = true;
+                    this.dungeon.GameOver()
                 }
             }
             // deal with buffs for enemies or blocks here
