@@ -22,6 +22,12 @@ Battle.prototype.playerMove = function(card) {
                 this.dungeon.rewardScene = true;
                 console.log("wae");
             }
+        } else if (card.fn.type === 'heal') {
+            if (this.PlayerCharacter.health + card.fn.value < 100) {
+                this.PlayerCharacter.heal(card.fn.value)
+            } else {
+                this.PlayerCharacter.heal(100 - this.PlayerCharacter.health)
+            }
         }
         this.PlayerTurn === false;
     }

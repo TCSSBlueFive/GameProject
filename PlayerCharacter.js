@@ -77,6 +77,12 @@ PlayerCharacter.prototype.takeDamage = function (attackDamage) {
         this.HPBar.health = 0;
     }
 }
+
+PlayerCharacter.prototype.heal = function (healthPoints) {
+    this.health += healthPoints;
+    this.HPBar.health += healthPoints;
+}
+
 PlayerCharacter.prototype.died = function() {
     this.action = 'death';
     this.y = 470;
