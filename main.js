@@ -26,6 +26,10 @@ AM.queueDownload("./img/end-turn-button.png");
 AM.queueDownload("./img/travel/enemy_node.png");
 AM.queueDownload("./img/travel/shop_node.png");
 AM.queueDownload("./img/travel/treasure_node.png");
+AM.queueDownload("./img/travel/event_node.png");
+AM.queueDownload("./img/travel/elite_node.png");
+AM.queueDownload("./img/travel/gamble_node.png");
+
 
 AM.queueDownload("./img/succubus_basic.png");
 AM.queueDownload("./img/chicken.png");
