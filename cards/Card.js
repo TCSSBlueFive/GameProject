@@ -30,13 +30,13 @@ Card.prototype.update = function () {
                 this.cardHand.cardsInHand.splice(index, 1);
             }        
             console.log(this.dungeon.BattleOngoing);
-            if (this.dungeon.BattleOngoing) {
+            if (this.dungeon.BattleOngoing && this.dungeon.battle.getPlayerTurn()) {
                 this.dungeon.playCount++;
                 this.dungeon.battle.playerMove(this);    
                 this.game.click = false;    
             }
             
-            if(this.dungeon.playCount === 3) {
+            if (!this.dungeon.battle.getPlayerTurn()) {
                 console.log("Enemies Turn");
                 this.dungeon.battle.enemyMoves();
                 this.dungeon.playCount = 0;

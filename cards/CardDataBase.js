@@ -20,6 +20,6 @@ function CardDataBase(gamet) {
         value: 30,
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/ice-card.png")
+        spritesheet: AM.getAsset("./img/cards/ice-card.jpg")
     }]
 }

@@ -7,7 +7,7 @@ AM.queueDownload("./img/slime_sprite.png");
 AM.queueDownload("./img/background2.jpg");
 
 AM.queueDownload("./img/cards/fireball-card.png");
-AM.queueDownload("./img/cards/ice-card.png");
+AM.queueDownload("./img/cards/ice-card.jpg");
 AM.queueDownload("./img/cards/heal-card.png");
 
 AM.queueDownload("./img/idle blink.png");
@@ -21,6 +21,7 @@ AM.queueDownload("./img/reward/rewards_background.png");
 AM.queueDownload("./img/reward/gold.png");
 AM.queueDownload("./img/travel/travelBackground.png");
 AM.queueDownload("./img/travel/top banner.png");
+AM.queueDownload("./img/end-turn-button.png");
 
 AM.queueDownload("./img/travel/enemy_node.png");
 AM.queueDownload("./img/travel/shop_node.png");
@@ -43,6 +44,7 @@ AM.downloadAll(function () {
     gameEngine.init(ctx);
     gameEngine.start();
     var myBanner = new TopBanner(gameEngine, AM.getAsset("./img/travel/top banner.png"), 1);
+    var turnButton = new TurnButton(gameEngine, AM.getAsset("./img/end-turn-button.png"), 1);
 
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     
@@ -50,13 +52,15 @@ AM.downloadAll(function () {
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, 1)
     var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
-    var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)
-
+    var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner, turnButton)
+    gameEngine.currentDungeon = dungeon;
+    
     var cards = new CardHand(gameEngine, dungeon, player, 1);
     cards.generateInitialHand();
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
     gameEngine.addEntity(myBanner);
+    gameEngine.addEntity(turnButton)
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
     

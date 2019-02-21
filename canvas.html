@@ -25,20 +25,20 @@
     <script type="text/javascript" src="./travel/BigBar.js"></script>
     <script type="text/javascript" src="./travel/BigNode.js"></script>
 
-
-
-    <script type="text/javascript" src="./Menu.js"></script>
-
-
+    <script type="text/javascript" src="./menus/Menu.js"></script>
     <script type="text/javascript" src="./Dungeon.js"></script>
-
+    <script type="text/javascript" src="./TurnButton.js"></script>
     <script type="text/javascript" src="./main.js"></script>
-    
+
+    <link rel="stylesheet" href="./canvas.css">
 </head>
 <body>
     <canvas id="gameWorld" tabindex="1" width="1400" height="700" style="border: 1px solid brown; background: lightskyblue"></canvas>
     <div>
-      <a style="position: absolute; top: 20px; right: 20px;" href="./index.html">Menu</a>
+      <a class="menu-button" href="./index.html">Menu</a>
+    </div>
+    <div>
+      <a id="turnButton" class="turn-button" onclick=""></a>
     </div>
 </body>
 </html>

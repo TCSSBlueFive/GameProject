@@ -1,6 +1,6 @@
 var AM = new AssetManager();
 
-function Dungeon(game, PlayerCharacter, Enemies, myEnemyDataBase, myBanner) {
+function Dungeon(game, PlayerCharacter, Enemies, myEnemyDataBase, myBanner, turnButton) {
   this.game = game;
   this.PlayerCharacter = PlayerCharacter;
   this.Enemies = Enemies;
@@ -14,6 +14,7 @@ function Dungeon(game, PlayerCharacter, Enemies, myEnemyDataBase, myBanner) {
   this.y = 600;
   this.playCount = 0;
   this.banner = myBanner;
+  this.endTurnButton = turnButton;
   this.rewardScene = false;
   this.travelScene = false;
   this.roomSelected = false;
@@ -53,6 +54,8 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   this.PlayerCharacter.opacity = 1;
   this.game.addEntity(this.PlayerCharacter);
   this.game.addEntity(this.banner);
+  this.game.addEntity(this.endTurnButton);
+
   console.log("ok?")
   var newCardHand = new CardHand(this.game, this, this.PlayerCharacter, 1);
   this.playCount = 0;
@@ -76,6 +79,7 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
 
 
 }
+
 //once a travel starts, add travel entities
 Dungeon.prototype.addNewEntitiesTravel = function() {
 
@@ -96,39 +100,43 @@ Dungeon.prototype.update = function () {
     console.log("transitioning to rewards")
     opacity = .4;
     var entitiesCount = this.game.entities.length;
+
     for (var i = 0; i < entitiesCount; i++) {
       var entity = this.game.entities[i];
       entity.opacity = opacity;
     }
-  this.BattleOngoing = false;
-  this.battle.PlayerTurn = false;
-  this.rewardScene = false;
-  this.addNewEntitiesReward();
+
+    this.BattleOngoing = false;
+    this.battle.PlayerTurn = false;
+    this.rewardScene = false;
+    this.addNewEntitiesReward();
   } 
+
   if (!this.rewardScene && !this.BattleOngoing && this.travelScene) {
     console.log("transitioning to travel")
 
     this.transitionToTravelScene();
     this.travelScene = false;
   }
+
   if (this.roomSelected) {
     console.log(this.nextRoom);
     console.log(this.rewardScene);
     console.log(this.BattleOngoing);
     console.log(this.travelScene);
-  if (this.nextRoom === "setDungeonToEnemy") {
-    this.addNewEntitiesBattle();
-    console.log("init new enemy");
 
-  } else if (this.nextRoom === "setDungeonToShop") {
-    console.log("init new shop");
-  } else if (this.nextRoom === "setDungeonToTreasure") {
-    console.log("init new treasure");
-  } else if (this.nextRoom === "setDungeonToBoss") {
-    console.log("Init new boss");
-  }
+    if (this.nextRoom === "setDungeonToEnemy") {
+      this.addNewEntitiesBattle();
+      console.log("init new enemy");
+    } else if (this.nextRoom === "setDungeonToShop") {
+      console.log("init new shop");
+    } else if (this.nextRoom === "setDungeonToTreasure") {
+      console.log("init new treasure");
+    } else if (this.nextRoom === "setDungeonToBoss") {
+      console.log("Init new boss");
+    }
 
-  this.roomSelected = false;
+    this.roomSelected = false;
   }
 }
 
