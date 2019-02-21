@@ -7,7 +7,6 @@ AM.queueDownload("./img/slime_sprite.png");
 AM.queueDownload("./img/background2.jpg");
 AM.queueDownload("./img/cards.png");
 AM.queueDownload("./img/fireball.png");
-AM.queueDownload("./img/succubus_basic.png")
 
 AM.queueDownload("./img/idle blink.png");
 AM.queueDownload("./img/player/16_omnimagesheet.png");
@@ -24,7 +23,12 @@ AM.queueDownload("./img/travel/top banner.png");
 AM.queueDownload("./img/travel/enemy_node.png");
 AM.queueDownload("./img/travel/shop_node.png");
 AM.queueDownload("./img/travel/treasure_node.png");
+
 AM.queueDownload("./img/succubus_basic.png");
+AM.queueDownload("./img/chicken.png");
+AM.queueDownload("./img/doomcluck.png");
+AM.queueDownload("./img/earthelemental.png");
+AM.queueDownload("./img/taurus.png");
 
 
 AM.downloadAll(function () {
