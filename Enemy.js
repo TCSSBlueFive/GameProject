@@ -16,7 +16,7 @@ function Enemy(game, EnemyFromDatabase, opacity) {
     this.HPBar.health = EnemyFromDatabase.health;
 
     this.x = EnemyFromDatabase.x;
-    this.y = enemyFromDatabase.y;
+    this.y = EnemyFromDatabase.y;
     this.health = EnemyFromDatabase.health;
     this.attack = EnemyFromDatabase.attacks; // needs to return an array so that we can randomly select an attack
 
