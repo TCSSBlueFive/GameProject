@@ -48,7 +48,6 @@ AM.downloadAll(function () {
     gameEngine.init(ctx);
     gameEngine.start();
     var myBanner = new TopBanner(gameEngine, AM.getAsset("./img/travel/top banner.png"), 1);
-    var turnButton = new TurnButton(gameEngine, AM.getAsset("./img/end-turn-button.png"), 1);
 
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     
@@ -56,11 +55,14 @@ AM.downloadAll(function () {
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, 1)
     var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
-    var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner, turnButton)
+    var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)
     gameEngine.currentDungeon = dungeon;
     
     var cards = new CardHand(gameEngine, dungeon, player, 1);
     cards.generateInitialHand();
+
+    var turnButton = new TurnButton(gameEngine, cards, AM.getAsset("./img/end-turn-button.png"), 1);
+
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
     gameEngine.addEntity(myBanner);

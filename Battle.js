@@ -38,7 +38,7 @@ Battle.prototype.playerMove = function(card) {
 
 
 Battle.prototype.enemyMoves = function() {
-    if (this.PlayerTurn && !this.isBattleOver) {
+    if (!this.PlayerTurn && !this.isBattleOver) {
         if( this.Enemy.isAlive()) {
             var attack = this.Enemy.attackPlayer();
             if (attack.type === 'damage') {

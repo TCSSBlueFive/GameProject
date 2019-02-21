@@ -35,13 +35,7 @@ Card.prototype.update = function () {
                 this.dungeon.battle.playerMove(this);    
                 this.game.click = false;    
             }
-            
-            if (!this.dungeon.battle.getPlayerTurn()) {
-                console.log("Enemies Turn");
-                this.dungeon.battle.enemyMoves();
-                this.dungeon.playCount = 0;
-                this.cardHand.generateNewHand();
-            }
+
             if (!this.dungeon.BattleOngoing) {
                 this.cardHand.reshuffle();
             }
