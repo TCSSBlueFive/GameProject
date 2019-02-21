@@ -7,10 +7,15 @@ function EnemyDataBase(game, spritesheet) {
     [{
         health: 100,
         name: 'slime',
+        x: 1000,
+        y: 400,
+        hpx: 1000,
+        hpy:400,
         attacks: {
             type: 'damage',
             value: 10
         },
+
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                                                                     //health of monster needs to match
                             AM.getAsset("./img/GreenHealthBar.png"), 100, 130, 13),
@@ -22,6 +27,10 @@ function EnemyDataBase(game, spritesheet) {
     },                 
     {
         health: 120,
+        x: 1000,
+        y: 400,
+        hpx: 1000,
+        hpy:400,
         name: 'succubus',
         attacks: {
             type: 'damage',
@@ -38,6 +47,10 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 80,
         name: 'chicken',
+        x: 1000,
+        y: 400,
+        hpx: 1000,
+        hpy:400,
         attacks: {
             type: 'damage',
             value: 10
@@ -53,6 +66,10 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 200,
         name: 'doomcluck',
+        x: 1000,
+        y: 400,
+        hpx: 1000,
+        hpy:400,
         attacks: {
             type: 'damage',
             value: 20
@@ -68,6 +85,10 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 150,
         name: 'earth elemental',
+        x: 1000,
+        y: 400,
+        hpx: 1000,
+        hpy:400,
         attacks: {
             type: 'damage',
             value: 30
@@ -83,6 +104,10 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 180,
         name: 'taurus',
+        x: 1000,
+        y: 400,
+        hpx: 1000,
+        hpy:400,
         attacks: {
             type: 'damage',
             value: 50
@@ -98,6 +123,10 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 140,
         name: 'wraith',
+        x: 1000,
+        y: 400,
+        hpx: 1000,
+        hpy:400,
         attacks: {
             type: 'damage',
             value: 80
@@ -113,6 +142,10 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 200,
         name: 'gargoyle',
+        x: 1000,
+        y: 400,
+        hpx: 1000,
+        hpy:400,
         attacks: {
             type: 'damage',
             value: 90
