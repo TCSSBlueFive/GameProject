@@ -22,6 +22,12 @@ Battle.prototype.playerMove = function(card) {
                 this.dungeon.rewardScene = true;
                 console.log("wae");
             }
+        } else if (card.fn.type === 'heal') {
+            if (this.PlayerCharacter.health + card.fn.value < 100) {
+                this.PlayerCharacter.heal(card.fn.value)
+            } else {
+                this.PlayerCharacter.heal(100 - this.PlayerCharacter.health)
+            }
         }
         this.PlayerTurn === false;
     }
@@ -39,8 +45,8 @@ Battle.prototype.enemyMoves = function() {
 
                 this.PlayerCharacter.takeDamage(attack.value);
                 if (!this.PlayerCharacter.isAlive()) {
-                    this.battle.isBattleOver = true;
-                    this.game.gameOver()
+                    this.isBattleOver = true;
+                    this.dungeon.GameOver()
                 }
             }
             // deal with buffs for enemies or blocks here

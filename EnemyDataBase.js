@@ -9,7 +9,7 @@ function EnemyDataBase(game, spritesheet) {
         name: 'slime',
         attacks: {
             type: 'damage',
-            value: 5
+            value: 10
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                                                                     //health of monster needs to match
@@ -96,3 +96,5 @@ function EnemyDataBase(game, spritesheet) {
         deathAnimation: new Animation(AM.getAsset("./img/taurus.png"), 128, 128, 1, 0.15, 3, true, 2, 5, 6)
     }]
 };
+
+

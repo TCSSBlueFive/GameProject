@@ -5,8 +5,10 @@ AM.queueDownload("./img/RedHealthBar.png");
 AM.queueDownload("./img/GreenHealthBar.png");
 AM.queueDownload("./img/slime_sprite.png");
 AM.queueDownload("./img/background2.jpg");
-AM.queueDownload("./img/cards.png");
-AM.queueDownload("./img/fireball.png");
+
+AM.queueDownload("./img/cards/fireball-card.png");
+AM.queueDownload("./img/cards/ice-card.png");
+AM.queueDownload("./img/cards/heal-card.png");
 
 AM.queueDownload("./img/idle blink.png");
 AM.queueDownload("./img/player/16_omnimagesheet.png");
@@ -41,12 +43,11 @@ AM.downloadAll(function () {
     var myBanner = new TopBanner(gameEngine, AM.getAsset("./img/travel/top banner.png"), 1);
 
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
-    var myCardDataBase = new CardDataBase(gameEngine, AM.getAsset("./img/cards.png"));
-    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13);
-    var HPBarEnemy = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 130, 13);
+    
+    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 100, 130, 13);
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, 1)
-    var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0], HPBarEnemy, 1);
+    var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
     var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)
 
     var cards = new CardHand(gameEngine, dungeon, player, 1);
@@ -57,8 +58,6 @@ AM.downloadAll(function () {
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
     
-    gameEngine.addEntity(HPBar);
-    gameEngine.addEntity(HPBarEnemy);
     gameEngine.addEntity(cards);
     gameEngine.addEntity(dungeon);
 
