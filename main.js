@@ -31,6 +31,8 @@ AM.queueDownload("./img/chicken.png");
 AM.queueDownload("./img/doomcluck.png");
 AM.queueDownload("./img/earthelemental.png");
 AM.queueDownload("./img/taurus.png");
+AM.queueDownload("./img/wraith.png");
+AM.queueDownload("./img/gargoyle.png");
 
 
 AM.downloadAll(function () {

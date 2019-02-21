@@ -81,19 +81,49 @@ function EnemyDataBase(game, spritesheet) {
         deathAnimation: new Animation(AM.getAsset("./img/earthelemental.png"), 111.1111111111111, 111.1666666666667, 1, 0.1, 3, true, 1, 5, 6)
     },
     {
-        health: 220,
+        health: 180,
         name: 'taurus',
         attacks: {
             type: 'damage',
-            value: 10
+            value: 50
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
-                            AM.getAsset("./img/GreenHealthBar.png"), 220, 130, 13),
+                            AM.getAsset("./img/GreenHealthBar.png"), 180, 130, 13),
 
         animation: new Animation(AM.getAsset("./img/taurus.png"), 128, 128, 1, 0.15, 3, true, 2, 0, 0),
         attackAnimation: new Animation(AM.getAsset("./img/taurus.png"), 128, 128, 1, 0.15, 6, false, 2, 1, 0),
         damagedAnimation: new Animation(AM.getAsset("./img/taurus.png"), 128, 128, 1, 0.15, 4, false, 2, 4, 0),
         deathAnimation: new Animation(AM.getAsset("./img/taurus.png"), 128, 128, 1, 0.15, 3, true, 2, 5, 6)
+    },
+    {
+        health: 140,
+        name: 'wraith',
+        attacks: {
+            type: 'damage',
+            value: 80
+        },
+        HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
+                            AM.getAsset("./img/GreenHealthBar.png"), 170, 130, 13),
+
+        animation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 3, true, 2, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 6, false, 2, 2, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 4, false, 2, 4, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 3, true, 2, 5, 6)
+    },
+    {
+        health: 200,
+        name: 'gargoyle',
+        attacks: {
+            type: 'damage',
+            value: 90
+        },
+        HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
+                            AM.getAsset("./img/GreenHealthBar.png"), 200, 130, 13),
+
+        animation: new Animation(AM.getAsset("./img/gargoyle.png"), 128, 128, 1, 0.15, 4, true, 2, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/gargoyle.png"), 128, 128, 1, 0.15, 6, false, 2, 1, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/gargoyle.png"), 128, 128, 1, 0.15, 4, false, 2, 4, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/gargoyle.png"), 128, 128, 1, 0.15, 3, true, 2, 5, 6)
     }]
 };
 
