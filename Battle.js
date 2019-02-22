@@ -32,7 +32,7 @@ Battle.prototype.playerMove = function(card) {
         // this.PlayerTurn === false;
     }
    // console.log("Enemy Health: " + this.Enemies[0].health, "Player Health: " + this.PlayerCharacter.health);
-    console.log("Enemy Health: " + this.Enemy.health, "Player Health: " + this.PlayerCharacter.health);
+   // console.log("Enemy Health: " + this.Enemy.health, "Player Health: " + this.PlayerCharacter.health);
 
 }
 
@@ -55,7 +55,7 @@ Battle.prototype.enemyMoves = function() {
     }
 
    this.PlayerTurn = true;
-    console.log("Enemy Health: " + this.Enemy.health, "Player Health: " + this.PlayerCharacter.health);
+//console.log("Enemy Health: " + this.Enemy.health, "Player Health: " + this.PlayerCharacter.health);
 }
 
 Battle.prototype.endPlayerTurn = function() {

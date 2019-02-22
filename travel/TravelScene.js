@@ -30,7 +30,6 @@ TravelScene.prototype.generateBars = function () {
      let newBigNode = new BigNode(this.game, this, this.dungeon, 5, this.nodeDataBase.bigNodes[0].spritesheet, 
         this.nodeDataBase.bigNodes[0].fn, 459, this.bigBarY, 1);
     
-    console.log(newBigNode);
      this.travelbars[5] = newBigNode;
      //does right 5 bars
      for (let j = 6; j < 11; j++) {

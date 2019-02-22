@@ -132,7 +132,9 @@ Dungeon.prototype.update = function () {
     console.log("init new treasure");
   } else if (this.nextRoom === "setDungeonToBoss") {
     console.log("Init new boss");
-  }
+  } else if (this.nextRoom === "setDungeonToElite") {
+    console.log("Init new Elite");
+  } else if (this.nextRoom === "setDungeonTo")
 
   this.roomSelected = false;
   }

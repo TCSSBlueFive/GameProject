@@ -28,11 +28,13 @@ CardHand.prototype.reshuffle = function () {
     for (let i = 0; i < this.DeckListCardsUsed.length; i++) {
         this.DeckListCardsRemaining.push(this.DeckListCardsUsed[i].fn);
     }
+    this.DeckListCardsUsed = [];
+
 }
 
 CardHand.prototype.generateInitialHand = function () {
     this.reshuffle();
-    
+
     for(let i = 0; i < this.currentCardDraw; i++) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var cardChosen = this.DeckListCardsRemaining[myNum];
@@ -47,17 +49,17 @@ CardHand.prototype.generateInitialHand = function () {
 
         this.cardsInHand[i] = newCard;
     }
+
 }
 
 CardHand.prototype.generateNewHand = function () {
 
     this.cardsInHand = [];
     for(let i = 0; i < this.currentCardDraw; i++) {
-
         if (this.DeckListCardsRemaining.length === 0) {
             this.reshuffle();
-
         }
+        
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var cardChosen = this.DeckListCardsRemaining[myNum];
         var newCard = new Card(this.game, this.dungeon, this, cardChosen, this.x + (this.width * i), this.y, this.width, this.height,  this.opacity)
@@ -67,7 +69,6 @@ CardHand.prototype.generateNewHand = function () {
             this.DeckListCardsRemaining.splice(index, 1);
             this.DeckListCardsUsed.push(newCard);
         }
-
         this.cardsInHand[i] = newCard;
     }
 }

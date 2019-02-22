@@ -2,7 +2,6 @@ var AM = new AssetManager();
 
 function EnemyDataBase(game, spritesheet) {
     this.game = game;
-
     this.monsters =
     [{
         health: 100,
