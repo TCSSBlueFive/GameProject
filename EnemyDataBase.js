@@ -27,9 +27,9 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 120,
         x: 1000,
-        y: 400,
+        y: 340,
         hpx: 1000,
-        hpy:400,
+        hpy: 320,
         name: 'succubus',
         attacks: {
             type: 'damage',
@@ -47,9 +47,9 @@ function EnemyDataBase(game, spritesheet) {
         health: 80,
         name: 'chicken',
         x: 1000,
-        y: 400,
+        y: 420,
         hpx: 1000,
-        hpy:400,
+        hpy: 400,
         attacks: {
             type: 'damage',
             value: 10
@@ -65,10 +65,10 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 200,
         name: 'doomcluck',
-        x: 1000,
-        y: 400,
-        hpx: 1000,
-        hpy:400,
+        x: 940,
+        y: 370,
+        hpx: 980,
+        hpy: 370,
         attacks: {
             type: 'damage',
             value: 20
@@ -84,10 +84,10 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 150,
         name: 'earth elemental',
-        x: 1000,
-        y: 400,
-        hpx: 1000,
-        hpy:400,
+        x: 950,
+        y: 360,
+        hpx: 950,
+        hpy: 340,
         attacks: {
             type: 'damage',
             value: 30
@@ -103,10 +103,10 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 180,
         name: 'taurus',
-        x: 1000,
-        y: 400,
+        x: 950,
+        y: 300,
         hpx: 1000,
-        hpy:400,
+        hpy: 300,
         attacks: {
             type: 'damage',
             value: 50
@@ -123,9 +123,9 @@ function EnemyDataBase(game, spritesheet) {
         health: 140,
         name: 'wraith',
         x: 1000,
-        y: 400,
+        y: 330,
         hpx: 1000,
-        hpy:400,
+        hpy: 300,
         attacks: {
             type: 'damage',
             value: 80
@@ -133,18 +133,18 @@ function EnemyDataBase(game, spritesheet) {
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 170, 130, 13),
 
-        animation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 3, true, 2, 0, 0),
-        attackAnimation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 6, false, 2, 2, 0),
-        damagedAnimation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 4, false, 2, 4, 0),
-        deathAnimation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 3, true, 2, 5, 6)
+        animation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 3, true, 2.5, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 6, false, 2.5, 2, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 4, false, 2.5, 4, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/wraith.png"), 64, 64, 1, 0.15, 3, true, 2.5, 5, 6)
     },
     {
         health: 200,
         name: 'gargoyle',
-        x: 1000,
-        y: 400,
-        hpx: 1000,
-        hpy:400,
+        x: 930,
+        y: 270,
+        hpx: 970,
+        hpy: 250,
         attacks: {
             type: 'damage',
             value: 90
