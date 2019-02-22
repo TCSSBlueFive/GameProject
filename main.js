@@ -30,6 +30,8 @@ AM.queueDownload("./img/travel/event_node.png");
 AM.queueDownload("./img/travel/elite_node.png");
 AM.queueDownload("./img/travel/gamble_node.png");
 
+AM.queueDownload("./img/bridge.png");
+AM.queueDownload("./img/background3.png");
 
 AM.queueDownload("./img/succubus_basic.png");
 AM.queueDownload("./img/chicken.png");
@@ -64,7 +66,9 @@ AM.downloadAll(function () {
     var turnButton = new TurnButton(gameEngine, cards, AM.getAsset("./img/end-turn-button.png"), 1);
     dungeon.turnButton = turnButton;
 
-    gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background2.jpg")));
+    gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background3.png"), 1, 0, 0, -50));
+    gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background3.png"), 1, 1400, 0, -50));
+    gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/bridge.png"), 1, 0, 505, 0));
     gameEngine.addEntity(myBanner);
     gameEngine.addEntity(turnButton)
     gameEngine.addEntity(enemy);
