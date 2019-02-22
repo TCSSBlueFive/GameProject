@@ -36,8 +36,6 @@ travel_node.prototype.update = function () {
                 this.dungeon.roomSelected = true;
                 this.dungeon.nextRoom = this.fn;
                 this.game.click = false;
-                console.log(this.position);
-                console.log(this.travelScene.currentRoom);
                 this.travelScene.currentRoom += 1;
                 for(let i = 0; i < this.travelBar.travelnodes.length; i++) {
                     this.travelBar.travelnodes[i].opacity = 0;

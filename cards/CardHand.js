@@ -53,7 +53,7 @@ CardHand.prototype.generateInitialHand = function () {
 }
 
 CardHand.prototype.generateNewHand = function () {
-
+    
     this.cardsInHand = [];
     for(let i = 0; i < this.currentCardDraw; i++) {
         if (this.DeckListCardsRemaining.length === 0) {

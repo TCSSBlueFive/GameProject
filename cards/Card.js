@@ -28,7 +28,6 @@ Card.prototype.update = function () {
             if (index > -1) {
                 this.cardHand.cardsInHand.splice(index, 1);
             }        
-            console.log(this.dungeon.BattleOngoing);
             if (this.dungeon.BattleOngoing && this.dungeon.battle.getPlayerTurn()) {
                 this.dungeon.playCount++;
                 this.dungeon.battle.playerMove(this);    

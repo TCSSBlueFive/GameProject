@@ -59,16 +59,11 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   this.game.addEntity(this.banner);
   var newCardHand = new CardHand(this.game, this, this.PlayerCharacter, 1);
   this.playCount = 0;
-  console.log(newCardHand);
   newCardHand.generateInitialHand();
-  console.log(newCardHand);
-
 
   this.game.addEntity(newCardHand);
   
-  console.log(this.myEnemies);
   var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
-  console.log(enemy);
   var battle = new Battle(this.game, enemy, this, this.PlayerCharacter);
   this.battle = battle;
   this.game.addEntity(enemy);
@@ -118,11 +113,13 @@ Dungeon.prototype.update = function () {
     this.travelScene = false;
   }
   if (this.roomSelected) {
+    /*
     console.log(this.nextRoom);
     console.log(this.rewardScene);
     console.log(this.BattleOngoing);
-    console.log(this.travelScene);
+    console.log(this.travelScene);*/
   if (this.nextRoom === "setDungeonToEnemy") {
+
     this.addNewEntitiesBattle();
     console.log("init new enemy");
 
@@ -134,8 +131,10 @@ Dungeon.prototype.update = function () {
     console.log("Init new boss");
   } else if (this.nextRoom === "setDungeonToElite") {
     console.log("Init new Elite");
-  } else if (this.nextRoom === "setDungeonTo")
-
+  } else if (this.nextRoom === "setDungeonToGamble") {
+    console.log("init new gamble")
+  }
+  
   this.roomSelected = false;
   }
 }

@@ -11,7 +11,6 @@ function Battle(game, Enemies, dungeon, PlayerCharacter) {
 }
 
 Battle.prototype.playerMove = function(card) {
-    console.log(card.fn);
     if (this.PlayerTurn && !this.isBattleOver) {
         this.PlayerCharacter.playCard();
         if (card.fn.type === 'damage') {
@@ -20,7 +19,6 @@ Battle.prototype.playerMove = function(card) {
                 this.isBattleOver = true;
                 this.dungeon.BattleOngoing = false;
                 this.dungeon.rewardScene = true;
-                console.log("wae");
             }
         } else if (card.fn.type === 'heal') {
             if (this.PlayerCharacter.health + card.fn.value < 100) {

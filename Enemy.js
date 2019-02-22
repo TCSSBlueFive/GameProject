@@ -1,7 +1,6 @@
 
 function Enemy(game, EnemyFromDatabase, opacity) {
 
-    console.log(opacity);
     this.IdleAnimation = EnemyFromDatabase.animation;
     this.attackingAnimation = EnemyFromDatabase.attackAnimation;
     this.DeathAnimation = EnemyFromDatabase.deathAnimation;
