@@ -66,9 +66,8 @@ AM.downloadAll(function () {
     var turnButton = new TurnButton(gameEngine, cards, AM.getAsset("./img/end-turn-button.png"), 1);
     dungeon.turnButton = turnButton;
 
-    gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background3.png"), 1, 0, 0, -50));
-    gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/background3.png"), 1, 1400, 0, -50));
-    gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/bridge.png"), 1, 0, 505, 0));
+    gameEngine.addEntity(new AnimatedBackground(gameEngine, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
+    //gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/bridge.png"), 1));
     gameEngine.addEntity(myBanner);
     gameEngine.addEntity(turnButton)
     gameEngine.addEntity(enemy);
