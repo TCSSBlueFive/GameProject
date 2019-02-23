@@ -40,7 +40,7 @@ AM.queueDownload("./img/earthelemental.png");
 AM.queueDownload("./img/taurus.png");
 AM.queueDownload("./img/wraith.png");
 AM.queueDownload("./img/gargoyle.png");
-
+AM.queueDownload("./img/treasure_chest.png");
 
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameWorld");

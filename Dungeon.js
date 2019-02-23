@@ -111,6 +111,7 @@ Dungeon.prototype.addNewEntitiesTreasure = function() {
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"),AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
   this.game.addEntity(this.banner);
   this.game.addEntity(this.PlayerCharacter);
+  this.game.addEntity(new TreasureChest(this.game, this, this.PlayerCharacter, AM.getAsset("./img/treasure_chest.png"), 1));
   this.game.addEntity(this);
 
 }
