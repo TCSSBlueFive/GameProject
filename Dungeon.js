@@ -62,8 +62,9 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   newCardHand.generateInitialHand();
 
   this.game.addEntity(newCardHand);
-  
-  var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
+  var enemy = new Enemy(this.game, this.myEnemies.monsters[0], 1);
+
+  //var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
   var battle = new Battle(this.game, enemy, this, this.PlayerCharacter);
   this.battle = battle;
   this.game.addEntity(enemy);
@@ -82,19 +83,10 @@ Dungeon.prototype.addNewEntitiesTravel = function() {
 
 }
 
+
+
 Dungeon.prototype.addNewEntitiesReward = function() {
-  this.game.entities.pop();
-  this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
-  
-  this.game.addEntity(new MonsterRewards(this.game, AM.getAsset("./img/reward/gold.png"), this, 1))
-  this.game.addEntity(this);
-
-}
-
-Dungeon.prototype.update = function () {
-
-  if (!this.BattleOngoing && this.rewardScene) {
-    console.log("transitioning to rewards")
+  console.log("transitioning to rewards")
     opacity = .4;
     var entitiesCount = this.game.entities.length;
     for (var i = 0; i < entitiesCount; i++) {
@@ -104,6 +96,27 @@ Dungeon.prototype.update = function () {
   this.BattleOngoing = false;
   this.battle.PlayerTurn = false;
   this.rewardScene = false;
+
+  this.game.entities.pop(); //pops dungeon as currently dungeon always needs to be last thing updated
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
+  myRewards = new MonsterRewards(this.game, this, 1);
+  myRewards.generateRewardsEnemy();
+  this.game.addEntity(myRewards);
+  this.game.addEntity(this);
+
+}
+Dungeon.prototype.addNewEntitiesTreasure = function() {
+  this.game.entities.pop();
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/background2.jpg"), 1 ));
+  this.game.addEntity(this.banner);
+  this.game.addEntity(this.PlayerCharacter);
+  this.game.addEntity(this);
+
+}
+Dungeon.prototype.update = function () {
+
+  if (!this.BattleOngoing && this.rewardScene) {
+    
   this.addNewEntitiesReward();
   } 
   if (!this.rewardScene && !this.BattleOngoing && this.travelScene) {
@@ -124,14 +137,19 @@ Dungeon.prototype.update = function () {
     console.log("init new enemy");
 
   } else if (this.nextRoom === "setDungeonToShop") {
+    //this.addNewEntitiesShop();
     console.log("init new shop");
   } else if (this.nextRoom === "setDungeonToTreasure") {
+    this.addNewEntitiesTreasure();
     console.log("init new treasure");
   } else if (this.nextRoom === "setDungeonToBoss") {
+    //this.addNewEntitiesBoss();
     console.log("Init new boss");
   } else if (this.nextRoom === "setDungeonToElite") {
+    //this.addNewEntitiesElite();
     console.log("Init new Elite");
   } else if (this.nextRoom === "setDungeonToGamble") {
+    //this.addNewEntitiesGamble();
     console.log("init new gamble")
   }
   
