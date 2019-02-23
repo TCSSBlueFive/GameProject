@@ -35,8 +35,10 @@ Dungeon.prototype.loadDungeon = function () {
 
 Dungeon.prototype.transitionToTravelScene = function () {
   this.removeAllEntities();
-  this.game.addEntity(new Background(this.game, AM.getAsset("./img/background2.jpg"), .5 ));
-  this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground.png"), 1))
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/background3.png"), .5, 0, 0, -50));
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/background3.png"), .5, 1400, 0, -50));
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/bridge.png"), .5, 0, 505, 0));
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground.png"), 1, 0, 0, 0))
   this.banner.opacity = 1;
   this.game.addEntity(this.banner);
   this.game.addEntity(this.myTravelScene);
@@ -53,7 +55,9 @@ Dungeon.prototype.removeAllEntities = function() {
 Dungeon.prototype.addNewEntitiesBattle = function() {
   this.removeAllEntities();
   this.BattleOngoing = true;
-  this.game.addEntity(new Background(this.game, AM.getAsset("./img/background2.jpg"), 1));
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/background3.png"), 1, 0, 0, -50));
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/background3.png"), 1, 1400, 0, -50));
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/bridge.png"), 1, 0, 505, 0));
   this.PlayerCharacter.opacity = 1;
   this.game.addEntity(this.PlayerCharacter);
   this.game.addEntity(this.banner);
@@ -82,7 +86,6 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
 Dungeon.prototype.addNewEntitiesTravel = function() {
 
 }
-
 
 
 Dungeon.prototype.addNewEntitiesReward = function() {
