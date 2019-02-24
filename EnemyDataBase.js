@@ -4,7 +4,7 @@ function EnemyDataBase(game, spritesheet) {
     this.game = game;
     this.monsters =
     [{
-        health: 10,
+        health: 100,
         name: 'slime',
         x: 1000,
         y: 400,

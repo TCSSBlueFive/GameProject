@@ -33,6 +33,7 @@ Enemy.prototype.attackPlayer = function () {
     // call enemy attack animation right here
     this.action = 'attack';
     //var randomAttack = Math.random() * this.attacks.length; for when we random a move
+    this.game.cooldown = 100;
     return this.attack;
 }
 

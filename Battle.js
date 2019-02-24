@@ -8,11 +8,26 @@ function Battle(game, Enemies, dungeon, PlayerCharacter) {
     this.PlayerTurn = true;
     this.dungeon = dungeon;
     this.isBattleOver = false;
+    this.cooldown = 1.5;
+    this.timeOfLastMove = 0;
+}
+
+Battle.prototype.notOnCooldown = function () {
+    if (this.game.timer.gameTime - this.timeOfLastMove >= this.cooldown) {
+        console.log(this.game.timer.gameTime)
+        console.log(this.timeOfLastMove);
+
+        return true;
+    } else {
+        return false;
+    }
 }
 
 Battle.prototype.playerMove = function(card) {
-    if (this.PlayerTurn && !this.isBattleOver) {
+    if (this.PlayerTurn && !this.isBattleOver && this.notOnCooldown()) {
         this.PlayerCharacter.playCard();
+        this.timeOfLastMove = this.game.timer.gameTime;
+
         if (card.fn.type === 'damage') {
             this.Enemy.takeDamage(card.fn.value);
             if(!this.Enemy.isAlive()) {
@@ -36,8 +51,13 @@ Battle.prototype.playerMove = function(card) {
 
 
 Battle.prototype.enemyMoves = function() {
+   // while (this.notOnCooldown() === false) {
+     //   console.log("weae")
+   // }
     if (!this.PlayerTurn && !this.isBattleOver) {
         if( this.Enemy.isAlive()) {
+            this.timeOfLastMove = this.game.timer.gameTime;
+
             var attack = this.Enemy.attackPlayer();
             if (attack.type === 'damage') {
 
@@ -61,6 +81,7 @@ Battle.prototype.endPlayerTurn = function() {
 }
 
 Battle.prototype.getPlayerTurn = function() {
+    if (this.cooldown)
     return this.PlayerTurn;
 }
 

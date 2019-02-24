@@ -31,7 +31,8 @@ function PlayerCharacter(game, spritesheet, HPBar, opacity) {
 }
 
 PlayerCharacter.prototype.playCard = function() {
-   this.action = 'attack';
+    this.game.cooldown = 100;
+    this.action = 'attack';
 }
 
 PlayerCharacter.prototype.update = function () {

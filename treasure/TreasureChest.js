@@ -26,6 +26,10 @@ TreasureChest.prototype.draw = function () {
 TreasureChest.prototype.update = function () {
     if((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width)
     && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
+        var index = this.game.entities.indexOf(this);
+        if (index > -1) {
+            this.game.entities.splice(index, 1);
+        }        
         this.game.click = false;
         this.game.entities.pop();
         this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
