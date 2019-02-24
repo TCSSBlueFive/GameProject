@@ -24,6 +24,28 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
+Dungeon.prototype.addBackMonsterRewards = function () {
+  this.removeAllEntities();
+  this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
+  this.game.addEntity(this.currentMonsterRewards);
+  this.game.addEntity(this.banner);
+
+  this.game.addEntity(this);
+  //add back the same monster rewards
+  //maybe everything else 2
+}
+
+Dungeon.prototype.setCardSelection = function () {
+  this.removeAllEntities();
+  this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
+  this.game.addEntity(this.banner)
+  myCardSelection = new CardSelectionScene(this.game, this);
+  myCardSelection.generateCards();
+  this.game.addEntity(myCardSelection);  
+  this.game.addEntity(this);
+
+}
 
 Dungeon.prototype.loadDungeon = function () {
   var battle = new Battle(this.game, this.Enemies, this, this.PlayerCharacter);
@@ -76,10 +98,10 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
 
   this.game.addEntity(this);
  
-  //add hp bars
-
 
 }
+Dungeon.prototype.setNew
+
 //once a travel starts, add travel entities
 Dungeon.prototype.addNewEntitiesTravel = function() {
 
@@ -92,6 +114,7 @@ Dungeon.prototype.addNewEntitiesReward = function() {
     var entitiesCount = this.game.entities.length;
     for (var i = 0; i < entitiesCount; i++) {
       var entity = this.game.entities[i];
+      console.log(entity);
       entity.opacity = opacity;
     }
   this.BattleOngoing = false;
@@ -102,6 +125,7 @@ Dungeon.prototype.addNewEntitiesReward = function() {
   this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
   myRewards = new MonsterRewards(this.game, this, 1);
   myRewards.generateRewardsEnemy();
+  this.currentMonsterRewards = myRewards;
   this.game.addEntity(myRewards);
   this.game.addEntity(this);
 
@@ -111,6 +135,7 @@ Dungeon.prototype.addNewEntitiesTreasure = function() {
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"),AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
   this.game.addEntity(this.banner);
   this.game.addEntity(this.PlayerCharacter);
+  this.PlayerCharacter.opacity = 1;
   this.game.addEntity(new TreasureChest(this.game, this, this.PlayerCharacter, AM.getAsset("./img/treasure_chest.png"), 1));
   this.game.addEntity(this);
 
@@ -133,29 +158,39 @@ Dungeon.prototype.update = function () {
     console.log(this.rewardScene);
     console.log(this.BattleOngoing);
     console.log(this.travelScene);*/
-  if (this.nextRoom === "setDungeonToEnemy") {
+    if (this.nextRoom === "setDungeonToEnemy") {
+      this.addNewEntitiesBattle();
+      console.log("init new enemy");
 
-    this.addNewEntitiesBattle();
-    console.log("init new enemy");
-
-  } else if (this.nextRoom === "setDungeonToShop") {
-    //this.addNewEntitiesShop();
-    console.log("init new shop");
-  } else if (this.nextRoom === "setDungeonToTreasure") {
-    this.addNewEntitiesTreasure();
-    console.log("init new treasure");
-  } else if (this.nextRoom === "setDungeonToBoss") {
-    //this.addNewEntitiesBoss();
-    console.log("Init new boss");
-  } else if (this.nextRoom === "setDungeonToElite") {
-    //this.addNewEntitiesElite();
-    console.log("Init new Elite");
-  } else if (this.nextRoom === "setDungeonToGamble") {
-    //this.addNewEntitiesGamble();
-    console.log("init new gamble")
+    } else if (this.nextRoom === "setDungeonToShop") {
+      //this.addNewEntitiesShop();
+      console.log("init new shop");
+    } else if (this.nextRoom === "setDungeonToTreasure") {
+      this.addNewEntitiesTreasure();
+      console.log("init new treasure");
+    } else if (this.nextRoom === "setDungeonToBoss") {
+      //this.addNewEntitiesBoss();
+      console.log("Init new boss");
+    } else if (this.nextRoom === "setDungeonToElite") {
+      //this.addNewEntitiesElite();
+      console.log("Init new Elite");
+    } else if (this.nextRoom === "setDungeonToGamble") {
+      //this.addNewEntitiesGamble();
+      console.log("init new gamble")
+    }
+    
+    this.roomSelected = false;
   }
-  
-  this.roomSelected = false;
+  if (this.cardRewards === true) {
+    //this line of code is entered if a monster-rewards reward_node of type card is clicked to be added
+    //that reward_node sets the dungeon to have this value be true
+    this.setCardSelection();
+    this.cardRewards = false;
+  }
+  if (this.cardChosen === true) {
+    //this line of code is chosen after the player selects a card from the selection of rewards
+    this.addBackMonsterRewards();
+    this.cardChosen = false;
   }
 }
 

@@ -1,15 +1,16 @@
 // no inheritance
-function Card(game, dungeon, cardHand, card, x, y, width, height, opacity) {
+function Card(game, dungeon, cardHand, card, x, y, opacity) {
     this.game = game;
     this.dungeon = dungeon;
     this.x = x;
     this.cardHand = cardHand;
     this.y = y;
+    this.opacity = opacity;
     this.fn = card;
 
-    this.width = width;
+    this.width = card.width;
     this.spritesheet = card.spritesheet;
-    this.height = height;
+    this.height = card.height;
     this.ctx = game.ctx;
 };
 

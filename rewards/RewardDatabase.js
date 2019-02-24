@@ -17,7 +17,7 @@ function RewardDatabase(){
     }, {
         name: 'card',
         value: getRandomInt(15) + 15,
-        spritesheet: AM.getAsset("./img/reward/addCardToHand.png"),
+        spritesheet: AM.getAsset("./img/reward/addCardToDeck.png"),
         fn: "addCardToDeck",
         opacity: 1,
         width: 350,

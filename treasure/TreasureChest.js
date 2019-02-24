@@ -35,6 +35,7 @@ TreasureChest.prototype.update = function () {
         this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
         myRewards = new MonsterRewards(this.game, this.dungeon, 1);
         myRewards.generateRewardsEnemy();
+        this.dungeon.currentMonsterRewards = myRewards;
         this.game.addEntity(myRewards);  
         this.game.addEntity(this.dungeon)
     }

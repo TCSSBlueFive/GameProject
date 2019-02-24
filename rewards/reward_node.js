@@ -30,7 +30,7 @@ reward_node.prototype.update = function () {
             if (index > -1) {
                 this.MonsterRewards.rewards.splice(index, 1);
             }
-            MonsterRewards.fn = this.fn
+            this.MonsterRewards.action = this.fn
         
         
     }

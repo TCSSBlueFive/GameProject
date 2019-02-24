@@ -19,6 +19,7 @@ AM.queueDownload("./img/player/walking-right.png");
 AM.queueDownload("./img/player/walking-left.png");
 AM.queueDownload("./img/reward/rewards_background.png");
 AM.queueDownload("./img/reward/gold.png");
+AM.queueDownload("./img/reward/addCardToDeck.png")
 AM.queueDownload("./img/travel/travelBackground.png");
 AM.queueDownload("./img/travel/top banner.png");
 AM.queueDownload("./img/end-turn-button.png");
