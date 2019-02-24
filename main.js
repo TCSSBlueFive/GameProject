@@ -7,7 +7,7 @@ AM.queueDownload("./img/slime_sprite.png");
 AM.queueDownload("./img/background2.jpg");
 
 AM.queueDownload("./img/cards/fireball-card.png");
-AM.queueDownload("./img/cards/ice-card.jpg");
+AM.queueDownload("./img/cards/ice-card.png");
 AM.queueDownload("./img/cards/heal-card.png");
 
 AM.queueDownload("./img/idle blink.png");

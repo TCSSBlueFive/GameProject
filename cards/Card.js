@@ -25,15 +25,15 @@ Card.prototype.update = function () {
         if((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width  )
         && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
             this.game.click = false;    
-
             if (this.dungeon.BattleOngoing && this.dungeon.battle.getPlayerTurn() && this.dungeon.battle.notOnCooldown()) {
                 this.dungeon.playCount++;
+                
                 this.dungeon.battle.playerMove(this);    
 
                 var index = this.cardHand.cardsInHand.indexOf(this);
                 if (index > -1) {
-                this.cardHand.cardsInHand.splice(index, 1);
-            }   
+                    this.cardHand.cardsInHand.splice(index, 1);
+                }      
             }
 
             if (!this.dungeon.BattleOngoing) {

@@ -8,14 +8,13 @@ function Battle(game, Enemies, dungeon, PlayerCharacter) {
     this.PlayerTurn = true;
     this.dungeon = dungeon;
     this.isBattleOver = false;
-    this.cooldown = 1.5;
+    this.cooldown = 0; 
     this.timeOfLastMove = 0;
+    this.firstmove = true;
 }
 
 Battle.prototype.notOnCooldown = function () {
-    if (this.game.timer.gameTime - this.timeOfLastMove >= this.cooldown) {
-        console.log(this.game.timer.gameTime)
-        console.log(this.timeOfLastMove);
+    if (this.game.timer.gameTime - this.timeOfLastMove >= this.cooldown ) {
 
         return true;
     } else {
@@ -44,6 +43,8 @@ Battle.prototype.playerMove = function(card) {
         }
         // this.PlayerTurn === false;
     }
+    this.cooldown = 1.5;
+
    // console.log("Enemy Health: " + this.Enemies[0].health, "Player Health: " + this.PlayerCharacter.health);
    // console.log("Enemy Health: " + this.Enemy.health, "Player Health: " + this.PlayerCharacter.health);
 
@@ -81,7 +82,6 @@ Battle.prototype.endPlayerTurn = function() {
 }
 
 Battle.prototype.getPlayerTurn = function() {
-    if (this.cooldown)
     return this.PlayerTurn;
 }
 
