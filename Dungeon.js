@@ -84,7 +84,7 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   newCardHand.generateInitialHand();
 
   this.game.addEntity(newCardHand);
-  var enemy = new Enemy(this.game, this.myEnemies.monsters[0], 1);
+  var enemy = new Enemy(this.game, this.myEnemies.monsters[this.myTravelScene.currentRoom], 1);
 
   //var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
   var battle = new Battle(this.game, enemy, this, this.PlayerCharacter);

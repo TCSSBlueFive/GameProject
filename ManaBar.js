@@ -13,7 +13,6 @@ function ManaBar(game, spritesheet, width, height, opacity) {
 };
 
 ManaBar.prototype.enoughMana = function (someNum) {
-    console.log(someNum);
     if (someNum <= this.mana) {
         this.mana -= someNum;
 

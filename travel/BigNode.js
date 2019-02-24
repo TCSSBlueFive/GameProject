@@ -29,7 +29,7 @@ BigNode.prototype.update = function () {
     if (this.game.click) {
         if((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width  )
         && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
-            //if (this.position === this.travelScene.currentRoom) {
+            if (this.position === this.travelScene.currentRoom) {
                 this.dungeon.roomSelected = true;
                 this.dungeon.nextRoom = this.fn;
                 this.game.click = false;
@@ -37,7 +37,7 @@ BigNode.prototype.update = function () {
                 console.log(this.travelScene.currentRoom);
                 this.travelScene.currentRoom += 1;
                 this.opacity = 0;
-            //}
+            }
             
             
         }
