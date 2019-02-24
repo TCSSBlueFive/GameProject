@@ -9,6 +9,7 @@ function CardDataBase() {
         value: 15,
         width: 140,
         height: 183,
+        mana: 1,
 
         spritesheet: AM.getAsset("./img/cards/heal-card.png")
     }, {
@@ -18,6 +19,8 @@ function CardDataBase() {
         value: 15,
         width: 140,
         height: 183,
+        mana: 1,
+
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/fireball-card.png")
@@ -28,6 +31,8 @@ function CardDataBase() {
         value: 15,
         width: 140,
         height: 183,
+        mana: 1,
+
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/ice-card.png")
@@ -38,6 +43,8 @@ function CardDataBase() {
         value: 15,
         width: 140,
         height: 183,
+        mana: 1,
+
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/ice-card.png")
@@ -48,6 +55,8 @@ function CardDataBase() {
         value: 15,
         width: 140,
         height: 183,
+        mana: 1,
+
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/ice-card.png")
@@ -62,6 +71,7 @@ function CardDataBase() {
         value: 15,
         width: 140,
         height: 183,
+        mana: 1,
 
         spritesheet: AM.getAsset("./img/cards/heal-card.png")
     }, {
@@ -71,6 +81,8 @@ function CardDataBase() {
         value: 15,
         width: 140,
         height: 183,
+        mana: 1,
+
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/fireball-card.png")
@@ -81,6 +93,8 @@ function CardDataBase() {
         value: 15,
         width: 140,
         height: 183,
+        mana: 1,
+
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/ice-card.png")
@@ -91,6 +105,8 @@ function CardDataBase() {
         value: 15,
         width: 140,
         height: 183,
+        mana: 1,
+
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/ice-card.png")
@@ -101,6 +117,8 @@ function CardDataBase() {
         value: 15,
         width: 140,
         height: 183,
+        mana: 1,
+
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/ice-card.png")

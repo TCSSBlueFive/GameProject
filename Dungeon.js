@@ -12,7 +12,6 @@ function Dungeon(game, PlayerCharacter, Enemies, myEnemyDataBase, myBanner) {
   this.myEnemies = myEnemyDataBase;
   this.height = 25;
   this.y = 600;
-  this.playCount = 0;
   this.banner = myBanner;
   this.rewardScene = false;
   this.travelScene = false;
@@ -82,7 +81,6 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   this.game.addEntity(this.PlayerCharacter);
   this.game.addEntity(this.banner);
   var newCardHand = new CardHand(this.game, this, this.PlayerCharacter, 1);
-  this.playCount = 0;
   newCardHand.generateInitialHand();
 
   this.game.addEntity(newCardHand);
@@ -90,6 +88,7 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
 
   //var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
   var battle = new Battle(this.game, enemy, this, this.PlayerCharacter);
+  this.PlayerCharacter.Manabar.reset();
   this.battle = battle;
   this.game.addEntity(enemy);
   this.turnButton.opacity = 1;
@@ -114,7 +113,6 @@ Dungeon.prototype.addNewEntitiesReward = function() {
     var entitiesCount = this.game.entities.length;
     for (var i = 0; i < entitiesCount; i++) {
       var entity = this.game.entities[i];
-      console.log(entity);
       entity.opacity = opacity;
     }
   this.BattleOngoing = false;

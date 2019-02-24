@@ -81,6 +81,14 @@ Battle.prototype.endPlayerTurn = function() {
     this.PlayerTurn = false;
 }
 
+Battle.prototype.sufficientMana = function (card) {
+    console.log(card);
+    if (this.PlayerCharacter.Manabar.enoughMana(card.mana)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 Battle.prototype.getPlayerTurn = function() {
     return this.PlayerTurn;
 }

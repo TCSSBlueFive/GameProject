@@ -1,6 +1,6 @@
 
  
-function PlayerCharacter(game, spritesheet, HPBar, opacity) {
+function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
 
     this.idleAnimation = new Animation(spritesheet[0], 37, 80, 1, .5, 2, true, 2,0,0);
     this.walkingRightAnimation = new Animation(spritesheet[2], 38, 79, 1, .5, 2, true, 2,0,0);
@@ -14,6 +14,7 @@ function PlayerCharacter(game, spritesheet, HPBar, opacity) {
     this.DeckList = [...this.CardBase.cards];
 
     this.HPBar = HPBar;
+    this.Manabar = Manabar;
     
     this.x = 250;
     this.y = 360;
@@ -41,6 +42,7 @@ PlayerCharacter.prototype.update = function () {
 
 PlayerCharacter.prototype.draw = function () {
     this.HPBar.draw();
+    this.Manabar.draw();
     if (this.action === 'attack') {
         this.attackingAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .1);
         if ((this.attackingAnimation.isDone())) {

@@ -3,6 +3,11 @@ var AM = new AssetManager();
 
 AM.queueDownload("./img/RedHealthBar.png");
 AM.queueDownload("./img/GreenHealthBar.png");
+
+AM.queueDownload("./img/mana_circle.png")
+AM.queueDownload("./img/mana_bar.png")
+AM.queueDownload("./img/mana_empty.png")
+
 AM.queueDownload("./img/slime_sprite.png");
 AM.queueDownload("./img/background2.jpg");
 
@@ -50,17 +55,24 @@ AM.downloadAll(function () {
     var gameEngine = new GameEngine();
     gameEngine.init(ctx);
     gameEngine.start();
+
+
+
+    var myManaBar = new ManaBar(gameEngine, [AM.getAsset("./img/mana_bar.png"),AM.getAsset("./img/mana_empty.png"),
+                                             AM.getAsset("./img/mana_circle.png")], 75, 75, 1);
+    
     var myBanner = new TopBanner(gameEngine, AM.getAsset("./img/travel/top banner.png"), 1);
 
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     
     var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 100, 130, 13);
     var player = new PlayerCharacter(gameEngine, 
-        [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, 1)
-    var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
-    var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)
-    gameEngine.currentDungeon = dungeon;
+        [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, myManaBar, 1)
     
+        var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
+    var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)
+    
+    gameEngine.currentDungeon = dungeon;
     var cards = new CardHand(gameEngine, dungeon, player, 1);
     cards.generateInitialHand();
 
@@ -73,6 +85,7 @@ AM.downloadAll(function () {
     gameEngine.addEntity(turnButton)
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
+
     
     gameEngine.addEntity(cards);
     gameEngine.addEntity(dungeon);
