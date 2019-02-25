@@ -1,6 +1,6 @@
 //WORK IN PROGRESS
 
-function Battle(game, Enemies, dungeon, PlayerCharacter) {
+function Battle(game, Enemies, dungeon, PlayerCharacter, newCardHand) {
     this.game = game;
     this.PlayerCharacter = PlayerCharacter;
     //this.Enemies = Enemies.constructor === Array ? [...Enemies] : [Enemies];
@@ -10,6 +10,7 @@ function Battle(game, Enemies, dungeon, PlayerCharacter) {
     this.isBattleOver = false;
     this.cooldown = 0; 
     this.timeOfLastMove = 0;
+    this.cardhand = newCardHand;
     this.firstmove = true;
 }
 
@@ -27,20 +28,30 @@ Battle.prototype.playerMove = function(card) {
         this.PlayerCharacter.playCard();
         this.timeOfLastMove = this.game.timer.gameTime;
 
-        if (card.fn.type === 'damage') {
-            this.Enemy.takeDamage(card.fn.value);
+        if (card.type === 'damage') {
+            this.Enemy.takeDamage(card.value);
             if(!this.Enemy.isAlive()) {
                 this.isBattleOver = true;
                 this.dungeon.BattleOngoing = false;
                 this.dungeon.rewardScene = true;
             }
-        } else if (card.fn.type === 'heal') {
-            if (this.PlayerCharacter.health + card.fn.value < 100) {
-                this.PlayerCharacter.heal(card.fn.value)
+        } else if (card.type === 'heal') {
+            if (this.PlayerCharacter.health + card.value < 100) {
+                this.PlayerCharacter.heal(card.value)
             } else {
                 this.PlayerCharacter.heal(100 - this.PlayerCharacter.health)
             }
-        }
+        } else if (card.type === 'block') {
+            this.PlayerCharacter.block += card.value
+        } else if (card.type === 'debuff') {
+            if (card.typeOfDebuff === 'stun single') {
+                this.Enemy.setStun(card.duration);
+            }
+        } else if (card.type === 'card add') {
+            for(let i = 0; i < card.value; i++) {
+                this.cardhand.addCard(card.cardToAdd)
+            }
+        } 
         // this.PlayerTurn === false;
     }
     this.cooldown = 1.5;
@@ -52,10 +63,11 @@ Battle.prototype.playerMove = function(card) {
 
 
 Battle.prototype.enemyMoves = function() {
+    console.log(this.Enemy.stunned)
    // while (this.notOnCooldown() === false) {
      //   console.log("weae")
    // }
-    if (!this.PlayerTurn && !this.isBattleOver) {
+    if (!this.PlayerTurn && !this.isBattleOver &&this.Enemy.checkNotStunned()) {
         if( this.Enemy.isAlive()) {
             this.timeOfLastMove = this.game.timer.gameTime;
 

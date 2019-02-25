@@ -28,6 +28,9 @@ TurnButton.prototype.update = function () {
           this.game.currentDungeon.battle.enemyMoves();
           this.game.currentDungeon.playCount = 0;
           this.game.currentDungeon.PlayerCharacter.Manabar.reset();
+          this.game.currentDungeon.PlayerCharacter.block = 0;
+          this.cardHand.useAll();
+
       }
       this.game.click = false;
 

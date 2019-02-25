@@ -47,7 +47,14 @@ Dungeon.prototype.setCardSelection = function () {
 }
 
 Dungeon.prototype.loadDungeon = function () {
-  var battle = new Battle(this.game, this.Enemies, this, this.PlayerCharacter);
+  var cards = new CardHand(this.game, this, this.PlayerCharacter, 1);
+  cards.generateInitialHand();
+
+  var turnButton = new TurnButton(this.game, cards, AM.getAsset("./img/end-turn-button.png"), 1);
+  this.turnButton = turnButton;
+  this.game.addEntity(cards);
+  this.game.addEntity(turnButton);
+  var battle = new Battle(this.game, this.Enemies, this, this.PlayerCharacter, cards);
   this.myTravelScene = new TravelScene(this.game, this, 1);
   this.myTravelScene.generateBars();
   this.battle = battle;
@@ -87,7 +94,7 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   var enemy = new Enemy(this.game, this.myEnemies.monsters[this.myTravelScene.currentRoom], 1);
 
   //var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
-  var battle = new Battle(this.game, enemy, this, this.PlayerCharacter);
+  var battle = new Battle(this.game, enemy, this, this.PlayerCharacter, newCardHand);
   this.PlayerCharacter.Manabar.reset();
   this.battle = battle;
   this.game.addEntity(enemy);

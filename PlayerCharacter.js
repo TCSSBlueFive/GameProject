@@ -24,6 +24,7 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
 
     this.health = 100;
     this.attack = 30;
+    this.block = 0;
 
     this.speed = 0;
     this.game = game;
@@ -33,6 +34,7 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
 
 PlayerCharacter.prototype.playCard = function() {
     this.game.cooldown = 100;
+
     this.action = 'attack';
 }
 
@@ -67,10 +69,28 @@ PlayerCharacter.prototype.draw = function () {
 }
 
 PlayerCharacter.prototype.takeDamage = function (attackDamage) {
+    console.log()
     this.action = 'walking-left';
+    //10 attack
+    //7 block
+    const num = this.block;
+    this.block -= attackDamage;
+
+    attackDamage -= num;
+    console.log(num)
+    console.log(this.block)
+
+    console.log(attackDamage)
+
+    if (this.block < 0) {
+        this.block = 0
+    }
+    if (attackDamage < 0) {
+        attackDamage = 0
+    }
     this.health -= attackDamage;
     this.HPBar.health -= attackDamage;
-    if (this.HPBar.health <0) {
+    if (this.HPBar.health < 0) {
         this.HPBar.health = 0;
     }
 }

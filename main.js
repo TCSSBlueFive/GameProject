@@ -15,6 +15,16 @@ AM.queueDownload("./img/cards/fireball-card.png");
 AM.queueDownload("./img/cards/ice-card.png");
 AM.queueDownload("./img/cards/heal-card.png");
 
+AM.queueDownload("./img/cards/frost_nova-card.png");
+AM.queueDownload("./img/cards/conjure_refreshment-card.png");
+AM.queueDownload("./img/cards/ice_block-card.png");
+AM.queueDownload("./img/cards/blink-card.png");
+AM.queueDownload("./img/cards/arcane_intellect-card.png");
+AM.queueDownload("./img/cards/time_warp-card.png");
+AM.queueDownload("./img/cards/counterspell-card.png");
+AM.queueDownload("./img/cards/polymorph-card.png");
+
+
 AM.queueDownload("./img/idle blink.png");
 AM.queueDownload("./img/player/16_omnimagesheet.png");
 AM.queueDownload("./img/player/attack.png");
@@ -56,8 +66,6 @@ AM.downloadAll(function () {
     gameEngine.init(ctx);
     gameEngine.start();
 
-
-
     var myManaBar = new ManaBar(gameEngine, [AM.getAsset("./img/mana_bar.png"),AM.getAsset("./img/mana_empty.png"),
                                              AM.getAsset("./img/mana_circle.png")], 75, 75, 1);
     
@@ -69,32 +77,17 @@ AM.downloadAll(function () {
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, myManaBar, 1)
     
-        var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
+    var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
     var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)
     
     gameEngine.currentDungeon = dungeon;
-    var cards = new CardHand(gameEngine, dungeon, player, 1);
-    cards.generateInitialHand();
-
-    var turnButton = new TurnButton(gameEngine, cards, AM.getAsset("./img/end-turn-button.png"), 1);
-    dungeon.turnButton = turnButton;
-
+    
     gameEngine.addEntity(new AnimatedBackground(gameEngine, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
-    //gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/bridge.png"), 1));
     gameEngine.addEntity(myBanner);
-    gameEngine.addEntity(turnButton)
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
-
-    
-    gameEngine.addEntity(cards);
     gameEngine.addEntity(dungeon);
 
     dungeon.loadDungeon();
-
-
-    //gameEngine.addEntity(new Button(gameEngine, AM.getAsset("./img/button.png"), 200, 600, 75, 25, gameEngine.init));
-
-
     console.log("All Done!");
 });

@@ -29,9 +29,7 @@ Card.prototype.update = function () {
             this.game.click = false;    
             if (this.dungeon.BattleOngoing && this.dungeon.battle.getPlayerTurn() && this.dungeon.battle.notOnCooldown()
                 && this.dungeon.battle.sufficientMana(this)) {
-                
-                this.dungeon.battle.playerMove(this);    
-
+                this.dungeon.battle.playerMove(this.fn);    
                 var index = this.cardHand.cardsInHand.indexOf(this);
                 if (index > -1) {
                     this.cardHand.cardsInHand.splice(index, 1);

@@ -25,7 +25,7 @@ function EnemyDataBase(game, spritesheet) {
         deathAnimation: new Animation(spritesheet, 253, 256, 1, .075, 3, true, .5, 5 ,0)
     },                 
     {
-        health: 120,
+        health: 12000000,
         x: 1000,
         y: 340,
         hpx: 1000,
@@ -33,7 +33,7 @@ function EnemyDataBase(game, spritesheet) {
         name: 'succubus',
         attacks: {
             type: 'damage',
-            value: 20
+            value: 0
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 120, 130, 13),

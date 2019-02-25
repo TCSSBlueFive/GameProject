@@ -23,6 +23,8 @@ function Enemy(game, EnemyFromDatabase, opacity) {
 
     this.speed = 0;
     this.action = 'idle';
+
+    this.stunned = false;
     this.idle = true;
     this.yIndex = EnemyFromDatabase.yIndex;
     this.game = game;
@@ -49,6 +51,22 @@ Enemy.prototype.takeDamage = function (attackDamage) {
 Enemy.prototype.update = function () {
     this.HPBar.update(this.health);
     //needs to be added
+}
+Enemy.prototype.checkNotStunned = function() {
+    if (this.stunned === false) {
+        return true;
+    } else {
+        this.stunduration -= 1;
+        if (this.stunduration === 0) {
+            this.stunned = false;
+        }
+        return false;
+    }
+    
+}
+Enemy.prototype.setStun = function (num) {
+    this.stunned = true;
+    this.stunduration = num;
 }
 
 Enemy.prototype.isAlive = function () {
