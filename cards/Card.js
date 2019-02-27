@@ -13,12 +13,37 @@ function Card(game, dungeon, cardHand, card, x, y, opacity) {
     this.spritesheet = card.spritesheet;
     this.height = card.height;
     this.ctx = game.ctx;
+    this.name = card.name;
+    this.nameXOffset = 35;
+    this.nameYOffset = 27;
+    this.textXOffset = 25;
+    this.textYOffset = 120;
+    this.text = card.text;
 };
 
 Card.prototype.draw = function () {
     this.ctx.drawImage(this.spritesheet,
                    this.x, this.y);
 
+    //name
+    this.ctx.save();
+    this.ctx.font = "15px Impact";
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
+
+    //card text effect
+    this.ctx.font = "10px Arial";
+    this.ctx.fillStyle = "#ffffff";
+    var x = 30;
+    var y = 30;
+    var lineheight = 10;
+    var lines = this.text.split('\n');
+
+    for (var i = 0; i<lines.length; i++)
+        this.ctx.fillText(lines[i], this.x + this.textXOffset, (this.y + this.textYOffset) + (i*lineheight) );
+    this.ctx.restore();
+
+        
 };
 
 Card.prototype.update = function () {
@@ -33,10 +58,12 @@ Card.prototype.update = function () {
                 var index = this.cardHand.cardsInHand.indexOf(this);
                 if (index > -1) {
                     this.cardHand.cardsInHand.splice(index, 1);
+                    this.cardHand.DeckListCardsRemaining.push(this.fn)
                 }      
             }
 
             if (!this.dungeon.BattleOngoing) {
+                this.cardHand.useAll();
                 this.cardHand.reshuffle();
             }
 

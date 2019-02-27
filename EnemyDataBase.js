@@ -25,7 +25,7 @@ function EnemyDataBase(game, spritesheet) {
         deathAnimation: new Animation(spritesheet, 253, 256, 1, .075, 3, true, .5, 5 ,0)
     },                 
     {
-        health: 12000000,
+        health: 120,
         x: 1000,
         y: 340,
         hpx: 1000,

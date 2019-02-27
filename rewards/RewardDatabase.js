@@ -13,15 +13,15 @@ function RewardDatabase(){
         fn: "addGoldToPlayer",
         opacity: 1,
         width: 350,
-        height: 110
+        height: 110,
     }, {
         name: 'card',
-        value: getRandomInt(15) + 15,
         spritesheet: AM.getAsset("./img/reward/addCardToDeck.png"),
         fn: "addCardToDeck",
         opacity: 1,
         width: 350,
-        height: 110
+        height: 110,
+        text: "Add Card to Deck"
     }, {
         name: 'item',
         value: getRandomInt(15) + 15,
@@ -29,7 +29,10 @@ function RewardDatabase(){
         fn: "addItemToPlayer",
         opacity: 1,
         width: 350,
-        height: 110
+        height: 110,
+        text: "Add random item"
 
     }]
+    this.rewards[0].text = 'Gain ' + this.rewards[0].value + ' gold'
 };
+

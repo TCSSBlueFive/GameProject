@@ -36,8 +36,10 @@ AM.queueDownload("./img/reward/rewards_background.png");
 AM.queueDownload("./img/reward/gold.png");
 AM.queueDownload("./img/reward/addCardToDeck.png")
 AM.queueDownload("./img/travel/travelBackground.png");
+
 AM.queueDownload("./img/travel/top banner.png");
 AM.queueDownload("./img/end-turn-button.png");
+AM.queueDownload("./img/proceed.png")
 
 AM.queueDownload("./img/travel/enemy_node.png");
 AM.queueDownload("./img/travel/shop_node.png");

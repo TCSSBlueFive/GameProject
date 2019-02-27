@@ -51,7 +51,11 @@ Battle.prototype.playerMove = function(card) {
             for(let i = 0; i < card.value; i++) {
                 this.cardhand.addCard(card.cardToAdd)
             }
-        } 
+        } else if (card.type === 'card draw') {
+            for (let i = 0; i < card.value; i++) {
+                this.cardhand.drawCard();
+            }
+        }
         // this.PlayerTurn === false;
     }
     this.cooldown = 1.5;

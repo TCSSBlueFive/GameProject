@@ -12,6 +12,7 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.action = 'walking-right';
     this.CardBase = new CardDataBase(this.game);
     this.DeckList = [...this.CardBase.cards];
+    this.class = 'Omnimage'
 
     this.HPBar = HPBar;
     this.Manabar = Manabar;
@@ -22,6 +23,7 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.HPBar.x = this.x - 20;
     this.HPBar.y = this.y - 20;
 
+    this.gold = 0;
     this.health = 100;
     this.attack = 30;
     this.block = 0;
@@ -77,10 +79,6 @@ PlayerCharacter.prototype.takeDamage = function (attackDamage) {
     this.block -= attackDamage;
 
     attackDamage -= num;
-    console.log(num)
-    console.log(this.block)
-
-    console.log(attackDamage)
 
     if (this.block < 0) {
         this.block = 0

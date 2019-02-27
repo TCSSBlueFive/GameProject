@@ -10,6 +10,8 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
+        text: 'Restore 15 health.',
+        
 
         spritesheet: AM.getAsset("./img/cards/heal-card.png")
     }, {
@@ -19,6 +21,7 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
+        text: 'Deal 10 damage.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -30,6 +33,7 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
+        text: 'Deal 30 damage.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -41,7 +45,7 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
-
+        text: 'Gain 7 block.',
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/blink-card.png")
@@ -55,6 +59,7 @@ function CardDataBase() {
         height: 183,
         mana: 1,
         duration: 1,
+        text: 'Stun enemy for 1 turn.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -72,15 +77,18 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
+        text: 'Restore 15 health.',
+        
 
         spritesheet: AM.getAsset("./img/cards/heal-card.png")
     }, {
         name: 'fireball',
         type: 'damage',
-        value: 10,
+        value: 1000,
         width: 140,
         height: 183,
         mana: 1,
+        text: 'Deal 10 damage.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -92,6 +100,7 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
+        text: 'Deal 30 damage.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -104,6 +113,7 @@ function CardDataBase() {
         height: 183,
         mana: 1,
         duration: 1,
+        text: 'Stun all enemies for \none turn.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -116,7 +126,7 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
-
+        text: 'Gain 7 block.',
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/blink-card.png")
@@ -130,6 +140,7 @@ function CardDataBase() {
         height: 183,
         mana: 1,
         duration: 1,
+        text: 'Stun an enemy for \none turn.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -145,12 +156,16 @@ function CardDataBase() {
             spritesheet: AM.getAsset("./img/cards/conjure_refreshment-card.png"),
             width: 140,
             height: 140,
-            mana: 0
+            mana: 0,
+            text: 'Restore 7 health.',
+
         },
         value: 2,
         width: 140,
         height: 183,
         mana: 1,
+        text: 'Add two Biscuit cards to hand.',
+
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/conjure_refreshment-card.png")
@@ -164,6 +179,8 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
+        text: 'Gain Immunity for one turn.\n You are stunned for one turn.',
+
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -178,6 +195,7 @@ function CardDataBase() {
         height: 183,
         duration: 2,
         mana: 1,
+        text: 'If an enemy is buffing\n Stun them for two turns.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -191,6 +209,7 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 2,
+        text: 'Gain an extra turn.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -203,7 +222,8 @@ function CardDataBase() {
         value: 2,
         width: 140,
         height: 183,
-        mana: 2,
+        mana: 1,
+        text: 'Add two cards to your hand.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},

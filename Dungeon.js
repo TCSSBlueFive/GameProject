@@ -28,6 +28,8 @@ Dungeon.prototype.addBackMonsterRewards = function () {
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
   this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
   this.game.addEntity(this.currentMonsterRewards);
+  this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
+
   this.game.addEntity(this.banner);
 
   this.game.addEntity(this);
@@ -37,8 +39,11 @@ Dungeon.prototype.addBackMonsterRewards = function () {
 
 Dungeon.prototype.setCardSelection = function () {
   this.removeAllEntities();
+  this.state = 'card selection'
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
   this.game.addEntity(this.banner)
+  this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
+
   myCardSelection = new CardSelectionScene(this.game, this);
   myCardSelection.generateCards();
   this.game.addEntity(myCardSelection);  
@@ -47,6 +52,7 @@ Dungeon.prototype.setCardSelection = function () {
 }
 
 Dungeon.prototype.loadDungeon = function () {
+  this.game.entities.pop();
   var cards = new CardHand(this.game, this, this.PlayerCharacter, 1);
   cards.generateInitialHand();
 
@@ -57,6 +63,7 @@ Dungeon.prototype.loadDungeon = function () {
   var battle = new Battle(this.game, this.Enemies, this, this.PlayerCharacter, cards);
   this.myTravelScene = new TravelScene(this.game, this, 1);
   this.myTravelScene.generateBars();
+  this.game.addEntity(this);
   this.battle = battle;
   
 }
@@ -115,6 +122,23 @@ Dungeon.prototype.addNewEntitiesTravel = function() {
 
 
 Dungeon.prototype.addNewEntitiesReward = function() {
+  
+  this.removeAllEntities();
+  this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
+  console.log("transitioning to rewards")
+
+  
+  myRewards = new MonsterRewards(this.game, this, 1);
+  myRewards.generateRewardsEnemy();
+  this.currentMonsterRewards = myRewards; 
+  this.game.addEntity(this.banner);
+  this.game.addEntity(myRewards);
+  this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
+
+  this.game.addEntity(this);
+
+/*
   console.log("transitioning to rewards")
     opacity = .4;
     var entitiesCount = this.game.entities.length;
@@ -134,6 +158,7 @@ Dungeon.prototype.addNewEntitiesReward = function() {
   this.game.addEntity(myRewards);
   this.game.addEntity(this);
 
+  */
 }
 Dungeon.prototype.addNewEntitiesTreasure = function() {
   this.removeAllEntities();
@@ -142,14 +167,19 @@ Dungeon.prototype.addNewEntitiesTreasure = function() {
   this.game.addEntity(this.PlayerCharacter);
   this.PlayerCharacter.opacity = 1;
   this.game.addEntity(new TreasureChest(this.game, this, this.PlayerCharacter, AM.getAsset("./img/treasure_chest.png"), 1));
+  this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
   this.game.addEntity(this);
 
 }
 Dungeon.prototype.update = function () {
 
   if (!this.BattleOngoing && this.rewardScene) {
-    
-  this.addNewEntitiesReward();
+    this.state = 'rewards'
+
+    this.addNewEntitiesReward();
+    this.BattleOngoing = false;
+    this.battle.PlayerTurn = false;
+    this.rewardScene = false;
   } 
   if (!this.rewardScene && !this.BattleOngoing && this.travelScene) {
     console.log("transitioning to travel")
@@ -158,11 +188,6 @@ Dungeon.prototype.update = function () {
     this.travelScene = false;
   }
   if (this.roomSelected) {
-    /*
-    console.log(this.nextRoom);
-    console.log(this.rewardScene);
-    console.log(this.BattleOngoing);
-    console.log(this.travelScene);*/
     if (this.nextRoom === "setDungeonToEnemy") {
       this.addNewEntitiesBattle();
       console.log("init new enemy");
@@ -187,13 +212,10 @@ Dungeon.prototype.update = function () {
     this.roomSelected = false;
   }
   if (this.cardRewards === true) {
-    //this line of code is entered if a monster-rewards reward_node of type card is clicked to be added
-    //that reward_node sets the dungeon to have this value be true
     this.setCardSelection();
     this.cardRewards = false;
   }
   if (this.cardChosen === true) {
-    //this line of code is chosen after the player selects a card from the selection of rewards
     this.addBackMonsterRewards();
     this.cardChosen = false;
   }

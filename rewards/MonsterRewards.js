@@ -27,6 +27,7 @@ MonsterRewards.prototype.generateRewardsEnemy = function () {
     this.rewards[2] = new reward_node(this.game, this.rewardFromDatabase.rewards[0], this, this.x, this.y + (this.height * 2))
     this.rewards[3] = new reward_node(this.game, this.rewardFromDatabase.rewards[0], this, this.x, this.y + (this.height *3))
 
+    console.log(this.rewards[3])
 
 }
 
@@ -44,38 +45,19 @@ MonsterRewards.prototype.draw = function () {
     }
     
 };
+MonsterRewards.prototype.userChoseGold = function (num) {
+    this.dungeon.PlayerCharacter.gold += num;
+
+}
+MonsterRewards.prototype.userChoseCard = function () {
+    this.dungeon.cardRewards = true;
+
+}
 
 MonsterRewards.prototype.update = function () {    
     for (let i = 0; i < this.rewards.length; i++) {
         
         this.rewards[i].update();
-        if (this.action === 'addGoldToPlayer') {
-            console.log("goooold");
-            this.action = 'none';
-        } else if (this.action === 'addCardToDeck') {
-            console.log("caaaaard");
-            this.dungeon.cardRewards = true;
-            //remove monster rewards
-            //add card selection
-            //add back monster rewards
-            // i suppose
-            this.action = 'none';
-
-        }
-    } 
-    if (this.game.click) {
-        if((this.game.click['x'] > 1145 && this.game.click['x'] < 1330)
-        && (this.game.click['x'] > 520 && this.game.click['y'] < 607)) {
-            this.game.click = false;
-            this.dungeon.rewardScene = false;
-            this.dungeon.travelScene = true;
-
-            var entitiesCount = this.game.entities.length;
-                for (var i = 0; i < entitiesCount; i++) {
-                    var entity = this.game.entities[i];
-                    entity.opacity = 1;
-                }
-
-        }
     }
+
 };

@@ -24,12 +24,13 @@ TurnButton.prototype.update = function () {
 
         if (this.game.currentDungeon && this.game.currentDungeon.BattleOngoing && this.game.currentDungeon.battle.getPlayerTurn()) {
           this.game.currentDungeon.battle.endPlayerTurn();
+          this.cardHand.useAll();
+
           this.cardHand.generateNewHand();
           this.game.currentDungeon.battle.enemyMoves();
           this.game.currentDungeon.playCount = 0;
           this.game.currentDungeon.PlayerCharacter.Manabar.reset();
           this.game.currentDungeon.PlayerCharacter.block = 0;
-          this.cardHand.useAll();
 
       }
       this.game.click = false;
