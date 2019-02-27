@@ -113,7 +113,7 @@ function CardDataBase() {
         height: 183,
         mana: 1,
         duration: 1,
-        text: 'Stun all enemies for \none turn.',
+        text: 'Stun all enemies for \n1 turn.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -140,7 +140,7 @@ function CardDataBase() {
         height: 183,
         mana: 1,
         duration: 1,
-        text: 'Stun an enemy for \none turn.',
+        text: 'Stun an enemy for \n1 turn.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -164,7 +164,7 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
-        text: 'Add two Biscuit cards to hand.',
+        text: 'Add 2 Biscuit cards \nto hand.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -179,7 +179,7 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
-        text: 'Gain Immunity for one turn.\n You are stunned for one turn.',
+        text: 'Gain Immunity for \n1 turn. \nYou are stunned for \n1 turn.',
 
 
         // ability: function () {
@@ -195,7 +195,7 @@ function CardDataBase() {
         height: 183,
         duration: 2,
         mana: 1,
-        text: 'If an enemy is buffing\n Stun them for two turns.',
+        text: 'If an enemy is buffing\n Stun them for 2 turns.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -223,7 +223,7 @@ function CardDataBase() {
         width: 140,
         height: 183,
         mana: 1,
-        text: 'Add two cards to your hand.',
+        text: 'Add 2 cards to \nyour hand.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},

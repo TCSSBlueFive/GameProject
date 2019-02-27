@@ -18,3 +18,9 @@ TreasureScene.prototype.update = function () {
         this.dungeon.travelScene = true;
     }
 };
+
+TreasureScene.prototype.update = function() {
+    //draw proceed button
+    //drawtreasure chest
+   
+}

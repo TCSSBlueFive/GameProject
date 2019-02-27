@@ -32,7 +32,7 @@ travel_node.prototype.update = function () {
         && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
 
             
-            //if (this.position === this.travelScene.currentRoom) {
+            if (this.position === this.travelScene.currentRoom) {
                 this.dungeon.roomSelected = true;
                 this.dungeon.nextRoom = this.fn;
                 this.game.click = false;
@@ -40,7 +40,7 @@ travel_node.prototype.update = function () {
                 for(let i = 0; i < this.travelBar.travelnodes.length; i++) {
                     this.travelBar.travelnodes[i].opacity = 0;
                 }
-           // }
+            }
             
             
         }
