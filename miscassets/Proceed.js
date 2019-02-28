@@ -21,15 +21,17 @@ Proceed.prototype.update = function () {
   if (this.game.click) {
     if ((this.game.click['x'] > this.x + 15 && this.game.click['x'] < this.x + 170  )
     && (this.game.click['y'] > this.y + 50 && this.game.click['y'] < this.y + 120)) {
+    
         var userState = this.dungeon.state;
+        console.log(userState)
         if (userState === 'card selection') {
             this.dungeon.cardChosen = true;
             this.dungeon.state = 'rewards'
         } else if (userState === 'shop') {
             
         } else if (userState === 'rewards') {
-            this.dungeon.rewardScene = false;
-            this.dungeon.travelScene = true;
+            this.dungeon.state = 'travel';
+            this.dungeon.stateChanged = true;
         }
         this.game.click = false;
 

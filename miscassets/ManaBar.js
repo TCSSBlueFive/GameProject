@@ -6,8 +6,8 @@ function ManaBar(game, spritesheet, width, height, opacity) {
     this.game = game;
     this.ctx = game.ctx;
     this.mana = 3;
-    this.width = width;
-    this.height = height;
+    this.width = width + 30;
+    this.height = height + 30;
     this.manaPCNT = 1;
     this.maxMana = 3;
 };
@@ -25,7 +25,7 @@ ManaBar.prototype.enoughMana = function (someNum) {
 ManaBar.prototype.draw = function () {
     //border
     this.ctx.drawImage(this.spritesheet[0],
-    this.x, this.y);
+    this.x, this.y, this.width, this.height);
 
     //mana empty
     this.ctx.drawImage(this.spritesheet[1],
@@ -35,6 +35,18 @@ ManaBar.prototype.draw = function () {
     this.ctx.drawImage(this.spritesheet[2],
                    this.x, this.y, this.width, this.height);//,((this.mana/this.maxMana) * this.width), this.height);
     }
+
+    this.ctx.save();
+    this.ctx.font = "40px Impact";
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.fillText(this.mana , this.x + 20, this.y + 50 ); 
+    this.ctx.font = "70px Impact";
+
+    this.ctx.fillText('/', this.x + 35, this.y + 80 ); 
+    this.ctx.font = "40px Impact";
+    this.ctx.fillText(this.maxMana , this.x + 60, this.y + 90 ); 
+
+
 };
 
 ManaBar.prototype.reset = function () {

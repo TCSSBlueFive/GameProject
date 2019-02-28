@@ -20,7 +20,4 @@ TreasureScene.prototype.update = function () {
 };
 
 TreasureScene.prototype.update = function() {
-    //draw proceed button
-    //drawtreasure chest
-   
 }

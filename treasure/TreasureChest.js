@@ -8,11 +8,8 @@ function TreasureChest(game, dungeon, PlayerCharacter, spritesheet, opacity){
     this.PlayerCharacter = PlayerCharacter;
 
     this.spritesheet = spritesheet;
-
-    
     this.game = game;
     this.ctx = game.ctx;
-    //this.fn = fn; 
 };
 
 

@@ -27,7 +27,6 @@ TravelBar.prototype.generateNodes = function () {
 
      for (let i = 1; i <= myNum; i++) {
          var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
-         //var randomNum = getRandomInt(2);
          var newNodeInfo = this.NodeDataBase.nodes[randomNum]
          var newTravelNode = new travel_node(this.game, this.travelScene, this, this.dungeon, this.position, newNodeInfo.spritesheet, newNodeInfo.fn, this.x, this.y + (this.travelNodeHeight * i), newNodeInfo.opacity)
          this.travelnodes[i] = newTravelNode;

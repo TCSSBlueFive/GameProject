@@ -32,8 +32,8 @@ Battle.prototype.playerMove = function(card) {
             this.Enemy.takeDamage(card.value);
             if(!this.Enemy.isAlive()) {
                 this.isBattleOver = true;
-                this.dungeon.BattleOngoing = false;
-                this.dungeon.rewardScene = true;
+                this.dungeon.state = 'rewards'
+                this.dungeon.stateChanged = true;
             }
         } else if (card.type === 'heal') {
             if (this.PlayerCharacter.health + card.value < 100) {
@@ -56,21 +56,12 @@ Battle.prototype.playerMove = function(card) {
                 this.cardhand.drawCard();
             }
         }
-        // this.PlayerTurn === false;
     }
     this.cooldown = 1.5;
-
-   // console.log("Enemy Health: " + this.Enemies[0].health, "Player Health: " + this.PlayerCharacter.health);
-   // console.log("Enemy Health: " + this.Enemy.health, "Player Health: " + this.PlayerCharacter.health);
-
 }
 
 
 Battle.prototype.enemyMoves = function() {
-    console.log(this.Enemy.stunned)
-   // while (this.notOnCooldown() === false) {
-     //   console.log("weae")
-   // }
     if (!this.PlayerTurn && !this.isBattleOver &&this.Enemy.checkNotStunned()) {
         if( this.Enemy.isAlive()) {
             this.timeOfLastMove = this.game.timer.gameTime;
@@ -84,13 +75,10 @@ Battle.prototype.enemyMoves = function() {
                     this.dungeon.GameOver()
                 }
             }
-            // deal with buffs for enemies or blocks here
-
         }
     }
 
    this.PlayerTurn = true;
-//console.log("Enemy Health: " + this.Enemy.health, "Player Health: " + this.PlayerCharacter.health);
 }
 
 Battle.prototype.endPlayerTurn = function() {

@@ -1,4 +1,3 @@
-// no inheritance
 function Card(game, dungeon, cardHand, card, x, y, opacity) {
     this.game = game;
     this.dungeon = dungeon;
@@ -62,7 +61,7 @@ Card.prototype.update = function () {
                 }      
             }
 
-            if (!this.dungeon.BattleOngoing) {
+            if (this.dungeon.state ==='rewards') {
                 this.cardHand.useAll();
                 this.cardHand.reshuffle();
             }

@@ -11,13 +11,12 @@ function card_reward(game, dungeon, cardFromDatabase, x, y){
     this.ctx = game.ctx;
     this.dungeon = dungeon;
     this.name = cardFromDatabase.name;
+    
     this.nameXOffset = 35;
     this.nameYOffset = 27;
     this.textXOffset = 25;
     this.textYOffset = 120;
     this.text = cardFromDatabase.text;
-    //this.cardX = cardFromDatabase.x
-    //this.cardY = cardFromDatabase.y
 };
 
  

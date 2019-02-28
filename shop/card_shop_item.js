@@ -21,8 +21,6 @@ function card_shop_item(game, dungeon, shop, goldcost, cardFromDatabase, x, y){
     this.goldXOffset = 20;
     this.goldYOffset = 200;
     this.text = cardFromDatabase.text;
-    //this.cardX = cardFromDatabase.x
-    //this.cardY = cardFromDatabase.y
 };
 
  

@@ -51,6 +51,7 @@ Enemy.prototype.takeDamage = function (attackDamage) {
 Enemy.prototype.update = function () {
     this.HPBar.update(this.health);
     //needs to be added
+    //what attacks it decides to prep may depend on its health.
 }
 Enemy.prototype.checkNotStunned = function() {
     if (this.stunned === false) {

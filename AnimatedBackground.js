@@ -15,9 +15,6 @@ function AnimatedBackground(game, spritesheet, staticsprite, opacity, x, y, spee
 };
 
 AnimatedBackground.prototype.draw = function () {
-    //this.animation.drawFrame(this.game.clockTick, this.ctx, this.x, this.y);
-    //this.animation.drawFrame(this.game.clockTick, this.ctx, this.x + this.width, this.y);
-    
     this.ctx.drawImage(this.spritesheet,
                    this.x, this.y);
     this.ctx.drawImage(this.spritesheet,

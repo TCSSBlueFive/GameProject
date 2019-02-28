@@ -37,13 +37,6 @@ TravelScene.prototype.generateBars = function () {
         newBar2.generateNodes();
         this.travelbars[j] = newBar2;
      }
-                                //game,      sprite,                                       x,   y
-     //let newBigBar2 = new BigBar(this.game, this.noteDataBase.bigNodes[0], 1081, this.bigBarY, 1);
-     //this.travelbars[11] = newBigBar2;
-
-
-    // let BigBar = new BigBar(this.game, 1081, this.bigBarY, 1);
-
 }
 
 TravelScene.prototype.draw = function () {

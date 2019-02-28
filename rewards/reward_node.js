@@ -30,9 +30,7 @@ reward_node.prototype.draw = function () {
     this.ctx.fillStyle = "#ffffff";
 
     this.ctx.fillText((this.text), this.x + 50, this.y + this.yOffset); 
-    
-    
-    //this.ctx.restore();
+    this.ctx.restore();
         
 };
 

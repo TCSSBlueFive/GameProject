@@ -15,7 +15,7 @@ TopBanner.prototype.draw = function () {
                    this.x, this.y);
     this.ctx.save();
     this.ctx.font = "30px Impact";
-    this.ctx.fillStyle = "#ffffff";
+    this.ctx.fillStyle = "#00ff00";
     this.ctx.fillText("Health: " + this.game.currentDungeon.PlayerCharacter.health, 10, 30); 
     this.ctx.fillText("Class: " + this.game.currentDungeon.PlayerCharacter.class, 10, 80); 
     
@@ -27,7 +27,6 @@ TopBanner.prototype.draw = function () {
     this.ctx.fillText("Time Spent " + Math.round(hour) + ':' + displayedMinutes + '.' + Math.round(seconds), 300, 30); 
     this.ctx.fillText("Gold " + this.game.currentDungeon.PlayerCharacter.gold, 300, 80); 
 
-    //this.ctx.fillText(this.game.currentDungeon.PlayerCharacter.health, 160, 30)
     this.ctx.restore();
 };
 

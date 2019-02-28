@@ -16,6 +16,13 @@ HealthBar.prototype.draw = function () {
         this.x, this.y, this.width, this.height);
     this.ctx.drawImage(this.spritesheet2,
                    this.x, this.y, ((this.health/this.maxHealth)* this.width), this.height);
+
+    
+    this.ctx.save();
+    this.ctx.font = "15px Impact";
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.fillText(this.health + " / " + this.maxHealth , this.x + 35, this.y + 13 ); 
+    this.ctx.restore();
 };
 
 HealthBar.prototype.update = function (health) {

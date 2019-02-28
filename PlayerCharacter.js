@@ -73,8 +73,6 @@ PlayerCharacter.prototype.draw = function () {
 PlayerCharacter.prototype.takeDamage = function (attackDamage) {
     console.log()
     this.action = 'walking-left';
-    //10 attack
-    //7 block
     const num = this.block;
     this.block -= attackDamage;
 

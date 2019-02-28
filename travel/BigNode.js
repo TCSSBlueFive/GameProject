@@ -33,8 +33,6 @@ BigNode.prototype.update = function () {
                 this.dungeon.roomSelected = true;
                 this.dungeon.nextRoom = this.fn;
                 this.game.click = false;
-                console.log(this.position);
-                console.log(this.travelScene.currentRoom);
                 this.travelScene.currentRoom += 1;
                 this.opacity = 0;
             }

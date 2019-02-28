@@ -29,12 +29,8 @@ Dungeon.prototype.addBackMonsterRewards = function () {
   this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
   this.game.addEntity(this.currentMonsterRewards);
   this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
-
   this.game.addEntity(this.banner);
-
   this.game.addEntity(this);
-  //add back the same monster rewards
-  //maybe everything else 2
 }
 
 Dungeon.prototype.setCardSelection = function () {
@@ -43,7 +39,6 @@ Dungeon.prototype.setCardSelection = function () {
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
   this.game.addEntity(this.banner)
   this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
-
   myCardSelection = new CardSelectionScene(this.game, this);
   myCardSelection.generateCards();
   this.game.addEntity(myCardSelection);  
@@ -71,7 +66,6 @@ Dungeon.prototype.loadDungeon = function () {
 Dungeon.prototype.transitionToTravelScene = function () {
   this.removeAllEntities();
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
-
   this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground.png"), 1))
   this.banner.opacity = 1;
   this.game.addEntity(this.banner);
@@ -114,12 +108,6 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
 
 }
 
-//once a travel starts, add travel entities
-Dungeon.prototype.addNewEntitiesTravel = function() {
-
-}
-
-
 Dungeon.prototype.addNewEntitiesReward = function() {
   
   this.removeAllEntities();
@@ -161,6 +149,7 @@ Dungeon.prototype.addNewEntitiesReward = function() {
 }
 Dungeon.prototype.addNewEntitiesTreasure = function() {
   this.removeAllEntities();
+  this.state = 'rewards';
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"),AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
   this.game.addEntity(this.banner);
   this.game.addEntity(this.PlayerCharacter);
@@ -183,22 +172,18 @@ Dungeon.prototype.addNewEntitiesShop= function () {
   this.game.addEntity(this);
 
 }
-Dungeon.prototype.update = function () {this.isBattleOver = true;
-
-
-  if (!this.BattleOngoing && this.rewardScene) {
-    this.state = 'rewards'
-
+Dungeon.prototype.update = function () 
+{
+  if (this.state === 'rewards' && this.stateChanged) {
     this.addNewEntitiesReward();
     this.BattleOngoing = false;
     this.battle.PlayerTurn = false;
-    this.rewardScene = false;
+    this.stateChanged = false;
   } 
-  if (!this.rewardScene && !this.BattleOngoing && this.travelScene) {
+  if (this.state === 'travel' && this.stateChanged) {
     console.log("transitioning to travel")
-
     this.transitionToTravelScene();
-    this.travelScene = false;
+    this.stateChanged = false;
   }
   if (this.roomSelected) {
     if (this.nextRoom === "setDungeonToEnemy") {
@@ -239,5 +224,4 @@ Dungeon.prototype.GameOver = function () {
 }
 
 Dungeon.prototype.draw = function () {
-  //scene manager does not need to be drawn
 }
