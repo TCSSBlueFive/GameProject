@@ -113,7 +113,6 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
  
 
 }
-Dungeon.prototype.setNew
 
 //once a travel starts, add travel entities
 Dungeon.prototype.addNewEntitiesTravel = function() {
@@ -171,7 +170,21 @@ Dungeon.prototype.addNewEntitiesTreasure = function() {
   this.game.addEntity(this);
 
 }
-Dungeon.prototype.update = function () {
+
+
+Dungeon.prototype.addNewEntitiesShop= function () {
+  this.removeAllEntities();
+  myShop = new shop_scene(this.game, AM.getAsset("./img/shop/shop_background.png"), this, 1 );
+  this.game.addEntity(myShop);
+  myShop.generateShopCards();
+
+  this.game.addEntity(this.banner);
+
+  this.game.addEntity(this);
+
+}
+Dungeon.prototype.update = function () {this.isBattleOver = true;
+
 
   if (!this.BattleOngoing && this.rewardScene) {
     this.state = 'rewards'
@@ -193,7 +206,7 @@ Dungeon.prototype.update = function () {
       console.log("init new enemy");
 
     } else if (this.nextRoom === "setDungeonToShop") {
-      //this.addNewEntitiesShop();
+      this.addNewEntitiesShop();
       console.log("init new shop");
     } else if (this.nextRoom === "setDungeonToTreasure") {
       this.addNewEntitiesTreasure();

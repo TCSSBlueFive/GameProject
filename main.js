@@ -25,6 +25,11 @@ AM.queueDownload("./img/cards/counterspell-card.png");
 AM.queueDownload("./img/cards/polymorph-card.png");
 
 
+AM.queueDownload("./img/shop/shop.png");
+AM.queueDownload("./img/shop/shop_test.png");
+AM.queueDownload("./img/shop/shop_background.png")
+
+
 AM.queueDownload("./img/idle blink.png");
 AM.queueDownload("./img/player/16_omnimagesheet.png");
 AM.queueDownload("./img/player/attack.png");
