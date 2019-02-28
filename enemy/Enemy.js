@@ -29,6 +29,7 @@ function Enemy(game, EnemyFromDatabase, opacity) {
     this.yIndex = EnemyFromDatabase.yIndex;
     this.game = game;
     this.ctx = game.ctx;
+    this.damage_taken_array = [];
 }
 
 Enemy.prototype.attackPlayer = function () {
@@ -42,6 +43,8 @@ Enemy.prototype.attackPlayer = function () {
 Enemy.prototype.takeDamage = function (attackDamage) {
     this.action = 'taking-damage'
     this.health -= attackDamage;
+    this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,attackDamage, this.x - 90, this.y));
+
     this.HPBar.health -= attackDamage;
     if (this.HPBar.health <0) {
         this.HPBar.health = 0;
@@ -78,6 +81,11 @@ Enemy.prototype.isAlive = function () {
 }
 
 Enemy.prototype.draw = function () {
+    if (this.damage_taken_array.length > 0) {
+        for (let i = 0; i < this.damage_taken_array.length; i++) {
+            this.damage_taken_array[i].draw();
+        }
+    }
     this.HPBar.draw();
     if (this.action === 'attack') {
         this.attackingAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, this.yIndexAttack);

@@ -13,25 +13,27 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.CardBase = new CardDataBase(this.game);
     this.DeckList = [...this.CardBase.cards];
     this.class = 'Omnimage'
-
     this.HPBar = HPBar;
     this.Manabar = Manabar;
-    
     this.x = 250;
     this.y = 360;
-
     this.HPBar.x = this.x - 20;
     this.HPBar.y = this.y - 20;
-
     this.gold = 0;
     this.health = 100;
     this.attack = 30;
     this.block = 0;
-
     this.speed = 0;
     this.game = game;
     this.battle = game.battle;
     this.ctx = game.ctx;
+    this.value = 90;
+    this.xOffset = 0;
+    this.yOffset = 0;
+
+    //an array for damage taken sources so that multiple damage text
+    //will show.
+    this.damage_taken_array = [];
 }
 
 PlayerCharacter.prototype.playCard = function() {
@@ -45,6 +47,12 @@ PlayerCharacter.prototype.update = function () {
 }
 
 PlayerCharacter.prototype.draw = function () {
+
+    if (this.damage_taken_array.length > 0) {
+        for (let i = 0; i < this.damage_taken_array.length; i++) {
+            this.damage_taken_array[i].draw();
+        }
+    }
     this.HPBar.draw();
     this.Manabar.draw();
     if (this.action === 'attack') {
@@ -68,6 +76,7 @@ PlayerCharacter.prototype.draw = function () {
     } else {
         this.idleAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 1.72);
     }
+
 }
 
 PlayerCharacter.prototype.takeDamage = function (attackDamage) {
@@ -75,8 +84,8 @@ PlayerCharacter.prototype.takeDamage = function (attackDamage) {
     this.action = 'walking-left';
     const num = this.block;
     this.block -= attackDamage;
-
     attackDamage -= num;
+    this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,attackDamage, this.x + 90, this.y));
 
     if (this.block < 0) {
         this.block = 0
