@@ -170,10 +170,20 @@ Dungeon.prototype.addNewEntitiesShop= function () {
   this.game.addEntity(this.banner);
 
   this.game.addEntity(this);
-
 }
+
+
 Dungeon.prototype.update = function () 
 {
+
+  if (this.state === 'battle_finished' && this.stateChanged) {
+    this.game.entities.pop();
+    this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
+    this.BattleOngoing = false;
+    this.battle.PlayerTurn = false;
+    this.game.addEntity(this);
+    this.stateChanged = false;
+  }
   if (this.state === 'rewards' && this.stateChanged) {
     this.addNewEntitiesReward();
     this.BattleOngoing = false;

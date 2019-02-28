@@ -43,7 +43,7 @@ PlayerCharacter.prototype.playCard = function() {
 }
 
 PlayerCharacter.prototype.update = function () {
-
+    this.HPBar.update(this.health)
 }
 
 PlayerCharacter.prototype.draw = function () {
@@ -85,7 +85,7 @@ PlayerCharacter.prototype.takeDamage = function (attackDamage) {
     const num = this.block;
     this.block -= attackDamage;
     attackDamage -= num;
-    this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,attackDamage, this.x + 90, this.y));
+    this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,attackDamage, 'damage',this.x + 90, this.y));
 
     if (this.block < 0) {
         this.block = 0
@@ -94,15 +94,15 @@ PlayerCharacter.prototype.takeDamage = function (attackDamage) {
         attackDamage = 0
     }
     this.health -= attackDamage;
-    this.HPBar.health -= attackDamage;
-    if (this.HPBar.health < 0) {
-        this.HPBar.health = 0;
+    if (this.health < 0) {
+        this.health = 0;
     }
+
 }
 
 PlayerCharacter.prototype.heal = function (healthPoints) {
+    this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,healthPoints, 'heal',this.x + 90, this.y));
     this.health += healthPoints;
-    this.HPBar.health += healthPoints;
 }
 
 PlayerCharacter.prototype.died = function() {

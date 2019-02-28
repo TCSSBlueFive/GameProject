@@ -32,6 +32,9 @@ Proceed.prototype.update = function () {
         } else if (userState === 'rewards') {
             this.dungeon.state = 'travel';
             this.dungeon.stateChanged = true;
+        } else if (userState === 'battle_finished') {
+          this.dungeon.state = 'rewards';
+          this.dungeon.stateChanged = true;
         }
         this.game.click = false;
 
