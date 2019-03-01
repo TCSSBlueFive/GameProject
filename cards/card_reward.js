@@ -2,8 +2,8 @@ function card_reward(game, dungeon, cardFromDatabase, x, y){
     
     this.x = x;
     this.y = y;
-    this.width = cardFromDatabase.width 
-    this.height = cardFromDatabase.height
+    //this.width = cardFromDatabase.width 
+    //this.height = cardFromDatabase.height
     this.opacity = 1;
     this.spritesheet = cardFromDatabase.spritesheet;
     this.cardFromDatabase = cardFromDatabase;
@@ -11,11 +11,12 @@ function card_reward(game, dungeon, cardFromDatabase, x, y){
     this.ctx = game.ctx;
     this.dungeon = dungeon;
     this.name = cardFromDatabase.name;
-    
-    this.nameXOffset = 35;
-    this.nameYOffset = 27;
-    this.textXOffset = 25;
-    this.textYOffset = 120;
+    this.width = 250;
+    this.height = 327;
+    this.nameXOffset = 60;
+    this.nameYOffset = 43;
+    this.textXOffset = 45;
+    this.textYOffset = 220;
     this.text = cardFromDatabase.text;
 };
 
@@ -23,20 +24,20 @@ function card_reward(game, dungeon, cardFromDatabase, x, y){
 
 card_reward.prototype.draw = function () {
     //image
-    this.ctx.drawImage(this.spritesheet, this.x, this.y);
+    this.ctx.drawImage(this.spritesheet, this.x, this.y, this.width, this.height);
 
     //name
     this.ctx.save();
-    this.ctx.font = "15px Impact";
-    this.ctx.fillStyle = "#ffffff";
+    this.ctx.font = "20px Arial";
+    this.ctx.fillStyle = "#000000";
     this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
 
     //card text effect
-    this.ctx.font = "10px Arial";
-    this.ctx.fillStyle = "#ffffff";
+    this.ctx.font = "20px Arial";
+    this.ctx.fillStyle = "#ffff00";
     var x = 30;
     var y = 30;
-    var lineheight = 10;
+    var lineheight = 20;
     var lines = this.text.split('\n');
 
     for (var i = 0; i<lines.length; i++)

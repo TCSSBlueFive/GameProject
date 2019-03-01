@@ -10,9 +10,12 @@ function CardSelectionScene(game, dungeon){
     this.game = game;
     this.ctx = game.ctx;
     this.CardDataBase = new CardDataBase();
-    this.x = 450;
-    this.y = 300
+    this.x = 800;
+    this.y = 450
     this.opacity = 1;
+    this.width = 250;
+    this.height = 327;
+
     
     this.buffer = 50
 };
@@ -24,7 +27,7 @@ CardSelectionScene.prototype.generateCards = function () {
     for (let i = 0; i < 3; i++) {
         var myNum = getRandomInt(this.CardDataBase.cards_rewards.length);
         newCard = this.CardDataBase.cards_rewards[myNum]
-        this.cards[i] = new card_reward(this.game, this.dungeon,newCard , this.x + (i * newCard.width) + ( i * this.buffer), this.y);
+        this.cards[i] = new card_reward(this.game, this.dungeon,newCard , this.x + (i * this.width) + ( i * this.buffer), this.y);
     }
 }
 

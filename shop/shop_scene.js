@@ -5,8 +5,8 @@ function shop_scene(game, spritesheet, dungeon, opacity){
     this.dungeon = dungeon;
     this.x = 20;
     this.y = 200;
-    this.width = 350;
-    this.height = 110;
+    this.width = 250;
+    this.height = 327;
     this.shop_cards = [];
     this.spritesheet = spritesheet;
     this.opacity = opacity;
@@ -29,7 +29,7 @@ shop_scene.prototype.createAndAddCard = function (i) {
 
     var goldCost = getRandomInt(50) + 50;
     console.log(newCard);
-    this.shop_cards[i] = new card_shop_item(this.game, this.dungeon, this, goldCost, newCard , this.x + (i * newCard.width) + ( i * this.buffer), this.y);
+    this.shop_cards[i] = new card_shop_item(this.game, this.dungeon, this, goldCost, newCard , this.x + (i * this.width) + ( i * this.buffer), this.y);
 }
 
 shop_scene.prototype.generateShopCards = function () {
