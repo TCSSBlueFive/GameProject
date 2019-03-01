@@ -49,8 +49,13 @@ Dungeon.prototype.setCardSelection = function () {
 Dungeon.prototype.loadDungeon = function () {
   this.game.entities.pop();
   var cards = new CardHand(this.game, this, this.PlayerCharacter, 1);
+
+  
   cards.generateInitialHand();
 
+  var my_viewer = new deck_viewer(this.game, 'nullatm', this, cards, 'fullDeck');
+  this.game.addEntity(my_viewer);
+  
   var turnButton = new TurnButton(this.game, cards, AM.getAsset("./img/end-turn-button.png"), 1);
   this.turnButton = turnButton;
   this.game.addEntity(cards);

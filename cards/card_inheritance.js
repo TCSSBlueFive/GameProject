@@ -11,6 +11,7 @@ function card_inheritance(game, dungeon, card, x, y) {
     this.height = card.height;
     this.ctx = game.ctx;
 
+    this.card = card;
     this.name = card.name;
     this.nameXOffset = this.width * .25;
     this.nameYOffset = this.height * .13;
@@ -26,7 +27,7 @@ card_inheritance.prototype.draw = function () {
     //name
     this.ctx.save();
     this.ctx.font = "20px Arial";
-    this.ctx.fillStyle = "#000000";
+    this.ctx.fillStyle = "#f0ff0f";
     this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
 
     //card text effect
