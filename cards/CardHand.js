@@ -1,9 +1,7 @@
 function CardHand(game, dungeon, PlayerCharacter, opacity){
     this.x = 425;// each card will be 75 units wide for now
     this.y = 850;
-    this.width = 250; //card width
     this.dungeon = dungeon;
-    this.height = 327; //card height
     this.opacity = opacity;
     this.currentCardDraw = 5;
     this.cardsInHand = [];
@@ -12,7 +10,6 @@ function CardHand(game, dungeon, PlayerCharacter, opacity){
     this.DeckListCardsRemaining = this.PlayerCharacter.DeckList;
     this.DeckListCardsUsed = [];
 
-    
     this.game = game;
     this.ctx = game.ctx;
     //this.fn = fn; 
@@ -48,10 +45,9 @@ CardHand.prototype.generateInitialHand = function () {
 
     for(let i = 0; i < this.currentCardDraw; i++) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
-        var cardChosen = this.DeckListCardsRemaining[myNum];
-        var newCard = new Card(this.game, this.dungeon, this, cardChosen, this.x + (this.width * i), this.y, this.width, this.height, this.opacity)
-
-        var index = this.DeckListCardsRemaining.indexOf(cardChosen);
+        var card = this.DeckListCardsRemaining[myNum];
+        var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * i), this.y, card.width, this.height, this.opacity)
+        var index = this.DeckListCardsRemaining.indexOf(card);
         if (index > -1) {
             this.DeckListCardsRemaining.splice(index, 1);
             //this.DeckListCardsUsed.push(newCard);
@@ -80,10 +76,10 @@ CardHand.prototype.generateNewHand = function () {
         }
         
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
-        var cardChosen = this.DeckListCardsRemaining[myNum];
-        var newCard = new Card(this.game, this.dungeon, this, cardChosen, this.x + (this.width * i), this.y, this.width, this.height,  this.opacity)
+        var card = this.DeckListCardsRemaining[myNum];
+        var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * i), this.y, card.width, card.height,  this.opacity)
 
-        var index = this.DeckListCardsRemaining.indexOf(cardChosen);
+        var index = this.DeckListCardsRemaining.indexOf(card);
         if (index > -1) {
             this.DeckListCardsRemaining.splice(index, 1);
         }
@@ -104,9 +100,9 @@ CardHand.prototype.drawCard = function () {
     }
     if (this.DeckListCardsRemaining.length != 0) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
-        var cardChosen = this.DeckListCardsRemaining[myNum];
-        var newCard = new Card(this.game, this.dungeon, this, cardChosen, this.x, this.y, this.width, this.height,  this.opacity)
-        var index = this.DeckListCardsRemaining.indexOf(cardChosen);
+        var card = this.DeckListCardsRemaining[myNum];
+        var newCard = new Card(this.game, this.dungeon, this, card, this.x, this.y, card.width, card.height,  this.opacity)
+        var index = this.DeckListCardsRemaining.indexOf(card);
         if (index > -1) {
             this.DeckListCardsRemaining.splice(index, 1);
         }
@@ -118,7 +114,7 @@ CardHand.prototype.drawCard = function () {
 
 CardHand.prototype.addCard = function (card) {
     console.log(card)
-    var newCard = new Card(this.game, this.dungeon, this, card, this.x + (this.width * this.cardsInHand.length), this.y, this.width, this.height,  this.opacity)
+    var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * this.cardsInHand.length), this.y, card.width, card.height,  this.opacity)
     this.cardsInHand.push(newCard);
 }
 
@@ -130,7 +126,7 @@ CardHand.prototype.draw = function () {
 };
 CardHand.prototype.normalize = function () {
     for (let i = 0; i < this.cardsInHand.length; i++) {
-        this.cardsInHand[i].x = this.x + (this.width * i);
+        this.cardsInHand[i].x = this.x + (this.cardsInHand[i].width * i);
     }
 }
 CardHand.prototype.update = function () {

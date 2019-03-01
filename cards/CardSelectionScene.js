@@ -13,8 +13,8 @@ function CardSelectionScene(game, dungeon){
     this.x = 800;
     this.y = 450
     this.opacity = 1;
-    this.width = 250;
-    this.height = 327;
+    this.width = this.CardDataBase.width;
+    this.height = this.CardDataBase.height;
 
     
     this.buffer = 50

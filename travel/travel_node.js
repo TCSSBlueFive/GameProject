@@ -13,6 +13,7 @@ function travel_node(game, travelScene, travelBar, dungeon, position, spriteshee
     this.travelBar = travelBar;
     this.dungeon = dungeon;
     this.travelScene = travelScene;
+    this.linked = false;
 
 };
 
