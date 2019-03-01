@@ -1,22 +1,23 @@
 // no inheritance
-/*outdated code used for travel
-function BigNode(game, travelScene, dungeon, position, spritesheet, fn, x, y, opacity) {
+function travel_node2(game, travelScene, dungeon, position, spritesheet, fn, x, y) {
     this.x = x;
     this.y = y;
-    this.opacity = opacity;
+    this.opacity = 1;
     this.spritesheet = spritesheet;
     this.game = game;
     this.fn = fn;
     this.ctx = game.ctx;
     this.position = position;
-    this.width = 170;
-    this.height = 175;;
+    this.width = 89;
+    this.height = 118;
     this.dungeon = dungeon;
     this.travelScene = travelScene;
+    this.linked = [];
+
 
 };
 
-BigNode.prototype.draw = function () {
+travel_node2.prototype.draw = function () {
 
     this.ctx.save();
     this.ctx.globalAlpha = this.opacity;
@@ -26,19 +27,15 @@ BigNode.prototype.draw = function () {
 
 };
 
-BigNode.prototype.update = function () {
+travel_node2.prototype.update = function () {
     if (this.game.click) {
         if((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width  )
         && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
-            if (this.position === this.travelScene.currentRoom) {
-                this.dungeon.roomSelected = true;
-                this.dungeon.nextRoom = this.fn;
-                this.game.click = false;
-                this.travelScene.currentRoom += 1;
-                this.opacity = 0;
-            }
             
-            
+            this.dungeon.roomSelected = true;
+            this.dungeon.nextRoom = this.fn;
+            this.game.click = false;
+            //this.travelScene.currentRoom += 1;
         }
     }
-};*/
+};

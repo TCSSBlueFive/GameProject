@@ -12,15 +12,15 @@ function RewardDatabase(){
         spritesheet: AM.getAsset("./img/reward/gold.png"),
         fn: "addGoldToPlayer",
         opacity: 1,
-        width: 350,
-        height: 110,
+        width: 620,
+        height: 195
     }, {
         name: 'card',
         spritesheet: AM.getAsset("./img/reward/addCardToDeck.png"),
         fn: "addCardToDeck",
         opacity: 1,
-        width: 350,
-        height: 110,
+        width: 620,
+        height: 195,
         text: "Add Card to Deck"
     }, {
         name: 'item',
@@ -28,8 +28,8 @@ function RewardDatabase(){
         spritesheet: AM.getAsset("./img/reward/addItemToPlayer.png"),
         fn: "addItemToPlayer",
         opacity: 1,
-        width: 350,
-        height: 110,
+        width: 620,
+        height: 195,
         text: "Add random item"
 
     }]

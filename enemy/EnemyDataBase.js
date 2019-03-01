@@ -6,10 +6,10 @@ function EnemyDataBase(game, spritesheet) {
     [{
         health: 100,
         name: 'slime',
-        x: 1000,
-        y: 400,
-        hpx: 1000,
-        hpy:400,
+        x: 1600, //1000
+        y: 650,  //400
+        hpx: 1600,
+        hpy: 600,
         attacks: {
             type: 'damage',
             value: 10

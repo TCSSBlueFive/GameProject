@@ -1,6 +1,6 @@
 function Proceed(game, spritesheet, dungeon) {
-  this.x = 1170;
-  this.y = 535;
+  this.x = 2100;
+  this.y = 935;
   this.dimensions = 125;
   this.opacity = 1;
   this.spritesheet = spritesheet;
@@ -28,13 +28,14 @@ Proceed.prototype.update = function () {
             this.dungeon.cardChosen = true;
             this.dungeon.state = 'rewards'
         } else if (userState === 'shop') {
-            
+            this.dungeon.state = 'travel'
+            this.dungeon.stateChanged = true;
         } else if (userState === 'rewards') {
             this.dungeon.state = 'travel';
             this.dungeon.stateChanged = true;
         } else if (userState === 'battle_finished') {
-          this.dungeon.state = 'rewards';
-          this.dungeon.stateChanged = true;
+            this.dungeon.state = 'rewards';
+            this.dungeon.stateChanged = true;
         }
         this.game.click = false;
 

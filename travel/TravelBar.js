@@ -1,3 +1,5 @@
+
+/* outdated code for doing travel
 var AM = new AssetManager();
 
 
@@ -30,7 +32,6 @@ TravelBar.prototype.generateNodes = function () {
          var newNodeInfo = this.NodeDataBase.nodes[randomNum]
          var newTravelNode = new travel_node(this.game, this.travelScene, this, this.dungeon, this.position, newNodeInfo.spritesheet, newNodeInfo.fn, this.x, this.y + (this.travelNodeHeight * i), newNodeInfo.opacity)
          this.travelnodes[i] = newTravelNode;
-        
      }
 }
 
@@ -46,3 +47,4 @@ TravelBar.prototype.update = function () {
     }
     
 };
+*/

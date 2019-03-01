@@ -56,8 +56,16 @@ Dungeon.prototype.loadDungeon = function () {
   this.game.addEntity(cards);
   this.game.addEntity(turnButton);
   var battle = new Battle(this.game, this.Enemies, this, this.PlayerCharacter, cards);
-  this.myTravelScene = new TravelScene(this.game, this, 1);
-  this.myTravelScene.generateBars();
+  //this.myTravelScene = new TravelScene(this.game, this, 1);
+  this.myTravelScene = new TravelScene2(this.game, this, 1);
+
+  this.myTravelScene.generatePaths();
+  this.myTravelScene.generateEncounters();
+  this.myTravelScene.connectPaths();
+  this.myTravelScene.test();
+
+
+  //this.myTravelScene.generateBars();
   this.game.addEntity(this);
   this.battle = battle;
   
@@ -66,7 +74,7 @@ Dungeon.prototype.loadDungeon = function () {
 Dungeon.prototype.transitionToTravelScene = function () {
   this.removeAllEntities();
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
-  this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground.png"), 1))
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground2.png"), 1))
   this.banner.opacity = 1;
   this.game.addEntity(this.banner);
   this.game.addEntity(this.myTravelScene);
@@ -166,9 +174,8 @@ Dungeon.prototype.addNewEntitiesShop= function () {
   myShop = new shop_scene(this.game, AM.getAsset("./img/shop/shop_background.png"), this, 1 );
   this.game.addEntity(myShop);
   myShop.generateShopCards();
-
+  this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
   this.game.addEntity(this.banner);
-
   this.game.addEntity(this);
 }
 
@@ -203,6 +210,7 @@ Dungeon.prototype.update = function ()
     } else if (this.nextRoom === "setDungeonToShop") {
       this.addNewEntitiesShop();
       console.log("init new shop");
+      this.state = 'shop';
     } else if (this.nextRoom === "setDungeonToTreasure") {
       this.addNewEntitiesTreasure();
       console.log("init new treasure");

@@ -1,7 +1,7 @@
 function TurnButton(game, cardHand, spritesheet, opacity) {
-  this.x = 1250;
-  this.y = 400;
-  this.dimensions = 125;
+  this.x = 1850;
+  this.y = 600;
+  this.dimensions = 200;
   this.opacity = opacity;
   this.spritesheet = spritesheet;
   this.game = game;
@@ -13,7 +13,7 @@ function TurnButton(game, cardHand, spritesheet, opacity) {
 
 TurnButton.prototype.draw = function () {
   this.ctx.drawImage(this.spritesheet,
-                 this.x, this.y);
+                 this.x, this.y, this.dimensions, this.dimensions);
 };
 
 TurnButton.prototype.update = function () {

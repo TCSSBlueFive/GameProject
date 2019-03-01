@@ -14,8 +14,8 @@ function reward_node(game, rewardFromDatabase, MonsterRewards, x, y){
     this.fn = rewardFromDatabase.fn;
     this.ctx = game.ctx;
     this.value = rewardFromDatabase.value
-    this.yOffset = 75;
-    this.xOffset = 50;
+    this.yOffset = 125;
+    this.xOffset = 100;
 };
 
  
@@ -24,12 +24,12 @@ reward_node.prototype.draw = function () {
     this.ctx.drawImage(this.spritesheet, this.x, this.y);
 
     this.ctx.save();
-    this.ctx.font = "30px Impact";
+    this.ctx.font = "50px Impact";
     this.ctx.textAlign = "start";
     this.ctx.textBaseline = "bottom";
     this.ctx.fillStyle = "#ffffff";
 
-    this.ctx.fillText((this.text), this.x + 50, this.y + this.yOffset); 
+    this.ctx.fillText((this.text), this.x + this.xOffset, this.y + this.yOffset); 
     this.ctx.restore();
         
 };

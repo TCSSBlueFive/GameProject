@@ -5,7 +5,6 @@ function TopBanner(game, spritesheet, opacity) {
     this.spritesheet = spritesheet;
     this.game = game;
     this.ctx = game.ctx;
-    this.game.timer.gameTime += 3650;
 
 };
 

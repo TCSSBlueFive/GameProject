@@ -4,18 +4,30 @@ function CardDataBase() {
     //initial deck
     this.cards = [
     {
-        name: 'heal',
-        type: 'heal',
-        value: 15,
+        name: 'Conjure Refreshment',
+        type: 'card add',
+        cardToAdd: {
+            name: 'Biscuit',
+            type: 'heal',
+            value: 7,
+            spritesheet: AM.getAsset("./img/cards/conjure_refreshment-card.png"),
+            width: 140,
+            height: 140,
+            mana: 0,
+            text: 'Restore 7 health.',
+
+        },
+        value: 2,
         width: 140,
         height: 183,
         mana: 1,
-        text: 'Restore 15 health.',
-        
+        text: 'Add 2 Biscuit cards \nto hand.',
 
-        spritesheet: AM.getAsset("./img/cards/heal-card.png")
+        // ability: function () {
+        // game.battle.PlayerCharacter.health -= 20},
+        spritesheet: AM.getAsset("./img/cards/conjure_refreshment-card.png")
     }, {
-        name: 'fireball',
+        name: 'Fireball',
         type: 'damage',
         value: 1000,
         width: 140,
@@ -27,7 +39,7 @@ function CardDataBase() {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/fireball-card.png")
     }, {
-        name: 'ice darts',
+        name: 'Ice Darts',
         type: 'damage',
         value: 30,
         width: 140,
@@ -59,7 +71,7 @@ function CardDataBase() {
         height: 183,
         mana: 1,
         duration: 1,
-        text: 'Stun enemy for 1 turn.',
+        text: 'Stun enemy for 1 \nturn.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -71,7 +83,7 @@ function CardDataBase() {
     //potential cards as reward
     this.cards_rewards =[
     {
-        name: 'heal',
+        name: 'Heal',
         type: 'heal',
         value: 15,
         width: 140,
@@ -82,7 +94,7 @@ function CardDataBase() {
 
         spritesheet: AM.getAsset("./img/cards/heal-card.png")
     }, {
-        name: 'fireball',
+        name: 'Fireball',
         type: 'damage',
         value: 1000,
         width: 140,
@@ -94,7 +106,7 @@ function CardDataBase() {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/fireball-card.png")
     }, {
-        name: 'ice darts',
+        name: 'Ice Darts',
         type: 'damage',
         value: 30,
         width: 140,
@@ -187,7 +199,7 @@ function CardDataBase() {
         spritesheet: AM.getAsset("./img/cards/ice_block-card.png")
 
     }, {
-        name: 'Counterspell',
+        name: 'Silence',
         type: 'debuff',
         typeOfDebuff: 'stun single',
         value: 7,

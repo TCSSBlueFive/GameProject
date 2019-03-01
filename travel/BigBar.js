@@ -1,3 +1,4 @@
+/* outdated code used for travel
 var AM = new AssetManager();
 
 
@@ -29,3 +30,4 @@ BigBar.prototype.update = function () {
 };
 
 
+*/

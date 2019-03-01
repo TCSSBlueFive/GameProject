@@ -41,6 +41,8 @@ AM.queueDownload("./img/reward/rewards_background.png");
 AM.queueDownload("./img/reward/gold.png");
 AM.queueDownload("./img/reward/addCardToDeck.png")
 AM.queueDownload("./img/travel/travelBackground.png");
+AM.queueDownload("./img/travel/travelBackground2.png");
+
 
 AM.queueDownload("./img/travel/top banner.png");
 AM.queueDownload("./img/end-turn-button.png");
@@ -68,13 +70,17 @@ AM.queueDownload("./img/treasure_chest.png");
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameWorld");
     var ctx = canvas.getContext("2d");
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "#ff0000";
+  
+    
 
     var gameEngine = new GameEngine();
     gameEngine.init(ctx);
     gameEngine.start();
 
     var myManaBar = new ManaBar(gameEngine, [AM.getAsset("./img/mana_bar.png"),AM.getAsset("./img/mana_empty.png"),
-                                             AM.getAsset("./img/mana_circle.png")], 75, 75, 1);
+                                             AM.getAsset("./img/mana_circle.png")], 150, 150, 1);
     
     var myBanner = new TopBanner(gameEngine, AM.getAsset("./img/travel/top banner.png"), 1);
 
@@ -95,6 +101,7 @@ AM.downloadAll(function () {
     gameEngine.addEntity(player);
     gameEngine.addEntity(dungeon);
 
+    
     dungeon.loadDungeon();
     console.log("All Done!");
 });
