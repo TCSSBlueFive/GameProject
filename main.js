@@ -4,6 +4,10 @@ var AM = new AssetManager();
 AM.queueDownload("./img/RedHealthBar.png");
 AM.queueDownload("./img/GreenHealthBar.png");
 
+AM.queueDownload("./img/cards/deck_discard.png")
+AM.queueDownload("./img/cards/deck_draw.png")
+AM.queueDownload("./img/cards/full_deck.png")
+
 AM.queueDownload("./img/mana_circle.png")
 AM.queueDownload("./img/mana_bar.png")
 AM.queueDownload("./img/mana_empty.png")

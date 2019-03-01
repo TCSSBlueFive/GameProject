@@ -53,7 +53,7 @@ Dungeon.prototype.loadDungeon = function () {
   
   cards.generateInitialHand();
 
-  var my_viewer = new deck_viewer(this.game, 'nullatm', this, cards, 'fullDeck');
+  var my_viewer = new deck_viewer(this.game, this, cards, 'fullDeck');
   this.game.addEntity(my_viewer);
   
   var turnButton = new TurnButton(this.game, cards, AM.getAsset("./img/end-turn-button.png"), 1);

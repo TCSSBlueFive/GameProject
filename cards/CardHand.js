@@ -9,10 +9,10 @@ function CardHand(game, dungeon, PlayerCharacter, opacity){
     this.DeckList = this.PlayerCharacter.DeckList;
     this.DeckListCardsRemaining = this.PlayerCharacter.DeckList;
     this.DeckListCardsUsed = [];
-
     this.game = game;
     this.ctx = game.ctx;
     //this.fn = fn; 
+    this.debug = false;
 };
 CardHand.prototype.useAll = function () {
 
@@ -35,13 +35,19 @@ CardHand.prototype.reshuffle = function () {
 }
  
 CardHand.prototype.generateInitialHand = function () {
-    console.log("initial")
+    if (this.debug) {
+        console.log("initial")
 
-    console.log(this.DeckListCardsRemaining);
-    console.log(this.DeckListCardsUsed);
+        console.log(this.DeckListCardsRemaining);
+        console.log(this.DeckListCardsUsed);
+    }
+
     this.reshuffle();
-    console.log(this.DeckListCardsRemaining);
-    console.log(this.DeckListCardsUsed);
+    if (this.debug) {
+        console.log(this.DeckListCardsRemaining);
+        console.log(this.DeckListCardsUsed);
+   }
+
 
     for(let i = 0; i < this.currentCardDraw; i++) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
@@ -56,19 +62,24 @@ CardHand.prototype.generateInitialHand = function () {
 
         this.cardsInHand[i] = newCard;
     }
-    console.log(this.DeckListCardsRemaining);
-    console.log(this.DeckListCardsUsed);
-    console.log(this.cardsInHand);
+    if (this.debug) {
 
-    console.log("initial end")
+        console.log(this.DeckListCardsRemaining);
+        console.log(this.DeckListCardsUsed);
+        console.log(this.cardsInHand);
+
+        console.log("initial end")
+    }
 }
 
 CardHand.prototype.generateNewHand = function () {
-    console.log("new hand")
+    if (this.debug) {
 
-    console.log(this.DeckListCardsRemaining);
-    console.log(this.DeckListCardsUsed);
-    console.log(this.cardsInHand);
+        console.log("new hand")
+        console.log(this.DeckListCardsRemaining);
+        console.log(this.DeckListCardsUsed);
+        console.log(this.cardsInHand);
+    }
     this.cardsInHand = [];
     for(let i = 0; i < this.currentCardDraw; i++) {
         if (this.DeckListCardsRemaining.length === 0) {
@@ -85,16 +96,22 @@ CardHand.prototype.generateNewHand = function () {
         }
         this.cardsInHand[i] = newCard;
     }
-    console.log(this.DeckListCardsRemaining);
-    console.log(this.DeckListCardsUsed);
-    console.log(this.cardsInHand);
-    console.log("new hand end")
+    if (this.debug) {
+
+        console.log(this.DeckListCardsRemaining);
+        console.log(this.DeckListCardsUsed);
+        console.log(this.cardsInHand);
+        console.log("new hand end")
+    }
 
 
 }
 CardHand.prototype.drawCard = function () {
-    console.log(this.DeckListCardsRemaining.length);
-    console.log(this.DeckListCardsUsed.length);
+    if (this.debug) {
+
+        console.log(this.DeckListCardsRemaining.length);
+        console.log(this.DeckListCardsUsed.length);
+    }
         if (this.DeckListCardsRemaining.length === 0) {
         this.reshuffle();
     }
@@ -108,12 +125,18 @@ CardHand.prototype.drawCard = function () {
         }
         this.cardsInHand.push(newCard);
     }
-    console.log(this.DeckListCardsRemaining.length);
-    console.log(this.DeckListCardsUsed.length);
+    if (this.debug) {
+
+        console.log(this.DeckListCardsRemaining.length);
+        console.log(this.DeckListCardsUsed.length);
+    }
 }
 
 CardHand.prototype.addCard = function (card) {
-    console.log(card)
+    if (this.debug) {
+
+        console.log(card)
+    }
     var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * this.cardsInHand.length), this.y, card.width, card.height,  this.opacity)
     this.cardsInHand.push(newCard);
 }
