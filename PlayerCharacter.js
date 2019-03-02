@@ -21,6 +21,7 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.HPBar.y = this.y - 20;
     this.gold = 0;
     this.health = 100;
+    this.maxhealth = 100;
     this.attack = 30;
     this.block = 0;
     this.speed = 0;

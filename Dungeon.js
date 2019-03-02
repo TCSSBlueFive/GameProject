@@ -17,6 +17,7 @@ function Dungeon(game, PlayerCharacter, Enemies, myEnemyDataBase, myBanner) {
   this.travelScene = false;
   this.roomSelected = false;
   this.nextRoom = 'temp';
+  this.floor = 0;
 }
 
 function getRandomInt(max) {

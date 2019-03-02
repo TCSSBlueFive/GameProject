@@ -33,7 +33,8 @@ deck_viewer_card.prototype.draw = function () {
     this.ctx.save();
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "#f0ff0f";
-    this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
+    if (this.y > 100)
+        this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
 
     //card text effect
     this.ctx.font = "20px Arial";
@@ -41,8 +42,11 @@ deck_viewer_card.prototype.draw = function () {
     var lineheight = 20;
     var lines = this.text.split('\n');
 
+    //-43 all the way to -105
     for (var i = 0; i<lines.length; i++)
-    this.ctx.fillText(lines[i], this.x + this.textXOffset, (this.y + this.textYOffset) + (i*lineheight) );
+    //if (this.y > 100 - i * 10)
+        if (this.y > -40 + i * - 20)
+        this.ctx.fillText(lines[i], this.x + this.textXOffset, (this.y + this.textYOffset) + (i*lineheight) );
     this.ctx.restore();
     
 

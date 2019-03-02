@@ -5,6 +5,13 @@ AM.queueDownload("./img/RedHealthBar.png");
 AM.queueDownload("./img/GreenHealthBar.png");
 AM.queueDownload("./img/scrollbar.png");
 
+AM.queueDownload("./img/time_sprite.png")
+AM.queueDownload("./img/heart_sprite.png")
+AM.queueDownload("./img/class_sprite.png")
+AM.queueDownload("./img/gold_sprite.png")
+AM.queueDownload("./img/floor_sprite.png")
+
+
 
 AM.queueDownload("./img/cards/deck_discard.png")
 AM.queueDownload("./img/cards/deck_draw.png")
@@ -88,7 +95,7 @@ AM.downloadAll(function () {
     var myManaBar = new ManaBar(gameEngine, [AM.getAsset("./img/mana_bar.png"),AM.getAsset("./img/mana_empty.png"),
                                              AM.getAsset("./img/mana_circle.png")], 150, 150, 1);
     
-    var myBanner = new TopBanner(gameEngine, AM.getAsset("./img/travel/top banner.png"), 1);
+    var myBanner = new TopBanner(gameEngine, 1);
 
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     

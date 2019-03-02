@@ -25,8 +25,9 @@ HealthBar.prototype.draw = function () {
     this.ctx.restore();
 };
 
-HealthBar.prototype.update = function (health) {
+HealthBar.prototype.update = function (health, maxhealth) {
     this.health = health;
+    this.maxhealth = maxhealth;
     if (health <= 0) {
         this.health = 0;
     }
