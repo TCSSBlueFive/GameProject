@@ -18,7 +18,7 @@ function TravelScene2(game, dungeon, opacity){
     this.node_center_height = 118/2;
     this.allEncounters = [];
 
-    this.xDist = 300;
+    this.xDist = 250;
     this.NodeDataBase = new NodeDataBase();
 
 };
@@ -33,7 +33,7 @@ TravelScene2.prototype.setupscrollbar = function() {
             this.allEncounters.push(this.encounters[i][z])
         }
     }
-    this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.allEncounters);
+    this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.allEncounters, 200, 1100, 'horizontal');
 
 }
 
@@ -92,7 +92,8 @@ TravelScene2.prototype.getClosest = function (node, row) {
 //generates the rest of the encounters.
 TravelScene2.prototype.generateEncounters = function () {
 
-    for(let q = 0; q < 15; q++) {
+    //sets up the encounters b4 boss
+    for(let q = 0; q < 14; q++) {
         var myEncounterCount = getRandomInt(3) + 3;
         var num = 950 / (myEncounterCount + 1);
 
@@ -108,6 +109,15 @@ TravelScene2.prototype.generateEncounters = function () {
         }
         this.encounters.push(encounterRow);
     }
+
+    //sets up boss encounter
+    var num = 950/ (2);
+    var encounterRow = [];
+    var newNodeInfo = this.NodeDataBase.nodes[0];
+    var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
+        newNodeInfo.fn, this.encounters[14][0].x + this.xDist + 80 , this.yOffset + num);
+    encounterRow.push(newTravelNode);
+    this.encounters.push(encounterRow);
 
 }
 

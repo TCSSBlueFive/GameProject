@@ -41,7 +41,7 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
   this.deck_full_sprite = AM.getAsset("./img/cards/full_deck.png");
   this.cardsToDraw = [];
 
-  this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.cardsToDraw)
+  this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.cardsToDraw, 300, 300, 'vertical');
 
   this.combined = this.drawPile + this.discardPile;
   this.dungeon = dungeon;
@@ -62,15 +62,20 @@ deck_viewer.prototype.draw = function () {
       this.ctx.fillText(this.discardPile.length , this.discardPileX - 20, this.discardPileY + 40); 
 
     //draw
+    this.ctx.font = "60px Arial";
     this.ctx.drawImage(this.deck_draw_sprite,this.drawPileX, this.drawPileY);
       this.ctx.fillStyle = "#00FA9A";
       this.ctx.fillText(this.drawPile.length , this.drawPileX + 120, this.drawPileY + 40); 
       
   }
   //full
+  this.ctx.font = "60px Arial";
   this.ctx.drawImage(this.deck_full_sprite, this.fullDeckX, this.fullDeckY);
     this.ctx.fillStyle = "#FFA500";
-    this.ctx.fillText(this.combined.length , this.fullDeckX + 90, this.fullDeckY + 110); 
+    if (this.combined) {
+      this.ctx.fillText(this.combined.length , this.fullDeckX + 90, this.fullDeckY + 110); 
+
+    }
     this.ctx.restore();
   
 

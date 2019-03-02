@@ -45,7 +45,7 @@ ManaBar.prototype.draw = function () {
     this.ctx.fillText('/', this.x + 75, this.y + 110 ); 
     this.ctx.font = "40px Impact";
     this.ctx.fillText(this.maxMana , this.x + 110, this.y +120 ); 
-
+    this.ctx.restore();
 
 };
 
