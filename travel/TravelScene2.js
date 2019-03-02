@@ -170,10 +170,10 @@ TravelScene2.prototype.drawLinks = function () {
                     this.ctx.strokeStyle = '#FFFF00'
 
                 }
-                this.ctx.lineWidth = 5;
+                this.ctx.lineWidth = 10;
                 
                 this.ctx.beginPath(); 
-                this.ctx.setLineDash([10, 15]);
+                this.ctx.setLineDash([20, 15]);
 
                 this.ctx.moveTo(this.encounters[i][q].x + this.node_center_width, this.encounters[i][q].y + this.node_center_height);
                 // End point (180,47)

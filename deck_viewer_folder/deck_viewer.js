@@ -1,7 +1,7 @@
 var AM = new AssetManager();
 function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
-  this.x = 600;
-  this.y = 100;
+  this.x = 650;
+  this.y = 200;
   this.fullDeckX = 1800
   this.fullDeckY = 5;
   this.fullDeckDimensions = 120;

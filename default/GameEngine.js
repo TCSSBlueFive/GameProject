@@ -70,7 +70,7 @@ GameEngine.prototype.startInput = function() {
         var test_click = getXandY(e);
         if (test_click.x === that.origspot.x && test_click.y === that.origspot.y) {
             that.click = test_click;
-            //console.log("Left Click Event - X, Y " + e.clientX +"," + e.clientY);
+            console.log("Left Click Event - X, Y " + e.clientX +"," + e.clientY);
         }
     }, false);
 }
