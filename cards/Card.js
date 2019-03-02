@@ -24,7 +24,7 @@ Card.prototype.update = function () {
                 var index = this.cardHand.cardsInHand.indexOf(this);
                 if (index > -1) {
                     this.cardHand.cardsInHand.splice(index, 1);
-                    this.cardHand.DeckListCardsUsed.push(this)
+                    this.cardHand.DeckListCardsUsed.push(this.card)
                 }      
             }
 

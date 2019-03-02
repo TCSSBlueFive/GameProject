@@ -30,6 +30,8 @@ Dungeon.prototype.addBackMonsterRewards = function () {
   this.game.addEntity(this.currentMonsterRewards);
   this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
   this.game.addEntity(this.banner);
+  var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
+  this.game.addEntity(my_viewer);
   this.game.addEntity(this);
 }
 
@@ -42,6 +44,8 @@ Dungeon.prototype.setCardSelection = function () {
   myCardSelection = new CardSelectionScene(this.game, this);
   myCardSelection.generateCards();
   this.game.addEntity(myCardSelection);  
+  var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
+  this.game.addEntity(my_viewer);
   this.game.addEntity(this);
 
 }
@@ -53,7 +57,7 @@ Dungeon.prototype.loadDungeon = function () {
   
   cards.generateInitialHand();
 
-  var my_viewer = new deck_viewer(this.game, this, cards, 'fullDeck');
+  var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter, cards);
   this.game.addEntity(my_viewer);
   
   var turnButton = new TurnButton(this.game, cards, AM.getAsset("./img/end-turn-button.png"), 1);
@@ -67,7 +71,6 @@ Dungeon.prototype.loadDungeon = function () {
   this.myTravelScene.generatePaths();
   this.myTravelScene.generateEncounters();
   this.myTravelScene.connectPaths();
-  this.myTravelScene.test();
 
 
   //this.myTravelScene.generateBars();
@@ -82,6 +85,8 @@ Dungeon.prototype.transitionToTravelScene = function () {
   this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground2.png"), 1))
   this.banner.opacity = 1;
   this.game.addEntity(this.banner);
+  var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
+  this.game.addEntity(my_viewer);
   this.game.addEntity(this.myTravelScene);
   this.game.addEntity(this);
 }
@@ -102,10 +107,12 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   this.game.addEntity(this.PlayerCharacter);
   this.game.addEntity(this.banner);
   var newCardHand = new CardHand(this.game, this, this.PlayerCharacter, 1);
+  var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter, newCardHand);
+  this.game.addEntity(my_viewer);
   newCardHand.generateInitialHand();
 
   this.game.addEntity(newCardHand);
-  var enemy = new Enemy(this.game, this.myEnemies.monsters[this.myTravelScene.currentRoom], 1);
+  var enemy = new Enemy(this.game, this.myEnemies.monsters[0], 1);
 
   //var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
   var battle = new Battle(this.game, enemy, this, this.PlayerCharacter, newCardHand);
@@ -133,6 +140,8 @@ Dungeon.prototype.addNewEntitiesReward = function() {
   myRewards.generateRewardsEnemy();
   this.currentMonsterRewards = myRewards; 
   this.game.addEntity(this.banner);
+  var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
+  this.game.addEntity(my_viewer);
   this.game.addEntity(myRewards);
   this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
 
@@ -181,6 +190,8 @@ Dungeon.prototype.addNewEntitiesShop= function () {
   myShop.generateShopCards();
   this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
   this.game.addEntity(this.banner);
+  var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
+  this.game.addEntity(my_viewer);
   this.game.addEntity(this);
 }
 

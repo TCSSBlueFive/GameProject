@@ -12,10 +12,10 @@ function card_shop_item(game, dungeon, shop, goldcost, card, x, y){
 
 
 card_shop_item.prototype.draw = function () {
-    console.log("sd?")
     card_inheritance.prototype.draw.call(this); 
     //gold cost
     this.ctx.save();
+    this.ctx.fillStyle = "#ffff00";
     this.ctx.font = "40px Impact";
     this.ctx.fillText("Costs: ", this.x + this.goldXOffset, this.y + this.goldYOffset); 
 
@@ -37,7 +37,7 @@ card_shop_item.prototype.update = function () {
         && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
 
             if (this.canAfford()) {
-                this.dungeon.PlayerCharacter.DeckList.push(this.cardFromDatabase);
+                this.dungeon.PlayerCharacter.DeckList.push(this.card);
                 this.dungeon.PlayerCharacter.gold -= this.goldcost;
                 this.shop.remove(this);
                 

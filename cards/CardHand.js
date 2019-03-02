@@ -17,7 +17,7 @@ function CardHand(game, dungeon, PlayerCharacter, opacity){
 CardHand.prototype.useAll = function () {
 
     for (let i = 0; i < this.cardsInHand.length; i++) {
-        this.DeckListCardsUsed.push(this.cardsInHand[i])
+        this.DeckListCardsUsed.push(this.cardsInHand[i].fn)
     }
 }
 
@@ -28,7 +28,7 @@ function getRandomInt(max) {
 
 CardHand.prototype.reshuffle = function () {
     for (let i = 0; i < this.DeckListCardsUsed.length; i++) {
-        this.DeckListCardsRemaining.push(this.DeckListCardsUsed[i].fn);
+        this.DeckListCardsRemaining.push(this.DeckListCardsUsed[i]);
     }
     this.DeckListCardsUsed = [];
 
@@ -88,6 +88,7 @@ CardHand.prototype.generateNewHand = function () {
         
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var card = this.DeckListCardsRemaining[myNum];
+
         var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * i), this.y, card.width, card.height,  this.opacity)
 
         var index = this.DeckListCardsRemaining.indexOf(card);
