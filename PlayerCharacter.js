@@ -108,8 +108,8 @@ PlayerCharacter.prototype.heal = function (healthPoints) {
 
 PlayerCharacter.prototype.died = function() {
     this.action = 'death';
-    this.y = 470;
-    this.x = 220;
+    this.y += 130;
+    this.x -= 45;
     
 }
 

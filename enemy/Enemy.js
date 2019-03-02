@@ -11,6 +11,7 @@ function Enemy(game, EnemyFromDatabase, opacity) {
     this.yDamagedIndex = EnemyFromDatabase.damagedAnimation.yIndex;
     this.opacity = opacity;
 
+    this.attack_sprite = EnemyFromDatabase.attacksprite;
 
     this.HPBar = EnemyFromDatabase.HPBar;
     this.HPBar.health = EnemyFromDatabase.health;
@@ -81,6 +82,16 @@ Enemy.prototype.isAlive = function () {
 }
 
 Enemy.prototype.draw = function () {
+    this.ctx.drawImage(this.attack_sprite, this.HPBar.x + 60, this.HPBar.y - 100)
+    this.ctx.save();
+    this.ctx.textAlign = "center";
+    this.ctx.textBaseline = "middle";
+    this.ctx.fillStyle = '#FF0000'
+    this.ctx.font = '40px Arial'
+
+    this.ctx.fillText(this.attack.value, this.HPBar.x + 120, this.HPBar.y - 90)
+
+    this.ctx.restore();
     if (this.damage_taken_array.length > 0) {
         for (let i = 0; i < this.damage_taken_array.length; i++) {
             this.damage_taken_array[i].draw();

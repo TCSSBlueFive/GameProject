@@ -23,6 +23,7 @@ AM.queueDownload("./img/mana_empty.png")
 
 AM.queueDownload("./img/slime_sprite.png");
 AM.queueDownload("./img/background2.jpg");
+AM.queueDownload("./img/attack.png")
 
 AM.queueDownload("./img/cards/fireball-card.png");
 AM.queueDownload("./img/cards/ice-card.png");

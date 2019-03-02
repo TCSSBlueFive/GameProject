@@ -24,7 +24,9 @@ function EnemyDataBase(game, spritesheet) {
         animation: new Animation(spritesheet, 256, 256, 1, .075, 18, true, 0.5, 1,0),
         attackAnimation: new Animation(spritesheet, 256, 256, 1, .075, 18, false, 0.5, 2,0),
         damagedAnimation: new Animation(spritesheet, 256, 256, 1, .3, 3, false, .5, 3,0),
-        deathAnimation: new Animation(spritesheet, 253, 256, 1, .075, 3, true, .5, 5 ,0)
+        deathAnimation: new Animation(spritesheet, 253, 256, 1, .075, 3, true, .5, 5 ,0),
+
+        attacksprite: AM.getAsset("./img/attack.png")
     },                 
     {
         health: 120,
