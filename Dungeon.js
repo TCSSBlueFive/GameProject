@@ -71,6 +71,7 @@ Dungeon.prototype.loadDungeon = function () {
   this.myTravelScene.generatePaths();
   this.myTravelScene.generateEncounters();
   this.myTravelScene.connectPaths();
+  this.myTravelScene.setupscrollbar();
 
 
   //this.myTravelScene.generateBars();

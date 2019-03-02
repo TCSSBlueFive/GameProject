@@ -31,17 +31,49 @@ GameEngine.prototype.init = function (ctx) {
 GameEngine.prototype.startInput = function() {
     console.log("starting game");
     var that = this;
-    var getXandY = function (e) {
+    this.mousedown = false;
+
+
+
+    this.ctx.canvas.addEventListener("mousedown", function(event) {
+        console.log('dragstart')
+        that.origspot = getXandY(event);
+        that.newspot = that.origspot;
+
+        that.mousedown = true;
+    
+        //event.dataTransfer.setData("Text", event.target.id);
+      });
+      
+      this.ctx.canvas.addEventListener("mousemove", function(event) {
+          if (that.mousedown) {
+            that.newspot = getXandY(event);
+          }
+        //this.ctx.canvas.getElementById("demo").innerHTML = "The p element is being dragged";
+      });
+      
+      /* Events fired on the drop target */
+      this.ctx.canvas.addEventListener("mouseup", function(event) {
+        event.preventDefault();
+        console.log('yeetin')
+        that.mousedown = false;
+
+      });
+      
+      var getXandY = function (e) {
         var x = e.clientX - that.ctx.canvas.getBoundingClientRect().left;
         var y = e.clientY - that.ctx.canvas.getBoundingClientRect().top;
+
         return { x: x, y: y };
     }
 
     this.ctx.canvas.addEventListener("click", function(e) {
-        that.click = getXandY(e);
-        console.log("Left Click Event - X, Y " + e.clientX +"," + e.clientY);
+        var test_click = getXandY(e);
+        if (test_click.x === that.origspot.x && test_click.y === that.origspot.y) {
+            that.click = test_click;
+            console.log("Left Click Event - X, Y " + e.clientX +"," + e.clientY);
+        }
     }, false);
-
 }
 
 GameEngine.prototype.start = function () {

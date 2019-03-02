@@ -2,7 +2,9 @@
 function travel_node2(game, travelScene, dungeon, position, spritesheet, fn, x, y) {
     this.x = x;
     this.y = y;
+    this.yOrig = y;
     this.opacity = 1;
+    this.xOrig = x;
     this.spritesheet = spritesheet;
     this.game = game;
     this.fn = fn;

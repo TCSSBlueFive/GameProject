@@ -33,6 +33,8 @@ Card.prototype.update = function () {
                 console.log("sad?sadsd")
                 this.cardHand.useAll();
                 this.cardHand.reshuffle();
+                this.cardHand.cardsInHand = [];
+
             }
 
         }

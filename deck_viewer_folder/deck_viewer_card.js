@@ -7,6 +7,7 @@ function deck_viewer_card(game, dungeon, card, x, y){
     this.nameYOffset = this.height * .13;
     this.textXOffset = this.width * .18;
     this.textYOffset = this.height * .672;
+    this.yOrig = this.y;
 
 };
 

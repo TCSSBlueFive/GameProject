@@ -3,6 +3,8 @@ var AM = new AssetManager();
 
 AM.queueDownload("./img/RedHealthBar.png");
 AM.queueDownload("./img/GreenHealthBar.png");
+AM.queueDownload("./img/scrollbar.png");
+
 
 AM.queueDownload("./img/cards/deck_discard.png")
 AM.queueDownload("./img/cards/deck_draw.png")
@@ -105,7 +107,7 @@ AM.downloadAll(function () {
     gameEngine.addEntity(player);
     gameEngine.addEntity(dungeon);
 
-    
+
     dungeon.loadDungeon();
     console.log("All Done!");
 });

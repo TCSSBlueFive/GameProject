@@ -16,6 +16,7 @@ function TravelScene2(game, dungeon, opacity){
     this.currentRoom = 0;
     this.node_center_width = 89/2;
     this.node_center_height = 118/2;
+    this.allEncounters = [];
 
     this.xDist = 300;
     this.NodeDataBase = new NodeDataBase();
@@ -25,6 +26,16 @@ TravelScene2.prototype.getDistBetweenNodes = function (node1, node2) {
     return Math.sqrt(Math.pow((node2.x - node1.x), 2) + Math.pow((node2.y- node1.y),2))
 }
 
+TravelScene2.prototype.setupscrollbar = function() {
+    this.allEncounters = [];
+    for (let i = 0; i < this.encounters.length; i++){
+        for(let z = 0; z < this.encounters[i].length; z++) {
+            this.allEncounters.push(this.encounters[i][z])
+        }
+    }
+    this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.allEncounters);
+
+}
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -81,7 +92,7 @@ TravelScene2.prototype.getClosest = function (node, row) {
 //generates the rest of the encounters.
 TravelScene2.prototype.generateEncounters = function () {
 
-    for(let q = 0; q < 6; q++) {
+    for(let q = 0; q < 15; q++) {
         var myEncounterCount = getRandomInt(3) + 3;
         var num = 950 / (myEncounterCount + 1);
 
@@ -96,7 +107,6 @@ TravelScene2.prototype.generateEncounters = function () {
                 encounterRow.push(newTravelNode);
         }
         this.encounters.push(encounterRow);
-
     }
 
 }
@@ -115,11 +125,8 @@ TravelScene2.prototype.generatePaths = function () {
     }
     this.encounters.push(encounterRow)
 
-}
-TravelScene2.prototype.test = function () {
-    for (let i = 0; i < this.encounters.length; i++) {
-        //console.log(this.getAllNonLinked(this.encounters[i]))
-    }
+    
+
 }
 
 TravelScene2.prototype.drawLinks = function () {
@@ -142,6 +149,7 @@ TravelScene2.prototype.drawLinks = function () {
             }
         }
     }
+    
 }
 
 TravelScene2.prototype.connectPaths = function () {
@@ -181,10 +189,13 @@ TravelScene2.prototype.connectPaths = function () {
             unlinkedNodes[t].linked.push(theNode);
         }
     }
+
 }
 
 TravelScene2.prototype.draw = function () {
+
     this.drawLinks();    
+    this.myScrollBar.draw();
     for(let i = 0; i < this.encounters.length; i++) {
         for (let j = 0; j < this.encounters[i].length; j++) {
             this.encounters[i][j].draw();
@@ -192,7 +203,9 @@ TravelScene2.prototype.draw = function () {
     }
 };
 
-TravelScene2.prototype.update = function () {     
+TravelScene2.prototype.update = function () {    
+    this.myScrollBar.update(this.allEncounters);
+    //this.myScrollBar.update(this.allEncounters); 
     for (let i = 0; i < this.encounters.length; i++) {
         for (let j = 0; j < this.encounters[i].length; j++) {
             this.encounters[i][j].update();

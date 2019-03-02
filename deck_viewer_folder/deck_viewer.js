@@ -14,10 +14,13 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
 
   this.discardPileX = 2225;
   this.discardPileY = 1030;
+  
 
   this.drawAndDiscardDimensions = 150;
-
   this.PlayerCharacter = PlayerCharacter;
+
+  this.view_window_present = 'none';
+
 
 
   //this.width = 250 * 4 + 100; //this is card with x 4 plus a little extra
@@ -36,8 +39,9 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
   this.deck_discard_sprite = AM.getAsset("./img/cards/deck_discard.png");
   this.deck_draw_sprite = AM.getAsset("./img/cards/deck_draw.png");
   this.deck_full_sprite = AM.getAsset("./img/cards/full_deck.png");
-
   this.cardsToDraw = [];
+
+  this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.cardsToDraw)
 
   this.combined = this.drawPile + this.discardPile;
   this.dungeon = dungeon;
@@ -45,6 +49,9 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
 };  
   
 deck_viewer.prototype.draw = function () {
+  if (this.view_window_present != 'none'){
+    this.myScrollBar.draw();
+  }
   if (this.cardhand) {
     this.ctx.drawImage(this.deck_discard_sprite,this.discardPileX, this.discardPileY);
 
@@ -73,6 +80,9 @@ deck_viewer.prototype.draw = function () {
 };
 
 deck_viewer.prototype.update = function () {
+  if(this.view_window_present != 'none') {
+    this.myScrollBar.update(this.cardsToDraw);
+  }
   if (this.cardhand) {
     //drawpile
     this.drawPile = this.cardhand.DeckListCardsRemaining;
@@ -93,51 +103,65 @@ deck_viewer.prototype.update = function () {
 
   //fulldeck
   if (this.game.click) {
+    
     if((this.game.click['x'] >this.fullDeckX  && this.game.click['x'] <  this.fullDeckX + this.fullDeckDimensions  )
     && (this.game.click['y'] > this.fullDeckY && this.game.click['y'] < this.fullDeckY + this.fullDeckDimensions)) {
-      this.cardsToDraw = [];
+      this.myScrollBar.reset();
+      if (this.view_window_present != 'displaying_full_deck') {
+        this.view_window_present = 'displaying_full_deck';
+        this.cardsToDraw = [];
 
-        if (this.debug) {
-          for (let i = 0; i < this.combined.length; i++) {
-            var card = new deck_viewer_card(this.game, this.dungeon, this.combined[i], this.x + (i % this.rowcol) * this.width,
-              this.y + (this.height * Math.floor(i / this.rowcol)));
-              this.cardsToDraw.push(card);
-          }      
-          console.log(this.combined.length)
-          this.game.click = false;      
+        for (let i = 0; i < this.combined.length; i++) {
+          var card = new deck_viewer_card(this.game, this.dungeon, this.combined[i], this.x + (i % this.rowcol) * this.width,
+            this.y + (this.height * Math.floor(i / this.rowcol)));
+            this.cardsToDraw.push(card);
+        }
+      } else {
+        this.cardsToDraw = [];
+        this.view_window_present = 'none';
+      }
+      this.game.click = false;      
       } 
     //discard
-    }
+    
     if (this.cardhand) {
       if((this.game.click['x'] > this.discardPileX && this.game.click['x'] < this.discardPileX + this.drawAndDiscardDimensions   )
       && (this.game.click['y'] > this.discardPileY  && this.game.click['y'] < this.discardPileY + this.drawAndDiscardDimensions)) {
-        this.cardsToDraw = [];
-
-          if (this.debug) {
-            for (let i = 0; i < this.discardPile.length; i++) {
-              var card = new deck_viewer_card(this.game, this.dungeon, this.discardPile[i], this.x + (i % this.rowcol) * this.width,
+        this.myScrollBar.reset();
+        if (this.view_window_present != 'displaying_discard_deck') {
+          this.view_window_present = 'displaying_discard_deck';
+          this.cardsToDraw = [];
+  
+          for (let i = 0; i < this.discardPile.length; i++) {
+            var card = new deck_viewer_card(this.game, this.dungeon, this.discardPile[i], this.x + (i % this.rowcol) * this.width,
               this.y + (this.height * Math.floor(i / this.rowcol)));
               this.cardsToDraw.push(card);
-              console.log(this.discardPile[i])
-            }
           }
-        this.game.click = false;  
-      //draw
-      } else if((this.game.click['x'] > this.drawPileX && this.game.click['x'] <this.drawPileX + this.drawAndDiscardDimensions   )
-      && (this.game.click['y'] > this.drawPileY  && this.game.click['y'] < this.drawPileY + this.drawAndDiscardDimensions)) {
-        if (this.debug) {
+        } else {
           this.cardsToDraw = [];
-
+          this.view_window_present = 'none';
+        }
+        this.game.click = false;      
+        
+      }  else if((this.game.click['x'] > this.drawPileX && this.game.click['x'] <this.drawPileX + this.drawAndDiscardDimensions   )
+      && (this.game.click['y'] > this.drawPileY  && this.game.click['y'] < this.drawPileY + this.drawAndDiscardDimensions)) {
+        this.myScrollBar.reset();
+        if (this.view_window_present != 'displaying_draw_deck') {
+          this.view_window_present = 'displaying_draw_deck';
+          this.cardsToDraw = [];
+  
           for (let i = 0; i < this.drawPile.length; i++) {
             var card = new deck_viewer_card(this.game, this.dungeon, this.drawPile[i], this.x + (i % this.rowcol) * this.width,
               this.y + (this.height * Math.floor(i / this.rowcol)));
               this.cardsToDraw.push(card);
-            console.log(this.drawPile[i])
-
           }
+        } else {
+          this.cardsToDraw = [];
+          this.view_window_present = 'none';
         }
-        this.game.click = false;  
-      }
+        this.game.click = false;      
+        } 
     }
   }
+
 }
