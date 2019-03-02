@@ -1,6 +1,6 @@
 function Proceed(game, spritesheet, dungeon) {
   this.x = 2100;
-  this.y = 875;
+  this.y = 825;
   this.dimensions = 125;
   this.opacity = 1;
   this.spritesheet = spritesheet;
@@ -19,8 +19,8 @@ Proceed.prototype.draw = function () {
 Proceed.prototype.update = function () {
     
   if (this.game.click) {
-    if ((this.game.click['x'] > this.x + 15 && this.game.click['x'] < this.x + 170  )
-    && (this.game.click['y'] > this.y + 50 && this.game.click['y'] < this.y + 120)) {
+    if ((this.game.click['x'] > this.x + 10 && this.game.click['x'] < this.x + 200  )
+    && (this.game.click['y'] > this.y + 50 && this.game.click['y'] < this.y + 150)) {
     
         var userState = this.dungeon.state;
         console.log(userState)

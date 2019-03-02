@@ -85,9 +85,9 @@ deck_viewer.prototype.draw = function () {
 };
 
 deck_viewer.prototype.update = function () {
-  if(this.view_window_present != 'none') {
+ // if(this.view_window_present != 'none') {
     this.myScrollBar.update(this.cardsToDraw);
-  }
+  //}
   if (this.cardhand) {
     //drawpile
     this.drawPile = this.cardhand.DeckListCardsRemaining;
@@ -110,7 +110,7 @@ deck_viewer.prototype.update = function () {
   if (this.game.click) {
     
     if((this.game.click['x'] >this.fullDeckX  && this.game.click['x'] <  this.fullDeckX + this.fullDeckDimensions  )
-    && (this.game.click['y'] > this.fullDeckY && this.game.click['y'] < this.fullDeckY + this.fullDeckDimensions)) {
+    && (this.game.click['y'] > this.fullDeckY && this.game.click['y'] < this.fullDeckY + this.fullDeckDimensions )) {
       this.myScrollBar.reset();
       if (this.view_window_present != 'displaying_full_deck') {
         this.view_window_present = 'displaying_full_deck';

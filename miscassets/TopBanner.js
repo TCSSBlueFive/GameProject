@@ -45,7 +45,7 @@ TopBanner.prototype.draw = function () {
     this.ctx.drawImage(this.sprite_gold, 715, this.yOffset);
     this.ctx.fillStyle = "#FFFF00";
 
-    this.ctx.fillText( this.game.currentDungeon.PlayerCharacter.gold, 795, 110); 
+    this.ctx.fillText( this.game.currentDungeon.PlayerCharacter.gold, 800, 110); 
 
     //displays time and icon
     this.ctx.fillStyle = "#2E8B57";

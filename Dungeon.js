@@ -58,9 +58,7 @@ Dungeon.prototype.loadDungeon = function () {
   
   cards.generateInitialHand();
 
-  var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter, cards);
-  this.game.addEntity(my_viewer);
-  
+
   var turnButton = new TurnButton(this.game, cards, AM.getAsset("./img/end-turn-button.png"), 1);
   this.turnButton = turnButton;
   this.game.addEntity(cards);
@@ -73,7 +71,8 @@ Dungeon.prototype.loadDungeon = function () {
   this.myTravelScene.generateEncounters();
   this.myTravelScene.connectPaths();
   this.myTravelScene.setupscrollbar();
-
+  var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter, cards);
+  this.game.addEntity(my_viewer);
 
   //this.myTravelScene.generateBars();
   this.game.addEntity(this);
@@ -87,9 +86,9 @@ Dungeon.prototype.transitionToTravelScene = function () {
   this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground2.png"), 1))
   this.banner.opacity = 1;
   this.game.addEntity(this.banner);
+  this.game.addEntity(this.myTravelScene);
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
   this.game.addEntity(my_viewer);
-  this.game.addEntity(this.myTravelScene);
   this.game.addEntity(this);
 }
 
@@ -143,8 +142,8 @@ Dungeon.prototype.addNewEntitiesReward = function() {
   this.currentMonsterRewards = myRewards; 
   this.game.addEntity(this.banner);
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
-  this.game.addEntity(my_viewer);
   this.game.addEntity(myRewards);
+  this.game.addEntity(my_viewer);
   this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
 
   this.game.addEntity(this);
@@ -203,10 +202,17 @@ Dungeon.prototype.update = function ()
 
   if (this.state === 'battle_finished' && this.stateChanged) {
     this.game.entities.pop();
+    console.log(this.game.entities)
     this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
     this.BattleOngoing = false;
     this.battle.PlayerTurn = false;
+    var index = this.game.entities.indexOf(this.turnButton);
+    if (index > -1) {
+        this.game.entities.splice(index, 1);
+    }    
     this.game.addEntity(this);
+
+
     this.stateChanged = false;
   }
   if (this.state === 'rewards' && this.stateChanged) {
