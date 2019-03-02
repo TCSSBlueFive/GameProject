@@ -32,6 +32,7 @@ Dungeon.prototype.addBackMonsterRewards = function () {
   this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
   this.game.addEntity(this.banner);
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
+  this.viewer = my_viewer;
   this.game.addEntity(my_viewer);
   this.game.addEntity(this);
 }
@@ -46,6 +47,7 @@ Dungeon.prototype.setCardSelection = function () {
   myCardSelection.generateCards();
   this.game.addEntity(myCardSelection);  
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
+  this.viewer = my_viewer;
   this.game.addEntity(my_viewer);
   this.game.addEntity(this);
 
@@ -55,7 +57,7 @@ Dungeon.prototype.loadDungeon = function () {
   this.game.entities.pop();
   var cards = new CardHand(this.game, this, this.PlayerCharacter, 1);
 
-  
+this.state = 'battle'
   cards.generateInitialHand();
 
 
@@ -72,6 +74,7 @@ Dungeon.prototype.loadDungeon = function () {
   this.myTravelScene.connectPaths();
   this.myTravelScene.setupscrollbar();
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter, cards);
+  this.viewer = my_viewer;
   this.game.addEntity(my_viewer);
 
   //this.myTravelScene.generateBars();
@@ -88,6 +91,8 @@ Dungeon.prototype.transitionToTravelScene = function () {
   this.game.addEntity(this.banner);
   this.game.addEntity(this.myTravelScene);
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
+  this.viewer = my_viewer;
+
   this.game.addEntity(my_viewer);
   this.game.addEntity(this);
 }
@@ -110,6 +115,8 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   var newCardHand = new CardHand(this.game, this, this.PlayerCharacter, 1);
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter, newCardHand);
   this.game.addEntity(my_viewer);
+  this.viewer = my_viewer;
+
   newCardHand.generateInitialHand();
 
   this.game.addEntity(newCardHand);
@@ -144,6 +151,8 @@ Dungeon.prototype.addNewEntitiesReward = function() {
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
   this.game.addEntity(myRewards);
   this.game.addEntity(my_viewer);
+  this.viewer = my_viewer;
+
   this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
 
   this.game.addEntity(this);
@@ -193,13 +202,43 @@ Dungeon.prototype.addNewEntitiesShop= function () {
   this.game.addEntity(this.banner);
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
   this.game.addEntity(my_viewer);
+  this.viewer = my_viewer;
+
+  this.game.addEntity(this);
+}
+Dungeon.prototype.viewing_deck = function() {
+  this.savedEntities = [];
+  for (let i = 0; i < this.game.entities.length; i++) {
+    this.savedEntities.push(this.game.entities[i])
+  }
+  this.removeAllEntities();
+  console.log(this.savedEntities)
+  this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
+  this.game.addEntity(this.banner);
+  this.game.addEntity(this.viewer);
   this.game.addEntity(this);
 }
 
+Dungeon.prototype.viewing_deck_restore = function () {
+  this.removeAllEntities();
+  console.log(this.savedEntities)
+  console.log("yoooo?")
+  for (let i = 0; i < this.savedEntities.length; i++) {
+    this.game.addEntity(this.savedEntities[i])
+  }
+  this.state = this.viewer.originalstate;
 
+}
 Dungeon.prototype.update = function () 
 {
-
+  if (this.state === 'viewing_deck' && this.stateChanged) {
+    this.viewing_deck();
+    this.stateChanged = false;
+  }
+  if (this.state === 'view_deck_restore' && this.stateChanged) {
+    this.viewing_deck_restore();
+    this.stateChanged = false;
+  }
   if (this.state === 'battle_finished' && this.stateChanged) {
     this.game.entities.pop();
     console.log(this.game.entities)

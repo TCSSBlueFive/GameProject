@@ -17,7 +17,7 @@ function CardHand(game, dungeon, PlayerCharacter, opacity){
 CardHand.prototype.useAll = function () {
 
     for (let i = 0; i < this.cardsInHand.length; i++) {
-        this.DeckListCardsUsed.push(this.cardsInHand[i].fn)
+        this.DeckListCardsUsed.push(this.cardsInHand[i].fn) 
     }
 }
 

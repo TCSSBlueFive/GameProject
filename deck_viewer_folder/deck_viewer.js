@@ -52,7 +52,7 @@ deck_viewer.prototype.draw = function () {
   if (this.view_window_present != 'none'){
     this.myScrollBar.draw();
   }
-  if (this.cardhand) {
+  if (this.cardhand && this.dungeon.state != 'viewing_deck') {
     this.ctx.drawImage(this.deck_discard_sprite,this.discardPileX, this.discardPileY);
 
       this.ctx.save();
@@ -105,14 +105,14 @@ deck_viewer.prototype.update = function () {
     this.combined = this.PlayerCharacter.DeckList;
   }
 
-
-  //fulldeck
   if (this.game.click) {
-    
     if((this.game.click['x'] >this.fullDeckX  && this.game.click['x'] <  this.fullDeckX + this.fullDeckDimensions  )
     && (this.game.click['y'] > this.fullDeckY && this.game.click['y'] < this.fullDeckY + this.fullDeckDimensions )) {
       this.myScrollBar.reset();
       if (this.view_window_present != 'displaying_full_deck') {
+        this.originalstate = this.dungeon.state;
+        this.dungeon.state = 'viewing_deck'
+        this.dungeon.stateChanged = true;
         this.view_window_present = 'displaying_full_deck';
         this.cardsToDraw = [];
 
@@ -123,13 +123,15 @@ deck_viewer.prototype.update = function () {
         }
       } else {
         this.cardsToDraw = [];
+        this.dungeon.state = 'view_deck_restore'
+        this.dungeon.stateChanged = true;
+        //this.dungeon.state = this.originalstate;
         this.view_window_present = 'none';
       }
       this.game.click = false;      
       } 
-    //discard
-    
-    if (this.cardhand) {
+
+    if (this.cardhand && this.dungeon.state != 'viewing_deck') {
       if((this.game.click['x'] > this.discardPileX && this.game.click['x'] < this.discardPileX + this.drawAndDiscardDimensions   )
       && (this.game.click['y'] > this.discardPileY  && this.game.click['y'] < this.discardPileY + this.drawAndDiscardDimensions)) {
         this.myScrollBar.reset();
@@ -165,8 +167,32 @@ deck_viewer.prototype.update = function () {
           this.view_window_present = 'none';
         }
         this.game.click = false;      
-        } 
+        
+        }
     }
   }
 
+
+  //this.content[i].y = this.content[i].yOrig - (this.y - this.miny)
+//function deck_viewer_card(game, dungeon, card, x, y){
+
+  if (this.view_window_present === 'displaying_discard_deck') {
+    this.cardsToDraw = [];
+  
+    for (let i = 0; i < this.discardPile.length; i++) {
+      var card = new deck_viewer_card(this.game, this.dungeon, this.discardPile[i], this.x + (i % this.rowcol) * this.width,
+                                     (this.y + (this.height * Math.floor(i / this.rowcol))) - (this.myScrollBar.y - this.myScrollBar.miny));
+        
+      this.cardsToDraw.push(card);
+    }
+  } else if (this.view_window_present === 'displaying_draw_deck') {
+    this.cardsToDraw = [];
+  
+    for (let i = 0; i < this.drawPile.length; i++) {
+      var card = new deck_viewer_card(this.game, this.dungeon, this.drawPile[i], this.x + (i % this.rowcol) * this.width,
+                                     (this.y + (this.height * Math.floor(i / this.rowcol))) - (this.myScrollBar.y - this.myScrollBar.miny));
+        this.cardsToDraw.push(card);
+        
+    }
+  } 
 }
