@@ -1,19 +1,22 @@
 var AM = new AssetManager();
 function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
+  this.width = 200;//card width
+  this.height = 261; //card height
+
   this.x = 650;
-  this.y = 200;
+
+  this.y = 140;
+
   this.fullDeckX = 1800
   this.fullDeckY = 5;
   this.fullDeckDimensions = 120;
-  this.width = 200;
-  this.height = 261;
 
   this.drawPileX = 25
   this.rowcol = 5;
-  this.drawPileY = 1030;
+  this.drawPileY = game.height * .86;
 
   this.discardPileX = 2225;
-  this.discardPileY = 1030;
+  this.discardPileY =  this.drawPileY;
   
 
   this.drawAndDiscardDimensions = 150;
@@ -39,9 +42,10 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
   this.deck_discard_sprite = AM.getAsset("./img/cards/deck_discard.png");
   this.deck_draw_sprite = AM.getAsset("./img/cards/deck_draw.png");
   this.deck_full_sprite = AM.getAsset("./img/cards/full_deck.png");
+  this.deck_background = AM.getAsset("./img/viewing_deck_bg.png");
   this.cardsToDraw = [];
 
-  this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.cardsToDraw, 300, 300, 'vertical');
+  this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.cardsToDraw, 1700, 150, 'vertical');
 
   this.combined = this.drawPile + this.discardPile;
   this.dungeon = dungeon;
@@ -50,6 +54,7 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
   
 deck_viewer.prototype.draw = function () {
   if (this.view_window_present != 'none'){
+    this.ctx.drawImage(this.deck_background, this.x , 130, this.width * this.rowcol, 600);
     this.myScrollBar.draw();
   }
   if (this.cardhand && this.dungeon.state != 'viewing_deck') {

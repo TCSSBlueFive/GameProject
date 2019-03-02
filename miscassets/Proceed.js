@@ -1,6 +1,6 @@
 function Proceed(game, spritesheet, dungeon) {
   this.x = 2100;
-  this.y = 825;
+  this.y = game.height * .69;
   this.dimensions = 125;
   this.opacity = 1;
   this.spritesheet = spritesheet;

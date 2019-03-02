@@ -19,9 +19,9 @@ HealthBar.prototype.draw = function () {
 
     
     this.ctx.save();
-    this.ctx.font = "15px Impact";
+    this.ctx.font = "30px Impact";
     this.ctx.fillStyle = "#ffffff";
-    this.ctx.fillText(this.health + " / " + this.maxHealth , this.x + 35, this.y + 13 ); 
+    this.ctx.fillText(this.health + " / " + this.maxHealth , this.x + 35, this.y + 25 ); 
     this.ctx.restore();
 };
 

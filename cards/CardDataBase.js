@@ -140,7 +140,62 @@ function CardDataBase() {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/arcane_intellect-card.png")
 
-    } ]
+    } , {
+        name: 'Heal',
+        type: 'heal',
+        value: 15,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Restore 15 health.',
+        
+
+        spritesheet: AM.getAsset("./img/cards/heal-card.png")
+    }, {
+        name: 'Heal',
+        type: 'heal',
+        value: 15,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Restore 15 health.',
+        
+
+        spritesheet: AM.getAsset("./img/cards/heal-card.png")
+    }, {
+        name: 'Heal',
+        type: 'heal',
+        value: 15,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Restore 15 health.',
+        
+
+        spritesheet: AM.getAsset("./img/cards/heal-card.png")
+    }, {
+        name: 'Heal',
+        type: 'heal',
+        value: 15,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Restore 15 health.',
+        
+
+        spritesheet: AM.getAsset("./img/cards/heal-card.png")
+    }, {
+        name: 'Heal',
+        type: 'heal',
+        value: 15,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Restore 15 health.',
+        
+
+        spritesheet: AM.getAsset("./img/cards/heal-card.png")
+    }]
 
 
     //potential cards as reward

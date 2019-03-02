@@ -1,6 +1,6 @@
 function TurnButton(game, cardHand, spritesheet, opacity) {
   this.x = 2050;
-  this.y = 600;
+  this.y = game.height * .5;
   this.dimensions = 200;
   this.opacity = opacity;
   this.spritesheet = spritesheet;

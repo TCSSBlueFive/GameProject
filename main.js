@@ -4,7 +4,7 @@ var AM = new AssetManager();
 AM.queueDownload("./img/RedHealthBar.png");
 AM.queueDownload("./img/GreenHealthBar.png");
 AM.queueDownload("./img/scrollbar.png");
-
+AM.queueDownload("./img/scrollbar_horizontal.png")
 AM.queueDownload("./img/time_sprite.png")
 AM.queueDownload("./img/heart_sprite.png")
 AM.queueDownload("./img/class_sprite.png")
@@ -12,7 +12,7 @@ AM.queueDownload("./img/gold_sprite.png")
 AM.queueDownload("./img/floor_sprite.png")
 
 
-
+AM.queueDownload("./img/viewing_deck_bg.png")
 AM.queueDownload("./img/cards/deck_discard.png")
 AM.queueDownload("./img/cards/deck_draw.png")
 AM.queueDownload("./img/cards/full_deck.png")
@@ -85,12 +85,11 @@ AM.downloadAll(function () {
     var ctx = canvas.getContext("2d");
     ctx.font = "20px Arial";
     ctx.fillStyle = "#ff0000";
-  
-    
-
     var gameEngine = new GameEngine();
     gameEngine.init(ctx);
     gameEngine.start();
+    gameEngine.width = 2400;
+    gameEngine.height = 1650;
 
     var myManaBar = new ManaBar(gameEngine, [AM.getAsset("./img/mana_bar.png"),AM.getAsset("./img/mana_empty.png"),
                                              AM.getAsset("./img/mana_circle.png")], 150, 150, 1);
@@ -99,7 +98,7 @@ AM.downloadAll(function () {
 
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     
-    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 100, 130, 13);
+    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 100, 200, 25);
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, myManaBar, 1)
     

@@ -1,6 +1,6 @@
 function CardHand(game, dungeon, PlayerCharacter, opacity){
     this.x = 425;// each card will be 75 units wide for now
-    this.y = 850;
+    this.y = game.height * .71;
     this.dungeon = dungeon;
     this.opacity = opacity;
     this.currentCardDraw = 5;

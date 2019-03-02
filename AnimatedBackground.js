@@ -8,17 +8,18 @@ function AnimatedBackground(game, spritesheet, staticsprite, opacity, x, y, spee
     this.spritesheet = spritesheet;
     this.staticsprite = staticsprite;
     this.staticspritex = 0;
-    this.staticspritey = 750;
     this.game = game;
-    this.width = 2400;
+    this.width = this.game.width;
+    this.height = this.game.height;
+    this.staticspritey = this.height *.625;
     this.ctx = game.ctx;
 };
 
 AnimatedBackground.prototype.draw = function () {
     this.ctx.drawImage(this.spritesheet,
-                   this.x, this.y);
+                   this.x, this.y, this.width, this.height);
     this.ctx.drawImage(this.spritesheet,
-                    this.x + this.width, this.y);
+                    this.x + this.width, this.y, this.width, this.height);
 
     this.ctx.drawImage(this.staticsprite,
                     this.staticspritex, this.staticspritey)                

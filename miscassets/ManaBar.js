@@ -1,6 +1,6 @@
 function ManaBar(game, spritesheet, width, height, opacity) {
     this.x = 200;
-    this.y = 875;
+    this.y = game.height * .73;
     this.opacity = opacity;
     this.spritesheet = spritesheet;
     this.game = game;

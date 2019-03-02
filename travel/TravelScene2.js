@@ -22,6 +22,8 @@ function TravelScene2(game, dungeon, opacity){
     this.xDist = 250;
     this.NodeDataBase = new NodeDataBase();
 
+    this.mapHeight = 1400;
+
 };
 TravelScene2.prototype.getDistBetweenNodes = function (node1, node2) {
     return Math.sqrt(Math.pow((node2.x - node1.x), 2) + Math.pow((node2.y- node1.y),2))
@@ -34,7 +36,7 @@ TravelScene2.prototype.setupscrollbar = function() {
             this.allEncounters.push(this.encounters[i][z])
         }
     }
-    this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.allEncounters, 200, 1100, 'horizontal');
+    this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar_horizontal.png"), this.allEncounters, 200, 1500, 'horizontal');
 
 }
 
@@ -96,7 +98,7 @@ TravelScene2.prototype.generateEncounters = function () {
     //sets up the encounters b4 boss
     for(let q = 0; q < 14; q++) {
         var myEncounterCount = getRandomInt(3) + 3;
-        var num = 950 / (myEncounterCount + 1);
+        var num = this.mapHeight / (myEncounterCount + 1);
 
         var encounterRow = [];
         var prevRow = this.encounters[q];
@@ -105,14 +107,14 @@ TravelScene2.prototype.generateEncounters = function () {
             var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
             var newNodeInfo = this.NodeDataBase.nodes[0]
             var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
-                newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(60) , this.yOffset + (num * i)  + getRandomIntNegOrPos(60));
+                newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(70) , this.yOffset + (num * i)  + getRandomIntNegOrPos(100));
                 encounterRow.push(newTravelNode);
         }
         this.encounters.push(encounterRow);
     }
 
     //sets up boss encounter
-    var num = 950/ (2);
+    var num = this.mapHeight/ (2);
     var encounterRow = [];
     var newNodeInfo = this.NodeDataBase.nodes[0];
     var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
@@ -125,7 +127,7 @@ TravelScene2.prototype.generateEncounters = function () {
 //determines starting path # and fills them with encounters
 TravelScene2.prototype.generatePaths = function () {
    var myPathCount = getRandomInt(2) + 2;
-   var num = 950 / (myPathCount + 1);
+   var num = this.mapHeight / (myPathCount + 1);
    var encounterRow = [];
    for (let i = 1; i <= myPathCount; i++) {
         var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
