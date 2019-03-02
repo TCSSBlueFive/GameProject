@@ -36,7 +36,7 @@ GameEngine.prototype.startInput = function() {
 
 
     this.ctx.canvas.addEventListener("mousedown", function(event) {
-        console.log('dragstart')
+       // console.log('dragstart')
         that.origspot = getXandY(event);
         that.newspot = that.origspot;
 
@@ -55,7 +55,6 @@ GameEngine.prototype.startInput = function() {
       /* Events fired on the drop target */
       this.ctx.canvas.addEventListener("mouseup", function(event) {
         event.preventDefault();
-        console.log('yeetin')
         that.mousedown = false;
 
       });
@@ -71,7 +70,7 @@ GameEngine.prototype.startInput = function() {
         var test_click = getXandY(e);
         if (test_click.x === that.origspot.x && test_click.y === that.origspot.y) {
             that.click = test_click;
-            console.log("Left Click Event - X, Y " + e.clientX +"," + e.clientY);
+            //console.log("Left Click Event - X, Y " + e.clientX +"," + e.clientY);
         }
     }, false);
 }

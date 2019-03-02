@@ -6,7 +6,6 @@ function card_inheritance(game, dungeon, card, x, y) {
     this.y = y;
     this.opacity = 1;
     this.fn = card;
-    console.log(card)
     this.spritesheet = card.spritesheet;
 
     this.width = card.width;

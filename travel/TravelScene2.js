@@ -18,6 +18,7 @@ function TravelScene2(game, dungeon, opacity){
     this.node_center_height = 118/2;
     this.allEncounters = [];
 
+    this.currentNode = 'none';
     this.xDist = 250;
     this.NodeDataBase = new NodeDataBase();
 
@@ -102,9 +103,9 @@ TravelScene2.prototype.generateEncounters = function () {
         for (let i = 1; i <= myEncounterCount; i++) {
 
             var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
-            var newNodeInfo = this.NodeDataBase.nodes[randomNum]
+            var newNodeInfo = this.NodeDataBase.nodes[0]
             var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
-                newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(80) , this.yOffset + (num * i)  + getRandomIntNegOrPos(60));
+                newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(60) , this.yOffset + (num * i)  + getRandomIntNegOrPos(60));
                 encounterRow.push(newTravelNode);
         }
         this.encounters.push(encounterRow);
@@ -115,7 +116,7 @@ TravelScene2.prototype.generateEncounters = function () {
     var encounterRow = [];
     var newNodeInfo = this.NodeDataBase.nodes[0];
     var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
-        newNodeInfo.fn, this.encounters[14][0].x + this.xDist + 80 , this.yOffset + num);
+        newNodeInfo.fn, this.encounters[14][0].x + this.xDist + 60 , this.yOffset + num);
     encounterRow.push(newTravelNode);
     this.encounters.push(encounterRow);
 
@@ -128,7 +129,7 @@ TravelScene2.prototype.generatePaths = function () {
    var encounterRow = [];
    for (let i = 1; i <= myPathCount; i++) {
         var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
-        var newNodeInfo = this.NodeDataBase.nodes[randomNum]
+        var newNodeInfo = this.NodeDataBase.nodes[0]
         var newTravelNode = new travel_node2(this.game, this, this.dungeon, 0, newNodeInfo.spritesheet, 
         newNodeInfo.fn, this.x, this.yOffset + num * i );
         encounterRow.push(newTravelNode);  
@@ -138,13 +139,37 @@ TravelScene2.prototype.generatePaths = function () {
     
 
 }
-
 TravelScene2.prototype.drawLinks = function () {
     for (let i = 0; i < this.encounters.length; i++) {
         for (let q = 0; q < this.encounters[i].length; q++) {
             for(let z = 0; z < this.encounters[i][q].linked.length; z++) {
                 this.ctx.save();
-                this.ctx.strokeStyle = '#ff0000'
+                this.ctx.strokeStyle = '#0000CD'
+
+                if (this.encounters[i][q].clicked) {
+                    ////////////draws X
+                    this.ctx.strokeStyle = '#FF0000'
+                    this.ctx.lineWidth = 20;
+                    this.ctx.beginPath(); 
+                    this.ctx.moveTo(this.encounters[i][q].x, this.encounters[i][q].y);
+                    this.ctx.lineTo(this.encounters[i][q].x  + this.node_center_width * 2, this.encounters[i][q].y + this.node_center_height * 2);
+                    this.ctx.stroke();
+                    this.ctx.beginPath(); 
+                    this.ctx.moveTo(this.encounters[i][q].x + this.node_center_width * 2, this.encounters[i][q].y);
+                    this.ctx.lineTo(this.encounters[i][q].x, this.encounters[i][q].y + this.node_center_height * 2);
+                    this.ctx.stroke();
+                    /////////done drawing X
+                    this.ctx.strokeStyle = '#0000CD'
+                    if (this.encounters[i][q].linkedto === this.encounters[i][q].linked[z]) {
+                        this.ctx.strokeStyle = '#FF0000'
+                      
+                    }
+
+                } 
+                if (this.encounters[i][q] === this.currentNode) {
+                    this.ctx.strokeStyle = '#FFFF00'
+
+                }
                 this.ctx.lineWidth = 5;
                 
                 this.ctx.beginPath(); 
@@ -161,6 +186,35 @@ TravelScene2.prototype.drawLinks = function () {
     }
     
 }
+
+
+/*
+TravelScene2.prototype.drawLinks = function () {
+    for (let i = 0; i < this.encounters.length; i++) {
+        for (let q = 0; q < this.encounters[i].length; q++) {
+            for(let z = 0; z < this.encounters[i][q].linked.length; z++) {
+                this.ctx.save();
+                if (this.encounters[i][q].clicked) {
+                    this.ctx.strokeStyle = '#FFFF66'
+                } else {
+                    this.ctx.strokeStyle = '#0000CD'
+                }
+                this.ctx.lineWidth = 5;
+                
+                this.ctx.beginPath(); 
+                this.ctx.setLineDash([10, 15]);
+
+                this.ctx.moveTo(this.encounters[i][q].x + this.node_center_width, this.encounters[i][q].y + this.node_center_height);
+                // End point (180,47)
+                this.ctx.lineTo(this.encounters[i][q].linked[z].x + this.node_center_width, this.encounters[i][q].linked[z].y + this.node_center_height);
+                // Make the line visible
+                this.ctx.stroke();
+                this.ctx.restore();
+            }
+        }
+    }
+    
+}*/
 
 TravelScene2.prototype.connectPaths = function () {
     //do this for all rows 

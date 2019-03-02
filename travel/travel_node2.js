@@ -33,10 +33,27 @@ travel_node2.prototype.update = function () {
     if (this.game.click) {
         if((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width  )
         && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
-            
-            this.dungeon.roomSelected = true;
-            this.dungeon.nextRoom = this.fn;
-            this.game.click = false;
+            if (this.travelScene.currentNode === 'none') {
+                if (this.travelScene.encounters[0].includes(this)) {
+                    this.travelScene.currentNode = this;
+                    this.clicked = true;
+                    this.dungeon.roomSelected = true;
+                    this.dungeon.nextRoom = this.fn;
+                    this.game.click = false;
+                }
+            } else {
+                for (let i = 0; i < this.travelScene.currentNode.linked.length; i++) {
+                    if (this.travelScene.currentNode.linked[i] === this) {
+                        this.travelScene.currentNode.linkedto = this;
+                        this.clicked = true;
+                        this.travelScene.currentNode = this;
+                        this.dungeon.roomSelected = true;
+                        this.dungeon.nextRoom = this.fn;
+                        this.game.click = false; 
+                    }
+                }
+            }
+
             //this.travelScene.currentRoom += 1;
         }
     }

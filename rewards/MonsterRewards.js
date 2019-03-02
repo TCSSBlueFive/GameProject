@@ -23,8 +23,6 @@ MonsterRewards.prototype.generateRewardsEnemy = function () {
     this.rewards[2] = new reward_node(this.game, this.rewardFromDatabase.rewards[0], this, this.x, this.y + (this.height * 2))
     this.rewards[3] = new reward_node(this.game, this.rewardFromDatabase.rewards[0], this, this.x, this.y + (this.height *3))
 
-    console.log(this.rewards[3])
-
 }
 
 MonsterRewards.prototype.generateRewardsBoss = function () {

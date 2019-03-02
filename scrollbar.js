@@ -31,20 +31,16 @@ scrollbar.prototype.update = function (content) {
         && (this.game.origspot['y'] > this.y && this.game.origspot['y'] < this.y + this.height)) || this.imdragged) {
 
             if (this.type === 'vertical') {
-            console.log("no")
                 this.imdragged = true;
                 var x = this.game.newspot.y + ( this.bottomy - this.game.origspot.y);
                 if (x > this.miny) {
-                    console.log("nani")
 
                     this.y = x;
                 } else {
-                    console.log("nani2")
 
                     this.y = this.miny
                 }
                 if (!this.game.mousedown) {
-                    console.log("nani3")
 
                     this.game.origspot = false;
                     this.imdragged = false;
@@ -52,18 +48,14 @@ scrollbar.prototype.update = function (content) {
 
                 }
             } else if (this.type === 'horizontal') {
-                console.log('fukinAmoite')
                 this.imdragged = true;
                 var x = this.game.newspot.x + ( this.leftx - this.game.origspot.x);
                 if (x > this.minx) {
-                    console.log("nani")
                     this.x = x;
                 } else {
-                    console.log("nani2")
                     this.x = this.minx
                 }
                 if (!this.game.mousedown) {
-                    console.log("nani3")
                     this.game.origspot = false;
                     this.imdragged = false;
                     this.leftx = this.x;
