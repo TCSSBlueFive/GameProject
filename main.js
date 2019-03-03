@@ -89,8 +89,8 @@ AM.downloadAll(function () {
     var gameEngine = new GameEngine();
     gameEngine.init(ctx);
     gameEngine.start();
-    gameEngine.width = 2400;
-    gameEngine.height = 1650;
+    gameEngine.width = 2900;
+    gameEngine.height = 1950;
 
     var myManaBar = new ManaBar(gameEngine, [AM.getAsset("./img/mana_bar.png"),AM.getAsset("./img/mana_empty.png"),
                                              AM.getAsset("./img/mana_circle.png")], 150, 150, 1);

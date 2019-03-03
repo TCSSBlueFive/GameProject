@@ -11,6 +11,8 @@ function AnimatedBackground(game, spritesheet, staticsprite, opacity, x, y, spee
     this.game = game;
     this.width = this.game.width;
     this.height = this.game.height;
+    this.bridgeHeight = 200;
+    this.bridgeWidth = this.width;
     this.staticspritey = this.height *.625;
     this.ctx = game.ctx;
 };
@@ -22,7 +24,7 @@ AnimatedBackground.prototype.draw = function () {
                     this.x + this.width, this.y, this.width, this.height);
 
     this.ctx.drawImage(this.staticsprite,
-                    this.staticspritex, this.staticspritey)                
+                    this.staticspritex, this.staticspritey, this.bridgeWidth, this.bridgeHeight)                
 };
 
 AnimatedBackground.prototype.update = function () {

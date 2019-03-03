@@ -15,8 +15,8 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.class = 'Omnimage'
     this.HPBar = HPBar;
     this.Manabar = Manabar;
-    this.x = 450;
-    this.y = 860;
+    this.x = game.width * .1875;
+    this.y = 1038;
     this.HPBar.x = this.x - 55;
     this.HPBar.y = this.y - 55;
     this.gold = 0;

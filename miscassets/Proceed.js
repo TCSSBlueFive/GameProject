@@ -1,10 +1,12 @@
 function Proceed(game, spritesheet, dungeon) {
-  this.x = 2100;
+  this.x = game.width * .875;
   this.y = game.height * .69;
   this.dimensions = 125;
   this.opacity = 1;
   this.spritesheet = spritesheet;
   this.game = game;
+  this.width =320;
+  this.height = 230;
   this.ctx = game.ctx;
   this.dungeon = dungeon;
 };
@@ -13,14 +15,14 @@ function Proceed(game, spritesheet, dungeon) {
 
 Proceed.prototype.draw = function () {
   this.ctx.drawImage(this.spritesheet,
-                 this.x, this.y);
+                 this.x, this.y, this.width, this.height);
 };
 
 Proceed.prototype.update = function () {
     
   if (this.game.click) {
-    if ((this.game.click['x'] > this.x + 10 && this.game.click['x'] < this.x + 200  )
-    && (this.game.click['y'] > this.y + 50 && this.game.click['y'] < this.y + 150)) {
+    if ((this.game.click['x'] > this.x + 10 && this.game.click['x'] < this.x + this.width  )
+    && (this.game.click['y'] > this.y + 50 && this.game.click['y'] < this.y + this.height)) {
     
         var userState = this.dungeon.state;
         console.log(userState)

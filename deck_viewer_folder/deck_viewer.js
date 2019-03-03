@@ -3,7 +3,7 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
   this.width = 200;//card width
   this.height = 261; //card height
 
-  this.x = 650;
+  this.x = game.width * .31;
 
   this.y = 140;
 
@@ -11,11 +11,11 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
   this.fullDeckY = 5;
   this.fullDeckDimensions = 120;
 
-  this.drawPileX = 25
+  this.drawPileX = game.width * .01;
   this.rowcol = 5;
   this.drawPileY = game.height * .86;
 
-  this.discardPileX = 2225;
+  this.discardPileX = game.width * .937;
   this.discardPileY =  this.drawPileY;
   
 
@@ -23,6 +23,8 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
   this.PlayerCharacter = PlayerCharacter;
 
   this.view_window_present = 'none';
+
+  this.scrollbarX = game.width * .69;
 
 
 
@@ -45,7 +47,7 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
   this.deck_background = AM.getAsset("./img/viewing_deck_bg.png");
   this.cardsToDraw = [];
 
-  this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.cardsToDraw, 1700, 150, 'vertical');
+  this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar.png"), this.cardsToDraw, this.scrollbarX, 150, 'vertical');
 
   this.combined = this.drawPile + this.discardPile;
   this.dungeon = dungeon;

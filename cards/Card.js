@@ -8,6 +8,10 @@ function Card(game, dungeon, cardHand, card, x, y, pos) {
     this.cardHand = cardHand;
     this.mana = card.mana;
     this.yOffset= 60;
+    //this.nameXOffset = this.width * .25;
+    //this.nameYOffset = this.height * .13;
+    //this.textXOffset = this.width * .18;
+    //this.textYOffset = this.height * .672;
 
 };
 
@@ -61,7 +65,6 @@ Card.prototype.drawNormal = function () {
 
 Card.prototype.Rotate = function (angle) {
     this.ctx.fillStyle = "#f0ff0f";
-    this.ctx.font = "20px Arial";
     //this.ctx.fillRect(0,0,100,100);
     this.ctx.save();
     
@@ -69,13 +72,15 @@ Card.prototype.Rotate = function (angle) {
   
     this.ctx.rotate(angle * Math.PI / 180);
     this.ctx.drawImage(this.spritesheet, -this.width/2, -this.height/2, this.width, this.height);
-    this.ctx.fillText(this.name , -this.width/2 + 90, -this.height/2 + 45); 
+    this.ctx.font = "40px Arial";
+    this.ctx.fillText(this.name , -this.width/2 + this.game.width * .0375, -this.height/2 + this.game.height * .0282); 
+    var lineheight = 30;
+    this.ctx.font = lineheight +"px Arial";
 
-    var lineheight = 20;
     var lines = this.text.split('\n');
 
     for (var i = 0; i<lines.length; i++)
-        this.ctx.fillText(lines[i], -this.width/2 + 50 ,-this.height/2 + 240+ i * 20);
+        this.ctx.fillText(lines[i], -this.width/2 + this.game.width * .0209 ,-this.height/2 +  this.game.height * .15 + i * lineheight);
 
 
     this.ctx.restore();

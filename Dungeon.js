@@ -27,7 +27,7 @@ function getRandomInt(max) {
 Dungeon.prototype.addBackMonsterRewards = function () {
   this.removeAllEntities();
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
-  this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
+  //this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
   this.game.addEntity(this.currentMonsterRewards);
   this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
   this.game.addEntity(this.banner);
@@ -140,7 +140,7 @@ Dungeon.prototype.addNewEntitiesReward = function() {
   
   this.removeAllEntities();
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
-  this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
+  //this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
   console.log("transitioning to rewards")
 
   
@@ -157,27 +157,6 @@ Dungeon.prototype.addNewEntitiesReward = function() {
 
   this.game.addEntity(this);
 
-/*
-  console.log("transitioning to rewards")
-    opacity = .4;
-    var entitiesCount = this.game.entities.length;
-    for (var i = 0; i < entitiesCount; i++) {
-      var entity = this.game.entities[i];
-      entity.opacity = opacity;
-    }
-  this.BattleOngoing = false;
-  this.battle.PlayerTurn = false;
-  this.rewardScene = false;
-
-  this.game.entities.pop(); //pops dungeon as currently dungeon always needs to be last thing updated
-  this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
-  myRewards = new MonsterRewards(this.game, this, 1);
-  myRewards.generateRewardsEnemy();
-  this.currentMonsterRewards = myRewards;
-  this.game.addEntity(myRewards);
-  this.game.addEntity(this);
-
-  */
 }
 Dungeon.prototype.addNewEntitiesTreasure = function() {
   this.removeAllEntities();

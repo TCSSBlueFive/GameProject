@@ -1,6 +1,6 @@
 function CardHand(game, dungeon, PlayerCharacter, opacity){
     this.x = 525;// each card will be 75 units wide for now
-    this.y = game.height * .65;
+    this.y = game.height * .7;
     this.dungeon = dungeon;
     this.opacity = opacity;
     this.currentCardDraw = 9;
@@ -167,7 +167,8 @@ CardHand.prototype.update = function () {
     }
     for (let i = this.cardsInHand.length - 1; i >= 0;  i--) {
 
-        if (this.cardsInHand.length >= 0 )
+        if (this.cardsInHand.length > 0 ) {
             this.cardsInHand[i].update();    
+        }
     }
 };

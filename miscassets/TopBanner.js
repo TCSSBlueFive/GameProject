@@ -6,6 +6,8 @@ function TopBanner(game,opacity) {
     this.opacity = opacity;
     this.game = game;
     this.ctx = game.ctx;
+    this.width = game.width;
+    this.height = 120;
     this.banner_spritesheet = AM.getAsset("./img/travel/top banner.png")
     this.sprite_heart = AM.getAsset("./img/heart_sprite.png")
     this.sprite_gold = AM.getAsset("./img/gold_sprite.png")
@@ -23,7 +25,7 @@ function TopBanner(game,opacity) {
 TopBanner.prototype.draw = function () {
 
     this.ctx.drawImage(this.banner_spritesheet,
-                   this.x, this.y);
+                   this.x, this.y, this.width, this.height);
 
     this.ctx.save();
     this.ctx.fillStyle = "#FF8C00";

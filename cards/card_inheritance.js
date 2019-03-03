@@ -27,14 +27,14 @@ card_inheritance.prototype.draw = function () {
 
     //name
     this.ctx.save();
-    this.ctx.font = "20px Arial";
+    this.ctx.font = "40px Arial";
     this.ctx.fillStyle = "#f0ff0f";
     this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
 
     //card text effect
-    this.ctx.font = "20px Arial";
+    this.ctx.font = "30px Arial";
     this.ctx.fillStyle = "#ffff00";
-    var lineheight = 20;
+    var lineheight = 30;
     var lines = this.text.split('\n');
 
     for (var i = 0; i<lines.length; i++)

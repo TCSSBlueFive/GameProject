@@ -10,12 +10,12 @@ function CardSelectionScene(game, dungeon){
     this.game = game;
     this.ctx = game.ctx;
     this.CardDataBase = new CardDataBase();
-    this.x = 800;
-    this.y = 450
+    this.x = game.width * .3334;
+    this.y = game.height * .475;
     this.opacity = 1;
     this.width = this.CardDataBase.width;
     this.height = this.CardDataBase.height;
-
+    this.textbox = new TextBox(game, this.x - 150, 400, 1400, 200, 'Choose a card...');
     
     this.buffer = 50
 };
@@ -32,7 +32,7 @@ CardSelectionScene.prototype.generateCards = function () {
 }
 
 CardSelectionScene.prototype.draw = function () {
-
+    this.textbox.draw();
     for(let i = 0; i < this.cards.length; i++) {
         this.cards[i].draw();
     }    

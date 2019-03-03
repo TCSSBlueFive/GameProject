@@ -19,10 +19,10 @@ function TravelScene2(game, dungeon, opacity){
     this.allEncounters = [];
 
     this.currentNode = 'none';
-    this.xDist = 250;
+    this.xDist = 300;
     this.NodeDataBase = new NodeDataBase();
 
-    this.mapHeight = 1400;
+    this.mapHeight = 1675;
 
 };
 TravelScene2.prototype.getDistBetweenNodes = function (node1, node2) {
@@ -36,7 +36,7 @@ TravelScene2.prototype.setupscrollbar = function() {
             this.allEncounters.push(this.encounters[i][z])
         }
     }
-    this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar_horizontal.png"), this.allEncounters, 200, 1500, 'horizontal');
+    this.myScrollBar = new scrollbar(this.game, AM.getAsset("./img/scrollbar_horizontal.png"), this.allEncounters, 200, this.game.height*.9375, 'horizontal');
 
 }
 
