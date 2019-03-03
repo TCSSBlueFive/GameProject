@@ -1,15 +1,96 @@
-function Card(game, dungeon, cardHand, card, x, y) {
+function Card(game, dungeon, cardHand, card, x, y, pos) {
+    this.pos = pos;
 
     card_inheritance.call(this, game, dungeon, card, x, y);
+    //this.slot = pos;
+    this.origX = this.x;
+    this.origY = this.y;
     this.cardHand = cardHand;
     this.mana = card.mana;
+    this.yOffset= 60;
 
 };
 
 Card.prototype = Object.create(card_inheritance.prototype);
 
-Card.prototype.draw = function () {
+
+Card.prototype.drawIrregular = function(num, angle) {
+    //case of 6, 7, 8, 9
+
+    if ( num % 2 == 0) { 
+        if (this.pos < num /2 - 1) {         
+            this.Rotate((-(num/2 - 1) + this.pos) * angle)        
+            this.y = this.origY + ((num/2) - (this.pos + 1)) * this.yOffset; //0 1     or 0 1 2
+            //this.y = this.origY
+
+        } 
+        if (this.pos > num/2 - 2 && this.pos < num/2 + 1) {  
+            this.drawNormal();
+
+        } 
+        if (this.pos > num/ 2)  {             
+            this.Rotate((-(num/2) + this.pos) *angle)                               // 4 5 or 4 5 6
+            this.y = this.origY + ( this.pos - (num/2)) * this.yOffset; 
+        }
+    }
+    else if (num % 2 == 1) {    
+        if (this.pos < Math.floor(num /2)) {      //less than 3 or 4   
+            this.Rotate((-(Math.floor(num/2)) + this.pos) * angle)   
+            this.y = this.origY + ((Math.floor(num/2)) - this.pos) * this.yOffset; 
+        } 
+        else if (this.pos < Math.floor(num/2) + 1) { //gets 3 or gets 4
+            this.drawNormal();
+        } 
+        else {             
+
+            this.Rotate((-(Math.floor(num/2)) + this.pos) *angle) 
+            
+            this.y = this.origY + ( this.pos - (Math.floor(num/2))) * this.yOffset; 
+
+        }
+    }
+}
+
+
+Card.prototype.drawNormal = function () {
+    this.cardHand.normalize();
+    this.y = this.origY +30;
+
     card_inheritance.prototype.draw.call(this); 
+}
+
+Card.prototype.Rotate = function (angle) {
+    this.ctx.fillStyle = "#f0ff0f";
+    this.ctx.font = "20px Arial";
+    //this.ctx.fillRect(0,0,100,100);
+    this.ctx.save();
+    
+    this.ctx.translate(this.x + this.width/2, this.y + this.height/2);
+  
+    this.ctx.rotate(angle * Math.PI / 180);
+    this.ctx.drawImage(this.spritesheet, -this.width/2, -this.height/2, this.width, this.height);
+    this.ctx.fillText(this.name , -this.width/2 + 90, -this.height/2 + 45); 
+
+    var lineheight = 20;
+    var lines = this.text.split('\n');
+
+    for (var i = 0; i<lines.length; i++)
+        this.ctx.fillText(lines[i], -this.width/2 + 50 ,-this.height/2 + 240+ i * 20);
+
+
+    this.ctx.restore();
+  };
+
+Card.prototype.draw = function (numOfCards) {
+
+    var angle = 10;
+    if (numOfCards <= 5) {
+        this.drawNormal();
+    }  else {
+        this.drawIrregular(numOfCards, 10)
+
+    }
+
 };
 
 Card.prototype.update = function () {

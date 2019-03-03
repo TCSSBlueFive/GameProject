@@ -1,9 +1,9 @@
 function CardHand(game, dungeon, PlayerCharacter, opacity){
-    this.x = 425;// each card will be 75 units wide for now
-    this.y = game.height * .71;
+    this.x = 525;// each card will be 75 units wide for now
+    this.y = game.height * .65;
     this.dungeon = dungeon;
     this.opacity = opacity;
-    this.currentCardDraw = 5;
+    this.currentCardDraw = 9;
     this.cardsInHand = [];
     this.PlayerCharacter = PlayerCharacter;
     this.DeckList = this.PlayerCharacter.DeckList;
@@ -11,8 +11,12 @@ function CardHand(game, dungeon, PlayerCharacter, opacity){
     this.DeckListCardsUsed = [];
     this.game = game;
     this.ctx = game.ctx;
+    this.width = new CardDataBase().width;
+    this.cardclipwidth = this.width;
     //this.fn = fn; 
     this.debug = false;
+
+    this.endPoint = this.width * 5 ;
 };
 CardHand.prototype.useAll = function () {
 
@@ -52,7 +56,7 @@ CardHand.prototype.generateInitialHand = function () {
     for(let i = 0; i < this.currentCardDraw; i++) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var card = this.DeckListCardsRemaining[myNum];
-        var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * i), this.y, card.width, this.height, this.opacity)
+        var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * i), this.y,  i)
         var index = this.DeckListCardsRemaining.indexOf(card);
         if (index > -1) {
             this.DeckListCardsRemaining.splice(index, 1);
@@ -89,7 +93,7 @@ CardHand.prototype.generateNewHand = function () {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var card = this.DeckListCardsRemaining[myNum];
 
-        var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * i), this.y, card.width, card.height,  this.opacity)
+        var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * i), this.y,  i )
 
         var index = this.DeckListCardsRemaining.indexOf(card);
         if (index > -1) {
@@ -119,7 +123,7 @@ CardHand.prototype.drawCard = function () {
     if (this.DeckListCardsRemaining.length != 0) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var card = this.DeckListCardsRemaining[myNum];
-        var newCard = new Card(this.game, this.dungeon, this, card, this.x, this.y, card.width, card.height,  this.opacity)
+        var newCard = new Card(this.game, this.dungeon, this, card, this.x, this.y, this.cardsInHand.length)
         var index = this.DeckListCardsRemaining.indexOf(card);
         if (index > -1) {
             this.DeckListCardsRemaining.splice(index, 1);
@@ -138,24 +142,32 @@ CardHand.prototype.addCard = function (card) {
 
         console.log(card)
     }
-    var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * this.cardsInHand.length), this.y, card.width, card.height,  this.opacity)
+    var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * this.cardsInHand.length), this.y, this.cardsInHand.length)
     this.cardsInHand.push(newCard);
 }
 
 CardHand.prototype.draw = function () {
     for (let i = 0; i < this.cardsInHand.length; i++) {
-        this.cardsInHand[i].draw();
+        this.cardsInHand[i].draw(this.cardsInHand.length);
     }
     
 };
+
 CardHand.prototype.normalize = function () {
     for (let i = 0; i < this.cardsInHand.length; i++) {
-        this.cardsInHand[i].x = this.x + (this.cardsInHand[i].width * i);
+
+        this.cardsInHand[i].x = this.x + ((this.endPoint / this.cardsInHand.length)* i);
+        this.cardsInHand[i].pos = i;
     }
 }
 CardHand.prototype.update = function () {
     this.normalize();
-    for (let i = 0; i < this.cardsInHand.length; i++) {
-        this.cardsInHand[i].update();    
+    if (this.cardsInHand.length > 5) {
+        this.cardclipwidth = this.endPoint / this.cardsInHand.length;
+    }
+    for (let i = this.cardsInHand.length - 1; i >= 0;  i--) {
+
+        if (this.cardsInHand.length >= 0 )
+            this.cardsInHand[i].update();    
     }
 };

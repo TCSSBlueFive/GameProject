@@ -1,0 +1,64 @@
+/*
+Card.prototype.drawSix= function ( angle) {
+    if (this.pos <= 1) {
+        this.Rotate((-2 + this.pos) * angle);
+        this.y = this.origY + ((-this.pos + 2) * this.yOffset)
+    } 
+    else if (this.pos <= 3) {
+        this.drawNormal();
+
+    } 
+    else if (this.pos <= 5)  {             
+        this.Rotate( (this.pos - 3) * angle);                      // 4 5
+        this.y = this.origY + ((this.pos - 3) * this.yOffset)
+
+        //this.y = this.origY + 
+    }
+}
+
+Card.prototype.drawSeven= function ( angle) {
+    if (this.pos <= 1) {
+        this.Rotate((-2 + this.pos) * angle);
+        this.y = this.origY + ((-this.pos + 2) * this.yOffset)
+
+    } 
+    else if (this.pos <= 4) {
+        console.log(this)
+        this.drawNormal();
+
+    } 
+    else if (this.pos <= 6)  {             
+        this.Rotate( (this.pos - 4) * angle);                      // 4 5
+        this.y = this.origY + ((this.pos - 4) * this.yOffset)
+    }
+}
+
+Card.prototype.drawEight= function ( angle) {
+    if (this.pos <= 2) {
+        this.Rotate((-3 + this.pos) * angle);
+        //this.y = this.origY 
+    } 
+    else if (this.pos <= 4) {
+        this.drawNormal();
+
+    } 
+    else if (this.pos <= 7)  {             
+        this.Rotate( (this.pos - 4) * angle);                      // 4 5
+        //this.y = this.origY + 
+    }
+}
+Card.prototype.drawNine= function ( angle) {
+    if (this.pos <= 2) {
+        this.Rotate((-3 + this.pos) * angle);
+        //this.y = this.origY 
+    } 
+    else if (this.pos <= 5) {
+        this.drawNormal();
+
+    } 
+    else if (this.pos <= 8)  {             
+        this.Rotate( (this.pos - 5) * angle);                      // 4 5
+        //this.y = this.origY + 
+    }
+}
+*/

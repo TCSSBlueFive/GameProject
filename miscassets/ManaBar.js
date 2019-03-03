@@ -5,11 +5,11 @@ function ManaBar(game, spritesheet, width, height, opacity) {
     this.spritesheet = spritesheet;
     this.game = game;
     this.ctx = game.ctx;
-    this.mana = 3;
+    this.mana = 8;
     this.width = width + 30;
     this.height = height + 30;
     this.manaPCNT = 1;
-    this.maxMana = 3;
+    this.maxMana = 8;
 };
 
 ManaBar.prototype.enoughMana = function (someNum) {
