@@ -81,6 +81,9 @@ AM.queueDownload("./img/wraith.png");
 AM.queueDownload("./img/gargoyle.png");
 AM.queueDownload("./img/treasure_chest.png");
 
+AM.queueDownload("./img/enemy/boss/boss_sprite_idle.png");
+
+
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameWorld");
     var ctx = canvas.getContext("2d");
@@ -106,13 +109,16 @@ AM.downloadAll(function () {
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, myManaBar, 1)
     
-    var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
+    var enemy = new Enemy(gameEngine, myEnemyDataBase.bosses[0],  1);
     var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)
     
     gameEngine.currentDungeon = dungeon;
     
     gameEngine.addEntity(new AnimatedBackground(gameEngine, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
     gameEngine.addEntity(myBanner);
+    //console.log(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"))
+    //console.log(enemy.IdleAnimation)
+
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
     gameEngine.addEntity(dungeon);

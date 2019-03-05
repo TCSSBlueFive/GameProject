@@ -4,6 +4,8 @@ function EnemyDataBase(game, spritesheet) {
     this.game = game;
     this.hpbarwidth = 200;
     this.hpbarheight = 25;
+    this.attacksprite = AM.getAsset("./img/attack.png");
+
     this.monsters =
     [{
         health: 100,
@@ -25,8 +27,6 @@ function EnemyDataBase(game, spritesheet) {
         attackAnimation: new Animation(spritesheet, 256, 256, 1, .075, 18, false, 0.5, 2,0),
         damagedAnimation: new Animation(spritesheet, 256, 256, 1, .3, 3, false, .5, 3,0),
         deathAnimation: new Animation(spritesheet, 253, 256, 1, .075, 3, true, .5, 5 ,0),
-
-        attacksprite: AM.getAsset("./img/attack.png")
     },                 
     {
         health: 120,
@@ -160,7 +160,31 @@ function EnemyDataBase(game, spritesheet) {
         attackAnimation: new Animation(AM.getAsset("./img/gargoyle.png"), 128, 128, 1, 0.15, 6, false, 2, 1, 0),
         damagedAnimation: new Animation(AM.getAsset("./img/gargoyle.png"), 128, 128, 1, 0.15, 4, false, 2, 4, 0),
         deathAnimation: new Animation(AM.getAsset("./img/gargoyle.png"), 128, 128, 1, 0.15, 3, true, 2, 5, 6)
-    }]
+    }],
+
+    this.bosses = [
+        {
+        health: 200,
+        name: 'Gaea',
+        x: game.width * .66667, //1000
+        y: game.height * .5,  //400
+        hpx: 570,
+        hpy: 550,
+        attacks: {
+            type: 'damage',
+            value: 90
+        },
+        HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
+                            AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
+
+        animation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 588.9 , 600, 1, 0.15, 31, true, 1, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 589 , 600, 1, 0.15, 31, true, 1, 0, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 589 , 600, 1, 0.15, 31, true, 1, 0, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 589 , 600, 1, 0.15, 31, true, 1, 0, 0),
+    }
+    ]
 };
+
+//function Animation(spriteSheet, frameWidth, frameHeight, sheetWidth, frameDuration, frames, loop, scale, yIndex, xIndexOffset) {
 
 
