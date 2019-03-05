@@ -86,7 +86,7 @@ AM.downloadAll(function () {
     var ctx = canvas.getContext("2d");
     ctx.font = "20px Arial";
     ctx.fillStyle = "#ff0000";
-    
+
     adjustCanvasSize(canvas);
 
     var gameEngine = new GameEngine();
@@ -139,6 +139,6 @@ function adjustCanvasSize(canvas) {
     myHeight = document.body.clientHeight;
   }
 
-  canvas.width = myWidth;
-  canvas.height = myHeight;
+  canvas.width = myWidth - 25;
+  canvas.height = myHeight - 25;
 }
