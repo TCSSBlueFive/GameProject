@@ -96,7 +96,7 @@ AM.downloadAll(function () {
     gameEngine.height = canvas.height;
 
     var myManaBar = new ManaBar(gameEngine, [AM.getAsset("./img/mana_bar.png"),AM.getAsset("./img/mana_empty.png"),
-                                             AM.getAsset("./img/mana_circle.png")], 150, 150, 1);
+                                             AM.getAsset("./img/mana_circle.png")], 100, 100, 1);
     
     var myBanner = new TopBanner(gameEngine, 1);
 

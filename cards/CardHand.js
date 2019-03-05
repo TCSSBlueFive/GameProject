@@ -1,5 +1,5 @@
 function CardHand(game, dungeon, PlayerCharacter, opacity){
-    this.x = 525;// each card will be 75 units wide for now
+    this.x = game.width / 3.7;// each card will be 75 units wide for now
     this.y = game.height * .7;
     this.dungeon = dungeon;
     this.opacity = opacity;
@@ -56,7 +56,8 @@ CardHand.prototype.generateInitialHand = function () {
     for(let i = 0; i < this.currentCardDraw; i++) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var card = this.DeckListCardsRemaining[myNum];
-        var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * i), this.y,  i)
+        //debugger
+        var newCard = new Card(this.game, this.dungeon, this, card, this.x + (this.width * i), this.y,  i)
         var index = this.DeckListCardsRemaining.indexOf(card);
         if (index > -1) {
             this.DeckListCardsRemaining.splice(index, 1);
@@ -92,8 +93,8 @@ CardHand.prototype.generateNewHand = function () {
         
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var card = this.DeckListCardsRemaining[myNum];
-
-        var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * i), this.y,  i )
+        //debugger
+        var newCard = new Card(this.game, this.dungeon, this, card, this.x + (this.width * i), this.y,  i )
 
         var index = this.DeckListCardsRemaining.indexOf(card);
         if (index > -1) {
@@ -123,6 +124,7 @@ CardHand.prototype.drawCard = function () {
     if (this.DeckListCardsRemaining.length != 0) {
         var myNum = getRandomInt(this.DeckListCardsRemaining.length);
         var card = this.DeckListCardsRemaining[myNum];
+        //debugger
         var newCard = new Card(this.game, this.dungeon, this, card, this.x, this.y, this.cardsInHand.length)
         var index = this.DeckListCardsRemaining.indexOf(card);
         if (index > -1) {
@@ -142,7 +144,8 @@ CardHand.prototype.addCard = function (card) {
 
         console.log(card)
     }
-    var newCard = new Card(this.game, this.dungeon, this, card, this.x + (card.width * this.cardsInHand.length), this.y, this.cardsInHand.length)
+    //debugger
+    var newCard = new Card(this.game, this.dungeon, this, card, this.x + (this.width * this.cardsInHand.length), this.y, this.cardsInHand.length)
     this.cardsInHand.push(newCard);
 }
 

@@ -37,14 +37,14 @@ ManaBar.prototype.draw = function () {
     }
 
     this.ctx.save();
-    this.ctx.font = "40px Impact";
+    this.ctx.font = "30px Impact";
     this.ctx.fillStyle = "#ffffff";
-    this.ctx.fillText(this.mana , this.x + 50, this.y + 80 ); 
-    this.ctx.font = "70px Impact";
+    this.ctx.fillText(this.mana , this.x + 35, this.y + 60 ); 
+    this.ctx.font = "50px Impact";
 
-    this.ctx.fillText('/', this.x + 75, this.y + 110 ); 
-    this.ctx.font = "40px Impact";
-    this.ctx.fillText(this.maxMana , this.x + 110, this.y +120 ); 
+    this.ctx.fillText('/', this.x + 55, this.y + 85 ); 
+    this.ctx.font = "30px Impact";
+    this.ctx.fillText(this.maxMana , this.x + 80, this.y + 100 ); 
     this.ctx.restore();
 
 };

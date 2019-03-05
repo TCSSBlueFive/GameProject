@@ -9,7 +9,7 @@ function EnemyDataBase(game, spritesheet) {
         health: 100,
         name: 'slime',
         x: game.width * .66667, //1000
-        y: game.height * .567,  //400
+        y: game.height * .5,  //400
         hpx: game.width * .66667 - 40,
         hpy: game.height * .567 - 40,
         attacks: {
