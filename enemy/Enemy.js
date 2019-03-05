@@ -11,7 +11,8 @@ function Enemy(game, EnemyFromDatabase, opacity) {
     this.yDamagedIndex = EnemyFromDatabase.damagedAnimation.yIndex;
     this.opacity = opacity;
 
-    this.attack_sprite = EnemyFromDatabase.attacksprite;
+    this.attack_sprite = new EnemyDataBase(game).attacksprite;
+    console.log(this.attack_sprite)
 
     this.HPBar = EnemyFromDatabase.HPBar;
     this.HPBar.health = EnemyFromDatabase.health;
