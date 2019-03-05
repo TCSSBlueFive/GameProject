@@ -5,7 +5,7 @@ function Proceed(game, spritesheet, dungeon) {
   this.opacity = 1;
   this.spritesheet = spritesheet;
   this.game = game;
-  this.width =320;
+  this.width = 320;
   this.height = 230;
   this.ctx = game.ctx;
   this.dungeon = dungeon;

@@ -2,8 +2,6 @@ var AM = new AssetManager();
 
 function CardDataBase() {
     //initial deck
-    this.width = 350;   //250 then 300 
-    this.height = 457;  //327 then 392
     this.cards = [
     {
         name: 'Heal',

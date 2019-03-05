@@ -11,7 +11,7 @@ function CardHand(game, dungeon, PlayerCharacter, opacity){
     this.DeckListCardsUsed = [];
     this.game = game;
     this.ctx = game.ctx;
-    this.width = new CardDataBase().width;
+    this.width = game.width / 8;
     this.cardclipwidth = this.width;
     //this.fn = fn; 
     this.debug = false;

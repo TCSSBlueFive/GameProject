@@ -86,11 +86,14 @@ AM.downloadAll(function () {
     var ctx = canvas.getContext("2d");
     ctx.font = "20px Arial";
     ctx.fillStyle = "#ff0000";
+    
+    adjustCanvasSize(canvas);
+
     var gameEngine = new GameEngine();
     gameEngine.init(ctx);
     gameEngine.start();
-    gameEngine.width = 2900;
-    gameEngine.height = 1950;
+    gameEngine.width = canvas.width;
+    gameEngine.height = canvas.height;
 
     var myManaBar = new ManaBar(gameEngine, [AM.getAsset("./img/mana_bar.png"),AM.getAsset("./img/mana_empty.png"),
                                              AM.getAsset("./img/mana_circle.png")], 150, 150, 1);
@@ -118,3 +121,24 @@ AM.downloadAll(function () {
     dungeon.loadDungeon();
     console.log("All Done!");
 });
+
+function adjustCanvasSize(canvas) {
+
+  var myWidth = 0, myHeight = 0;
+  if( typeof( window.innerWidth ) == 'number' ) {
+    //Non-IE
+    myWidth = window.innerWidth;
+    myHeight = window.innerHeight;
+  } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+    //IE 6+ in 'standards compliant mode'
+    myWidth = document.documentElement.clientWidth;
+    myHeight = document.documentElement.clientHeight;
+  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+    //IE 4 compatible
+    myWidth = document.body.clientWidth;
+    myHeight = document.body.clientHeight;
+  }
+
+  canvas.width = myWidth;
+  canvas.height = myHeight;
+}
