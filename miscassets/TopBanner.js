@@ -7,7 +7,7 @@ function TopBanner(game,opacity) {
     this.game = game;
     this.ctx = game.ctx;
     this.width = game.width;
-    this.height = 120;
+    this.height = game.height * .072;
     this.banner_spritesheet = AM.getAsset("./img/travel/top banner.png")
     this.sprite_heart = AM.getAsset("./img/heart_sprite.png")
     this.sprite_gold = AM.getAsset("./img/gold_sprite.png")
@@ -32,8 +32,8 @@ TopBanner.prototype.draw = function () {
     this.ctx.font = '30px Arial Black'
 
     //displays class and icon
-    this.ctx.drawImage(this.sprite_class, 15, this.yOffset);
-    this.ctx.fillText("The " +this.game.currentDungeon.PlayerCharacter.class, 90, 110); 
+    this.ctx.drawImage(this.sprite_class, this.game.width * .005,  this.yOffset, this.game.width *.023, this.game.height * .0424);
+    this.ctx.fillText("The " +this.game.currentDungeon.PlayerCharacter.class, this.game.width *.023, this.game.height * .067); 
     
     //displays health and icon
     this.ctx.fillStyle = "#FFB6C1";
