@@ -86,6 +86,16 @@ AM.queueDownload("./img/enemy/boss/ygg_Attack A_00-Sheet.png");
 AM.queueDownload("./img/enemy/boss/ygg_Damage_00-Sheet.png");
 
 
+
+AM.queueDownload("./img/player/Duesa_Idle_00-Sheet.png");
+AM.queueDownload("./img/player/Duesa_Damage_00-Sheet.png");
+AM.queueDownload("./img/player/Duesa_Attack A_00-Sheet.png");
+AM.queueDownload("./img/player/Duesa_Attack B_00-Sheet.png");
+AM.queueDownload("./img/player/Duesa_Attack C_00-Sheet.png");
+AM.queueDownload("./img/player/Duesa_Attack D_00-Sheet.png");
+
+
+
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameWorld");
     var ctx = canvas.getContext("2d");

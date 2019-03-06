@@ -1,23 +1,20 @@
 
- 
+var AM = new AssetManager(); 
 function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
 
     this.idleAnimation = new Animation(spritesheet[0], 37, 80, 1, .5, 2, true, 2,0,0);
-    this.walkingRightAnimation = new Animation(spritesheet[2], 38, 79, 1, .5, 2, true, 2,0,0);
-    this.walkingLeftAnimation = new Animation(spritesheet[3], 38, 79, 1, .5, 2, false, 2,0,0);
-    this.attackingAnimation = new Animation(spritesheet[1], 50, 103, 1, .5, 3, false, 2,0,0);
     this.deathAnimation = new Animation(spritesheet[4], 83, 40, 1, .5, 2, true, 2,0,0);
     this.dodgeAnimation = new Animation(spritesheet[5], 42, 100, 1, .5, 4, true, 2,0,0);
     this.opacity = opacity;
     this.action = 'walking-right';
-    this.CardBase = new CardDataBase(this.game);
+    this.CardBase = new CardDataBase(game);
     this.DeckList = [...this.CardBase.cards];
     this.class = 'Omnimage'
     this.HPBar = HPBar;
     this.Manabar = Manabar;
-    this.x = game.width * .1875;
-    this.y = game.height / 2.3;
-    this.HPBar.x = this.x - 55;
+    this.x = game.width * .0975;
+    this.y = game.height * .38;
+    this.HPBar.x = this.x + game.height * .09;
     this.HPBar.y = this.y - 55;
     this.gold = 0;
     this.health = 100;
@@ -31,6 +28,12 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.value = 90;
     this.xOffset = 0;
     this.yOffset = 0;
+
+    this.walkingRightAnimation = new Animation(AM.getAsset("./img/player/Duesa_Idle_00-Sheet.png"),  446, 344, 1, .05, 61, true, .8,0,0);
+    this.walkingLeftAnimation = new Animation(AM.getAsset("./img/player/Duesa_Damage_00-Sheet.png"), 446, 344, 1, .05,31, false, .8,0,0);
+    this.attackingAnimation = new Animation(AM.getAsset("./img/player/Duesa_Attack D_00-Sheet.png"), 446, 344, 1, .05, 31, false, .8,0,0);
+    
+
 
     //an array for damage taken sources so that multiple damage text
     //will show.
@@ -57,15 +60,15 @@ PlayerCharacter.prototype.draw = function () {
     this.HPBar.draw();
     this.Manabar.draw();
     if (this.action === 'attack') {
-        this.attackingAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .1);
+        this.attackingAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 0);
         if ((this.attackingAnimation.isDone())) {
             this.action = 'walking-right';
             this.attackingAnimation.elapsedTime = 0;
         }
     } else if (this.action === 'walking-right') {
-        this.walkingRightAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .55);
+        this.walkingRightAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 0);
     } else if (this.action === 'walking-left') {
-        this.walkingLeftAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 1.3);
+        this.walkingLeftAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 0);
         if ((this.walkingLeftAnimation.isDone())) {
             this.action = 'walking-right';
             this.walkingLeftAnimation.elapsedTime = 0;
