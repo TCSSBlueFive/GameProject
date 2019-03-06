@@ -1,12 +1,12 @@
 function Proceed(game, spritesheet, dungeon) {
   this.x = game.width * .875;
-  this.y = game.height * .69;
+  this.y = game.height * .5;
   this.dimensions = 125;
   this.opacity = 1;
   this.spritesheet = spritesheet;
   this.game = game;
-  this.width = 320;
-  this.height = 230;
+  this.width = game.width * .108475;
+  this.height = game.height * .139393939;
   this.ctx = game.ctx;
   this.dungeon = dungeon;
 };

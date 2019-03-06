@@ -14,17 +14,17 @@ function reward_node(game, rewardFromDatabase, MonsterRewards, x, y){
     this.fn = rewardFromDatabase.fn;
     this.ctx = game.ctx;
     this.value = rewardFromDatabase.value
-    this.yOffset = 125;
-    this.xOffset = 100;
+    this.yOffset = .0641025 * game.height;
+    this.xOffset = .03389 * game.width;
 };
 
  
 
 reward_node.prototype.draw = function () {
-    this.ctx.drawImage(this.spritesheet, this.x, this.y);
+    this.ctx.drawImage(this.spritesheet, this.x, this.y, this.width, this.height);
 
     this.ctx.save();
-    this.ctx.font = "50px Impact";
+    this.ctx.font = "30px Impact";
     this.ctx.textAlign = "start";
     this.ctx.textBaseline = "bottom";
     this.ctx.fillStyle = "#ffffff";

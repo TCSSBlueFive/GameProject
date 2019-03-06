@@ -168,9 +168,7 @@ Dungeon.prototype.addNewEntitiesTreasure = function() {
   this.game.addEntity(new TreasureChest(this.game, this, this.PlayerCharacter, AM.getAsset("./img/treasure_chest.png"), 1));
   this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
   this.game.addEntity(this);
-
 }
-
 
 Dungeon.prototype.addNewEntitiesShop= function () {
   this.removeAllEntities();
@@ -209,7 +207,7 @@ Dungeon.prototype.viewing_deck_restore = function () {
 
 }
 Dungeon.prototype.update = function () 
-{
+{    
   if (this.state === 'viewing_deck' && this.stateChanged) {
     this.viewing_deck();
     this.stateChanged = false;
@@ -220,7 +218,6 @@ Dungeon.prototype.update = function ()
   }
   if (this.state === 'battle_finished' && this.stateChanged) {
     this.game.entities.pop();
-    console.log(this.game.entities)
     this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
     this.BattleOngoing = false;
     this.battle.PlayerTurn = false;

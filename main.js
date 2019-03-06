@@ -126,13 +126,13 @@ AM.downloadAll(function () {
     ctx.fillStyle = "#ff0000";
 
     
-    adjustCanvasSize(canvas);
+   // adjustCanvasSize(canvas);
 
     var gameEngine = new GameEngine();
     gameEngine.init(ctx);
     gameEngine.start();
-    gameEngine.width = canvas.width;
-    gameEngine.height = canvas.height;
+    gameEngine.width = 1920;
+    gameEngine.height = 1080;
 
     var myManaBar = new ManaBar(gameEngine, [AM.getAsset("./img/mana_bar.png"),AM.getAsset("./img/mana_empty.png"),
                                              AM.getAsset("./img/mana_circle.png")], 100, 100, 1);

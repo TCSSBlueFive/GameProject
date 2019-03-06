@@ -19,8 +19,8 @@ TextBox.prototype.draw = function () {
     this.ctx.fillStyle = '#808080';
     this.ctx.fillRect(this.x + 40, this.y + 40, this.width - 80, this.height - 80);
     this.ctx.fillStyle = '#FFFFFF';
-    this.ctx.font = '60px Arial Black'
-    this.ctx.fillText(this.text, this.x + 400, this.y + 140)
+    this.ctx.font = '40px Arial Black'
+    this.ctx.fillText(this.text, this.x + this.game.width *.13559, this.y + this.game.height *.066)
 
 
 }

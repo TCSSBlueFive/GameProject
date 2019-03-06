@@ -4,19 +4,20 @@ var AM = new AssetManager();
 function MonsterRewards(game,dungeon, opacity){
     this.dungeon = dungeon;
     this.x = game.width * .42;// each card will be 75 units wide for now
-    this.y = 700;
-    this.width = 620;
-    this.height = 195;
+    this.y = game.height * .358974;
+    
     this.rewards = [];
     this.opacity = opacity;
     this.currentRewardCount = 4;
     this.action = 'none';
-    this.rewardFromDatabase = new RewardDatabase();
+    this.rewardFromDatabase = new RewardDatabase(game);
+    this.width = this.rewardFromDatabase.width;
+    this.height = this.rewardFromDatabase.height;
     this.game = game;
     this.ctx = game.ctx;
 
     this.topbannerx = this.x - 60
-    this.topbannery = this.y - 300;
+    this.topbannery = game.height * .1538461;
 };
 
 MonsterRewards.prototype.generateRewardsEnemy = function () {
@@ -37,6 +38,7 @@ MonsterRewards.prototype.generateRewardsTreasure = function () {
 }
 
 MonsterRewards.prototype.draw = function () {
+    
     this.ctx.fillStyle = '#808080'
     this.ctx.fillRect(this.x - 60, this.y - 60, this.width + 110, this.height * 4 + 120);
     this.ctx.fillRect(this.topbannerx -40, this.topbannery - 40, this.width + 190, 190);
@@ -53,6 +55,8 @@ MonsterRewards.prototype.draw = function () {
 
     this.ctx.fillStyle = "#FFFFFF"
     this.ctx.font = '55px Impact'
+    this.ctx.textAlign = "center";
+    this.ctx.textBaseline = "bottom";
     this.ctx.fillText('Monster Loot!', this.topbannerx  + 200, this.topbannery + 80);
 
     for (let i = 0; i < this.rewards.length; i++) {

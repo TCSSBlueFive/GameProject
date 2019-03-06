@@ -1,15 +1,17 @@
 function ManaBar(game, spritesheet, width, height, opacity) {
-    this.x = 200;
-    this.y = game.height * .73;
+    this.x = game.width * .05;
+    this.y = game.height * .5;
+
+
     this.opacity = opacity;
     this.spritesheet = spritesheet;
     this.game = game;
     this.ctx = game.ctx;
-    this.mana = 8;
+    this.mana = 3;
     this.width = width + 30;
     this.height = height + 30;
     this.manaPCNT = 1;
-    this.maxMana = 8;
+    this.maxMana = 3;
 };
 
 ManaBar.prototype.enoughMana = function (someNum) {

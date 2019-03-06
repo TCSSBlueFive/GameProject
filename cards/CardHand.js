@@ -1,9 +1,9 @@
 function CardHand(game, dungeon, PlayerCharacter, opacity){
-    this.x = game.width / 3.7;// each card will be 75 units wide for now
-    this.y = game.height * .7;
+    this.x = game.width * .15;// each card will be 75 units wide for now
+    this.y = game.height * .65;
     this.dungeon = dungeon;
     this.opacity = opacity;
-    this.currentCardDraw = 9;
+    this.currentCardDraw = 6;
     this.cardsInHand = [];
     this.PlayerCharacter = PlayerCharacter;
     this.DeckList = this.PlayerCharacter.DeckList;

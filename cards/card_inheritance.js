@@ -27,14 +27,16 @@ card_inheritance.prototype.draw = function () {
 
     //name
     this.ctx.save();
-    this.ctx.font = "40px Arial";
+    var fontSize = this.game.width * .0169
+    this.ctx.font = fontSize + "px Arial";
     this.ctx.fillStyle = "#f0ff0f";
     this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
 
     //card text effect
-    this.ctx.font = "30px Arial";
+    var textFontSize = this.game.width * .013559;
+    this.ctx.font = textFontSize + "px Arial";
     this.ctx.fillStyle = "#ffff00";
-    var lineheight = 30;
+    var lineheight = textFontSize;
     var lines = this.text.split('\n');
 
     for (var i = 0; i<lines.length; i++)

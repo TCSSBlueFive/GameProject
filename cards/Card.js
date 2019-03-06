@@ -7,7 +7,7 @@ function Card(game, dungeon, cardHand, card, x, y, pos) {
     this.origY = this.y;
     this.cardHand = cardHand;
     this.mana = card.mana;
-    this.yOffset= 60;
+    this.yOffset= 30;
     //this.nameXOffset = this.width * .25;
     //this.nameYOffset = this.height * .13;
     //this.textXOffset = this.width * .18;
@@ -19,14 +19,11 @@ Card.prototype = Object.create(card_inheritance.prototype);
 
 
 Card.prototype.drawIrregular = function(num, angle) {
-    //case of 6, 7, 8, 9
 
     if ( num % 2 == 0) { 
         if (this.pos < num /2 - 1) {         
             this.Rotate((-(num/2 - 1) + this.pos) * angle)        
             this.y = this.origY + ((num/2) - (this.pos + 1)) * this.yOffset; //0 1     or 0 1 2
-            //this.y = this.origY
-
         } 
         if (this.pos > num/2 - 2 && this.pos < num/2 + 1) {  
             this.drawNormal();
@@ -72,15 +69,22 @@ Card.prototype.Rotate = function (angle) {
   
     this.ctx.rotate(angle * Math.PI / 180);
     this.ctx.drawImage(this.spritesheet, -this.width/2, -this.height/2, this.width, this.height);
-    this.ctx.font = "40px Arial";
-    this.ctx.fillText(this.name , -this.width/2 + this.game.width * .0375, -this.height/2 + this.game.height * .0282); 
-    var lineheight = 30;
-    this.ctx.font = lineheight +"px Arial";
+    var fontSize = this.game.width * .0169
 
+    this.ctx.font = fontSize + "px Arial";
+    this.ctx.fillText(this.name , -this.width/2 + this.game.width * .0375, -this.height/2 + this.game.height * .0282); 
+
+    var textFontSize = this.game.width * .013559;
+    this.ctx.font = textFontSize + "px Arial";
+    var lineheight = textFontSize;
     var lines = this.text.split('\n');
 
+
     for (var i = 0; i<lines.length; i++)
-        this.ctx.fillText(lines[i], -this.width/2 + this.game.width * .0209 ,-this.height/2 +  this.game.height * .15 + i * lineheight);
+   
+
+    for (var i = 0; i<lines.length; i++)
+        this.ctx.fillText(lines[i], -this.width/2 + this.game.width * .0209 ,-this.height/2 +  this.game.height * .183 + i * lineheight);
 
 
     this.ctx.restore();

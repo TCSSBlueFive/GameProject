@@ -12,7 +12,7 @@ function shop_scene(game, spritesheet, dungeon, opacity){
     this.opacity = opacity;
     this.generic_cards = 5;
     this.special_cards = 2;
-    this.CardDataBase = new CardDataBase();
+    this.CardDataBase = new CardDataBase(game);
     this.game = game;
     this.buffer = 50
     this.ctx = game.ctx;

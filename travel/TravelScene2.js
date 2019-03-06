@@ -14,15 +14,18 @@ function TravelScene2(game, dungeon, opacity){
     this.ctx = game.ctx;
     this.yOffset = 150;
     this.currentRoom = 0;
-    this.node_center_width = 89/2;
-    this.node_center_height = 118/2;
+    this.node_center_width = game.width * .03016/2;
+    this.node_center_height = game.height *.071515/2;
+    this.xrandval = game.width * .02372881;
+    this.yrandval = game.height * .05128205;
+
     this.allEncounters = [];
 
     this.currentNode = 'none';
-    this.xDist = 300;
+    this.xDist = game.width * .1016949;
     this.NodeDataBase = new NodeDataBase();
 
-    this.mapHeight = 1675;
+    this.mapHeight = game.height * .84;
 
 };
 TravelScene2.prototype.getDistBetweenNodes = function (node1, node2) {
@@ -107,7 +110,7 @@ TravelScene2.prototype.generateEncounters = function () {
             var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
             var newNodeInfo = this.NodeDataBase.nodes[0]
             var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
-                newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(70) , this.yOffset + (num * i)  + getRandomIntNegOrPos(100));
+                newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(this.xrandval) , this.yOffset + (num * i)  + getRandomIntNegOrPos(this.yrandval));
                 encounterRow.push(newTravelNode);
         }
         this.encounters.push(encounterRow);
@@ -150,8 +153,8 @@ TravelScene2.prototype.drawLinks = function () {
 
                 if (this.encounters[i][q].clicked) {
                     ////////////draws X
+                    this.ctx.linewidth = 10;
                     this.ctx.strokeStyle = '#FF0000'
-                    this.ctx.lineWidth = 20;
                     this.ctx.beginPath(); 
                     this.ctx.moveTo(this.encounters[i][q].x, this.encounters[i][q].y);
                     this.ctx.lineTo(this.encounters[i][q].x  + this.node_center_width * 2, this.encounters[i][q].y + this.node_center_height * 2);
@@ -175,7 +178,7 @@ TravelScene2.prototype.drawLinks = function () {
                 this.ctx.lineWidth = 10;
                 
                 this.ctx.beginPath(); 
-                this.ctx.setLineDash([20, 15]);
+                this.ctx.setLineDash([8, 10]);
 
                 this.ctx.moveTo(this.encounters[i][q].x + this.node_center_width, this.encounters[i][q].y + this.node_center_height);
                 // End point (180,47)

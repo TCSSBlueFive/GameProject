@@ -10,8 +10,8 @@ function travel_node2(game, travelScene, dungeon, position, spritesheet, fn, x, 
     this.fn = fn;
     this.ctx = game.ctx;
     this.position = position;
-    this.width = 89;
-    this.height = 118;
+    this.width = game.width * .03016;
+    this.height = game.height *.071515;
     this.dungeon = dungeon;
     this.travelScene = travelScene;
     this.linked = [];
@@ -24,7 +24,7 @@ travel_node2.prototype.draw = function () {
     this.ctx.save();
     this.ctx.globalAlpha = this.opacity;
     this.ctx.drawImage(this.spritesheet,
-                   this.x, this.y);
+                   this.x, this.y, this.width, this.height);
     this.ctx.restore();
 
 };

@@ -45,7 +45,7 @@ Enemy.prototype.attackPlayer = function () {
 Enemy.prototype.takeDamage = function (attackDamage) {
     this.action = 'taking-damage'
     this.health -= attackDamage;
-    this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,attackDamage, 'damage', this.x - 90, this.y));
+    this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,attackDamage, 'damage', this.game.width * .75, this.game.height * .4));
 
     this.HPBar.health -= attackDamage;
     if (this.HPBar.health <0) {

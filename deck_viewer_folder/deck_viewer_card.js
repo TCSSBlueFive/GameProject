@@ -1,8 +1,8 @@
 function deck_viewer_card(game, dungeon, card, x, y){
 
     card_inheritance.call(this, game, dungeon, card, x, y);
-    this.width = 200;
-    this.height = 261;
+    this.width = 200;  //these values can't be changed, these cards can't be scaled
+    this.height = 261; //these values can't be changed, these cards can't be scaled
     this.nameXOffset = this.width * .25;
     this.nameYOffset = this.height * .13;
     this.textXOffset = this.width * .18;
@@ -14,13 +14,10 @@ function deck_viewer_card(game, dungeon, card, x, y){
 //this.y + this.height > 730
  
 deck_viewer_card.prototype = Object.create(card_inheritance.prototype);
-//ctx.drawImage(image,clipX,clipY,clipWidth,clipHeight,0,0,clipWidth,clipHeight);
 
 
 deck_viewer_card.prototype.draw = function () {
-    //this.ctx.drawImage(this.spritesheet, this.x, this.y, 200, 261);
-   //this.yOrig - this.y
-   //console.log(this.y);
+
    if (this.y < 140) {
        //this.y = 130;
     this.ctx.drawImage(this.spritesheet,
@@ -30,7 +27,7 @@ deck_viewer_card.prototype.draw = function () {
             this.clipX, 0, this.width, 450 - this.y + this.height , this.x, this.y, this.width, 450 - this.y + this.height );
     } else if (this.y >= 140){
         this.ctx.drawImage(this.spritesheet,
-            this.clipX, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+            this.clipX, 0, this.width, this.height, this.x, this.y, this.width , this.height);
     } 
     //name
     

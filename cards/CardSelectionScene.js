@@ -9,13 +9,13 @@ function CardSelectionScene(game, dungeon){
     this.cards = [];
     this.game = game;
     this.ctx = game.ctx;
-    this.CardDataBase = new CardDataBase();
+    this.CardDataBase = new CardDataBase(game);
     this.x = game.width * .3334;
     this.y = game.height * .475;
     this.opacity = 1;
     this.width = this.CardDataBase.width;
     this.height = this.CardDataBase.height;
-    this.textbox = new TextBox(game, this.x - 150, 400, 1400, 200, 'Choose a card...');
+    this.textbox = new TextBox(game, this.x - game.width *.05084745, game.height * .205182, game.width * .47457, game.height * .10256, 'Choose a card...');
     
     this.buffer = 50
 };

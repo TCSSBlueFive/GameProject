@@ -1,30 +1,31 @@
 var AM = new AssetManager();
 function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
-  this.width = 200;//card width
-  this.height = 261; //card height
+  this.width = 200;//card width do not change, these have to be a static value unfortunately due to the fact drawimage with clipping is weird
+  this.height = 261; //card height do not change, these have to be a static value unfortunately due to the fact drawimage with clipping is weird
 
-  this.x = game.width * .31;
+  this.x = game.width * .24;
 
   this.y = 140;
 
-  this.fullDeckX = 1800
+  this.fullDeckX = game.width * .61016;
   this.fullDeckY = 5;
-  this.fullDeckDimensions = 120;
+  this.fullDeckDimensions = game.width * .040677;
 
-  this.drawPileX = game.width * .01;
+  this.drawPileX = game.width * .015;
   this.rowcol = 5;
-  this.drawPileY = game.height * .86;
+  this.drawPileY = game.height * .8;
 
-  this.discardPileX = game.width * .937;
+  this.discardPileX = game.width * .9;
   this.discardPileY =  this.drawPileY;
   
 
-  this.drawAndDiscardDimensions = 150;
+  this.drawAndDiscardDimensions = game.width *.050847;
+  this.numberFontSize = game.width * .02033898 + "px Arial"
   this.PlayerCharacter = PlayerCharacter;
 
   this.view_window_present = 'none';
 
-  this.scrollbarX = game.width * .69;
+  this.scrollbarX = this.x + this.width * this.rowcol + 20;
 
 
 
@@ -59,28 +60,27 @@ deck_viewer.prototype.draw = function () {
     this.ctx.drawImage(this.deck_background, this.x , 130, this.width * this.rowcol, 600);
     this.myScrollBar.draw();
   }
+  this.ctx.font = this.numberFontSize;
+
   if (this.cardhand && this.dungeon.state != 'viewing_deck') {
-    this.ctx.drawImage(this.deck_discard_sprite,this.discardPileX, this.discardPileY);
+    this.ctx.drawImage(this.deck_discard_sprite,this.discardPileX, this.discardPileY, this.drawAndDiscardDimensions, this.drawAndDiscardDimensions);
 
       this.ctx.save();
       //discard
-      this.ctx.font = "60px Arial";
       this.ctx.fillStyle = "#FF4500";
       this.ctx.fillText(this.discardPile.length , this.discardPileX - 20, this.discardPileY + 40); 
 
     //draw
-    this.ctx.font = "60px Arial";
-    this.ctx.drawImage(this.deck_draw_sprite,this.drawPileX, this.drawPileY);
+    this.ctx.drawImage(this.deck_draw_sprite,this.drawPileX, this.drawPileY, this.drawAndDiscardDimensions, this.drawAndDiscardDimensions);
       this.ctx.fillStyle = "#00FA9A";
-      this.ctx.fillText(this.drawPile.length , this.drawPileX + 120, this.drawPileY + 40); 
+      this.ctx.fillText(this.drawPile.length , this.drawPileX + 90, this.drawPileY + 40); 
       
   }
   //full
-  this.ctx.font = "60px Arial";
-  this.ctx.drawImage(this.deck_full_sprite, this.fullDeckX, this.fullDeckY);
+  this.ctx.drawImage(this.deck_full_sprite, this.fullDeckX, this.fullDeckY, this.fullDeckDimensions, this.fullDeckDimensions);
     this.ctx.fillStyle = "#FFA500";
     if (this.combined) {
-      this.ctx.fillText(this.combined.length , this.fullDeckX + 90, this.fullDeckY + 110); 
+      this.ctx.fillText(this.combined.length , this.fullDeckX + this.game.width * .030508, this.fullDeckY + this.game.height * .06667); 
 
     }
     this.ctx.restore();
@@ -113,7 +113,7 @@ deck_viewer.prototype.update = function () {
   }
 
   if (this.game.click) {
-    if((this.game.click['x'] >this.fullDeckX  && this.game.click['x'] <  this.fullDeckX + this.fullDeckDimensions  )
+    if((this.game.click['x'] > this.fullDeckX  && this.game.click['x'] <  this.fullDeckX + this.fullDeckDimensions  )
     && (this.game.click['y'] > this.fullDeckY && this.game.click['y'] < this.fullDeckY + this.fullDeckDimensions )) {
       this.myScrollBar.reset();
       if (this.view_window_present != 'displaying_full_deck') {
