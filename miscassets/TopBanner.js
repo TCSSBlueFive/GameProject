@@ -16,7 +16,7 @@ function TopBanner(game,opacity) {
     this.sprite_floor = AM.getAsset("./img/floor_sprite.png")
 
 
-    this.yOffset = 30;
+    this.yOffset = this.game.height * .018181818;
 
     
 
@@ -38,30 +38,32 @@ TopBanner.prototype.draw = function () {
     //displays health and icon
     this.ctx.fillStyle = "#FFB6C1";
 
-    this.ctx.drawImage(this.sprite_heart, 445 , this.yOffset);
+    this.ctx.drawImage(this.sprite_heart, this.game.width * .1508 , this.yOffset, this.game.width *.023, this.game.height *.04);
     this.ctx.fillText( this.game.currentDungeon.PlayerCharacter.health + "/"
-                     + this.game.currentDungeon.PlayerCharacter.maxhealth, 505, 110); 
+                     + this.game.currentDungeon.PlayerCharacter.maxhealth, this.game.width * .1508 + this.game.width *.023 , this.game.height* .06667 ); 
 
 
     //displays gold and icon
-    this.ctx.drawImage(this.sprite_gold, 715, this.yOffset);
+    this.ctx.drawImage(this.sprite_gold, this.game.width * .24237, this.yOffset, this.game.width * .027118, this.game.height *.0484848);
     this.ctx.fillStyle = "#FFFF00";
+    this.ctx.fillText( this.game.currentDungeon.PlayerCharacter.gold, this.game.width * .24237 + this.game.width * .027118, this.game.height *.0666667); 
 
-    this.ctx.fillText( this.game.currentDungeon.PlayerCharacter.gold, 800, 110); 
 
     //displays time and icon
     this.ctx.fillStyle = "#2E8B57";
-    this.ctx.drawImage(this.sprite_time, 895, this.yOffset);
+    this.ctx.drawImage(this.sprite_time, this.game.width *.303389, this.yOffset, this.game.width * .018644, this.game.height * .042424242);
+
+
     var minutes = Math.floor(this.game.timer.gameTime / 60);
     var displayedMinutes = Math.floor(minutes % 60);
     var hour = Math.floor(minutes / 60);
     var seconds = Math.floor(this.game.timer.gameTime % 60);
-    this.ctx.fillText(+Math.round(hour) + ':' + displayedMinutes + '.' + Math.round(seconds), 960, 110); 
+    this.ctx.fillText(+Math.round(hour) + ':' + displayedMinutes + '.' + Math.round(seconds), this.game.width *.303389 + this.game.width * .018644 , this.game.height * .066667); 
 
     //displays floor and icon
     this.ctx.fillStyle = "#FFDEAD";
-    this.ctx.drawImage(this.sprite_floor, 1125, this.yOffset);
-    this.ctx.fillText(this.game.currentDungeon.floor, 1225, 110);
+    this.ctx.drawImage(this.sprite_floor, this.game.width *.381355, this.yOffset, this.game.width * .030508, this.game.height * .040606);
+    this.ctx.fillText(this.game.currentDungeon.floor, this.game.width *.381355 + this.game.width * .030508, this.game.height * .066667);
 
     this.ctx.restore();
 };
