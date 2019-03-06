@@ -166,7 +166,7 @@ function EnemyDataBase(game, spritesheet) {
         {
         health: 200,
         name: 'Gaea',
-        x: game.width * .66667, //1000
+        x: game.width * .367, //1000
         y: game.height * .5,  //400
         hpx: 570,
         hpy: 550,
