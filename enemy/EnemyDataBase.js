@@ -30,8 +30,8 @@ function EnemyDataBase(game, spritesheet) {
     },                 
     {
         health: 120,
-        x: 1000,
-        y: 340,     
+        x: game.width / 2, //1000
+        y: game.height / 8.5,  //340
         hpx: 1000,
         hpy: 320,
         name: 'succubus',
@@ -50,8 +50,8 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 80,
         name: 'chicken',
-        x: 1000,
-        y: 420,
+        x: game.width / 2, //1000
+        y: game.height / 7,  //420
         hpx: 1000,
         hpy: 400,
         attacks: {
@@ -69,8 +69,8 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 200,
         name: 'doomcluck',
-        x: 940,
-        y: 370,
+        x: game.width / 2, //1000
+        y: game.height / 8.5,  //340
         hpx: 980,
         hpy: 370,
         attacks: {
@@ -88,8 +88,8 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 150,
         name: 'earth elemental',
-        x: 950,
-        y: 360,
+        x: game.width / 2, //1000
+        y: game.height / 8.5,  //340
         hpx: 950,
         hpy: 340,
         attacks: {
@@ -107,8 +107,8 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 180,
         name: 'taurus',
-        x: 950,
-        y: 300,
+        x: game.width / 2, //1000
+        y: game.height / 8.7,  //340
         hpx: 1000,
         hpy: 300,
         attacks: {
@@ -126,8 +126,8 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 140,
         name: 'wraith',
-        x: 1000,
-        y: 330,
+        x: game.width / 2, //1000
+        y: game.height / 8.5,  //340
         hpx: 1000,
         hpy: 300,
         attacks: {
@@ -145,8 +145,8 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 200,
         name: 'gargoyle',
-        x: 930,
-        y: 270,
+        x: game.width / 2, //1000
+        y: game.height / 10.75,  //340
         hpx: 970,
         hpy: 250,
         attacks: {
