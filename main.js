@@ -81,6 +81,9 @@ AM.queueDownload("./img/gargoyle.png");
 AM.queueDownload("./img/treasure_chest.png");
 
 AM.queueDownload("./img/enemy/boss/boss_sprite_idle.png");
+AM.queueDownload("./img/enemy/boss/ygg_Idle_00-Sheet.png");
+AM.queueDownload("./img/enemy/boss/ygg_Attack A_00-Sheet.png");
+AM.queueDownload("./img/enemy/boss/ygg_Damage_00-Sheet.png");
 
 
 AM.downloadAll(function () {
@@ -89,6 +92,7 @@ AM.downloadAll(function () {
     ctx.font = "20px Arial";
     ctx.fillStyle = "#ff0000";
 
+    
     adjustCanvasSize(canvas);
 
     var gameEngine = new GameEngine();

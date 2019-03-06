@@ -166,10 +166,10 @@ function EnemyDataBase(game, spritesheet) {
         {
         health: 200,
         name: 'Gaea',
-        x: game.width * .367, //1000
-        y: game.height * .5,  //400
-        hpx: 570,
-        hpy: 550,
+        x: game.width * .57, //1000
+        y: game.height * .25,  //400
+        hpx: game.width * .665,
+        hpy: game.height * .25,
         attacks: {
             type: 'damage',
             value: 90
@@ -177,10 +177,10 @@ function EnemyDataBase(game, spritesheet) {
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
 
-        animation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 588.9 , 600, 1, 0.15, 31, true, 1, 0, 0),
-        attackAnimation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 589 , 600, 1, 0.15, 31, true, 1, 0, 0),
-        damagedAnimation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 589 , 600, 1, 0.15, 31, true, 1, 0, 0),
-        deathAnimation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 589 , 600, 1, 0.15, 31, true, 1, 0, 0),
+        animation: new Animation(AM.getAsset("./img/enemy/boss/ygg_Idle_00-Sheet.png"), 802 , 653, 1, 0.05, 61, true, .75, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/enemy/boss/ygg_Attack A_00-Sheet.png"), 802 ,653, 1, 0.05, 56, false, .75, 0, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/enemy/boss/ygg_Damage_00-Sheet.png"), 802 , 653, 1, 0.05, 31,false, .75, 0, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 589 , 600, 1, 0.05, 31, true, .57, 0, 0),
     }
     ]
 };
