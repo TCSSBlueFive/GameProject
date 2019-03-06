@@ -7,7 +7,7 @@ function Card(game, dungeon, cardHand, card, x, y, pos) {
     this.origY = this.y;
     this.cardHand = cardHand;
     this.mana = card.mana;
-    this.yOffset= 30;
+    this.yOffset= 40;
     //this.nameXOffset = this.width * .25;
     //this.nameYOffset = this.height * .13;
     //this.textXOffset = this.width * .18;
