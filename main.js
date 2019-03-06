@@ -40,7 +40,6 @@ AM.queueDownload("./img/cards/polymorph-card.png");
 
 
 AM.queueDownload("./img/shop/shop.png");
-AM.queueDownload("./img/shop/shop_test.png");
 AM.queueDownload("./img/shop/shop_background.png")
 
 
