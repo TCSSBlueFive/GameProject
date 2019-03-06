@@ -126,7 +126,7 @@ AM.downloadAll(function () {
     ctx.fillStyle = "#ff0000";
 
     
-   // adjustCanvasSize(canvas);
+    //adjustCanvasSize(canvas);
 
     var gameEngine = new GameEngine();
     gameEngine.init(ctx);
@@ -145,8 +145,8 @@ AM.downloadAll(function () {
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, myManaBar, 1)
     
-    console.log(myEnemyDataBase.elites[5])
-    var enemy = new Enemy(gameEngine, myEnemyDataBase.elites[5],  1);
+    console.log(myEnemyDataBase.elites[1])
+    var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
     
     var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)
     

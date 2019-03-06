@@ -8,12 +8,12 @@ function EnemyDataBase(game, spritesheet) {
 
     this.monsters =
     [{
-        health: 100,
+        health: 42,
         name: 'slime',
         x: game.width * .66667, //1000
         y: game.height * .5,  //400
-        hpx: game.width * .66667 - 40,
-        hpy: game.height * .567 - 40,
+        hpx: game.width * .65 ,
+        hpy: game.height * .4,
         attacks: {
             type: 'damage',
             value: 10
@@ -21,7 +21,7 @@ function EnemyDataBase(game, spritesheet) {
 
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                                                                     //health of monster needs to match
-                            AM.getAsset("./img/GreenHealthBar.png"), 100, this.hpbarwidth, this.hpbarheight),
+                            AM.getAsset("./img/GreenHealthBar.png"), 42, this.hpbarwidth, this.hpbarheight),
 
         animation: new Animation(spritesheet, 256, 256, 1, .075, 18, true, 0.5, 1,0),
         attackAnimation: new Animation(spritesheet, 256, 256, 1, .075, 18, false, 0.5, 2,0),
@@ -187,7 +187,7 @@ function EnemyDataBase(game, spritesheet) {
         {
         health: 200,
         name: 'Cultist Mage',
-        x: game.width * .57, //1000
+        x: game.width * .67, //1000
         y: game.height * .25,  //400
         hpx: game.width * .75,
         hpy: game.height * .3,

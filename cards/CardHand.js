@@ -3,7 +3,7 @@ function CardHand(game, dungeon, PlayerCharacter, opacity){
     this.y = game.height * .65;
     this.dungeon = dungeon;
     this.opacity = opacity;
-    this.currentCardDraw = 6;
+    this.currentCardDraw = 5;
     this.cardsInHand = [];
     this.PlayerCharacter = PlayerCharacter;
     this.DeckList = this.PlayerCharacter.DeckList;

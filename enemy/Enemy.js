@@ -46,7 +46,6 @@ Enemy.prototype.takeDamage = function (attackDamage) {
     this.action = 'taking-damage'
     this.health -= attackDamage;
     this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,attackDamage, 'damage', this.game.width * .75, this.game.height * .4));
-
     this.HPBar.health -= attackDamage;
     if (this.HPBar.health <0) {
         this.HPBar.health = 0;
@@ -83,14 +82,14 @@ Enemy.prototype.isAlive = function () {
 }
 
 Enemy.prototype.draw = function () {
-    this.ctx.drawImage(this.attack_sprite, this.HPBar.x + 60, this.HPBar.y - 100)
+    this.ctx.drawImage(this.attack_sprite, this.HPBar.x + +this.game.width * .07, this.HPBar.y - this.game.height *.055)
     this.ctx.save();
     this.ctx.textAlign = "center";
     this.ctx.textBaseline = "middle";
     this.ctx.fillStyle = '#FF0000'
     this.ctx.font = '40px Arial'
 
-    this.ctx.fillText(this.attack.value, this.HPBar.x + 120, this.HPBar.y - 90)
+    this.ctx.fillText(this.attack.value, this.HPBar.x + this.game.width * .1077, this.HPBar.y - this.game.height * .0215)
 
     this.ctx.restore();
     if (this.damage_taken_array.length > 0) {

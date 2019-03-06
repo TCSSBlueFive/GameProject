@@ -121,7 +121,7 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
 
   this.game.addEntity(newCardHand);
   var rand = getRandomInt(this.myEnemies.elites.length)
-  var enemy = new Enemy(this.game, this.myEnemies.elites[rand], 1);
+  var enemy = new Enemy(this.game, this.myEnemies.elites[0], 1);
 
   //var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
   var battle = new Battle(this.game, enemy, this, this.PlayerCharacter, newCardHand);
