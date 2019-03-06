@@ -86,7 +86,7 @@ this.state = 'battle'
 Dungeon.prototype.transitionToTravelScene = function () {
   this.removeAllEntities();
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
-  this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground2.png"), 1))
+  this.game.addEntity(new Background(this.game, AM.getAsset("./img/travel/travelBackground2.png"), 1), )
   this.banner.opacity = 1;
   this.game.addEntity(this.banner);
   this.game.addEntity(this.myTravelScene);
@@ -120,7 +120,8 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   newCardHand.generateInitialHand();
 
   this.game.addEntity(newCardHand);
-  var enemy = new Enemy(this.game, this.myEnemies.monsters[0], 1);
+  var rand = getRandomInt(this.myEnemies.elites.length)
+  var enemy = new Enemy(this.game, this.myEnemies.elites[rand], 1);
 
   //var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
   var battle = new Battle(this.game, enemy, this, this.PlayerCharacter, newCardHand);

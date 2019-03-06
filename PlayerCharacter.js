@@ -3,7 +3,6 @@ var AM = new AssetManager();
 function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
 
     this.idleAnimation = new Animation(spritesheet[0], 37, 80, 1, .5, 2, true, 2,0,0);
-    this.deathAnimation = new Animation(spritesheet[4], 83, 40, 1, .5, 2, true, 2,0,0);
     this.dodgeAnimation = new Animation(spritesheet[5], 42, 100, 1, .5, 4, true, 2,0,0);
     this.opacity = opacity;
     this.action = 'walking-right';
@@ -32,7 +31,8 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.walkingRightAnimation = new Animation(AM.getAsset("./img/player/Duesa_Idle_00-Sheet.png"),  446, 344, 1, .035, 61, true, .8,0,0);
     this.walkingLeftAnimation = new Animation(AM.getAsset("./img/player/Duesa_Damage_00-Sheet.png"), 446, 344, 1, .035,31, false, .8,0,0);
     this.attackingAnimation = new Animation(AM.getAsset("./img/player/Duesa_Attack C_00-Sheet.png"), 446, 344, 1, .035, 31, false, .8,0,0);
-    
+    this.deathAnimation = new Animation(AM.getAsset("./img/player/Duesa_Idle_00-Sheet.png"),  446, 344, 1, .035, 61, false, .8,0,0);
+
 
 
     //an array for damage taken sources so that multiple damage text
@@ -74,7 +74,7 @@ PlayerCharacter.prototype.draw = function () {
             this.walkingLeftAnimation.elapsedTime = 0;
         }
     } else if (this.action === 'death') {
-        this.deathAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .25);
+        this.deathAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 0);
     } else if (this.action === 'dodge') {
         this.dodgeAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .313);
     } else {
@@ -111,8 +111,6 @@ PlayerCharacter.prototype.heal = function (healthPoints) {
 
 PlayerCharacter.prototype.died = function() {
     this.action = 'death';
-    this.y += 130;
-    this.x -= 45;
     
 }
 
