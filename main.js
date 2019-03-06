@@ -94,6 +94,29 @@ AM.queueDownload("./img/player/Duesa_Attack B_00-Sheet.png");
 AM.queueDownload("./img/player/Duesa_Attack C_00-Sheet.png");
 AM.queueDownload("./img/player/Duesa_Attack D_00-Sheet.png");
 
+AM.queueDownload("./img/enemy/elite/cultist_mage/CultistMage_Idle_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/cultist_mage/CultistMage_Damage_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/cultist_mage/CultistMage_Attack_00-Sheet.png");
+
+AM.queueDownload("./img/enemy/elite/witch_baba/Baba_Idle_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/witch_baba/Baba_Attack_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/witch_baba/Baba_Damage_00-Sheet.png");
+
+AM.queueDownload("./img/enemy/elite/osiris_priest/Osiris_Idle_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/osiris_priest/Osiris_Attack D_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/osiris_priest/Osiris_Damage_00-Sheet.png");
+
+AM.queueDownload("./img/enemy/elite/red_mage/Jiangshi_Idle_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/red_mage/Jiangshi_Skill_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/red_mage/Jiangshi_Damage_00-Sheet.png");
+
+AM.queueDownload("./img/enemy/elite/living_hoard_midas/Midas_Idle_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/living_hoard_midas/Midas_Attack C_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/living_hoard_midas/Midas_Damage_00-Sheet.png");
+
+AM.queueDownload("./img/enemy/elite/M_Knight/MknightGoldnharl_Idle_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/M_Knight/MknightGoldnharl_Attack B_00-Sheet.png");
+AM.queueDownload("./img/enemy/elite/M_Knight/MknightGoldnharl_Damage_00-Sheet.png");
 
 
 AM.downloadAll(function () {
@@ -122,15 +145,15 @@ AM.downloadAll(function () {
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, myManaBar, 1)
     
-    var enemy = new Enemy(gameEngine, myEnemyDataBase.bosses[0],  1);
+    console.log(myEnemyDataBase.elites[5])
+    var enemy = new Enemy(gameEngine, myEnemyDataBase.elites[5],  1);
+    
     var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)
     
     gameEngine.currentDungeon = dungeon;
     
     gameEngine.addEntity(new AnimatedBackground(gameEngine, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
     gameEngine.addEntity(myBanner);
-    //console.log(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"))
-    //console.log(enemy.IdleAnimation)
 
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);

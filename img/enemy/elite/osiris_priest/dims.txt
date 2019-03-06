@@ -1,0 +1,10 @@
+attack D has 71 frames
+705 x 590
+
+damage has 31 frames
+584 x 548
+
+idle has 61 frames
+535 x 548
+
+new size > 705 x 590

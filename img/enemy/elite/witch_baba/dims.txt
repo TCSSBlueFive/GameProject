@@ -1,0 +1,10 @@
+attack 31 frames
+457 x 417
+
+damaged 21 frames
+338 x 12 frames
+
+idle 61 frames
+331 x 336
+
+new dims -> 457 x 417

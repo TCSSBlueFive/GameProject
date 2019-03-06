@@ -182,6 +182,117 @@ function EnemyDataBase(game, spritesheet) {
         damagedAnimation: new Animation(AM.getAsset("./img/enemy/boss/ygg_Damage_00-Sheet.png"), 802 , 653, 1, 0.05, 31,false, .75, 0, 0),
         deathAnimation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 589 , 600, 1, 0.05, 31, true, .57, 0, 0),
     }
+    ],
+    this.elites = [
+        {
+        health: 200,
+        name: 'Cultist Mage',
+        x: game.width * .57, //1000
+        y: game.height * .25,  //400
+        hpx: game.width * .665,
+        hpy: game.height * .25,
+        attacks: {
+            type: 'damage',
+            value: 90
+        },
+        HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
+                            AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
+
+        animation: new Animation(AM.getAsset("./img/enemy/elite/cultist_mage/CultistMage_Idle_00-Sheet.png"), 581 , 374, 1, 0.035, 61, true, .75, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/enemy/elite/cultist_mage/CultistMage_Attack_00-Sheet.png"),581 , 374, 1, 0.035, 31, false, .75, 0, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/enemy/elite/cultist_mage/CultistMage_Damage_00-Sheet.png"), 581 , 374, 1, 0.035, 31, false, .75, 0, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/enemy/elite/cultist_mage/CultistMage_Idle_00-Sheet.png"), 581 , 374, 1, 0.035, 61, true, .75, 0, 0),
+    },  {
+        health: 200,
+        name: 'Witch Baba',
+        x: game.width * .57, //1000
+        y: game.height * .25,  //400
+        hpx: game.width * .665,
+        hpy: game.height * .25,
+        attacks: {
+            type: 'damage',
+            value: 20
+        },
+        HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
+                            AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
+
+        animation: new Animation(AM.getAsset("./img/enemy/elite/witch_baba/Baba_Idle_00-Sheet.png"), 457, 417, 1, 0.035, 61, true, .75, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/enemy/elite/witch_baba/Baba_Attack_00-Sheet.png"), 457, 417, 1, 0.035, 31, false, .75, 0, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/enemy/elite/witch_baba/Baba_Damage_00-Sheet.png"),  457, 417, 1, 0.035, 21, false,  .75, 0, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/enemy/elite/witch_baba/Baba_Idle_00-Sheet.png"),  457, 417, 1, 0.035, 61, true, .75, 0, 0),
+    } ,  {
+        health: 200,
+        name: 'Osiris',
+        x: game.width * .57, //1000
+        y: game.height * .25,  //400
+        hpx: game.width * .665,
+        hpy: game.height * .25,
+        attacks: {
+            type: 'damage',
+            value: 20
+        },
+        HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
+                            AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
+
+        animation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Idle_00-Sheet.png"), 705, 590, 1, 0.035, 61, true, .65, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Attack D_00-Sheet.png"), 705, 590, 1, 0.035, 71, false, .65, 0, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Damage_00-Sheet.png"),  705, 590, 1, 0.035, 31, false, .65, 0, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Baba_Idle_00-Sheet.png"),  705, 590, 1, 0.035, 61, true, .65, 0, 0),
+    } ,  {
+        health: 200,
+        name: 'Red Mage',
+        x: game.width * .57, //1000
+        y: game.height * .25,  //400
+        hpx: game.width * .665,
+        hpy: game.height * .25,
+        attacks: {
+            type: 'damage',
+            value: 20
+        },
+        HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
+                            AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
+
+        animation: new Animation(AM.getAsset("./img/enemy/elite/red_mage/Jiangshi_Idle_00-Sheet.png"), 380, 327, 1, 0.035, 61, true, 1, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/enemy/elite/red_mage/Jiangshi_Skill_00-Sheet.png"),380, 327, 1, 0.035, 36, false, 1, 0, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/enemy/elite/red_mage/Jiangshi_Damage_00-Sheet.png"), 380, 327, 1, 0.035, 16, false, 1, 0, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/enemy/elite/red_mage/Jiangshi_Idle_00-Sheet.png"), 380, 327, 1, 0.035, 61, false, 1, 0, 0),
+    },  {
+        health: 200,
+        name: 'Living Hoard Midas',
+        x: game.width * .6, //1000
+        y: game.height * .2,  //400
+        hpx: game.width * .65,
+        hpy: game.height * .45,
+        attacks: {
+            type: 'damage',
+            value: 20
+        },
+        HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
+                            AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
+
+        animation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Idle_00-Sheet.png"), 483, 484, 1, 0.035, 61, true, 1, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Attack C_00-Sheet.png"), 483, 484, 1, 0.035, 36, false, 1, 0, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Damage_00-Sheet.png"), 483, 484, 1, 0.035, 31, false, 1, 0, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Idle_00-Sheet.png"), 483, 484, 1, 0.035, 61, false, 1, 0, 0),
+    } ,  {
+        health: 200,
+        name: 'Mythical Knight',
+        x: game.width * .6, //1000
+        y: game.height * .2,  //400
+        hpx: game.width * .65,
+        hpy: game.height * .45,
+        attacks: {
+            type: 'damage',
+            value: 20
+        },
+        HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
+                            AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
+
+        animation: new Animation(AM.getAsset("./img/enemy/elite/M_Knight/MknightGoldnharl_Idle_00-Sheet.png"), 586, 598, 1, 0.035, 61, true, 1, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/enemy/elite/M_Knight/MknightGoldnharl_Attack B_00-Sheet.png"),586, 598, 1, 0.035, 52, false, 1, 0, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/enemy/elite/M_Knight/MknightGoldnharl_Damage_00-Sheet.png"), 646, 598, 1, 0.035, 31, false, 1, 0, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/enemy/elite/M_Knight/MknightGoldnharl_Idle_00-Sheet.png"), 586, 598, 1, 0.035, 61, true, 1, 0, 0),
+    }  
     ]
 };
 

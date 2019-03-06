@@ -29,9 +29,9 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.xOffset = 0;
     this.yOffset = 0;
 
-    this.walkingRightAnimation = new Animation(AM.getAsset("./img/player/Duesa_Idle_00-Sheet.png"),  446, 344, 1, .05, 61, true, .8,0,0);
-    this.walkingLeftAnimation = new Animation(AM.getAsset("./img/player/Duesa_Damage_00-Sheet.png"), 446, 344, 1, .05,31, false, .8,0,0);
-    this.attackingAnimation = new Animation(AM.getAsset("./img/player/Duesa_Attack D_00-Sheet.png"), 446, 344, 1, .05, 31, false, .8,0,0);
+    this.walkingRightAnimation = new Animation(AM.getAsset("./img/player/Duesa_Idle_00-Sheet.png"),  446, 344, 1, .035, 61, true, .8,0,0);
+    this.walkingLeftAnimation = new Animation(AM.getAsset("./img/player/Duesa_Damage_00-Sheet.png"), 446, 344, 1, .035,31, false, .8,0,0);
+    this.attackingAnimation = new Animation(AM.getAsset("./img/player/Duesa_Attack C_00-Sheet.png"), 446, 344, 1, .035, 31, false, .8,0,0);
     
 
 

@@ -1,0 +1,10 @@
+damage 16 frames
+207 x 327
+
+idle 61 frames
+201 x 254
+
+skill aka attack 36 frames
+380 x 256
+
+new dims of all > 380 x 327

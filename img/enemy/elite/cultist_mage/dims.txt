@@ -1,0 +1,22 @@
+attack has 31 frames
+581 x 374
+
+damaged has 31 frames
+408 x 362
+
+idle has 61 frames
+444 x 367
+
+new dim is 581 x 374
+
+
+if i want him to go to left
+
+i had 100 pix left
+
+so if i want him to go to bototm
+i had bottom?
+
+to go up
+neg on the top
+pos on bottom

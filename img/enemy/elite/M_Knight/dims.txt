@@ -1,0 +1,12 @@
+attack 52 frames
+586 x598
+
+damaged 31 frames
+361 x 270
+
+Idle has 61 frames
+316 x 284
+
+new dims > 586 x 598
+
+Damaged is a special case. It is 646 x598

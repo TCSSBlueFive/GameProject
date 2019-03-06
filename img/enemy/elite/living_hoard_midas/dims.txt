@@ -1,0 +1,10 @@
+attack has 36 frames
+483 x484
+
+damage has 31 frames
+393 x 245
+
+idle has 61 frames
+365 x 2225
+
+new dims > 483 x 484
