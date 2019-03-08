@@ -38,6 +38,9 @@ card_inheritance.prototype.draw = function () {
     //name
     this.ctx.font = fontSize + "px Arial";
     this.ctx.fillStyle = "#f0ff0f";
+    if (this.card.upgraded) {
+        this.ctx.fillStyle = "#00FF00"
+    }
     this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
 
     //card text effect

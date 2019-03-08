@@ -257,17 +257,48 @@ Dungeon.prototype.removing_cardscene_restore = function () {
   this.state = this.prevState;
 }
 
+Dungeon.prototype.card_upgrading_scene = function() {
+  this.savedEntities = [];
+  for (let i = 0; i < this.game.entities.length; i++) {
+    this.savedEntities.push(this.game.entities[i])
+  }
+  this.removeAllEntities();
+  this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
+  this.game.addEntity(this.banner);
+  cardupgrade_Scene = new CardUpgradeScene(this.game, this);
+  cardupgrade_Scene.generateCards();
+  this.game.addEntity(cardupgrade_Scene);
+  this.game.addEntity(this);
+}
+
+Dungeon.prototype.restore = function () {
+  this.removeAllEntities();
+  for (let i = 0; i < this.savedEntities.length; i++) {
+    this.game.addEntity(this.savedEntities[i])
+  }
+  this.state = this.prevState;
+}
 
 
 Dungeon.prototype.update = function () 
+
 {    
+  if (this.state === 'card_upgrade' && this.stateChanged) {
+    console.log('init new card upgrade scene')
+    this.card_upgrading_scene();
+    this.stateChanged = false;
+  } 
+  if (this.state === 'card_upgrade_restore' && this.stateChanged) {
+    this.card_upgradingscene_restore();
+    this.stateChanged = false;
+  } 
+  
   if (this.state === 'card_removal' && this.stateChanged) {
     this.removing_card_scene();
     this.stateChanged = false;
   } 
-  if (this.state === 'card_removal_restore' && this.stateChanged) {
-    this.removing_cardscene_restore();
-
+  if (this.state === 'restore' && this.stateChanged) {
+    this.restore();
     this.stateChanged = false;
   } 
 
@@ -308,7 +339,6 @@ Dungeon.prototype.update = function ()
     if (this.nextRoom === "setDungeonToEnemy") {
       this.addNewEntitiesBattle('common');
       console.log("init new enemy");
-
     } else if (this.nextRoom === "setDungeonToShop") {
       this.addNewEntitiesShop();
       console.log("init new shop");

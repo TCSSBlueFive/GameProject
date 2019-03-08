@@ -14,6 +14,7 @@ function CampfireScene(game, dungeon){
 
 
 CampfireScene.prototype.update = function () {     
+
     if (this.display_options) {
         this.rest_option.update();
         this.smith_option.update();

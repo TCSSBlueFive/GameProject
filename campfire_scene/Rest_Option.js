@@ -26,6 +26,7 @@ Rest_Option.prototype.draw = function () {
     
 };
 
+
 Rest_Option.prototype.update = function () {
     if((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width)
     && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {

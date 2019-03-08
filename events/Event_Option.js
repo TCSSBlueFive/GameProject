@@ -1,3 +1,4 @@
+/*
 function Event_Option(game, dungeon, PlayerCharacter, spritesheet, Scene, opacity){
     this.x = game.width * .6;
     this.y = game.height * .5;
@@ -32,4 +33,4 @@ Smith_Option.prototype.update = function () {
 
         //enables uprgrade of one the cards
     }
-};
+};*/

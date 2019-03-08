@@ -72,7 +72,12 @@ Card.prototype.Rotate = function (angle) {
     var fontSize = this.game.width * .0169
 
     this.ctx.font = fontSize + "px Arial";
+    if (this.card.upgraded) {
+        this.ctx.fillStyle = "#00FF00"
+    }
     this.ctx.fillText(this.name , -this.width/2 + this.game.width * .0375, -this.height/2 + this.game.height * .0282); 
+
+    this.ctx.fillStyle = "#f0ff0f";
 
     var textFontSize = this.game.width * .013559;
     this.ctx.font = textFontSize + "px Arial";

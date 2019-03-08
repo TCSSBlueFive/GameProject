@@ -9,10 +9,22 @@ function Smith_Option(game, dungeon, PlayerCharacter, spritesheet, Scene, opacit
     this.spritesheet = spritesheet;
     this.game = game;
     this.campfire_scene = Scene;
+
     this.ctx = game.ctx;
 };
 
 
+
+Smith_Option.prototype.atleast_one_card_upgradable  = function() {
+    var flag = false;
+    for (let i = 0; i < this.PlayerCharacter.DeckList.length; i++) {
+        if (this.PlayerCharacter.DeckList[i].upgraded === false){
+            console.log(this.PlayerCharacter.DeckList[i])
+            return true;
+        }
+    }
+    return flag;
+}
 
 Smith_Option.prototype.draw = function () {
     this.ctx.drawImage(this.spritesheet,
@@ -25,10 +37,13 @@ Smith_Option.prototype.draw = function () {
 };
 
 Smith_Option.prototype.update = function () {
-    if((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width)
-    && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
+    if(((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width)
+    && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) && this.atleast_one_card_upgradable()) {
         this.game.click = false;
         this.campfire_scene.display_options = false;
+        this.dungeon.prevState = this.dungeon.state;
+        this.dungeon.state = 'card_upgrade'
+        this.dungeon.stateChanged = true;
 
         //enables uprgrade of one the cards
     }

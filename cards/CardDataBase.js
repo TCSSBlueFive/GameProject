@@ -9,11 +9,13 @@ function CardDataBase(game) {
     {
         name: 'Heal',
         type: 'heal',
-        value: 10,
+        value: 6,
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Restore 10 health.',
+        text: 'Restore 6 health.',
+        index:0,
+        upgraded:false,
         
 
         spritesheet: AM.getAsset("./img/cards/heal-card.png")
@@ -25,6 +27,7 @@ function CardDataBase(game) {
         height: this.height,
         mana: 1,
         text: 'Deal 6000 damage.',
+        upgraded:true,
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -37,6 +40,7 @@ function CardDataBase(game) {
         height: this.height,
         mana: 2,
         text: 'Deal 18 damage.',
+        upgraded:true,
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -49,6 +53,8 @@ function CardDataBase(game) {
         height: this.height,
         mana: 1,
         text: 'Gain 5 block.',
+        upgraded:true,
+
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/blink-card.png")
@@ -61,66 +67,50 @@ function CardDataBase(game) {
         height: this.height,
         mana: 1,
         text: 'Gain 5 block.',
-        // ability: function () {
-        // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/blink-card.png")
-    } , {
-        name: 'Blink',
-        type: 'block',
-        value: 5,
-        width: this.width,
-        height: this.height,
-        mana: 1,
-        text: 'Gain 5 block.',
-        // ability: function () {
-        // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/blink-card.png")
-    } , {
-        name: 'Blink',
-        type: 'block',
-        value: 5,
-        width: this.width,
-        height: this.height,
-        mana: 1,
-        text: 'Gain 5 block.',
-        // ability: function () {
-        // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/blink-card.png")
-    } , {
-        name: 'Blink',
-        type: 'block',
-        value: 5,
-        width: this.width,
-        height: this.height,
-        mana: 1,
-        text: 'Gain 5 block.',
-        // ability: function () {
-        // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/blink-card.png")
-    } , {
-        name: 'Fireball',
-        type: 'damage',
-        value: 6,
-        width: this.width,
-        height: this.height,
-        mana: 1,
-        text: 'Deal 6 damage.',
+        upgraded:true,
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/fireball-card.png")
+        spritesheet: AM.getAsset("./img/cards/blink-card.png")
     } , {
-        name: 'Fireball',
-        type: 'damage',
-        value: 6,
+        name: 'Blink',
+        type: 'block',
+        value: 5,
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Deal 6 damage.',
+        text: 'Gain 5 block.',
+        upgraded:true,
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/fireball-card.png")
+        spritesheet: AM.getAsset("./img/cards/blink-card.png")
+    } , {
+        name: 'Blink',
+        type: 'block',
+        value: 5,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Gain 5 block.',
+        upgraded:true,
+
+        // ability: function () {
+        // game.battle.PlayerCharacter.health -= 20},
+        spritesheet: AM.getAsset("./img/cards/blink-card.png")
+    } , {
+        name: 'Blink',
+        type: 'block',
+        value: 5,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Gain 5 block.',
+        upgraded:true,
+
+        // ability: function () {
+        // game.battle.PlayerCharacter.health -= 20},
+        spritesheet: AM.getAsset("./img/cards/blink-card.png")
     } , {
         name: 'Fireball',
         type: 'damage',
@@ -129,6 +119,8 @@ function CardDataBase(game) {
         height: this.height,
         mana: 1,
         text: 'Deal 6 damage.',
+        upgraded:true,
+
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -141,6 +133,36 @@ function CardDataBase(game) {
         height: this.height,
         mana: 1,
         text: 'Deal 6 damage.',
+        upgraded:true,
+
+
+        // ability: function () {
+        // game.battle.PlayerCharacter.health -= 20},
+        spritesheet: AM.getAsset("./img/cards/fireball-card.png")
+    } , {
+        name: 'Fireball',
+        type: 'damage',
+        value: 6,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Deal 6 damage.',
+        upgraded:true,
+
+
+        // ability: function () {
+        // game.battle.PlayerCharacter.health -= 20},
+        spritesheet: AM.getAsset("./img/cards/fireball-card.png")
+    } , {
+        name: 'Fireball',
+        type: 'damage',
+        value: 6,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Deal 6 damage.',
+        upgraded:true,
+
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -148,30 +170,8 @@ function CardDataBase(game) {
     }]
     //potential cards as reward
     this.cards_rewards =[
-    {
-        name: 'Heal',
-        type: 'heal',
-        value: 15,
-        width: this.width,
-        height: this.height,
-        mana: 1,
-        text: 'Restore 15 health.',
-        
 
-        spritesheet: AM.getAsset("./img/cards/heal-card.png")
-    }, {
-        name: 'Fireball',
-        type: 'damage',
-        value: 1000,
-        width: this.width,
-        height: this.height,
-        mana: 1,
-        text: 'Deal 10 damage.',
-
-        // ability: function () {
-        // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/fireball-card.png")
-    }, {
+   {
         name: 'Ice Darts',
         type: 'damage',
         value: 30,
@@ -307,7 +307,24 @@ function CardDataBase(game) {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/arcane_intellect-card.png")
 
-    }
+    }]
 
+
+    //these upgraded variants must be in the same index as found in the normal
+    //cards array
+    this.upgraded_cards =[ 
+
+        {name: 'HEAL+',
+        type: 'heal',
+        value: 10,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Restore 10 health.',
+        upgraded:true,
+        
+
+        spritesheet: AM.getAsset("./img/cards/heal-card.png")}
+    
     ]
 }

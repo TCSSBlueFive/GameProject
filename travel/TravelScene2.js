@@ -152,8 +152,8 @@ TravelScene2.prototype.generatePaths = function () {
    var encounterRow = [];
    for (let i = 1; i <= myPathCount; i++) {
         var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
-        //var newNodeInfo = this.NodeDataBase.nodes[randomNum];
-        var newNodeInfo = this.NodeDataBase.special_nodes[1] //testing
+        var newNodeInfo = this.NodeDataBase.nodes[randomNum];
+        //var newNodeInfo = this.NodeDataBase.campfire_node[0] //testing
 
         var newTravelNode = new travel_node2(this.game, this, this.dungeon, 0, newNodeInfo.spritesheet, 
         newNodeInfo.fn, this.x, this.yOffset + num * i );
