@@ -20,11 +20,11 @@ function CardDataBase(game) {
     }, {
         name: 'Fireball',
         type: 'damage',
-        value: 6,
+        value: 6000,
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Deal 6 damage.',
+        text: 'Deal 6000 damage.',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},

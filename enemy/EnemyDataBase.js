@@ -10,13 +10,13 @@ function EnemyDataBase(game, spritesheet) {
     [{
         health: 42,
         name: 'slime',
-        x: game.width * .66667, //1000
-        y: game.height * .5,  //400
-        hpx: game.width * .65 ,
-        hpy: game.height * .4,
+        x: game.width * .76, //1000
+        y: game.height * .53,  //400
+        hpx: game.width * .75,
+        hpy: game.height * .3,
         attacks: {
             type: 'damage',
-            value: 10
+            value: 7
         },
 
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
@@ -30,14 +30,14 @@ function EnemyDataBase(game, spritesheet) {
     },                 
     {
         health: 120,
-        x: game.width / 2, //1000
-        y: game.height / 8.5,  //340
-        hpx: 1000,
-        hpy: 320,
+        x: game.width * .76, 
+        y: game.height * .45,  
+        hpx: game.width * .75,
+        hpy: game.height * .3,
         name: 'succubus',
         attacks: {
             type: 'damage',
-            value: 0
+            value: 9
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 120, this.hpbarwidth, this.hpbarheight),
@@ -50,13 +50,13 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 80,
         name: 'chicken',
-        x: game.width / 2, //1000
-        y: game.height / 7,  //420
-        hpx: 1000,
-        hpy: 400,
+        x: game.width * .76, 
+        y: game.height * .53,  
+        hpx: game.width * .75,
+        hpy: game.height * .3,
         attacks: {
             type: 'damage',
-            value: 10
+            value: 12
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 80, this.hpbarwidth, this.hpbarheight),
@@ -69,13 +69,13 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 200,
         name: 'doomcluck',
-        x: game.width / 2, //1000
-        y: game.height / 8.5,  //340
-        hpx: 980,
-        hpy: 370,
+        x: game.width * .76, 
+        y: game.height * .5,  
+        hpx: game.width * .75,
+        hpy: game.height * .3,
         attacks: {
             type: 'damage',
-            value: 20
+            value: 15
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
@@ -88,13 +88,13 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 150,
         name: 'earth elemental',
-        x: game.width / 2, //1000
-        y: game.height / 8.5,  //340
-        hpx: 950,
-        hpy: 340,
+        x: game.width * .76, 
+        y: game.height * .53,  
+        hpx: game.width * .75,
+        hpy: game.height * .3,
         attacks: {
             type: 'damage',
-            value: 30
+            value: 17
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 150, this.hpbarwidth, this.hpbarheight),
@@ -107,13 +107,13 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 180,
         name: 'taurus',
-        x: game.width / 2, //1000
-        y: game.height / 8.7,  //340
-        hpx: 1000,
-        hpy: 300,
+        x: game.width * .74, 
+        y: game.height * .44,  
+        hpx: game.width * .75,
+        hpy: game.height * .3,
         attacks: {
             type: 'damage',
-            value: 50
+            value: 22
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 180, this.hpbarwidth, this.hpbarheight),
@@ -126,13 +126,13 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 140,
         name: 'wraith',
-        x: game.width / 2, //1000
-        y: game.height / 8.5,  //340
-        hpx: 1000,
-        hpy: 300,
+        x: game.width * .74, 
+        y: game.height * .44,  
+        hpx: game.width * .75,
+        hpy: game.height * .3,
         attacks: {
             type: 'damage',
-            value: 80
+            value: 25
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 170, this.hpbarwidth, this.hpbarheight),
@@ -145,13 +145,13 @@ function EnemyDataBase(game, spritesheet) {
     {
         health: 200,
         name: 'gargoyle',
-        x: game.width / 2, //1000
-        y: game.height / 10.75,  //340
-        hpx: 970,
-        hpy: 250,
+        x: game.width * .73, 
+        y: game.height * .41,  
+        hpx: game.width * .75,
+        hpy: game.height * .3,
         attacks: {
             type: 'damage',
-            value: 90
+            value: 30
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
@@ -166,13 +166,13 @@ function EnemyDataBase(game, spritesheet) {
         {
         health: 200,
         name: 'Gaea',
-        x: game.width * .57, //1000
-        y: game.height * .25,  //400
+        x: game.width * .64, //1000
+        y: game.height * .35,  //400
         hpx: game.width * .75,
         hpy: game.height * .3,
         attacks: {
             type: 'damage',
-            value: 90
+            value: 40
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
@@ -182,18 +182,27 @@ function EnemyDataBase(game, spritesheet) {
         damagedAnimation: new Animation(AM.getAsset("./img/enemy/boss/ygg_Damage_00-Sheet.png"), 802 , 653, 1, 0.05, 31,false, .75, 0, 0),
         deathAnimation: new Animation(AM.getAsset("./img/enemy/boss/boss_sprite_idle.png"), 589 , 600, 1, 0.05, 31, true, .57, 0, 0),
     }
-    ],
+    ]
+
+
+
+
+
+
+
+
+
     this.elites = [
         {
         health: 200,
         name: 'Cultist Mage',
-        x: game.width * .67, //1000
-        y: game.height * .25,  //400
+        x: game.width * .65, //1000
+        y: game.height * .38,  //400
         hpx: game.width * .75,
         hpy: game.height * .3,
         attacks: {
             type: 'damage',
-            value: 90
+            value: 20
         },
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
@@ -206,7 +215,7 @@ function EnemyDataBase(game, spritesheet) {
         health: 200,
         name: 'Witch Baba',
         x: game.width * .7, //1000
-        y: game.height * .4,  //400
+        y: game.height * .37,  //400
         hpx: game.width * .75,
         hpy: game.height * .3,
         attacks: {
@@ -223,8 +232,8 @@ function EnemyDataBase(game, spritesheet) {
     } ,  {
         health: 200,
         name: 'Osiris',
-        x: game.width * .67, //1000
-        y: game.height * .3,  //400
+        x: game.width * .7, //1000
+        y: game.height * .35,  //400
         hpx: game.width * .75,
         hpy: game.height * .3,
         attacks: {
@@ -234,14 +243,14 @@ function EnemyDataBase(game, spritesheet) {
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
 
-        animation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Idle_00-Sheet.png"), 705, 590, 1, 0.035, 61, true, .65, 0, 0),
-        attackAnimation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Attack D_00-Sheet.png"), 705, 590, 1, 0.035, 71, false, .65, 0, 0),
-        damagedAnimation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Damage_00-Sheet.png"),  705, 590, 1, 0.035, 31, false, .65, 0, 0),
-        deathAnimation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Idle_00-Sheet.png"), 705, 590, 1, 0.035, 61, false, .65, 0, 0)
+        animation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Idle_00-Sheet.png"), 705, 590, 1, 0.035, 61, true, .55, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Attack D_00-Sheet.png"), 705, 590, 1, 0.035, 71, false, .55, 0, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Damage_00-Sheet.png"),  705, 590, 1, 0.035, 31, false, .55, 0, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/enemy/elite/osiris_priest/Osiris_Idle_00-Sheet.png"), 705, 590, 1, 0.035, 61, false, .55, 0, 0)
     } ,  {
         health: 200,
         name: 'Red Mage',
-        x: game.width * .67, //1000
+        x: game.width * .65, //1000
         y: game.height * .3,  //400
         hpx: game.width * .75,
         hpy: game.height * .3,
@@ -259,8 +268,8 @@ function EnemyDataBase(game, spritesheet) {
     },  {
         health: 200,
         name: 'Living Hoard Midas',
-        x: game.width * .67, //1000
-        y: game.height * .2,  //400
+        x: game.width * .7, //1000
+        y: game.height * .28,  //400
         hpx: game.width * .75,
         hpy: game.height * .3,
         attacks: {
@@ -270,10 +279,10 @@ function EnemyDataBase(game, spritesheet) {
         HPBar: new HealthBar(game,AM.getAsset("./img/RedHealthBar.png"),
                             AM.getAsset("./img/GreenHealthBar.png"), 200, this.hpbarwidth, this.hpbarheight),
 
-        animation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Idle_00-Sheet.png"), 483, 484, 1, 0.035, 61, true, 1, 0, 0),
-        attackAnimation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Attack C_00-Sheet.png"), 483, 484, 1, 0.035, 36, false, 1, 0, 0),
-        damagedAnimation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Damage_00-Sheet.png"), 483, 484, 1, 0.035, 31, false, 1, 0, 0),
-        deathAnimation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Idle_00-Sheet.png"), 483, 484, 1, 0.035, 61, false, 1, 0, 0),
+        animation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Idle_00-Sheet.png"), 483, 484, 1, 0.035, 61, true, .85, 0, 0),
+        attackAnimation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Attack C_00-Sheet.png"), 483, 484, 1, 0.035, 36, false, .85, 0, 0),
+        damagedAnimation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Damage_00-Sheet.png"), 483, 484, 1, 0.035, 31, false, .85, 0, 0),
+        deathAnimation: new Animation(AM.getAsset("./img/enemy/elite/living_hoard_midas/Midas_Idle_00-Sheet.png"), 483, 484, 1, 0.035, 61, false, .85, 0, 0),
     } ,  {
         health: 200,
         name: 'Mythical Knight',

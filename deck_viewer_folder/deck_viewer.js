@@ -25,7 +25,7 @@ function deck_viewer(game, dungeon, PlayerCharacter, Cardhand) {
 
   this.view_window_present = 'none';
 
-  this.scrollbarX = this.x + this.width * this.rowcol + 20;
+  this.scrollbarX = this.x + this.width * this.rowcol + 31;
 
 
 
@@ -60,6 +60,7 @@ deck_viewer.prototype.draw = function () {
     this.ctx.drawImage(this.deck_background, this.x , 130, this.width * this.rowcol, 600);
     this.myScrollBar.draw();
   }
+  this.ctx.save();
   this.ctx.font = this.numberFontSize;
 
   if (this.cardhand && this.dungeon.state != 'viewing_deck') {

@@ -29,7 +29,7 @@ Dungeon.prototype.addBackMonsterRewards = function () {
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
   //this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
   this.game.addEntity(this.currentMonsterRewards);
-  this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
+  this.game.addEntity(this.myProceedButton)
   this.game.addEntity(this.banner);
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
   this.viewer = my_viewer;
@@ -42,7 +42,7 @@ Dungeon.prototype.setCardSelection = function () {
   this.state = 'card selection'
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
   this.game.addEntity(this.banner)
-  this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
+  this.game.addEntity(this.myProceedButton)
   myCardSelection = new CardSelectionScene(this.game, this);
   myCardSelection.generateCards();
   this.game.addEntity(myCardSelection);  
@@ -55,9 +55,12 @@ Dungeon.prototype.setCardSelection = function () {
 
 Dungeon.prototype.loadDungeon = function () {
   this.game.entities.pop();
+  this.myCampfireScene = new CampfireScene(this.game, this)
+  this.myProceedButton = new Proceed(this.game, AM.getAsset("./img/proceed.png"), this);
+
   var cards = new CardHand(this.game, this, this.PlayerCharacter, 1);
 
-this.state = 'battle'
+  this.state = 'battle'
   cards.generateInitialHand();
 
 
@@ -104,7 +107,7 @@ Dungeon.prototype.removeAllEntities = function() {
   }
 
 //once a battle starts, add all new entities
-Dungeon.prototype.addNewEntitiesBattle = function() {
+Dungeon.prototype.addNewEntitiesBattle = function(encounter_type) {
   this.removeAllEntities();
   this.BattleOngoing = true;
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"),AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
@@ -120,8 +123,16 @@ Dungeon.prototype.addNewEntitiesBattle = function() {
   newCardHand.generateInitialHand();
 
   this.game.addEntity(newCardHand);
-  var rand = getRandomInt(this.myEnemies.elites.length)
-  var enemy = new Enemy(this.game, this.myEnemies.elites[0], 1);
+  if (encounter_type === 'elite') {
+    var rand = getRandomInt(this.myEnemies.elites.length)
+    var enemy = new Enemy(this.game, this.myEnemies.elites[rand], 1);
+  } else if (encounter_type === 'boss') {
+
+  } else {
+    var rand = getRandomInt(this.myEnemies.monsters.length)
+    var enemy = new Enemy(this.game, this.myEnemies.monsters[rand], 1);
+  }
+  
 
   //var enemy = new Enemy(this.game, this.myEnemies.monsters[getRandomInt(this.myEnemies.monsters.length)], 1);
   var battle = new Battle(this.game, enemy, this, this.PlayerCharacter, newCardHand);
@@ -154,7 +165,8 @@ Dungeon.prototype.addNewEntitiesReward = function() {
   this.game.addEntity(my_viewer);
   this.viewer = my_viewer;
 
-  this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
+  this.game.addEntity(this.myProceedButton)
+
 
   this.game.addEntity(this);
 
@@ -167,16 +179,29 @@ Dungeon.prototype.addNewEntitiesTreasure = function() {
   this.game.addEntity(this.PlayerCharacter);
   this.PlayerCharacter.opacity = 1;
   this.game.addEntity(new TreasureChest(this.game, this, this.PlayerCharacter, AM.getAsset("./img/treasure_chest.png"), 1));
-  this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
+  this.game.addEntity(this.myProceedButton)
   this.game.addEntity(this);
 }
+
+Dungeon.prototype.addNewEntitiesCampfireScene= function () {
+  this.removeAllEntities();
+  this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"),AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
+  this.game.addEntity(this.myCampfireScene);
+  this.game.addEntity(this.myProceedButton)
+  this.game.addEntity(this.banner);
+  var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
+  this.game.addEntity(my_viewer);
+  this.viewer = my_viewer;
+  this.game.addEntity(this);
+}
+
 
 Dungeon.prototype.addNewEntitiesShop= function () {
   this.removeAllEntities();
   myShop = new shop_scene(this.game, AM.getAsset("./img/shop/shop_background.png"), this, 1 );
   this.game.addEntity(myShop);
   myShop.generateShopCards();
-  this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
+  this.game.addEntity(this.myProceedButton)
   this.game.addEntity(this.banner);
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter);
   this.game.addEntity(my_viewer);
@@ -219,7 +244,7 @@ Dungeon.prototype.update = function ()
   }
   if (this.state === 'battle_finished' && this.stateChanged) {
     this.game.entities.pop();
-    this.game.addEntity(new Proceed(this.game, AM.getAsset("./img/proceed.png"), this));
+    this.game.addEntity(this.myProceedButton)
     this.BattleOngoing = false;
     this.battle.PlayerTurn = false;
     var index = this.game.entities.indexOf(this.turnButton);
@@ -244,13 +269,13 @@ Dungeon.prototype.update = function ()
   }
   if (this.roomSelected) {
     if (this.nextRoom === "setDungeonToEnemy") {
-      this.addNewEntitiesBattle();
+      this.addNewEntitiesBattle('common');
       console.log("init new enemy");
 
     } else if (this.nextRoom === "setDungeonToShop") {
       this.addNewEntitiesShop();
       console.log("init new shop");
-      this.state = 'shop';
+      this.state = 'before_travel';
     } else if (this.nextRoom === "setDungeonToTreasure") {
       this.addNewEntitiesTreasure();
       console.log("init new treasure");
@@ -258,13 +283,16 @@ Dungeon.prototype.update = function ()
       //this.addNewEntitiesBoss();
       console.log("Init new boss");
     } else if (this.nextRoom === "setDungeonToElite") {
-      //this.addNewEntitiesElite();
+      this.addNewEntitiesBattle('elite');
       console.log("Init new Elite");
     } else if (this.nextRoom === "setDungeonToGamble") {
       //this.addNewEntitiesGamble();
       console.log("init new gamble")
+    } else if (this.nextRoom === "setDungeonToCampfire") {
+      console.log("init new campfire")
+      this.addNewEntitiesCampfireScene();
+      this.state = 'before_travel';
     }
-    
     this.roomSelected = false;
   }
   if (this.cardRewards === true) {

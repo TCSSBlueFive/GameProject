@@ -64,6 +64,8 @@ AM.queueDownload("./img/proceed.png")
 AM.queueDownload("./img/travel/enemy_node.png");
 AM.queueDownload("./img/travel/shop_node.png");
 AM.queueDownload("./img/travel/treasure_node.png");
+AM.queueDownload("./img/travel/campfire_node.png");
+
 AM.queueDownload("./img/travel/event_node.png");
 AM.queueDownload("./img/travel/elite_node.png");
 AM.queueDownload("./img/travel/gamble_node.png");
@@ -85,6 +87,8 @@ AM.queueDownload("./img/enemy/boss/ygg_Idle_00-Sheet.png");
 AM.queueDownload("./img/enemy/boss/ygg_Attack A_00-Sheet.png");
 AM.queueDownload("./img/enemy/boss/ygg_Damage_00-Sheet.png");
 
+AM.queueDownload("./img/travel/rest_option.png")
+AM.queueDownload("./img/travel/smith_option.png")
 
 
 AM.queueDownload("./img/player/Duesa_Idle_00-Sheet.png");
@@ -127,12 +131,13 @@ AM.downloadAll(function () {
 
     
     //adjustCanvasSize(canvas);
-
+    console.log(canvas.width);
+    console.log(canvas.height)
     var gameEngine = new GameEngine();
     gameEngine.init(ctx);
     gameEngine.start();
-    gameEngine.width = 1920;
-    gameEngine.height = 1080;
+    gameEngine.width = canvas.width;
+    gameEngine.height = canvas.height;
 
     var myManaBar = new ManaBar(gameEngine, [AM.getAsset("./img/mana_bar.png"),AM.getAsset("./img/mana_empty.png"),
                                              AM.getAsset("./img/mana_circle.png")], 100, 100, 1);
@@ -141,11 +146,10 @@ AM.downloadAll(function () {
 
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     
-    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 100, 200, 25);
+    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 80, 200, 25);
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, myManaBar, 1)
     
-    console.log(myEnemyDataBase.elites[1])
     var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
     
     var dungeon = new Dungeon(gameEngine, player, enemy, myEnemyDataBase, myBanner)

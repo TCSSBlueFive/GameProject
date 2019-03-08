@@ -5,16 +5,16 @@ function shop_scene(game, spritesheet, dungeon, opacity){
     this.dungeon = dungeon;
     this.x = 20;
     this.y = 200;
-    this.width = 250;
-    this.height = 327;
     this.shop_cards = [];
     this.spritesheet = spritesheet;
     this.opacity = opacity;
     this.generic_cards = 5;
     this.special_cards = 2;
     this.CardDataBase = new CardDataBase(game);
+    this.width = this.CardDataBase.width;
+    this.height = this.CardDataBase.height;
     this.game = game;
-    this.buffer = 50
+    this.buffer = 0;
     this.ctx = game.ctx;
     
 };

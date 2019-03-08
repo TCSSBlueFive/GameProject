@@ -8,11 +8,11 @@ function TravelScene2(game, dungeon, opacity){
     this.paths = [];
     this.encounters = [];
 
-    this.x = 80;
-    this.y = 250;
+    this.x = game.width * .02711;
+    this.y = 0;///game.height * .123;
     this.game = game;
     this.ctx = game.ctx;
-    this.yOffset = 150;
+    this.yOffset = game.height * .1;
     this.currentRoom = 0;
     this.node_center_width = game.width * .03016/2;
     this.node_center_height = game.height *.071515/2;
@@ -51,23 +51,7 @@ function getRandomIntNegOrPos(max) {
     return getRandomInt(max * 2) - max;
 }
 
-TravelScene2.prototype.getLowest = function (row) {
-    var yMin = 2500;
-    for (let i = 0; i < row.length; i++) {
-        if (yMin > row[i].y) 
-            yMin = row[i].y
-    }
-    return yMin;
-}
 
-TravelScene2.prototype.getMax = function (row) {
-    var yMax = 0;
-    for (let i = 0; i < row.length; i++) {
-        if (yMax < row[i].y) 
-            yMax = row[i].y
-    }
-    return yMax;
-}
 TravelScene2.prototype.getAllNonLinked = function (row) {
     var returnNodes = [];
     for (let i = 0; i < row.length; i++) {
@@ -107,15 +91,49 @@ TravelScene2.prototype.generateEncounters = function () {
         var prevRow = this.encounters[q];
         for (let i = 1; i <= myEncounterCount; i++) {
 
-            var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
-            var newNodeInfo = this.NodeDataBase.nodes[0]
-            var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
-                newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(this.xrandval) , this.yOffset + (num * i)  + getRandomIntNegOrPos(this.yrandval));
+            
+               
+
+            if (q == 2 || q == 5 || q == 7 || q == 9) {
+                //these nodes can be a special node, but also maybe just a monster/event still
+                var randomNum = getRandomInt(this.NodeDataBase.special_nodes.length);
+                var newNodeInfo = this.NodeDataBase.special_nodes[randomNum]
+                var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
+                    newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(this.xrandval) , this.yOffset + (num * i)  + getRandomIntNegOrPos(this.yrandval));
                 encounterRow.push(newTravelNode);
+            } else if (q == 6) {
+                //middle node always a treasure chest
+                var newNodeInfo = this.NodeDataBase.treasure_node[0]
+                var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
+                    newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(this.xrandval) , this.yOffset + (num * i)  + getRandomIntNegOrPos(this.yrandval));
+                encounterRow.push(newTravelNode);
+            } else if (q == 13) {
+                //last node always a campfire
+                var newNodeInfo = this.NodeDataBase.campfire_node[0]
+                var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
+                    newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(this.xrandval) , this.yOffset + (num * i)  + getRandomIntNegOrPos(this.yrandval));
+                encounterRow.push(newTravelNode);
+            } else  if(q == 10 || q == 3 || q == 11 || q == 0) {
+                var randomNum = getRandomInt(this.NodeDataBase.special_nodes2.length);
+                var newNodeInfo = this.NodeDataBase.special_nodes2[randomNum]
+                var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
+                    newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(this.xrandval) , this.yOffset + (num * i)  + getRandomIntNegOrPos(this.yrandval));
+                encounterRow.push(newTravelNode);
+
+            } else {
+                //only a monster/event for these
+                var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
+                var newNodeInfo = this.NodeDataBase.nodes[randomNum]
+                var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
+                    newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(this.xrandval) , this.yOffset + (num * i)  + getRandomIntNegOrPos(this.yrandval));
+                encounterRow.push(newTravelNode);
+            }
+
         }
         this.encounters.push(encounterRow);
-    }
 
+    }
+    //last 1 always a boss
     //sets up boss encounter
     var num = this.mapHeight/ (2);
     var encounterRow = [];
@@ -129,12 +147,14 @@ TravelScene2.prototype.generateEncounters = function () {
 
 //determines starting path # and fills them with encounters
 TravelScene2.prototype.generatePaths = function () {
-   var myPathCount = getRandomInt(2) + 2;
+   var myPathCount = getRandomInt(2) + 3;
    var num = this.mapHeight / (myPathCount + 1);
    var encounterRow = [];
    for (let i = 1; i <= myPathCount; i++) {
         var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
-        var newNodeInfo = this.NodeDataBase.nodes[0]
+        var newNodeInfo = this.NodeDataBase.nodes[randomNum];
+        //var newNodeInfo = this.NodeDataBase.campfire_node[0] //testing
+
         var newTravelNode = new travel_node2(this.game, this, this.dungeon, 0, newNodeInfo.spritesheet, 
         newNodeInfo.fn, this.x, this.yOffset + num * i );
         encounterRow.push(newTravelNode);  

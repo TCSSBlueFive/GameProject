@@ -37,11 +37,8 @@ Battle.prototype.playerMove = function(card) {
                 this.dungeon.stateChanged = true;
             }
         } else if (card.type === 'heal') {
-            if (this.PlayerCharacter.health + card.value < 100) {
-                this.PlayerCharacter.heal(card.value)
-            } else {
-                this.PlayerCharacter.heal(100 - this.PlayerCharacter.health)
-            }
+            this.PlayerCharacter.heal(card.value)
+        
         } else if (card.type === 'block') {
             this.PlayerCharacter.block += card.value
         } else if (card.type === 'debuff') {

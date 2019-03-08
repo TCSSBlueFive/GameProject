@@ -25,7 +25,6 @@ MonsterRewards.prototype.generateRewardsEnemy = function () {
     this.rewards[0] = new reward_node(this.game, this.rewardFromDatabase.rewards[0], this, this.x, this.y)
     this.rewards[1] = new reward_node(this.game, this.rewardFromDatabase.rewards[1], this, this.x, this.y + this.height)
     this.rewards[2] = new reward_node(this.game, this.rewardFromDatabase.rewards[0], this, this.x, this.y + (this.height * 2))
-    this.rewards[3] = new reward_node(this.game, this.rewardFromDatabase.rewards[0], this, this.x, this.y + (this.height *3))
 
 }
 
@@ -38,7 +37,7 @@ MonsterRewards.prototype.generateRewardsTreasure = function () {
 }
 
 MonsterRewards.prototype.draw = function () {
-    
+    this.ctx.save();
     this.ctx.fillStyle = '#808080'
     this.ctx.fillRect(this.x - 60, this.y - 60, this.width + 110, this.height * 4 + 120);
     this.ctx.fillRect(this.topbannerx -40, this.topbannery - 40, this.width + 190, 190);
@@ -52,13 +51,13 @@ MonsterRewards.prototype.draw = function () {
 
     
   //  
-
     this.ctx.fillStyle = "#FFFFFF"
     this.ctx.font = '55px Impact'
     this.ctx.textAlign = "center";
     this.ctx.textBaseline = "bottom";
     this.ctx.fillText('Monster Loot!', this.topbannerx  + 200, this.topbannery + 80);
 
+    this.ctx.restore();
     for (let i = 0; i < this.rewards.length; i++) {
         this.rewards[i].draw();
     }

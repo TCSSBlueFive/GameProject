@@ -16,8 +16,8 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.HPBar.x = this.x + game.height * .09;
     this.HPBar.y = this.y - 55;
     this.gold = 0;
-    this.health = 100;
-    this.maxhealth = 100;
+    this.health = 80;
+    this.maxhealth = 80;
     this.attack = 30;
     this.block = 0;
     this.speed = 0;
@@ -52,11 +52,7 @@ PlayerCharacter.prototype.update = function () {
 
 PlayerCharacter.prototype.draw = function () {
 
-    if (this.damage_taken_array.length > 0) {
-        for (let i = 0; i < this.damage_taken_array.length; i++) {
-            this.damage_taken_array[i].draw();
-        }
-    }
+
     this.HPBar.draw();
     this.Manabar.draw();
     if (this.action === 'attack') {
@@ -79,6 +75,11 @@ PlayerCharacter.prototype.draw = function () {
         this.dodgeAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, .313);
     } else {
         this.idleAnimation.drawFrameLeftToRight(this.game.clockTick, this.ctx, this.x, this.y, 1.72);
+    }
+    if (this.damage_taken_array.length > 0) {
+        for (let i = 0; i < this.damage_taken_array.length; i++) {
+            this.damage_taken_array[i].draw();
+        }
     }
 
 }
@@ -105,8 +106,12 @@ PlayerCharacter.prototype.takeDamage = function (attackDamage) {
 }
 
 PlayerCharacter.prototype.heal = function (healthPoints) {
+
+    if (healthPoints + this.health > this.maxhealth) {
+        healthPoints = this.maxhealth - this.health;
+    }
     this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,healthPoints, 'heal',this.x + 90, this.y));
-    this.health += healthPoints;
+    this.health += healthPoints
 }
 
 PlayerCharacter.prototype.died = function() {

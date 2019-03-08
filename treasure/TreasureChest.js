@@ -1,9 +1,9 @@
 function TreasureChest(game, dungeon, PlayerCharacter, spritesheet, opacity){
-    this.x = 1000;
-    this.y = 420;
-    this.width = 175; //card width
+    this.x = game.width * .65;
+    this.y = game.height * .5;
+    this.width = game.width * .1186; 
     this.dungeon = dungeon;
-    this.height = 137; //card height
+    this.height = game.height * .166; 
     this.opacity = opacity;
     this.PlayerCharacter = PlayerCharacter;
 
@@ -16,7 +16,7 @@ function TreasureChest(game, dungeon, PlayerCharacter, spritesheet, opacity){
 
 TreasureChest.prototype.draw = function () {
     this.ctx.drawImage(this.spritesheet,
-        this.x, this.y);
+        this.x, this.y, this.width, this.height);
     
 };
 
@@ -29,7 +29,6 @@ TreasureChest.prototype.update = function () {
         }        
         this.game.click = false;
         this.game.entities.pop();
-        this.game.addEntity(new Background(this.game, AM.getAsset("./img/reward/rewards_background.png"), 1 ));
         myRewards = new MonsterRewards(this.game, this.dungeon, 1);
         myRewards.generateRewardsEnemy();
         this.dungeon.currentMonsterRewards = myRewards;

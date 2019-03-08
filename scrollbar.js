@@ -4,7 +4,7 @@ function scrollbar(game, spritesheet, content, minx, miny, type) {
     this.game = game;
     this.minx = minx;
     this.miny = miny;
-    this.width =  .01010169;
+    this.width = game.width *  .01010169;
     this.height = game.height * .0909090909;
     if (type === 'horizontal'){
         this.width =  game.height * .0909090909;

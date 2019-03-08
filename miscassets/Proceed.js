@@ -29,7 +29,7 @@ Proceed.prototype.update = function () {
         if (userState === 'card selection') {
             this.dungeon.cardChosen = true;
             this.dungeon.state = 'rewards'
-        } else if (userState === 'shop') {
+        } else if (userState === 'before_travel') {
             this.dungeon.state = 'travel'
             this.dungeon.stateChanged = true;
         } else if (userState === 'rewards') {
