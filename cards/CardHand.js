@@ -18,6 +18,19 @@ function CardHand(game, dungeon, PlayerCharacter, opacity){
 
     this.endPoint = this.width * 5 ;
 };
+
+CardHand.prototype.exhaustAll = function () {
+    console.log(this.DeckListCardsRemaining)
+    for (let i = 0; i < this.DeckListCardsRemaining.length; i++) {
+        card = this.DeckListCardsRemaining[i];
+        if (card.temporary) {
+            var index = this.DeckListCardsRemaining.indexOf(card);
+            this.PlayerCharacter.DeckList.splice(index, 1)
+            i -=1;
+        }
+        
+    }
+}
 CardHand.prototype.useAll = function () {
 
     for (let i = 0; i < this.cardsInHand.length; i++) {

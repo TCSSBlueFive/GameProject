@@ -107,7 +107,13 @@ deck_viewer.prototype.update = function () {
     this.combined = this.drawPile.concat(this.discardPile);// + this.discardPile + this.cardhand.cardsInHand;
 
     for (let i = 0; i < this.cardhand.cardsInHand.length; i++) {
-      this.combined.push(this.cardhand.cardsInHand[i].fn)
+        this.combined.push(this.cardhand.cardsInHand[i].fn)
+    }
+    for (let i = 0; i < this.combined.length; i++) {
+      if (this.combined[i].temporary) {
+        this.combined.splice(i, 1)
+        i -=1;
+      }
     }
   } else {
     this.combined = this.PlayerCharacter.DeckList;
@@ -124,11 +130,18 @@ deck_viewer.prototype.update = function () {
         this.view_window_present = 'displaying_full_deck';
         this.cardsToDraw = [];
 
+        let q = 0;
         for (let i = 0; i < this.combined.length; i++) {
-          var card = new deck_viewer_card(this.game, this.dungeon, this.combined[i], this.x + (i % this.rowcol) * this.width,
-            this.y + (this.height * Math.floor(i / this.rowcol)));
+          if (!this.combined[i].temporary) {
+            var card = new deck_viewer_card(this.game, this.dungeon, this.combined[i], this.x + (q % this.rowcol) * this.width,
+            this.y + (this.height * Math.floor(q / this.rowcol)));
             this.cardsToDraw.push(card);
-        }
+          } else {
+              console.log('biscuit')
+              q-= 1;
+          }
+            q++
+          }
       } else {
         this.cardsToDraw = [];
         this.dungeon.state = 'view_deck_restore'

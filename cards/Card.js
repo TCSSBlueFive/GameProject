@@ -127,6 +127,8 @@ Card.prototype.update = function () {
             if (this.dungeon.state === 'battle_finished') {
                 this.cardHand.useAll();
                 this.cardHand.reshuffle();
+                this.cardHand.exhaustAll();
+
                 this.cardHand.cardsInHand = [];
 
             }

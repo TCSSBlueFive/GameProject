@@ -225,6 +225,8 @@ function CardDataBase(game) {
             width: this.width,
             height: this.height,
             upgraded:false,
+            exhaust:true,
+            temporary:true,
             mana: 0,
             text: 'Restore 3 health.',
 
@@ -236,7 +238,7 @@ function CardDataBase(game) {
         height: this.height,
         mana: 2,
         upgraded:false,
-
+        exhaust:true,
         text: 'Add 2 Biscuit cards \nto hand.',
 
         // ability: function () {
@@ -396,6 +398,8 @@ function CardDataBase(game) {
             mana: 0,
             upgraded:true,
             text: 'Restore 5 health.',
+            exhaust:true,
+            temporary:true,
 
         },
         value: 2,
@@ -404,6 +408,7 @@ function CardDataBase(game) {
         height: this.height,
         mana: 2,
         text: 'Add 2 Biscuit cards \nto hand.',
+        exhaust:true,
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},

@@ -32,7 +32,6 @@ Battle.prototype.playerMove = function(card) {
             this.Enemy.takeDamage(card.value);
             if(!this.Enemy.isAlive()) {
                 this.isBattleOver = true;
-                //this.dungeon.state = 'rewards'
                 this.dungeon.state = 'battle_finished'
                 this.dungeon.stateChanged = true;
             }
