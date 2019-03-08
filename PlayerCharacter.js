@@ -15,7 +15,7 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.y = game.height * .38;
     this.HPBar.x = this.x + game.height * .09;
     this.HPBar.y = this.y - 55;
-    this.gold = 0;
+    this.gold = 220;
     this.health = 80;
     this.maxhealth = 80;
     this.attack = 30;
@@ -47,7 +47,7 @@ PlayerCharacter.prototype.playCard = function() {
 }
 
 PlayerCharacter.prototype.update = function () {
-    this.HPBar.update(this.health)
+    this.HPBar.update(this.health, this.maxhealth, this.block)
 }
 
 PlayerCharacter.prototype.draw = function () {

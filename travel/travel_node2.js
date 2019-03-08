@@ -53,6 +53,7 @@ travel_node2.prototype.update = function () {
                     }
                 }
             }
+            this.dungeon.floor +=1;
 
             //this.travelScene.currentRoom += 1;
         }

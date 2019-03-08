@@ -3,6 +3,8 @@ var AM = new AssetManager();
 
 AM.queueDownload("./img/RedHealthBar.png");
 AM.queueDownload("./img/GreenHealthBar.png");
+AM.queueDownload("./img/OrangeBlockBar.png");
+
 AM.queueDownload("./img/scrollbar.png");
 AM.queueDownload("./img/scrollbar_horizontal.png")
 AM.queueDownload("./img/time_sprite.png")
@@ -147,7 +149,7 @@ AM.downloadAll(function () {
 
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     
-    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), 80, 200, 25);
+    var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), AM.getAsset("./img/OrangeBlockBar.png"), 80, 200, 25);
     var player = new PlayerCharacter(gameEngine, 
         [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, myManaBar, 1)
     

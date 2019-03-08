@@ -19,7 +19,9 @@ card_upgradable.prototype.update = function () {
             var chosencard = this.dungeon.PlayerCharacter.DeckList[this.index]
             console.log(this.index)
             console.log(chosencard);
-            this.dungeon.PlayerCharacter.DeckList[this.index] = this.CardDataBase.upgraded_cards[chosencard.index]
+           // this.dungeon.PlayerCharacter.DeckList[this.index] = this.CardDataBase.upgraded_cards[chosencard.index]
+           this.dungeon.PlayerCharacter.DeckList.splice(this.index, 1);
+           this.dungeon.PlayerCharacter.DeckList.push(this.CardDataBase.upgraded_cards[chosencard.index])
             console.log(this.dungeon.PlayerCharacter.DeckList)
 
 

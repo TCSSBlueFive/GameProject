@@ -10,11 +10,10 @@ card_removal.prototype.draw = function () {
 };
 
 card_removal.prototype.update = function () {
-
         if((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width)
         && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
             this.dungeon.PlayerCharacter.DeckList.splice(this.index, 1)
-            this.dungeon.state = 'card_removal_restore';
+            this.dungeon.state = 'restore';
             this.dungeon.stateChanged = true;
             this.game.click = false;
     }

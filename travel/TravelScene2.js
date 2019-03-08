@@ -123,7 +123,8 @@ TravelScene2.prototype.generateEncounters = function () {
             } else {
                 //only a monster/event for these
                 var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
-                var newNodeInfo = this.NodeDataBase.nodes[randomNum]
+                var newNodeInfo = this.NodeDataBase.nodes[randomNum] 
+
                 var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
                     newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(this.xrandval) , this.yOffset + (num * i)  + getRandomIntNegOrPos(this.yrandval));
                 encounterRow.push(newTravelNode);
@@ -137,7 +138,7 @@ TravelScene2.prototype.generateEncounters = function () {
     //sets up boss encounter
     var num = this.mapHeight/ (2);
     var encounterRow = [];
-    var newNodeInfo = this.NodeDataBase.nodes[0];
+    var newNodeInfo = this.NodeDataBase.bosses[0];
     var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
         newNodeInfo.fn, this.encounters[14][0].x + this.xDist + 60 , this.yOffset + num);
     encounterRow.push(newTravelNode);

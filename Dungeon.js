@@ -288,10 +288,6 @@ Dungeon.prototype.update = function ()
     this.card_upgrading_scene();
     this.stateChanged = false;
   } 
-  if (this.state === 'card_upgrade_restore' && this.stateChanged) {
-    this.card_upgradingscene_restore();
-    this.stateChanged = false;
-  } 
   
   if (this.state === 'card_removal' && this.stateChanged) {
     this.removing_card_scene();

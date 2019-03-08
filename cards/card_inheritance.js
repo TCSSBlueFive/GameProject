@@ -47,6 +47,9 @@ card_inheritance.prototype.draw = function () {
     var textFontSize = this.game.width * .013559;
     this.ctx.font = textFontSize + "px Arial";
     this.ctx.fillStyle = "#ffff00";
+    if (this.card.upgraded) {
+        this.ctx.fillStyle = "#00FF00"
+    };
     var lineheight = textFontSize;
     var lines = this.text.split('\n');
 

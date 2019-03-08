@@ -78,12 +78,13 @@ Card.prototype.Rotate = function (angle) {
     this.ctx.fillText(this.name , -this.width/2 + this.game.width * .0375, -this.height/2 + this.game.height * .0282); 
 
     this.ctx.fillStyle = "#f0ff0f";
-
     var textFontSize = this.game.width * .013559;
     this.ctx.font = textFontSize + "px Arial";
     var lineheight = textFontSize;
     var lines = this.text.split('\n');
-
+    if (this.card.upgraded) {
+        this.ctx.fillStyle = "#00FF00"
+    };
     for (var i = 0; i<lines.length; i++)
         this.ctx.fillText(lines[i], -this.width/2 + this.game.width * .0209 ,-this.height/2 +  this.game.height * .183 + i * lineheight);
 

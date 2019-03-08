@@ -29,7 +29,7 @@ CardUpgradeScene.prototype.generateCards = function () {
             q -=1;
         } else {
             this.upgradable_cards.push(new card_upgradable(this.game, this.dungeon, newCard , this.x + (q%this.amount_fit_in_row * this.width),
-            this.y + (Math.floor((this.x + ((q+1) * this.width)) / this.game.width)) * this.height, q));
+            this.y + (Math.floor((this.x + ((q+1) * this.width)) / this.game.width)) * this.height, i));
         }
     q++;
     }

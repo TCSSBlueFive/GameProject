@@ -8,6 +8,7 @@ function deck_viewer_card(game, dungeon, card, x, y){
     this.textXOffset = this.width * .18;
     this.textYOffset = this.height * .672;
     this.yOrig = this.y;
+    this.card = card;
     this.clipX = 0;
 
 };
@@ -33,7 +34,10 @@ deck_viewer_card.prototype.draw = function () {
     
     this.ctx.save();
     this.ctx.font = "20px Arial";
-    this.ctx.fillStyle = "#f0ff0f";
+    this.ctx.fillStyle = "#f0ff0f"
+    if (this.card.upgraded) {
+        this.ctx.fillStyle = "#00FF00"
+    };
     if (this.y > 110  &&this.y < 700) {
         this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
         this.ctx.fillStyle = "#0000FF"
@@ -43,6 +47,9 @@ deck_viewer_card.prototype.draw = function () {
     //card text effect
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "#ffff00";
+    if (this.card.upgraded) {
+        this.ctx.fillStyle = "#00FF00"
+    };
     var lineheight = 20;
     var lines = this.text.split('\n');
 

@@ -119,11 +119,11 @@ function NodeDataBase() {
         spritesheet: AM.getAsset("./img/travel/campfire_node.png"),
         fn: 'setDungeonToCampfire'
     }]
-    this.boss_node = 
+    this.bosses = 
     [{
         name: 'boss_node',
         opacity: 1,
-        spritesheet: AM.getAsset("./img/travel/campfire_node.png"),
-        fn: 'setDungeonToCampfire'
+        spritesheet: AM.getAsset("./img/travel/elite_node.png"),
+        fn: 'setDungeonToElite'
     }]
 };
