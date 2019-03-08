@@ -186,6 +186,7 @@ Dungeon.prototype.addNewEntitiesTreasure = function() {
 Dungeon.prototype.addNewEntitiesCampfireScene= function () {
   this.removeAllEntities();
   this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"),AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
+  this.myCampfireScene.display_options = true;
   this.game.addEntity(this.myCampfireScene);
   this.game.addEntity(this.myProceedButton)
   this.game.addEntity(this.banner);
@@ -230,10 +231,46 @@ Dungeon.prototype.viewing_deck_restore = function () {
     this.game.addEntity(this.savedEntities[i])
   }
   this.state = this.viewer.originalstate;
-
 }
+
+
+
+Dungeon.prototype.removing_card_scene = function() {
+  this.savedEntities = [];
+  for (let i = 0; i < this.game.entities.length; i++) {
+    this.savedEntities.push(this.game.entities[i])
+  }
+  this.removeAllEntities();
+  this.game.addEntity(new AnimatedBackground(this.game, AM.getAsset("./img/background3.png"), AM.getAsset("./img/bridge.png"), 1, 0, 0, -50));
+  this.game.addEntity(this.banner);
+  cardremoval_Scene = new CardRemovalScene(this.game, this);
+  cardremoval_Scene.generateCards();
+  this.game.addEntity(cardremoval_Scene);
+  this.game.addEntity(this);
+}
+
+Dungeon.prototype.removing_cardscene_restore = function () {
+  this.removeAllEntities();
+  for (let i = 0; i < this.savedEntities.length; i++) {
+    this.game.addEntity(this.savedEntities[i])
+  }
+  this.state = this.prevState;
+}
+
+
+
 Dungeon.prototype.update = function () 
 {    
+  if (this.state === 'card_removal' && this.stateChanged) {
+    this.removing_card_scene();
+    this.stateChanged = false;
+  } 
+  if (this.state === 'card_removal_restore' && this.stateChanged) {
+    this.removing_cardscene_restore();
+
+    this.stateChanged = false;
+  } 
+
   if (this.state === 'viewing_deck' && this.stateChanged) {
     this.viewing_deck();
     this.stateChanged = false;

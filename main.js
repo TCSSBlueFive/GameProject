@@ -122,6 +122,7 @@ AM.queueDownload("./img/enemy/elite/M_Knight/MknightGoldnharl_Idle_00-Sheet.png"
 AM.queueDownload("./img/enemy/elite/M_Knight/MknightGoldnharl_Attack B_00-Sheet.png");
 AM.queueDownload("./img/enemy/elite/M_Knight/MknightGoldnharl_Damage_00-Sheet.png");
 
+AM.queueDownload("./img/card_removal_service.png");
 
 AM.downloadAll(function () {
     var canvas = document.getElementById("gameWorld");

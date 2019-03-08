@@ -79,13 +79,14 @@ Card.prototype.Rotate = function (angle) {
     var lineheight = textFontSize;
     var lines = this.text.split('\n');
 
-
-    for (var i = 0; i<lines.length; i++)
-   
-
     for (var i = 0; i<lines.length; i++)
         this.ctx.fillText(lines[i], -this.width/2 + this.game.width * .0209 ,-this.height/2 +  this.game.height * .183 + i * lineheight);
 
+
+    //mana
+    this.ctx.fillStyle = "#0000FF"
+    this.ctx.font = fontSize + "px Impact";
+    this.ctx.fillText(this.mana,  -this.width/2 + this.game.width * .005, -this.height/2 + this.game.height * .027); 
 
     this.ctx.restore();
   };

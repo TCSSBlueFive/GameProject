@@ -113,7 +113,7 @@ TravelScene2.prototype.generateEncounters = function () {
                 var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
                     newNodeInfo.fn, prevRow[0].x + this.xDist + getRandomIntNegOrPos(this.xrandval) , this.yOffset + (num * i)  + getRandomIntNegOrPos(this.yrandval));
                 encounterRow.push(newTravelNode);
-            } else  if(q == 10 || q == 3 || q == 11 || q == 0) {
+            } else  if(q == 10 || q == 3 || q == 11) {
                 var randomNum = getRandomInt(this.NodeDataBase.special_nodes2.length);
                 var newNodeInfo = this.NodeDataBase.special_nodes2[randomNum]
                 var newTravelNode = new travel_node2(this.game, this, this.dungeon,  0, newNodeInfo.spritesheet, 
@@ -152,8 +152,8 @@ TravelScene2.prototype.generatePaths = function () {
    var encounterRow = [];
    for (let i = 1; i <= myPathCount; i++) {
         var randomNum = getRandomInt(this.NodeDataBase.nodes.length);
-        var newNodeInfo = this.NodeDataBase.nodes[randomNum];
-        //var newNodeInfo = this.NodeDataBase.campfire_node[0] //testing
+        //var newNodeInfo = this.NodeDataBase.nodes[randomNum];
+        var newNodeInfo = this.NodeDataBase.special_nodes[1] //testing
 
         var newTravelNode = new travel_node2(this.game, this, this.dungeon, 0, newNodeInfo.spritesheet, 
         newNodeInfo.fn, this.x, this.yOffset + num * i );
@@ -173,7 +173,7 @@ TravelScene2.prototype.drawLinks = function () {
 
                 if (this.encounters[i][q].clicked) {
                     ////////////draws X
-                    this.ctx.linewidth = 10;
+                    this.ctx.lineWidth = 20;
                     this.ctx.strokeStyle = '#FF0000'
                     this.ctx.beginPath(); 
                     this.ctx.moveTo(this.encounters[i][q].x, this.encounters[i][q].y);

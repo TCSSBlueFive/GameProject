@@ -18,6 +18,9 @@ function card_inheritance(game, dungeon, card, x, y) {
     this.nameYOffset = this.height * .13;
     this.textXOffset = this.width * .18;
     this.textYOffset = this.height * .672;
+    this.manaXOffset = this.width * .05;
+    this.manaYOffset = this.height * .1;
+    this.mana = card.mana
     this.text = card.text;
 };
 
@@ -25,9 +28,14 @@ card_inheritance.prototype.draw = function () {
     this.ctx.drawImage(this.spritesheet,
                    this.x, this.y, this.width, this.height);
 
-    //name
     this.ctx.save();
     var fontSize = this.game.width * .0169
+    //mana
+    this.ctx.fillStyle = "#0000FF"
+    this.ctx.font = fontSize + "px Impact";
+    this.ctx.fillText(this.mana, this.x + this.manaXOffset, this.y + this.manaYOffset)
+
+    //name
     this.ctx.font = fontSize + "px Arial";
     this.ctx.fillStyle = "#f0ff0f";
     this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
@@ -43,6 +51,8 @@ card_inheritance.prototype.draw = function () {
         this.ctx.fillText(lines[i], this.x + this.textXOffset, (this.y + this.textYOffset) + (i*lineheight) );
     this.ctx.restore();
 
+    
+        
         
 };
 

@@ -34,9 +34,12 @@ deck_viewer_card.prototype.draw = function () {
     this.ctx.save();
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "#f0ff0f";
-    if (this.y > 110)
+    if (this.y > 110  &&this.y < 700) {
         this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
-
+        this.ctx.fillStyle = "#0000FF"
+        this.ctx.font = "30px Impact";
+        this.ctx.fillText(this.mana,  this.x + this.game.width * .004, this.y + this.game.height * .03); 
+    }   
     //card text effect
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "#ffff00";
