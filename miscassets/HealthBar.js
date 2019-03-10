@@ -42,7 +42,7 @@ HealthBar.prototype.draw = function () {
 HealthBar.prototype.update = function (health, maxhealth, block) {
     this.health = health;
     this.block = block;
-    this.maxhealth = maxhealth;
+    this.maxHealth = maxhealth;
     if (health <= 0) {
         this.health = 0;
     }

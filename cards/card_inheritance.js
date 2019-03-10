@@ -29,10 +29,10 @@ card_inheritance.prototype.draw = function () {
                    this.x, this.y, this.width, this.height);
 
     this.ctx.save();
-    var fontSize = this.game.width * .0169
+    var fontSize = this.game.width * .01;
     //mana
     this.ctx.fillStyle = "#0000FF"
-    this.ctx.font = fontSize + "px Impact";
+    this.ctx.font = this.game.width * .016+ "px Impact";
     this.ctx.fillText(this.mana, this.x + this.manaXOffset, this.y + this.manaYOffset)
 
     //name
@@ -44,7 +44,7 @@ card_inheritance.prototype.draw = function () {
     this.ctx.fillText(this.name , this.x + this.nameXOffset, this.y + this.nameYOffset); 
 
     //card text effect
-    var textFontSize = this.game.width * .013559;
+    var textFontSize = this.game.width * .0075;
     this.ctx.font = textFontSize + "px Arial";
     this.ctx.fillStyle = "#ffff00";
     if (this.card.upgraded) {

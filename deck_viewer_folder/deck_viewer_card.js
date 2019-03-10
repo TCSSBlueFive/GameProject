@@ -33,7 +33,9 @@ deck_viewer_card.prototype.draw = function () {
     //name
     
     this.ctx.save();
-    this.ctx.font = "20px Arial";
+    var fontSize = this.game.width * .01;
+
+    this.ctx.font = fontSize + "px Arial";
     this.ctx.fillStyle = "#f0ff0f"
     if (this.card.upgraded) {
         this.ctx.fillStyle = "#00FF00"
@@ -45,12 +47,12 @@ deck_viewer_card.prototype.draw = function () {
         this.ctx.fillText(this.mana,  this.x + this.game.width * .004, this.y + this.game.height * .03); 
     }   
     //card text effect
-    this.ctx.font = "20px Arial";
+    this.ctx.font = fontSize +"px Arial";
     this.ctx.fillStyle = "#ffff00";
     if (this.card.upgraded) {
         this.ctx.fillStyle = "#00FF00"
     };
-    var lineheight = 20;
+    var lineheight = fontSize;
     var lines = this.text.split('\n');
 
     //-43 all the way to -105
@@ -61,7 +63,7 @@ deck_viewer_card.prototype.draw = function () {
     //this.y < 500 for 2nd line
     for (var i = 0; i<lines.length; i++)
     //if (this.y > 100 - i * 10)
-        if ((this.y > -30 + i * - 20) && this.y < 525 + i * -20) 
+        if ((this.y > -30 + i * - fontSize) && this.y < 525 + i * -fontSize) 
         this.ctx.fillText(lines[i], this.x + this.textXOffset, (this.y + this.textYOffset) + (i*lineheight) );
     this.ctx.restore();
     

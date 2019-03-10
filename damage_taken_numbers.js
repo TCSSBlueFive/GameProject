@@ -15,7 +15,13 @@ function damage_taken_numbers(game, damage_sources, value, damageOrHealing, x, y
     this.ctx = game.ctx;
     this.damagetakentext = value;
     this.damageOrHealing = damageOrHealing;
+    this.xRand = + getRandomIntNegOrPos(70);
+    this.yRand = + getRandomIntNegOrPos(20);
 }
+function getRandomIntNegOrPos(max) {
+    return getRandomInt(max * 2) - max;
+}
+
 
 
 
@@ -37,8 +43,9 @@ damage_taken_numbers.prototype.draw = function () {
         }
         this.ctx.save();
         this.ctx.font = this.size + "px Impact";
+
         this.ctx.fillStyle = "#ff0000";
-        this.ctx.fillText('-' +this.damagetakentext , this.x + this.xOffset, this.y + this.yOffset); 
+        this.ctx.fillText('-' +this.damagetakentext , this.x + this.xOffset + this.xRand, this.y + this.yOffset + this.yRand); 
         this.ctx.restore();
     } else if (this.damageOrHealing === 'heal') {
         this.value -= 1;
@@ -52,9 +59,9 @@ damage_taken_numbers.prototype.draw = function () {
         this.ctx.font = "70px Impact";
         this.ctx.fillStyle = "#00ff00";
         if ((Math.floor(this.value / 10)) % 2 === 0) {
-            this.ctx.fillText('+' +this.damagetakentext , this.x + 10, this.y); 
+            this.ctx.fillText('+' +this.damagetakentext , this.x + this.xRand + 10, this.y + this.yRand); 
         } else {
-            this.ctx.fillText('+' +this.damagetakentext , this.x - 10, this.y); 
+            this.ctx.fillText('+' +this.damagetakentext , this.x - 10 + this.xRand, this.y + this.yRand); 
         }
         this.ctx.restore();
     }

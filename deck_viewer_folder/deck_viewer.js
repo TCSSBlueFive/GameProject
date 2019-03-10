@@ -103,8 +103,9 @@ deck_viewer.prototype.update = function () {
     //discard pile
     this.discardPile = this.cardhand.DeckListCardsUsed;
 
+
     //full deck
-    this.combined = this.drawPile.concat(this.discardPile);// + this.discardPile + this.cardhand.cardsInHand;
+    this.combined = this.drawPile.concat(this.discardPile).concat(this.cardhand.exhaustedCards);// + this.discardPile + this.cardhand.cardsInHand;
 
     for (let i = 0; i < this.cardhand.cardsInHand.length; i++) {
         this.combined.push(this.cardhand.cardsInHand[i].fn)

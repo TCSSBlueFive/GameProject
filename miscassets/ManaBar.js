@@ -11,16 +11,28 @@ function ManaBar(game, spritesheet, width, height, opacity) {
     this.width = width + 30;
     this.height = height + 30;
     this.manaPCNT = 1;
+    this.free_spells = false;
     this.maxMana = 3;
+    this.duration = 0;
 };
 
 ManaBar.prototype.enoughMana = function (someNum) {
-    if (someNum <= this.mana) {
-        this.mana -= someNum;
-
+    if (this.free_spells) {
+        console.log("asd")
+        this.duration -=1;
+        if (this.duration === 0) {
+            this.free_spells = false;
+        }
         return true;
+
     } else {
-        false;
+        if (someNum <= this.mana) {
+            this.duration -=1;
+            this.mana -= someNum;
+            return true;
+        } else {
+            false;
+        }
     }
 }
 
@@ -57,3 +69,10 @@ ManaBar.prototype.reset = function () {
 
 ManaBar.prototype.update = function () {
 };
+
+ManaBar.prototype.freeSpells = function (num) {
+    this.free_spells = true;
+    console.log("free")
+    this.duration  = num;
+
+}

@@ -8,10 +8,24 @@ function Card(game, dungeon, cardHand, card, x, y, pos) {
     this.cardHand = cardHand;
     this.mana = card.mana;
     this.yOffset= 40;
-    //this.nameXOffset = this.width * .25;
-    //this.nameYOffset = this.height * .13;
-    //this.textXOffset = this.width * .18;
-    //this.textYOffset = this.height * .672;
+    this.updateable = card.updateable;
+    this.type = card.type;
+    this.value = card.value;
+
+    //below are arc charge attributes
+    this.drawback = card.drawback;
+    this.drawback_value = card.drawback_value;
+
+    this.charge_div_value = card.charge_div_value;
+    this.generate = card.generate;
+    this.charge_gen_num = card.charge_gen_num;
+    this.update_type = card.update_type;
+    this.charge_consumption =card.charge_consumption
+    this.effect = card.effect;
+    this.card_to_add = card.card_to_add;
+
+    this.playcount_mod = card.playcount_mod;
+    this.turns_limit = card.turns_limit;
 
 };
 
@@ -69,7 +83,7 @@ Card.prototype.Rotate = function (angle) {
   
     this.ctx.rotate(angle * Math.PI / 180);
     this.ctx.drawImage(this.spritesheet, -this.width/2, -this.height/2, this.width, this.height);
-    var fontSize = this.game.width * .0169
+    var fontSize = this.game.width * .01
 
     this.ctx.font = fontSize + "px Arial";
     if (this.card.upgraded) {
@@ -78,7 +92,7 @@ Card.prototype.Rotate = function (angle) {
     this.ctx.fillText(this.name , -this.width/2 + this.game.width * .0375, -this.height/2 + this.game.height * .0282); 
 
     this.ctx.fillStyle = "#f0ff0f";
-    var textFontSize = this.game.width * .013559;
+    var textFontSize = this.game.width * .0075;
     this.ctx.font = textFontSize + "px Arial";
     var lineheight = textFontSize;
     var lines = this.text.split('\n');
@@ -91,7 +105,7 @@ Card.prototype.Rotate = function (angle) {
 
     //mana
     this.ctx.fillStyle = "#0000FF"
-    this.ctx.font = fontSize + "px Impact";
+    this.ctx.font = this.game.width * .016+ "px Impact";
     this.ctx.fillText(this.mana,  -this.width/2 + this.game.width * .005, -this.height/2 + this.game.height * .027); 
 
     this.ctx.restore();
@@ -110,24 +124,47 @@ Card.prototype.draw = function (numOfCards) {
 };
 
 Card.prototype.update = function () {
+    if (this.updateable) {
+        var charges =  this.dungeon.PlayerCharacter.ArcChargeBar.ArcCharges;
+        if(this.update_type === "damage x arc charges")
+            this.value = this.fn.value + this.fn.mult_value * Math.floor(charges/this.charge_div_value);
+        
+        if (this.drawback === 'costs_per_charge') {
+            this.mana = this.fn.mana + Math.floor(charges/this.drawback_value)
+        }
+
+        if(this.update_type === "block x arc charges") {
+            this.value = this.fn.value + this.fn.mult_value * charges;
+        }
+    
+    }
+
     if (this.game.click && this.dungeon.BattleOngoing) {
         if((this.game.click['x'] > this.x && this.game.click['x'] < this.x + this.width  )
         && (this.game.click['y'] > this.y && this.game.click['y'] < this.y + this.height)) {
             this.game.click = false;    
             if (this.dungeon.battle.getPlayerTurn() && this.dungeon.battle.notOnCooldown()
                 && this.dungeon.battle.sufficientMana(this)) {
-                this.dungeon.battle.playerMove(this.fn);    
+                this.dungeon.battle.playerMove(this);    
                 var index = this.cardHand.cardsInHand.indexOf(this);
                 if (index > -1) {
                     this.cardHand.cardsInHand.splice(index, 1);
-                    this.cardHand.DeckListCardsUsed.push(this.card)
+                    if (!this.card.exhaust) {
+                        this.cardHand.DeckListCardsUsed.push(this.card)
+                    } else {
+                        if (!this.card.temporary){
+                            this.cardHand.exhaustedCards.push(this.card)
+                            console.log("exhausted")
+                        }
+                    }
                 }      
             }
 
             if (this.dungeon.state === 'battle_finished') {
+                this.cardHand.restoreExhausted();
                 this.cardHand.useAll();
                 this.cardHand.reshuffle();
-                this.cardHand.exhaustAll();
+                this.cardHand.removeTemporary();
 
                 this.cardHand.cardsInHand = [];
 

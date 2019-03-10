@@ -147,11 +147,13 @@ AM.downloadAll(function () {
     
     var myBanner = new TopBanner(gameEngine, 1);
 
+    var myArcChargeBar = new ArcChargeBar(gameEngine);
+
     var myEnemyDataBase = new EnemyDataBase(gameEngine, AM.getAsset("./img/slime_sprite.png"));
     
     var HPBar = new HealthBar(gameEngine,AM.getAsset("./img/RedHealthBar.png"), AM.getAsset("./img/GreenHealthBar.png"), AM.getAsset("./img/OrangeBlockBar.png"), 80, 200, 25);
     var player = new PlayerCharacter(gameEngine, 
-        [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, myManaBar, 1)
+        [AM.getAsset("./img/player/16_omnimagesheet.png"), AM.getAsset("./img/player/attack.png"), AM.getAsset("./img/player/walking-right.png"), AM.getAsset("./img/player/walking-left.png"), AM.getAsset("./img/player/death.png"), AM.getAsset("./img/player/dodge.png")], HPBar, myManaBar, myArcChargeBar, 1)
     
     var enemy = new Enemy(gameEngine, myEnemyDataBase.monsters[0],  1);
     
@@ -164,6 +166,7 @@ AM.downloadAll(function () {
 
     gameEngine.addEntity(enemy);
     gameEngine.addEntity(player);
+    gameEngine.addEntity(myArcChargeBar)
     gameEngine.addEntity(dungeon);
 
 

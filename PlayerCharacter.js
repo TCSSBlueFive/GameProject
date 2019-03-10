@@ -1,6 +1,6 @@
 
 var AM = new AssetManager(); 
-function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
+function PlayerCharacter(game, spritesheet, HPBar, Manabar, myArcChargeBar, opacity) {
 
     this.idleAnimation = new Animation(spritesheet[0], 37, 80, 1, .5, 2, true, 2,0,0);
     this.dodgeAnimation = new Animation(spritesheet[5], 42, 100, 1, .5, 4, true, 2,0,0);
@@ -11,13 +11,14 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, opacity) {
     this.class = 'Omnimage'
     this.HPBar = HPBar;
     this.Manabar = Manabar;
+    this.ArcChargeBar = myArcChargeBar;
     this.x = game.width * .0975;
     this.y = game.height * .38;
     this.HPBar.x = this.x + game.height * .09;
     this.HPBar.y = this.y - 55;
     this.gold = 220;
-    this.health = 80;
-    this.maxhealth = 80;
+    this.health = 8000;
+    this.maxhealth = 8000;
     this.attack = 30;
     this.block = 0;
     this.speed = 0;
@@ -47,12 +48,13 @@ PlayerCharacter.prototype.playCard = function() {
 }
 
 PlayerCharacter.prototype.update = function () {
+    this.ArcChargeBar.update();
     this.HPBar.update(this.health, this.maxhealth, this.block)
 }
 
 PlayerCharacter.prototype.draw = function () {
 
-
+    this.ArcChargeBar.draw();
     this.HPBar.draw();
     this.Manabar.draw();
     if (this.action === 'attack') {
@@ -90,7 +92,6 @@ PlayerCharacter.prototype.takeDamage = function (attackDamage) {
     const num = this.block;
     this.block -= attackDamage;
     attackDamage -= num;
-    this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,attackDamage, 'damage',this.x + 90, this.y));
 
     if (this.block < 0) {
         this.block = 0
@@ -102,6 +103,7 @@ PlayerCharacter.prototype.takeDamage = function (attackDamage) {
     if (this.health < 0) {
         this.health = 0;
     }
+    this.damage_taken_array.push(new damage_taken_numbers(this.game, this.damage_taken_array,attackDamage, 'damage',this.x + 90, this.y));
 
 }
 

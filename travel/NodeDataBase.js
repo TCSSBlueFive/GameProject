@@ -11,12 +11,12 @@ function NodeDataBase() {
         spritesheet: AM.getAsset("./img/travel/enemy_node.png"),
         fn: 'setDungeonToEnemy'
     },                 
-    {
+    /*{
         name: 'event_node',
         opacity: 1,
         spritesheet: AM.getAsset("./img/travel/event_node.png"),
         fn: 'setDungeonToEvent'
-    }]
+    }*/]
 
     this.special_nodes = [
     {

@@ -21,6 +21,8 @@ function Enemy(game, EnemyFromDatabase, opacity) {
     this.x = EnemyFromDatabase.x;
     this.y = EnemyFromDatabase.y;
     this.health = EnemyFromDatabase.health;
+    this.maxhealth = EnemyFromDatabase.health;
+    this.block = 0;
     this.attack = EnemyFromDatabase.attacks; // needs to return an array so that we can randomly select an attack
 
     this.speed = 0;
@@ -53,7 +55,7 @@ Enemy.prototype.takeDamage = function (attackDamage) {
 }
 
 Enemy.prototype.update = function () {
-    this.HPBar.update(this.health);
+    this.HPBar.update(this.health, this.maxhealth, this.block)
     //needs to be added
     //what attacks it decides to prep may depend on its health.
 }

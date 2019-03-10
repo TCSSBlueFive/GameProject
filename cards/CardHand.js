@@ -3,13 +3,14 @@ function CardHand(game, dungeon, PlayerCharacter, opacity){
     this.y = game.height * .65;
     this.dungeon = dungeon;
     this.opacity = opacity;
-    this.currentCardDraw = 5;
+    this.currentCardDraw = 6;
     this.cardsInHand = [];
     this.PlayerCharacter = PlayerCharacter;
     this.DeckList = this.PlayerCharacter.DeckList;
     this.DeckListCardsRemaining = this.PlayerCharacter.DeckList;
     this.DeckListCardsUsed = [];
     this.game = game;
+    this.exhaustedCards = [];
     this.ctx = game.ctx;
     this.width = game.width / 8;
     this.cardclipwidth = this.width;
@@ -18,8 +19,17 @@ function CardHand(game, dungeon, PlayerCharacter, opacity){
 
     this.endPoint = this.width * 5 ;
 };
+CardHand.prototype.restoreExhausted = function () {
+    console.log(this.exhaustedCards)
+    var len =this.exhaustedCards.length;
+    for (let i = 0; i < len; i++) {
+        card  = this.exhaustedCards.pop();
+        this.DeckListCardsRemaining.push(card);
 
-CardHand.prototype.exhaustAll = function () {
+    }
+}
+
+CardHand.prototype.removeTemporary = function () {
     console.log(this.DeckListCardsRemaining)
     for (let i = 0; i < this.DeckListCardsRemaining.length; i++) {
         card = this.DeckListCardsRemaining[i];

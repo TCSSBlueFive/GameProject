@@ -40,6 +40,8 @@ travel_node2.prototype.update = function () {
                     this.dungeon.roomSelected = true;
                     this.dungeon.nextRoom = this.fn;
                     this.game.click = false;
+                    this.dungeon.floor +=1;
+
                 }
             } else {
                 for (let i = 0; i < this.travelScene.currentNode.linked.length; i++) {
@@ -49,11 +51,12 @@ travel_node2.prototype.update = function () {
                         this.travelScene.currentNode = this;
                         this.dungeon.roomSelected = true;
                         this.dungeon.nextRoom = this.fn;
-                        this.game.click = false; 
+                        this.game.click = false;
+                        this.dungeon.floor +=1;
+
                     }
                 }
             }
-            this.dungeon.floor +=1;
 
             //this.travelScene.currentRoom += 1;
         }
