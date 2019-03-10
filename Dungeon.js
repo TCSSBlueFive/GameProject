@@ -130,7 +130,8 @@ Dungeon.prototype.addNewEntitiesBattle = function(encounter_type) {
     var rand = getRandomInt(this.myEnemies.elites.length)
     var enemy = new Enemy(this.game, this.myEnemies.elites[rand], 1);
   } else if (encounter_type === 'boss') {
-
+    var rand = getRandomInt(this.myEnemies.bosses.length)
+    var enemy = new Enemy(this.game, this.myEnemies.bosses[rand], 1);
   } else {
     var rand = getRandomInt(this.myEnemies.monsters.length)
     var enemy = new Enemy(this.game, this.myEnemies.monsters[rand], 1);

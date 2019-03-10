@@ -34,12 +34,12 @@ function NodeDataBase() {
         opacity: 1,
         spritesheet: AM.getAsset("./img/travel/enemy_node.png"),
         fn: 'setDungeonToEnemy'
-    },   {
+    }/*,   {
         name: 'event_node',
         opacity: 1,
         spritesheet: AM.getAsset("./img/travel/event_node.png"),
         fn: 'setDungeonToEvent'
-    }, {
+    }*/, {
         name: 'campfire_node',
         opacity: 1,
         spritesheet: AM.getAsset("./img/travel/campfire_node.png"),
@@ -124,6 +124,6 @@ function NodeDataBase() {
         name: 'boss_node',
         opacity: 1,
         spritesheet: AM.getAsset("./img/travel/elite_node.png"),
-        fn: 'setDungeonToElite'
+        fn: 'setDungeonToBoss'
     }]
 };
