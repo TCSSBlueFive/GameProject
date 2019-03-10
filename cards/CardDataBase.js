@@ -13,8 +13,12 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Restore 6 health.',
+        exhaust:true,
+        text: 'Restore 6 health.\nGain 1 arc charge\nExhaust.',
         index:0,
+        generate: "arc_charge",
+        charge_gen_num:1,
+
         upgraded:false,
         
 
@@ -26,37 +30,47 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Deal 6 damage.',
+        text: 'Deal 6 damage.\nGain 1 arc charge',
         upgraded:false,
         index: 1,
+        generate: "arc_charge",
+        charge_gen_num:1,
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
         spritesheet: AM.getAsset("./img/cards/fireball-card.png")
-    }, {
-        name: 'Ice Darts',
+    },    {
+        name: 'Arcane Missiles',
         type: 'damage',
-        value: 18,
+        update_type: "damage x arc charges",
+        drawback: 'costs_per_charge',
+        drawback_value: 9,
+        value: 3,
+        mult_value: 3,
         width: this.width,
         height: this.height,
-        mana: 2,
-        text: 'Deal 16 damage.',
+        mana: 0,
+            text: 'Deal 3 damage. Deal 3\nmore per 4 arc charges\nCosts 1 more per 9 charges',
+        charge_div_value: 4,
         upgraded:false,
-        index: 2,
+        updateable:true,
+        index:6,
 
-        // ability: function () {
-        // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/ice-card.png")
-    }, {
+    // ability: function () {
+    // game.battle.PlayerCharacter.health -= 20},
+    spritesheet: AM.getAsset("./img/cards/arcane_intellect-card.png")
+}, {
         name: 'Blink',
         type: 'block',
         value: 5,
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Gain 5 block.',
+        text: 'Gain 5 block.\nGain 1 arc charge',
         upgraded:false,
         index:3,
+        generate: "arc_charge",
+        charge_gen_num:1,
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -69,9 +83,11 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Gain 5 block.',
+        text: 'Gain 5 block.\nGain 1 arc charge',
         upgraded:false,
         index:3,
+        generate: "arc_charge",
+        charge_gen_num:1,
 
 
         // ability: function () {
@@ -84,9 +100,28 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Gain 5 block.',
+        text: 'Gain 5 block.\nGain 1 arc charge',
         upgraded:false,
         index:3,
+
+        generate: "arc_charge",
+        charge_gen_num:1,
+
+        // ability: function () {
+        // game.battle.PlayerCharacter.health -= 20},
+        spritesheet: AM.getAsset("./img/cards/blink-card.png")
+    } , {
+        name: 'Blink',
+        type: 'block',
+        value: 5,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Gain 5 block.\nGain 1 arc charge',
+        upgraded:false,
+        index:3,
+        generate: "arc_charge",
+        charge_gen_num:1,
 
 
         // ability: function () {
@@ -99,24 +134,11 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Gain 5 block.',
+        text: 'Gain 5 block.\nGain 1 arc charge',
         upgraded:false,
         index:3,
-
-
-        // ability: function () {
-        // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/blink-card.png")
-    } , {
-        name: 'Blink',
-        type: 'block',
-        value: 5,
-        width: this.width,
-        height: this.height,
-        mana: 1,
-        text: 'Gain 5 block.',
-        upgraded:false,
-        index:3,
+        generate: "arc_charge",
+        charge_gen_num:1,
 
 
         // ability: function () {
@@ -129,9 +151,28 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Deal 6 damage.',
+        text: 'Deal 6 damage.\nGain 1 arc charge',
         upgraded:false,
         index: 1,
+
+        generate: "arc_charge",
+        charge_gen_num:1,
+
+        // ability: function () {
+        // game.battle.PlayerCharacter.health -= 20},
+        spritesheet: AM.getAsset("./img/cards/fireball-card.png")
+    } , {
+        name: 'Fireball',
+        type: 'damage',
+        value: 6,
+        width: this.width,
+        height: this.height,
+        mana: 1,
+        text: 'Deal 6 damage.\nGain 1 arc charge',
+        upgraded:false,
+        index: 1,
+        generate: "arc_charge",
+        charge_gen_num:1,
 
 
         // ability: function () {
@@ -144,9 +185,11 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Deal 6 damage.',
+        text: 'Deal 6 damage.\nGain 1 arc charge',
         upgraded:false,
         index: 1,
+        generate: "arc_charge",
+        charge_gen_num:1,
 
 
         // ability: function () {
@@ -159,24 +202,11 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Deal 6 damage.',
+        text: 'Deal 6 damage.\nGain 1 arc charge',
         upgraded:false,
         index: 1,
-
-
-        // ability: function () {
-        // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/fireball-card.png")
-    } , {
-        name: 'Fireball',
-        type: 'damage',
-        value: 6,
-        width: this.width,
-        height: this.height,
-        mana: 1,
-        text: 'Deal 6 damage.',
-        upgraded:false,
-        index: 1,
+        generate: "arc_charge",
+        charge_gen_num:1,
 
 
         // ability: function () {
@@ -228,7 +258,9 @@ function CardDataBase(game) {
             exhaust:true,
             temporary:true,
             mana: 0,
-            text: 'Restore 3 health.',
+            text: 'Restore 3 health.\nGain 1 arc charge\nExhaust.\nTemporary.',
+            generate: "arc_charge",
+            charge_gen_num:1,
 
         },
         index:5,
@@ -239,7 +271,9 @@ function CardDataBase(game) {
         mana: 2,
         upgraded:false,
         exhaust:true,
-        text: 'Add 2 Biscuit cards \nto hand.',
+        text: 'Add 2 Biscuit cards \nto hand.\nGain 1 arc charge\nExhaust.',
+        generate: "arc_charge",
+        charge_gen_num:1,
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -297,9 +331,11 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Add 2 cards to \nyour hand.',
+        text: 'Add 2 cards to \nyour hand.\nGain 1 arc charge',
         index: 4,
         upgraded:false,
+        generate: "arc_charge",
+        charge_gen_num:1,
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -317,43 +353,23 @@ function CardDataBase(game) {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    { 
-        name: 'Arcane Missiles',
-        type: 'damage',
-        update_type: "damage x arc charges",
-        drawback: 'costs_per_charge',
-        drawback_value: 6,
-        value: 3,
-        mult_value: 3,
-        width: this.width,
-        height: this.height,
-        mana: 0,
-            text: 'Deal 3 damage. Deal 3\nmore per 2 arc charges\nCosts 1 more per 6 charges',
-        charge_div_value: 2,
-        upgraded:false,
-        updateable:true,
-        index:6,
-
-        // ability: function () {
-        // game.battle.PlayerCharacter.health -= 20},
-        spritesheet: AM.getAsset("./img/cards/arcane_intellect-card.png")
-
-    },
+    //ind 6 open
 
     {
         name: 'Arcane Blast',
         type: 'damage',
         drawback: 'costs_per_charge',
-        drawback_value: 6,
+        drawback_value: 12,
         value: 10,
         width: this.width,
         height: this.height,
-        mana: 2,
-        text: 'Deal 10 damage\nCosts 1 more per\n 6 charges\nGain 2 arc charge',
+        mana: 1,
+        text: 'Deal 10 damage\nCosts 1 more per\n 12 charges\nGain 2 arc charge',
         generate: "arc_charge",
+        charge_gen_num:2,
+
         upgraded:false,
         updateable:true,
-        charge_gen_num:2,
         index:7,
 
         
@@ -368,12 +384,12 @@ function CardDataBase(game) {
         update_type: 'block x arc charges',
         type: 'block',
         drawback: 'costs_per_charge',
-        drawback_value: 6,
+        drawback_value: 9,
         value: 0,
         width: this.width,
         height: this.height,
-        mana: 2,
-        text: 'Gain block of 2x arc charge\nCosts 1 more per\n 6 charges\nGain 1 arc charge',
+        mana: 1,
+        text: 'Gain block of 2x arc charge\nCosts 1 more per\n 9 charges\nGain 1 arc charge',
         generate: "arc_charge",
         upgraded:false,
         updateable:true,
@@ -436,7 +452,7 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 2,
-        text: 'Gain 2 Arc Charges\nEvery turn',
+        text: 'Gain 2 Arc Charges\nEvery turn\nExhaust.',
         index:11,
 
         upgraded:false,
@@ -455,7 +471,7 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 2,
-        text: 'Gain a Arcane\nMissiles card\nEvery turn',
+        text: 'Gain a Arcane\nMissiles card\nEvery turn\nExhaust.',
         upgraded:false,
         updateable:true,
         exhaust:true,
@@ -466,15 +482,14 @@ function CardDataBase(game) {
             type: 'damage',
             update_type: "damage x arc charges",
             drawback: 'costs_per_charge',
-            drawback_value: 6,
+            drawback_value: 9,
             value: 3,
             mult_value: 3,
             width: this.width,
             height: this.height,
             mana: 0,
-            text: 'Deal 3 damage. Deal 3\nmore per 2 arc charges\nCosts 1 more per 6 charges\n\nExhaust. Temporary.',
-            charge_div_value: 2,
-
+                text: 'Deal 3 damage. Deal 3\nmore per 4 arc charges\nCosts 1 more per 9 charges\nExhaust.\nTemporary',
+            charge_div_value: 4,
             upgraded:false,
             updateable:true,
             exhaust:true,
@@ -498,7 +513,7 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 2,
-        text: 'Gain 1 additional charges\nfrom all sources',
+        text: 'Gain 1 additional charges\nfrom all sources\nExhaust.',
         upgraded:false,
         exhaust:true,
         // ability: function () {
@@ -506,7 +521,7 @@ function CardDataBase(game) {
         spritesheet: AM.getAsset("./img/cards/arcane_intellect-card.png")
     },
     {
-        name: 'Arcane Enchantment',
+        name: 'Arcane Slipstream',
         type: 'power',
         effect: "free_cards",
         value: 2,
@@ -515,7 +530,7 @@ function CardDataBase(game) {
 
         height: this.height,
         mana: 2,
-        text: 'Consume all arc charges\nYour next 2 casts are free',
+        text: 'Your next 2 casts are free\nExhaust.',
         upgraded:false,
         exhaust:true,
         charge_consumption: true,
@@ -530,7 +545,7 @@ function CardDataBase(game) {
     width: this.width,
     height: this.height,
     mana: 3,
-    text: 'Lose the ability to gain\nArcane charges.\nEvery turn your 2 first card\nis played an additional times',
+    text: 'Lose the ability to gain\nArcane charges.\nEvery turn your 2 first card\nis played an additional times\nExhaust.',
     upgraded:false,
     exhaust:true,
     effect:'arcane_sacrifice',
@@ -558,8 +573,9 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Restore 10 health.',
+        text: 'Restore 10 health.\nGain 1 arc charge\nExhaust.',
         upgraded:true,
+        exhaust:true,
         
 
         spritesheet: AM.getAsset("./img/cards/heal-card.png")
@@ -571,7 +587,7 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Deal 10 damage.',
+        text: 'Deal 10 damage.\nGain 1 arc charge',
         upgraded:true,
         index: 1,
 
@@ -585,7 +601,7 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 2,
-        text: 'Deal 22 damage.',
+        text: 'Deal 22 damage.\nGain 1 arc charge',
         upgraded:true,
         index: 2,
 
@@ -599,7 +615,7 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 1,
-        text: 'Gain 9 block.',
+        text: 'Gain 9 block.\nGain 1 arc charge',
         upgraded:true,
         index:3,
 
@@ -616,7 +632,7 @@ function CardDataBase(game) {
         height: this.height,
         mana: 0,
         upgraded:true,
-        text: 'Add 2 cards to \nyour hand.',
+        text: 'Add 2 cards to \nyour hand.\nGain 1 arc charge',
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},
@@ -634,7 +650,7 @@ function CardDataBase(game) {
             height: this.height,
             mana: 0,
             upgraded:true,
-            text: 'Restore 5 health.',
+            text: 'Restore 5 health.\nGain 1 arc charge\nExhaust.',
             exhaust:true,
             temporary:true,
 
@@ -644,7 +660,7 @@ function CardDataBase(game) {
         width: this.width,
         height: this.height,
         mana: 2,
-        text: 'Add 2 Biscuit cards \nto hand.',
+        text: 'Add 2 Biscuit cards \nto hand.\nGain 1 arc charge\nExhaust.',
         exhaust:true,
 
         // ability: function () {
@@ -656,14 +672,14 @@ function CardDataBase(game) {
         type: 'damage',
         update_type: "damage x arc charges",
         drawback: 'costs_per_charge',
-        drawback_value: 9,
-        value: 4,
-        mult_value: 4,
+        drawback_value: 12,
+        value: 3,
+        mult_value: 5,
         width: this.width,
         height: this.height,
         mana: 0,
-            text: 'Deal 4 damage. Deal 4\nmore per 2 arc charges\nCosts 1 more per 9 charges',
-        charge_div_value: 2,
+            text: 'Deal 3 damage. Deal 5\nmore per 4 arc charges\nCosts 1 more per 12 charges',
+        charge_div_value: 4,
         upgraded:true,
         updateable:true,
         index:6,
@@ -678,17 +694,19 @@ function CardDataBase(game) {
         name: 'ARCANE BLAST+',
         type: 'damage',
         drawback: 'costs_per_charge',
-        drawback_value: 9,
+        drawback_value: 12,
         value: 10,
         width: this.width,
         height: this.height,
-        mana: 1,
-        text: 'Deal 10 damage\nCosts 1 more per\n 9 charges\nGain 3 arc charge',
+        mana: 0,
+        text: 'Deal 10 damage\nCosts 1 more per\n 12 charges\nGain 3 arc charge',
         generate: "arc_charge",
+        charge_gen_num:3,
+
         upgraded:true,
         updateable:true,
-        charge_gen_num:3,
         index:7,
+
 
         
         // ability: function () {
@@ -792,15 +810,14 @@ function CardDataBase(game) {
             type: 'damage',
             update_type: "damage x arc charges",
             drawback: 'costs_per_charge',
-            drawback_value: 6,
+            drawback_value: 12,
             value: 3,
-            mult_value: 3,
+            mult_value: 5,
             width: this.width,
             height: this.height,
             mana: 0,
-            text: 'Deal 3 damage. Deal 3\nmore per 2 arc charges\nCosts 1 more per 6 charges\n\nExhaust. Temporary.',
-            charge_div_value: 2,
-
+                text: 'Deal 3 damage. Deal 5\nmore per 4 arc charges\nCosts 1 more per 12 charges\nExhaust.\nTemporary.',
+            charge_div_value: 4,
             upgraded:true,
             updateable:true,
             exhaust:true,
@@ -841,10 +858,9 @@ function CardDataBase(game) {
 
         height: this.height,
         mana: 2,
-        text: 'Consume all arc charges\nYour next 3 casts are free',
+        text: 'Your next 3 casts are free',
         upgraded:true,
         exhaust:true,
-        charge_consumption: true,
 
         // ability: function () {
         // game.battle.PlayerCharacter.health -= 20},

@@ -16,7 +16,7 @@ function PlayerCharacter(game, spritesheet, HPBar, Manabar, myArcChargeBar, opac
     this.y = game.height * .38;
     this.HPBar.x = this.x + game.height * .09;
     this.HPBar.y = this.y - 55;
-    this.gold = 220;
+    this.gold = 0;
     this.health = 85;
     this.maxhealth = 85;
     this.attack = 30;

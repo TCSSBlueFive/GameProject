@@ -7,7 +7,7 @@ function ArcChargeBar(game) {
     this.opacity = 1;
     this.game = game;
     this.ctx = game.ctx;
-    this.ArcCharges = 5;
+    this.ArcCharges = 0;
 
     this.enabled = true;
 };

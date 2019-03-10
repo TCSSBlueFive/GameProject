@@ -122,7 +122,7 @@ spritesheet: AM.getAsset("./img/cards/arcane_intellect-card.png")
 
 
 Battle.prototype.enemyMoves = function() {
-    this.PlayerCharacter.ArcChargeBar.addCharges(this.charges_per_turn)
+    this.PlayerCharacter.ArcChargeBar.addCharges(this.charges_per_turn + this.added_charges)
     this.played_card_count = 0;
     for (let i = 0; i < this.cardsToAdd_per_turn.length; i++) {
         console.log(this.cardsToAdd_per_turn[i])

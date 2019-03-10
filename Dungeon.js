@@ -115,8 +115,8 @@ Dungeon.prototype.addNewEntitiesBattle = function(encounter_type) {
   this.PlayerCharacter.opacity = 1;
   this.game.addEntity(this.banner);
   this.game.addEntity(this.PlayerCharacter);
-  //this.PlayerCharacter.ArcChargeBar.reset();
-  this.PlayerCharacter.ArcChargeBar.enable();
+  this.PlayerCharacter.ArcChargeBar.reset();
+  //this.PlayerCharacter.ArcChargeBar.enable();
 
   var newCardHand = new CardHand(this.game, this, this.PlayerCharacter, 1);
   var my_viewer = new deck_viewer(this.game, this, this.PlayerCharacter, newCardHand);
