@@ -9,6 +9,10 @@ window.requestAnimFrame = (function () {
             };
 })();
 
+var audio = new Audio("./theme.mp3");
+audio.volume = .75;
+audio.loop = true;
+
 function GameEngine() {
 
     this.entities = [];
@@ -67,6 +71,7 @@ GameEngine.prototype.startInput = function() {
     }
 
     this.ctx.canvas.addEventListener("click", function(e) {
+        audio.play();
         var test_click = getXandY(e);
         if (test_click.x === that.origspot.x && test_click.y === that.origspot.y) {
             that.click = test_click;
