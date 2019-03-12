@@ -17,6 +17,8 @@ function Battle(game, Enemies, dungeon, PlayerCharacter, newCardHand) {
     this.added_charges = 0;
     this.playcount_mod = 1;
     this.played_card_count = 0;
+
+    this.PlayerCharacter.block = 0;
 }
 
 Battle.prototype.notOnCooldown = function () {
