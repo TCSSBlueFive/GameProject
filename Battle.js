@@ -97,7 +97,7 @@ Battle.prototype.playerMove = function(card) {
             }
         }
     this.played_card_count +=1;
-    this.cooldown = 1.5;
+    // this.cooldown = 1.5;
     }
 }
 
