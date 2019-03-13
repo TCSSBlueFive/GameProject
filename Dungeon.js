@@ -349,12 +349,10 @@ Dungeon.prototype.update = function ()
     } else if (this.nextRoom === "setDungeonToBoss") {
       //this.addNewEntitiesBoss();
       console.log("Init new boss");
+      this.addNewEntitiesBattle('boss');
     } else if (this.nextRoom === "setDungeonToElite") {
       this.addNewEntitiesBattle('elite');
       console.log("Init new Elite");
-    } else if (this.nextRoom === "setDungeonToBoss") {
-      this.addNewEntitiesBattle('boss');
-      console.log("Init new boss");
     }  
     else if (this.nextRoom === "setDungeonToGamble") {
       //this.addNewEntitiesGamble();
